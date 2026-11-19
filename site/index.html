@@ -36,6 +36,16 @@ header{border-bottom:2px solid var(--ink);padding-top:14px;position:relative;z-i
 .qstats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.qstats div{background:var(--cell);border-radius:6px;padding:8px}.qstats b{display:block;font-family:Oswald;font-size:24px}.qstats span{font-size:13px;color:var(--pen)}
 .hitpulse{fill:none;stroke:#F2C230;stroke-width:4}@media(prefers-reduced-motion:no-preference){.hitpulse{animation:pulse 1.1s ease-out infinite}@keyframes pulse{from{r:10px;opacity:1}to{r:30px;opacity:0}}}
 .rkp{display:inline-block;font-size:12px;background:var(--ink);color:var(--bg);border-radius:10px;padding:0 7px;margin-left:4px;font-family:Oswald}
+.yr{margin:16px 0;padding:14px 16px 12px;background:var(--cell);border-radius:10px;max-width:680px;border:1.5px solid var(--line)}
+.yrh{display:flex;justify-content:space-between;align-items:baseline;font-size:16px}.yrv{font-family:Oswald;font-size:24px;color:var(--red)}
+.yrs{position:relative;height:46px}.yrt{position:absolute;left:13px;right:13px;top:20px;height:6px;background:var(--line);border-radius:3px}.yrt i{position:absolute;top:0;height:100%;background:var(--ink);border-radius:3px}
+.yrs input{position:absolute;left:0;right:0;top:10px;width:100%;margin:0;height:26px;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
+.yrs input::-webkit-slider-runnable-track{background:none;border:0}.yrs input::-moz-range-track{background:none;border:0}
+.yrs input::-webkit-slider-thumb{pointer-events:auto;-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--ink);cursor:grab;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.yrs input::-moz-range-thumb{pointer-events:auto;width:22px;height:22px;border-radius:50%;background:var(--card);border:3px solid var(--ink);cursor:grab}
+.yrs input:focus-visible::-webkit-slider-thumb{outline:3px solid var(--red);outline-offset:2px}.yrs input:focus{outline:none}
+.yrp{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.yrp button{min-height:38px;padding:0 12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:19px;cursor:pointer;font-size:14px}.yrp button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rolehelp{margin-top:22px;font-size:16px;color:var(--pen)}.rolehelp b{color:var(--ink)}
 .rolepick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}.rolepick span{font-family:Oswald;font-size:20px;margin-right:4px}.rolepick button{min-height:48px;padding:0 18px;border:2px solid var(--red);background:var(--card);color:var(--ink);border-radius:24px;font-family:Oswald;font-size:17px;cursor:pointer}.rolepick button[aria-pressed=true],.rolepick button:hover{background:var(--red);color:#fff}
 .recs{margin-top:30px;padding:20px;border:2px solid var(--red);border-radius:12px;background:var(--card)}.recs h2{font-size:26px}
 @media(prefers-reduced-motion:no-preference){.recs{animation:rise .45s ease-out both}}
@@ -236,6 +246,13 @@ function tag(t){
   <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span><span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.y>2020?'<span class="ip">in progress</span>':''}</div></article>`}
 const T=i=>D.tags[i];
 function findTag(name){for(const k in D.tags){if(D.tags[k].n===name)return D.tags[k]}}
+function yrHTML(id,mn,mx,[lo,hi],presets,label){label=label||'Signing years';return `<div class="yr" id="${id}"><div class="yrh"><b>${label}</b><span class="yrv">${lo}–${hi}</span></div><div class="yrs"><div class="yrt"><i></i></div><input type="range" min="${mn}" max="${mx}" step="1" value="${lo}" class="ya" aria-label="${label}: from"><input type="range" min="${mn}" max="${mx}" step="1" value="${hi}" class="yb" aria-label="${label}: to"></div><div class="yrp">${presets.map(([a,b,l])=>`<button type="button" data-y="${a}-${b}">${l}</button>`).join('')}</div></div>`}
+function wireYr(id,cb){const el=document.getElementById(id);if(!el)return;const a=el.querySelector('.ya'),b=el.querySelector('.yb'),v=el.querySelector('.yrv'),t=el.querySelector('.yrt i');const mn=+a.min,mx=+a.max;let tm=null;
+  const paint=()=>{let x=+a.value,y=+b.value;if(x>y)[x,y]=[y,x];v.textContent=x===y?String(x):x+'–'+y;t.style.left=(x-mn)/(mx-mn)*100+'%';t.style.width=Math.max(.5,(y-x)/(mx-mn)*100)+'%';el.querySelectorAll('[data-y]').forEach(p=>p.setAttribute('aria-pressed',p.dataset.y===x+'-'+y));return [x,y]};
+  const fire=()=>{const r=paint();clearTimeout(tm);tm=setTimeout(()=>cb(r),120)};
+  a.oninput=fire;b.oninput=fire;el.querySelectorAll('[data-y]').forEach(p=>p.onclick=()=>{const [x,y]=p.dataset.y.split('-').map(Number);a.value=x;b.value=y;fire()});paint()}
+const sumPy=(py,[lo,hi])=>{const t=[0,0,0,0,0];for(let y=Math.max(lo,2008);y<=Math.min(hi,2023);y++){const r=py[y-2008];for(let i=0;i<5;i++)t[i]+=r[i]}return t};
+const yrsWith=(py,[lo,hi])=>{let n=0;for(let y=Math.max(lo,2008);y<=Math.min(hi,2023);y++)if(py[y-2008][0])n++;return n};
 const notes=h=>`<details class="more" style="margin-top:40px"><summary><span>How these numbers work<small>the fine print</small></span></summary><div class="notes" style="margin-top:8px;border:0;padding-top:0">${h}${rangeLine()}</div></details>`;
 const rangeLine=()=>{const m=D.meta;return `<p class="range">Covers players who signed in <b>${m.classes[0]}–${m.classes[1]}</b>, NFL drafts <b>${m.draft[0]}–${m.draft[1]}</b> and the transfer portal <b>${m.portal[0]}–${m.portal[1]}</b>. Grades use players who signed in ${m.scored[0]}–${m.scored[1]}: those who signed by ${m.complete[1]} have finished college; those who signed ${m.complete[1]+1}–${m.scored[1]} are still being drafted, so their grades will move.</p>`};
 const moreA=(t,b,s)=>more(t,b,s).replace('<details class="more"','<details class="more adv"');
@@ -267,7 +284,7 @@ function home(){
   app.innerHTML=`<div class="page"><section class="hero"><div><h1>Who really develops college football players?</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. Vetted CFB tracks what happens next, for every signee since ${m.classes[0]}, and shows which programs and coaches turn players into more than anyone expected.</p>
   <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div>
-  <div class="rolepick"><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></div>
+  <div class="rolehelp"><b>Need help getting started?</b> Tell us who you are and we'll point you to the best places to look. Totally optional.</div><div class="rolepick" style="margin-top:10px"><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></div>
   <div class="wall" aria-label="Moving board of player cards"><div class="col">${wt}${wt}</div></div></section>
   <div id="rolebox"></div>
   <div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal moves</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
@@ -319,13 +336,14 @@ function startTour(){if(RM)return;const top=Object.entries(D.states).filter(([s,
 function stopTour(){if(tour){clearInterval(tour);tour=null}}
 
 /* ---------- RANKINGS ---------- */
+let rY=[2008,2023],cY=[2008,2023],lY=[2008,2023],fY=[2008,2023],pY=[2008,2026],nfY=[2010,2026],LBY=null;
 let rkMode='programs',wrEra='all',coView='dev',wrQ='',wrSort='per',coQ='',coAct=false,coSort='ps',lbP='WR',lbS='',lbSort='tot';
 function rankings(){
   app.innerHTML=`<div class="page"><section><h1>Rankings</h1><p class="lede">Who develops talent beyond what recruiting rankings predicted. Tap any row for the full report card.</p>
   <div class="bigseg" role="group" aria-label="Rank"><button data-rk="programs" aria-pressed="${rkMode==='programs'}">Programs</button><button data-rk="coaches" aria-pressed="${rkMode==='coaches'}">Head coaches</button><button data-rk="conf" aria-pressed="${rkMode==='conf'}">Conferences</button><button data-rk="position" aria-pressed="${rkMode==='position'}">By position</button></div>
   <div class="loc"><label for="cl"><b>Look up a coach</b> <span class="small">see where he ranks on every list</span></label><input id="cl" list="cnames" placeholder="Type a coach's name, e.g. Kirby Smart" autocomplete="off"><datalist id="cnames">${D.coaches.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist><div id="clo"></div></div>
   <div id="rz"></div></section><div id="rn"></div></div>`;
-  app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;rankings()});
+  app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;window._loc=null;window._hl=null;rankings()});
   const cl=document.getElementById('cl');cl.oninput=()=>{const c=D.coaches.find(x=>x.name.toLowerCase()===cl.value.trim().toLowerCase());if(c)locate(c)};
   if(window._loc){const c=D.coaches.find(x=>x.name===window._loc);if(c){cl.value=c.name;locate(c,true)}}
   ({programs:rkPrograms,coaches:rkCoaches,conf:rkConf,position:rkPosition})[rkMode]()}
@@ -337,16 +355,16 @@ function rkPrograms(){
   const callouts=`<div class="avgline"><b>What's average?</b> Zero. Every number here is "how much better or worse than expected," so an average program scores 0. A score of +50 means a program squeezed about one extra first-round pick out of each year's recruits, beyond what their rankings predicted. The average FBS program sends about ${D.stats.avg_draft} players a year to the draft.</div>
   <div class="two four">${card('Hot right now','Last 5 years: most draft value above expectations per year (players who signed 2019–2023)',hot,p=>`<span class="pos">${f0(p.r5)}</span>`)}${card('Cold right now','Last 5 years: furthest below expectations',cold,p=>`<span class="neg">${f0(p.r5)}</span>`,'bad')}
   ${card('Dark-horse risers','Biggest jump: the 11 years before vs the last 5, outside the current top 15',rise,p=>`${f0(p.p11)} → <span class="pos">${f0(p.r5)}</span>`)}${card('Sinking ships','Biggest drop: the 11 years before vs the last 5',sink,p=>`${f0(p.p11)} → <span class="neg">${f0(p.r5)}</span>`,'bad')}</div>`;
-  document.getElementById('rz').innerHTML=callouts+`<div class="ctrl"><div class="seg" role="group" aria-label="Era">${[['all','All years (signed 2008–2023)'],['early','Signed 2008–2018'],['recent','Last 5 years (signed 2019–2023)']].map(([k,l])=>`<button data-era="${k}" aria-pressed="${wrEra===k}">${l}</button>`).join('')}</div></div><div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Oregon" value="${esc(wrQ)}"></label>
+  document.getElementById('rz').innerHTML=callouts+`${yrHTML('ry',2008,2023,rY,[[2008,2023,'All years'],[2019,2023,'Last 5 years'],[2008,2018,'2008–2018'],[2008,2020,'Careers finished']])}<div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Oregon" value="${esc(wrQ)}"></label>
   <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Points per year</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div><div class="list" id="list"></div>`;
   document.getElementById('rn').innerHTML=notes(`<p>All ${D.progs.length} FBS programs with 150+ graded players. Points per class = (actual draft points − expected) ÷ ${D.meta.ncl} graded classes; it favours volume. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
   const q=document.getElementById('q');q.oninput=()=>{wrQ=q.value;drawProgs()};
-  app.querySelectorAll('#rz [data-era]').forEach(b=>b.onclick=()=>{wrEra=b.dataset.era;if(wrEra!=='all')wrSort='per';rkPrograms()});
+  wireYr('ry',r=>{rY=r;drawProgs()});
   app.querySelectorAll('#rz [data-open]').forEach(b=>b.onclick=()=>{wrQ='';const k=b.dataset.open;drawProgs();openRow(k)});
-  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{wrSort=b.dataset.s;if(wrSort==='ratio')wrEra='all';rkPrograms()});drawProgs()}
+  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{wrSort=b.dataset.s;rkPrograms()});drawProgs()}
 function drawProgs(){
-  const val=p=>wrSort==='ratio'?p.a[3]/p.a[4]:wrEra==='early'?p.p11:wrEra==='recent'?p.r5:(p.a[3]-p.a[4])/D.meta.ncl;
-  const all=D.progs.map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
+  const ny=rY[1]-rY[0]+1,val=p=>{const a=sumPy(p.py,rY);return wrSort==='ratio'?(a[4]>0?a[3]/a[4]:0):(a[3]-a[4])/ny};
+  const all=D.progs.filter(p=>sumPy(p.py,rY)[0]>=10).map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
   const q=wrQ.trim().toLowerCase();
   rowsList(document.getElementById('list'),all.filter(r=>!q||r.key.toLowerCase().includes(q)),v=>wrSort==='per'?f0(v):v.toFixed(2)+'×',wrSort==='per'?0:1,k=>progSheet(D.progs.find(p=>p.name===k)))}
 function progSheet(p){
@@ -370,8 +388,9 @@ function rkCoaches(){
   const vs=`<div class="ctrl"><div class="seg" role="group" aria-label="Coach view"><button data-cv="dev" aria-pressed="${coView==='dev'}">Development</button><button data-cv="lean" aria-pressed="${coView==='lean'}">Portal or recruiting?</button></div></div>`;
   if(coView==='lean'){coachLean(vs);return}
   document.getElementById('rz').innerHTML=vs+`<div class="plain"><b>Giving coaches a fair shake:</b> long careers and big-name schools pile up totals. "Per season" divides by seasons coached, and recruit rankings are already built into every grade, so a coach isn't rewarded just for signing 5-stars. "Vs his school's norm" also compares him with other coaches at the same schools.</div><div class="ctrl"><label>Find a coach or school<input type="search" id="q" placeholder="Saban" value="${esc(coQ)}"></label>
-  <div class="seg" role="group" aria-label="Rank by">${[['ps','Per season (fairest)'],['r5','Last 5 years'],['tot','Career total'],['adj','Vs his school\'s norm'],['ratio','Actual ÷ expected']].map(([k,l])=>`<button data-s="${k}" class="${k==='adj'||k==='ratio'?'adv':''}" aria-pressed="${coSort===k}">${l}</button>`).join('')}</div>
-  <div class="seg" role="group" aria-label="Which coaches"><button data-a="0" aria-pressed="${!coAct}">All</button><button data-a="1" aria-pressed="${coAct}">Head coach in 2026</button></div></div><div class="list" id="list"></div>`;
+  <div class="seg" role="group" aria-label="Rank by">${[['ps','Per season (fairest)'],['tot','Total'],['adj','Vs his school\'s norm'],['ratio','Actual ÷ expected']].map(([k,l])=>`<button data-s="${k}" aria-pressed="${coSort===k}">${l}</button>`).join('')}</div>
+  <div class="seg" role="group" aria-label="Which coaches"><button data-a="0" aria-pressed="${!coAct}">All</button><button data-a="1" aria-pressed="${coAct}">Head coach in 2026</button></div></div>${yrHTML('cy',2008,2023,cY,[[2008,2023,'All years'],[2019,2023,'Last 5 years'],[2008,2018,'2008–2018']],'Players who signed in')}<p class="small" id="cyn"></p><div class="list" id="list"></div>`;
+  wireYr('cy',r=>{cY=r;drawCoaches()});
   document.getElementById('rn').innerHTML=notes(`<p>Head coaches with 40+ graded players, across every school they led, current through the 2026 hires. Per season divides by seasons coached (2010–2025), so long careers don't win by volume; it needs 4+ seasons. Vs his school's norm compares him with how other coaches did at the same schools, pulled strongly toward average. Last 5 years uses players who signed 2019–2023 and needs 20+ of them. A player is credited to the head coach at the last school he played for, in his second year on campus (or his first season there, if he transferred in). Position coaches and coordinators are not in any free data source yet.</p>`);
   app.querySelectorAll('#rz [data-cv]').forEach(b=>b.onclick=()=>{coView=b.dataset.cv;rkCoaches()});
   const q=document.getElementById('q');q.oninput=()=>{coQ=q.value;drawCoaches()};
@@ -451,10 +470,13 @@ function quad(rows){const s=document.getElementById('qsvg');if(!s)return;const W
   s.querySelectorAll('circle[data-i]').forEach(c=>{const p=pts[+c.dataset.i];c.onclick=()=>{window._hl=p.c.name;quad(rows)};c.onmouseenter=()=>qcard(p)});
   if(hp)qcard(hp)}
 function drawCoaches(){
-  const q=coQ.trim().toLowerCase();const val=c=>coSort==='tot'?c.a[3]-c.a[4]:coSort==='ps'?c.ps:coSort==='adj'?c.adjps:coSort==='r5'?(c.r5[3]-c.r5[4])/5:c.a[3]/c.a[4];
-  const all=D.coaches.filter(c=>(!coAct||c.now)&&(coSort==='r5'?c.r5[0]>=20:coSort==='ps'||coSort==='adj'?c.ns>=4:true)).map(c=>({key:c.name,v:val(c),sub:(c.now?`Now: ${esc(c.now)} · `:'')+c.st.map(s=>esc(s[0])).join(' · '),c})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}))
+  if(coSort==='r5'){coSort='ps';cY=[2019,2023]}
+  const full=cY[0]===2008&&cY[1]===2023;const cs=full?coSort:(coSort==='adj'?'ps':coSort);
+  const cyn=document.getElementById('cyn');if(cyn)cyn.textContent=full?'':(coSort==='adj'?"\"Vs his school's norm\" uses all years; showing per season for this range instead.":'Per season here = total for these years ÷ years he had players.');
+  const q=coQ.trim().toLowerCase();const val=c=>{if(full)return cs==='tot'?c.a[3]-c.a[4]:cs==='ps'?c.ps:cs==='adj'?c.adjps:c.a[3]/c.a[4];const a=sumPy(c.py,cY);return cs==='tot'?a[3]-a[4]:cs==='ratio'?(a[4]>0?a[3]/a[4]:0):(a[3]-a[4])/Math.max(1,yrsWith(c.py,cY))};
+  const all=D.coaches.filter(c=>(!coAct||c.now)&&(full?(cs==='ps'||cs==='adj'?c.ns>=4:true):sumPy(c.py,cY)[0]>=20)).map(c=>({key:c.name,v:val(c),sub:(c.now?`Now: ${esc(c.now)} · `:'')+c.st.map(s=>esc(s[0])).join(' · '),c})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}))
    .filter(r=>!q||(r.key+' '+r.c.st.map(s=>s[0]).join(' ')).toLowerCase().includes(q));
-  rowsList(document.getElementById('list'),all,v=>coSort==='ratio'?v.toFixed(2)+'×':f0(v),coSort==='ratio'?1:0,k=>coachSheet(D.coaches.find(c=>c.name===k)))}
+  rowsList(document.getElementById('list'),all,v=>cs==='ratio'?v.toFixed(2)+'×':f0(v),cs==='ratio'?1:0,k=>coachSheet(D.coaches.find(c=>c.name===k)))}
 function coachSheet(c){
   const [n,d,r1,pts,exp]=c.a;const bp=Object.entries(c.pos).filter(([g,a])=>a[0]>=15).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));
   return `<div class="sheet"><p class="take">${c.now?`<span class="small">2026: head coach at <b>${esc(c.now)}</b></span><br>`:''}<b>${esc(c.name)}</b>: ${n} graded players, ${d} drafted, ${r1} in the first round, ${rat(pts,exp)} expected draft value.${bp.length?` Best position group: ${POS[bp[0][0]].toLowerCase()}.`:''}</p>
@@ -467,31 +489,39 @@ function coachSheet(c){
   ${more('More best developments',`<div class="tags2 mini">${c.best.slice(1).map(i=>tag(T(i))).join('')}</div>`)}</div>`}
 
 function rkConf(){
-  document.getElementById('rz').innerHTML=`<p class="lede" style="margin-top:16px">Average development per program, by 2026 conference membership. Tap a conference to see its programs.</p><div class="list" id="list" style="margin-top:12px"></div>`;
-  document.getElementById('rn').innerHTML=notes(`<p>Conferences use 2026 membership, so realignment moves a program's whole history with it. Win% is 2012–2025. Each program's number is draft points above expected per graded class; the conference figure is the average of its programs.</p>`);
-  rowsList(document.getElementById('list'),D.confs.map((c,i)=>({key:c[0],v:c[2],sub:`${c[1]} programs · ${c[3]}× expected · win% ${(100*c[6]).toFixed(0)}`,rk:i+1})),f0,0,k=>{const c=D.confs.find(x=>x[0]===k);
-    return `<div class="sheet">${cellsHTML([['Programs',c[1]],['Per program, per class',f0(c[2])],['Actual ÷ exp.',c[3]+'×'],['2008–15',f0(c[5])],['2016–23',f0(c[4])],['Win %',(100*c[6]).toFixed(1)+'%']])}
-    <div class="scroll" style="margin-top:12px"><table><tr><th>Program</th><th>Per class</th><th>2008–15</th><th>2016–23</th><th>Ratio</th></tr>${c[7].map(n=>{const p=D.progs.find(x=>x.name===n);return `<tr><td>${esc(n)}</td><td class="${p.a[3]>=p.a[4]?'pos':'neg'}">${f0((p.a[3]-p.a[4])/D.meta.ncl)}</td><td>${f0(p.early)}</td><td>${f0(p.recent)}</td><td>${rat(p.a[3],p.a[4])}</td></tr>`}).join('')}</table></div></div>`})}
+  document.getElementById('rz').innerHTML=`<p class="lede" style="margin-top:16px">Which conferences get the most out of their players? Average per program, per year, by 2026 membership. Tap a conference to see its programs.</p>${yrHTML('fy2',2008,2023,lY,[[2008,2023,'All years'],[2019,2023,'Last 5 years'],[2008,2018,'2008–2018']],'Players who signed in')}<div class="list" id="list" style="margin-top:12px"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Conferences use 2026 membership, so realignment moves a program's whole history with it. Win % is 2012–2025. Each program's number is draft points above expected per signing year; the conference figure is the average of its programs.</p>`);
+  wireYr('fy2',r=>{lY=r;drawConf()});drawConf()}
+function drawConf(){const ny=lY[1]-lY[0]+1;
+  const C=D.confs.map(c=>{const ps=c[7].map(n=>D.progs.find(x=>x.name===n)).filter(Boolean);const per=ps.map(p=>{const a=sumPy(p.py,lY);return [p,a,(a[3]-a[4])/ny]});const tp=per.reduce((s,x)=>s+x[1][3],0),te=per.reduce((s,x)=>s+x[1][4],0);
+    return {c,per,v:per.reduce((s,x)=>s+x[2],0)/Math.max(1,per.length),r:te>0?tp/te:0}}).sort((a,b)=>b.v-a.v);
+  rowsList(document.getElementById('list'),C.map((x,i)=>({key:x.c[0],v:x.v,sub:`${x.per.length} programs · ${x.r.toFixed(2)}× expected · win % ${(100*x.c[6]).toFixed(0)}`,rk:i+1})),f0,0,k=>{const x=C.find(y=>y.c[0]===k);
+    return `<div class="sheet">${cellsHTML([['Programs',x.per.length],['Per program, per year',f0(x.v)],['Actual ÷ exp.',x.r.toFixed(2)+'×'],['Win % 2012–25',(100*x.c[6]).toFixed(1)+'%']])}
+    <div class="scroll" style="margin-top:12px"><table><tr><th>Program</th><th>Per year</th><th>Players</th><th>Drafted</th><th>Ratio</th></tr>${x.per.slice().sort((a,b)=>b[2]-a[2]).map(([p,a,v])=>`<tr><td>${esc(p.name)}</td><td class="${v>=0?'pos':'neg'}">${f0(v)}</td><td>${a[0]}</td><td>${a[1]}</td><td>${rat(a[3],a[4])}</td></tr>`).join('')}</table></div></div>`})}
 const STAROPT=(v,any)=>`<option value="">${any}</option>${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===v?' selected':''}>${l}</option>`).join('')}`;
 function lbLabel(){const p=lbP?POS[lbP].toLowerCase()+'s':'players';return (lbS==='0'?'unranked ':lbS?lbS+'-star ':'')+p}
 function rkPosition(){
   document.getElementById('rz').innerHTML=`<div class="ctrl"><label>Position<select id="lp"><option value="">All positions</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===lbP?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Stars<select id="ls">${STAROPT(lbS,'All stars')}</select></label>
   <div class="seg" role="group" aria-label="Rank by"><button data-s="tot" aria-pressed="${lbSort==='tot'}">Total above expected</button><button data-s="ratio" aria-pressed="${lbSort==='ratio'}">Actual ÷ expected</button></div></div>
-  <p class="take" id="lt"></p><div class="list" id="list"></div>`;
-  document.getElementById('rn').innerHTML=notes(`<p>To be ranked, a program needs 8+ matching players when position and stars are both chosen, 20+ when one is chosen, and 100+ otherwise. Total above expected rewards volume; actual ÷ expected rewards efficiency but swings more for small groups and low expectations (unranked and 2-star players).</p>`);
+  ${yrHTML('ly',2008,2023,lY,[[2008,2023,'All years'],[2019,2023,'Last 5 years'],[2008,2018,'2008–2018']],'Players who signed in')}
+  <p class="take" id="lt"></p><div class="list" id="list"><p class="empty">Loading…</p></div>`;
+  wireYr('ly',r=>{lY=r;drawLB()});
+  document.getElementById('rn').innerHTML=notes(`<p>To be ranked across all 16 years, a program needs 8+ matching players when position and stars are both chosen, 20+ when one is chosen, and 100+ otherwise; shorter year ranges scale these down. Total above expected rewards volume; actual ÷ expected rewards efficiency but swings more for small groups and low expectations (unranked and 2-star players).</p>`);
   document.getElementById('lp').onchange=e=>{lbP=e.target.value;drawLB()};document.getElementById('ls').onchange=e=>{lbS=e.target.value;drawLB()};
   app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{lbSort=b.dataset.s;app.querySelectorAll('#rz [data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawLB()});drawLB()}
 function drawLB(){
-  const g={};for(const r of D.lb){if((lbP&&r[1]!==lbP)||(lbS!==''&&r[2]!==+lbS))continue;const a=g[r[0]]||(g[r[0]]=[0,0,0,0,0]);for(let i=0;i<5;i++)a[i]+=r[3+i]}
-  const min=lbP&&lbS!==''?8:(lbP||lbS!=='')?20:100;const val=a=>lbSort==='tot'?a[3]-a[4]:a[3]/a[4];
+  if(!LBY){fetch('lb.json').then(r=>r.json()).then(j=>{LBY=j;drawLB()}).catch(()=>{const el=document.getElementById('list');if(el)el.innerHTML='<p class="empty">Leaderboards did not load. Refresh to try again.</p>'});return}
+  if(!document.getElementById('lt'))return;const GI=['QB','RB','WR','TE','OL','DL','EDGE','LB','DB'],gi=lbP?GI.indexOf(lbP):-1,y0=lY[0]-2008,y1=lY[1]-2008;
+  const g={};for(const r of LBY.rows){if((gi>=0&&r[1]!==gi)||(lbS!==''&&r[2]!==+lbS)||r[3]<y0||r[3]>y1)continue;const k=LBY.p[r[0]];const a=g[k]||(g[k]=[0,0,0,0,0]);for(let i=0;i<5;i++)a[i]+=r[4+i]}
+  const ny=lY[1]-lY[0]+1,base=lbP&&lbS!==''?8:(lbP||lbS!=='')?20:100,min=Math.max(base===100?25:4,Math.round(base*ny/16));const val=a=>lbSort==='tot'?a[3]-a[4]:a[3]/a[4];
   const items=Object.entries(g).filter(([k,a])=>a[0]>=min&&a[4]>0).map(([k,a])=>({key:k,v:val(a),a,sub:`${a[0]} players · ${a[1]} drafted`})).sort((x,y)=>y.v-x.v).map((r,i)=>({...r,rk:i+1}));
   const lab=lbLabel();
   document.getElementById('lt').innerHTML=items.length?`<b>${esc(items[0].key)}</b> has developed ${esc(lab)} best: ${f0(items[0].a[3]-items[0].a[4])} draft points above expected from ${items[0].a[0]} players, ${items[0].a[1]} drafted (${rat(items[0].a[3],items[0].a[4])}).`:'';
   const el=document.getElementById('list');
   rowsList(el,items,v=>lbSort==='tot'?f0(v):v.toFixed(2)+'×',lbSort==='tot'?0:1,k=>{const a=g[k];return `<div class="sheet">${cellsHTML([['Players',a[0]],['Drafted',a[1]],['Draft rate',pct(a[1],a[0])],['First round',a[2]],['Actual ÷ exp.',rat(a[3],a[4])]])}${lbP?`<p style="margin:12px 0 0"><button class="morebtn" data-go="${esc(k)}">See every player in Find a Program</button></p>`:''}</div>`});
   if(!items.length)el.innerHTML=`<p class="empty">No program has ${min}+ graded ${esc(lab)}. Widen the position or star filter.</p>`;
-  el.onclick=e=>{const b=e.target.closest('[data-go]');if(!b)return;fP=lbP;fS=lbS;fSt='';fC='scored';location.hash='#find'}}
+  el.onclick=e=>{const b=e.target.closest('[data-go]');if(!b)return;fP=lbP;fS=lbS;fSt='';fY=lY.slice();location.hash='#find'}}
 
 /* ---------- FIND A PROGRAM ---------- */
 let fP='WR',fS='3',fSt='LA',fC='scored',fAll=false;
@@ -502,11 +532,11 @@ function find(){
   <div class="ctrl"><label>Position<select id="fp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===fP?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Stars<select id="fs">${STAROPT(fS,'Any')}</select></label>
   <label>Home state<select id="fst"><option value="">Any state</option>${states.map(s=>`<option value="${s}"${s===fSt?' selected':''}>${ST[s]}</option>`).join('')}</select></label>
-  <label>Signing years<select id="fc">${Object.entries(CL).map(([k,v])=>`<option value="${k}"${k===fC?' selected':''}>${v[0]}</option>`).join('')}</select></label></div>
+  </div>${yrHTML('fy',2008,2026,fY,[[2008,2023,'All graded (2008–23)'],[2008,2020,'Careers finished'],[2019,2023,'Last 5 graded'],[2021,2026,'Still playing'],[2008,2026,'Every year']])}<p class="small">Players who signed 2024–2026 are listed but not graded yet.</p>
   <div id="fo"><p class="empty">Loading players…</p></div></section>
   ${notes(`<p>High school signees only. Each player counts for the last school he played for. Programs with fewer than 5 matching players are marked as a small sample, because one draft pick can swing them a lot. Classes 2024–2026 are listed with their transfers, but not graded yet. Want the national picture? See <a href="#rankings">Rankings → By position</a>.</p>`)}</div>`;
-  const upd=()=>{fAll=false;fP=document.getElementById('fp').value;fS=document.getElementById('fs').value;fSt=document.getElementById('fst').value;fC=document.getElementById('fc').value;loadFin()};
-  ['fp','fs','fst','fc'].forEach(id=>document.getElementById(id).onchange=upd);loadFin()}
+  const upd=()=>{fAll=false;fP=document.getElementById('fp').value;fS=document.getElementById('fs').value;fSt=document.getElementById('fst').value;loadFin()};
+  ['fp','fs','fst'].forEach(id=>document.getElementById(id).onchange=upd);wireYr('fy',r=>{fY=r;fAll=false;if(FIN[fP])drawFinder()});loadFin()}
 function loadFin(){
   if(FIN[fP])return drawFinder();
   document.getElementById('fo').innerHTML='<p class="empty">Loading players…</p>';
@@ -514,7 +544,7 @@ function loadFin(){
 function getFin(g){return FIN[g]?Promise.resolve(FIN[g]):fetch('f/'+g+'.json').then(r=>r.json()).then(j=>FIN[g]=j)}
 const outcome=r=>r[11]?`Rd ${r[12]} · #${r[10]} · ${r[11]}`:(r[1]>=2024?'Too early':r[1]>2020?'Not drafted yet':'Undrafted');
 function drawFinder(){
-  const [lab,y0,y1]=CL[fC];
+  const [y0,y1]=fY;const lab=`signed ${y0===y1?y0:y0+'–'+y1}`;
   const rows=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1);
   const g={};for(const r of rows){const k=r[7];const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
   const progs=Object.entries(g).map(([k,a])=>({k,...a,v:a.p-a.e}));
@@ -693,17 +723,17 @@ function players(){
     const schools=IDX.s.map((n,i)=>[n,i]).filter(([n])=>D.progs.some(p=>p.name===n)).sort((a,b)=>a[0].localeCompare(b[0]));
     const states=Object.keys(ST).sort((a,b)=>ST[a].localeCompare(ST[b]));const yrs=[];for(let y=D.meta.classes[1];y>=D.meta.classes[0];y--)yrs.push(y);
     document.getElementById('pf').innerHTML=`<label>School<select id="pS"><option value="">Any school</option>${schools.map(([n,i])=>`<option value="${i}"${String(i)===plSch?' selected':''}>${esc(n)}</option>`).join('')}</select></label>
-    <label>Class<select id="pC"><option value="">Any class</option>${yrs.map(y=>`<option${String(y)===plCls?' selected':''}>${y}</option>`).join('')}</select></label>
     <label>Position<select id="pP"><option value="">Any position</option>${IDX.g.map((g,i)=>`<option value="${i}"${String(i)===plPos?' selected':''}>${POS[g]||({ATH:'Athlete',ST:'Kicker / punter'})[g]||g}</option>`).join('')}</select></label>
     <label>Stars<select id="pSt">${STAROPT(plSt,'Any')}</select></label>
     <label>Home state<select id="pH"><option value="">Any state</option>${states.map(x=>`<option value="${x}"${x===plHome?' selected':''}>${ST[x]}</option>`).join('')}</select></label>
     <label>Outcome<select id="pO">${[['','Any outcome'],['d','Drafted'],['r1','First round'],['t','Transferred'],['u','Not drafted']].map(([k,l])=>`<option value="${k}"${k===plOut?' selected':''}>${l}</option>`).join('')}</select></label>`;
-    const u=()=>{plSch=document.getElementById('pS').value;plCls=document.getElementById('pC').value;plPos=document.getElementById('pP').value;plSt=document.getElementById('pSt').value;plHome=document.getElementById('pH').value;plOut=document.getElementById('pO').value;plN=30;drawPlayers()};
-    ['pS','pC','pP','pSt','pH','pO'].forEach(id=>document.getElementById(id).onchange=u);
+    document.getElementById('pf').insertAdjacentHTML('afterend',yrHTML('pyr',2008,2026,pY,[[2008,2026,'Every year'],[2008,2020,'Careers finished'],[2021,2026,'Still in college'],[2022,2026,'Last 5 years']]));wireYr('pyr',r=>{pY=r;plN=30;drawPlayers()});
+    const u=()=>{plSch=document.getElementById('pS').value;plPos=document.getElementById('pP').value;plSt=document.getElementById('pSt').value;plHome=document.getElementById('pH').value;plOut=document.getElementById('pO').value;plN=30;drawPlayers()};
+    ['pS','pP','pSt','pH','pO'].forEach(id=>document.getElementById(id).onchange=u);
     let t=null;document.getElementById('pq').oninput=e=>{clearTimeout(t);t=setTimeout(()=>{plQ=e.target.value;plN=30;drawPlayers()},150)};drawPlayers()}).catch(()=>{document.getElementById('pf').innerHTML='<p class="empty">Players did not load. Refresh to try again.</p>'})}
 function drawPlayers(){
   const q=plQ.trim().toLowerCase(),sch=plSch===''?-1:+plSch,cls=+plCls||0,pos=plPos===''?-1:+plPos,stv=plSt===''?-1:+plSt;
-  const rows=IDX.p.filter(r=>(!q||r[0].toLowerCase().includes(q))&&(sch<0||r[3]===sch||r[4]===sch)&&(!cls||r[1]===cls)&&(pos<0||r[2]===pos)&&(stv<0||r[6]===stv)&&(!plHome||r[7]===plHome)&&
+  const rows=IDX.p.filter(r=>(!q||r[0].toLowerCase().includes(q))&&(sch<0||r[3]===sch||r[4]===sch)&&(r[1]>=pY[0]&&r[1]<=pY[1])&&(pos<0||r[2]===pos)&&(stv<0||r[6]===stv)&&(!plHome||r[7]===plHome)&&
     (!plOut||(plOut==='d'&&r[5])||(plOut==='r1'&&r[9]===1)||(plOut==='t'&&r[8])||(plOut==='u'&&!r[5])));
   rows.sort((a,b)=>(a[5]||9999)-(b[5]||9999)||b[1]-a[1]||a[0].localeCompare(b[0]));
   const o=document.getElementById('po');if(!o)return;
@@ -844,7 +874,7 @@ function drawScatter(){
 
 
 /* ---------- NFL ---------- */
-let NFLD=null,nfSort='ov',nfQ='',nfAll=false;
+let NFLD=null,nfSort='np',nfQ='',nfAll=false;
 function nfl(){
   app.innerHTML=`<div class="page"><section><h1>Getting drafted isn't the finish line</h1><p class="lede">A draft pick shows NFL teams believed in a player. What happened next shows whether they were right. Which schools' players outlast and outplay where they were picked?</p><div id="nz"><p class="empty">Loading NFL careers…</p></div></section><div id="nn"></div></div>`;
   (NFLD?Promise.resolve():fetch('nfl.json').then(r=>r.json()).then(j=>{NFLD=j})).then(drawNFL).catch(()=>{document.getElementById('nz').innerHTML='<p class="empty">NFL data did not load. Refresh to try again.</p>'})}
@@ -854,25 +884,32 @@ function drawNFL(){
   <div class="plain"><b>Do some schools make players look better than they are?</b> We checked. If big programs inflated their players, those players would play worse in the NFL than their draft slot predicts. They don't: there is <b>${strength(Math.abs(N.r))} link</b> between how well a school develops players and how its players do against their draft slot<span class="adv"> (correlation ${N.r})</span>. NFL teams mostly get what they pay for.</div>
   <h2 style="margin-top:26px">How long careers last, by round</h2><p class="small">Players drafted 2010–2016, so most careers are complete.</p>
   <div style="margin-top:10px">${Object.entries(N.rnd).map(([r,v])=>`<div class="meter" style="grid-template-columns:5em minmax(0,1fr) 9em"><span>Round ${r}</span><i style="height:16px;width:${v[0]/10*100}%"></i><span>${v[0]} seasons · ${v[1]}% 5+</span></div>`).join('')}</div>
-  <h2 style="margin-top:30px">Which schools' players beat their draft slot?</h2><p class="lede">Schools with 20+ picks since 2010. "Beat their slot" compares each player's NFL career value with players picked around the same spot in the same draft.</p>
+  <div class="plain"><b>How we score NFL careers:</b> every player earns <b>NFL points</b>: 1 for each season in the league, 1 more for each season as a starter, <b>+3 for each Pro Bowl</b> and <b>+6 for each first-team All-Pro</b>. Simple to count and the same in any era. Aaron Donald tops the list with ${N.best[0][9]} points.</div>
+  <h2 style="margin-top:30px">Which schools produce the best NFL players?</h2><p class="lede">Pick the draft years, then sort. "Beat their draft slot" compares each player's NFL points with players picked around the same spot in the same draft.</p>
+  ${yrHTML('nfy',2010,2026,nfY,[[2010,2026,'All drafts'],[2010,2016,'Careers mostly done (2010–16)'],[2017,2026,'Recent drafts']],'Draft years')}
   <div class="ctrl"><label>Find a school<input type="search" id="nq" placeholder="LSU" value="${esc(nfQ)}"></label></div>
-  <div class="bigseg" role="group" aria-label="Sort">${[['ov','Beat their draft slot'],['sea','Longest careers'],['pb','Most Pro Bowls'],['act','Most still playing']].map(([k,l])=>`<button data-ns="${k}" aria-pressed="${nfSort===k}">${l}</button>`).join('')}</div>
+  <div class="bigseg" role="group" aria-label="Sort">${[['np','Most NFL points per pick'],['ov','Beat their draft slot'],['sea','Longest careers'],['pb','Most Pro Bowls'],['ap','Most All-Pros'],['act','Most still playing']].map(([k,l])=>`<button data-ns="${k}" aria-pressed="${nfSort===k}">${l}</button>`).join('')}</div><p class="small" id="nfn"></p>
   <div class="list" id="nl" style="margin-top:14px"></div><div id="nm"></div>
-  <h2 style="margin-top:30px">Longest NFL careers since 2010</h2><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Games</th><th>Pro Bowls</th></tr>${N.lng.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[5]}</td><td>${x[6]}</td><td>${x[7]}</td></tr>`).join('')}</table></div>
-  <h2 style="margin-top:30px">Biggest steals since 2010</h2><p class="small">Players whose NFL careers beat their draft slot by the most.</p><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>Value over slot</th><th>Pro Bowls</th></tr>${N.steals.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td class="pos">${f0(x[5])}</td><td>${x[6]}</td></tr>`).join('')}</table></div>`;
-  document.getElementById('nn').innerHTML=notes(`<p>NFL career data from Pro Football Reference via the nflverse project, linked to every pick since 2010. "Career value" is Pro Football Reference's Approximate Value, a single number for how much a player contributed each season. Value over slot = a player's career value minus the average of players picked within 16 spots of him in the same draft, so recent picks are only compared with other recent picks. Career length uses drafts 2010–2016. "Still playing" means he appeared in 2026.</p>`);
+  <h2 style="margin-top:30px">Best NFL careers since 2010</h2><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Starts</th><th>Pro Bowls</th><th>All-Pros</th><th>NFL points</th></tr>${N.best.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[5]}</td><td>${x[6]}</td><td>${x[7]}</td><td>${x[8]}</td><td><b>${x[9]}</b></td></tr>`).join('')}</table></div>
+  <h2 style="margin-top:30px">Biggest steals since 2010</h2><p class="small">Players whose NFL careers beat their draft slot by the most.</p><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>NFL points over slot</th><th>Pro Bowls</th><th>All-Pros</th></tr>${N.steals.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td class="pos">${f0(x[5])}</td><td>${x[6]}</td><td>${x[7]}</td></tr>`).join('')}</table></div>`;
+  document.getElementById('nn').innerHTML=notes(`<p>NFL career data from Pro Football Reference via the nflverse project, linked to every pick since 2010. NFL points = seasons played + seasons as a starter + 3 per Pro Bowl + 6 per first-team All-Pro. Beat their draft slot = a player's NFL points minus the average of players picked within 16 spots of him in the same draft, so recent picks are only compared with other recent picks (drafts through 2023). Career length only uses drafts through 2016, so careers are mostly complete. Schools need 15+ picks in the chosen years (8+ for ranges under six years). "Still playing" means he appeared in 2026.</p>`);
   countUp(z);
-  document.getElementById('nq').oninput=e=>{nfQ=e.target.value;drawNL()};
+  document.getElementById('nq').oninput=e=>{nfQ=e.target.value;drawNL()};wireYr('nfy',r=>{nfY=r;nfAll=false;drawNL()});
   app.querySelectorAll('[data-ns]').forEach(b=>b.onclick=()=>{nfSort=b.dataset.ns;app.querySelectorAll('[data-ns]').forEach(x=>x.setAttribute('aria-pressed',x===b));nfAll=false;drawNL()});drawNL()}
 function drawNL(){
-  const N=NFLD,q=nfQ.trim().toLowerCase();const all=N.sch.filter(s=>s.nv>=20&&s.sea!=null).map(s=>({s,v:nfSort==='ov'?s.ov:nfSort==='sea'?s.sea:nfSort==='pb'?s.pb:s.act})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
-  const rows=q?all.filter(r=>r.s.k.toLowerCase().includes(q)):(nfAll?all:all.slice(0,15));
-  const fmt=v=>nfSort==='ov'?f1(v):nfSort==='sea'?v.toFixed(1):String(v);
-  rowsList(document.getElementById('nl'),rows.map(r=>({key:r.s.k,v:r.v,rk:r.rk,sub:`${r.s.n} picks · ${r.s.sea} seasons on average · ${r.s.pb} Pro Bowls`})),fmt,0,k=>{const s=N.sch.find(x=>x.k===k);
-    return `<div class="sheet"><p class="plain simp" style="margin-top:0">${esc(s.k)} players drafted 2010–2016 lasted <b>${s.sea} seasons</b> on average, and <b>${s.s5}%</b> lasted five or more. Compared with players picked at the same spots, they ${s.ov>=0?'did <b>better</b>':'did <b>worse</b>'} than expected.</p>
-    ${cellsHTML([['Picks since 2010',s.n],['Avg. seasons',s.sea],['5+ seasons',s.s5+'%'],['Value over slot',f1(s.ov)],['Pro Bowls',s.pb],['All-Pros',s.ap],['Still playing',s.act]])}
-    <h3 style="margin-top:14px">Best NFL careers</h3><div class="scroll"><table><tr><th class="l">Player</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Games</th><th>Pro Bowls</th></tr>${s.top.map(x=>`<tr><td class="l"><b>${esc(x[0])}</b> <span class="small">${esc(x[3])}</span></td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[4]}</td><td>${x[5]}</td><td>${x[6]}</td></tr>`).join('')}</table></div>
-    <div class="two"><div class="c"><h3>Steals</h3><ol>${s.steal.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="pos">${f0(x[4])}</span></li>`).join('')}</ol></div><div class="c bad"><h3>Fell short of their slot</h3><ol>${s.bust.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="neg">${f0(x[4])}</span></li>`).join('')}</ol></div></div></div>`});
+  const N=NFLD,q=nfQ.trim().toLowerCase(),[y0,y1]=nfY;const ag={};
+  for(const r of N.picks){if(r[1]<y0||r[1]>y1)continue;const a=ag[r[0]]||(ag[r[0]]={n:0,ovs:0,ovn:0,sea:0,sn:0,s5:0,pb:0,ap:0,act:0,np:0});a.n++;if(r[1]<=2023){a.ovs+=r[2];a.ovn++}if(r[1]<=2016){a.sea+=r[3];a.sn++;if(r[3]>=5)a.s5++}a.pb+=r[4];a.ap+=r[5];a.act+=r[6];a.np+=r[7]}
+  const min=y1-y0+1<6?8:15;const fld={np:a=>a.np/a.n,ov:a=>a.ovn?a.ovs/a.ovn:null,sea:a=>a.sn?a.sea/a.sn:null,pb:a=>a.pb,ap:a=>a.ap,act:a=>a.act}[nfSort];
+  const nfn=document.getElementById('nfn');if(nfn)nfn.textContent=nfSort==='sea'&&y0>2016?'Career length needs drafts from 2016 or earlier. Widen the draft years.':nfSort==='ov'&&y0>2023?'Draft-slot comparisons need drafts through 2023.':'';
+  const all=Object.entries(ag).filter(([k,a])=>a.n>=min&&fld(a)!=null).map(([k,a])=>({k:N.schools[+k],a,v:fld(a)})).sort((x,y)=>y.v-x.v).map((r,i)=>({...r,rk:i+1}));
+  const rows=q?all.filter(r=>r.k.toLowerCase().includes(q)):(nfAll?all:all.slice(0,15));
+  const fmt=v=>nfSort==='ov'?f1(v):nfSort==='sea'||nfSort==='np'?v.toFixed(1):String(v);
+  rowsList(document.getElementById('nl'),rows.map(r=>({key:r.k,v:r.v,rk:r.rk,sub:`${r.a.n} picks · ${(r.a.np/r.a.n).toFixed(1)} NFL points per pick · ${r.a.pb} Pro Bowls · ${r.a.ap} All-Pros`})),fmt,0,k=>{const s=N.sch.find(x=>x.k===k),a=all.find(x=>x.k===k).a;
+    return `<div class="sheet"><p class="plain" style="margin-top:0">${esc(k)} players drafted ${y0}–${y1}: <b>${a.n} picks</b>, ${(a.np/a.n).toFixed(1)} NFL points per pick, ${a.pb} Pro Bowls and ${a.ap} All-Pros.${a.sn?` Those drafted by 2016 lasted <b>${(a.sea/a.sn).toFixed(1)} seasons</b> on average.`:''}${a.ovn?` Against players picked at the same spots, they did ${a.ovs>=0?'<b>better</b>':'<b>worse</b>'} than expected.`:''}</p>
+    ${cellsHTML([['Picks',a.n],['NFL pts/pick',(a.np/a.n).toFixed(1)],['Avg. seasons',a.sn?(a.sea/a.sn).toFixed(1):'—'],['5+ seasons',a.sn?Math.round(100*a.s5/a.sn)+'%':'—'],['Over slot',a.ovn?f1(a.ovs/a.ovn):'—'],['Pro Bowls',a.pb],['All-Pros',a.ap],['Still playing',a.act]])}
+    ${s?`<h3 style="margin-top:14px">Best NFL careers since 2010</h3><div class="scroll"><table><tr><th class="l">Player</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Pro Bowls</th><th>All-Pros</th><th>NFL points</th></tr>${s.top.map(x=>`<tr><td class="l"><b>${esc(x[0])}</b> <span class="small">${esc(x[3])}</span></td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[4]}</td><td>${x[6]}</td><td>${x[8]}</td><td><b>${x[9]}</b></td></tr>`).join('')}</table></div>
+    <div class="two"><div class="c"><h3>Steals</h3><ol>${s.steal.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="pos">${f0(x[4])}</span></li>`).join('')}</ol></div><div class="c bad"><h3>Fell short of their slot</h3><ol>${s.bust.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="neg">${f0(x[4])}</span></li>`).join('')}</ol></div></div>`:''}</div>`});
+  if(!all.length)document.getElementById('nl').innerHTML=`<p class="empty">No school has ${min}+ picks in ${y0}–${y1}. Widen the draft years.</p>`;
   document.getElementById('nm').innerHTML=!q&&!nfAll&&all.length>15?`<button class="bigbtn" id="nall">Show all ${all.length} schools</button>`:'';
   const na=document.getElementById('nall');if(na)na.onclick=()=>{nfAll=true;drawNL()}}
 

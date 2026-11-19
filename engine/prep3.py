@@ -267,3 +267,22 @@ print('top home',sorted([(k,round(v[0]/v[1],2),v[1]) for k,v in instate['home'].
 print('HOT5',[(p['name'],p['r5']) for p in sorted(progs,key=lambda p:-p['r5'])[:5]])
 print('ADJ',[(c['name'],c['adjps'],c['ns']) for c in sorted(coaches,key=lambda c:-c['adjps'])[:8]])
 print('PS',[(c['name'],c['ps']) for c in sorted(coaches,key=lambda c:-c['ps'])[:6]])
+# ================= v6: per-year aggregates for custom year ranges =================
+YRS=list(range(2008,2024))
+def peryear(rs):
+    d=collections.defaultdict(list)
+    for r in rs: d[r['year']].append(r)
+    return [agg(d[y]) if d.get(y) else [0,0,0,0,0] for y in YRS]
+for p in progs: p['py']=peryear(byp[p['name']])
+for c in coaches: c['py']=peryear(byc[c['name']])
+lby=collections.defaultdict(lambda:[0,0,0,0,0])
+for r in SC:
+    k=cred(r)
+    if k in FBS:
+        x=lby[(k,r['pg'],r['stars'] or 0,r['year'])]; a=agg([r])
+        for i in range(5): x[i]+=a[i]
+PN={p:i for i,p in enumerate(sorted({k[0] for k in lby}))}
+lbY=dict(p=sorted(PN,key=PN.get),rows=[[PN[k[0]],G.index(k[1]) if k[1] in G else -1,k[2],k[3]-2008]+[round(v,1) if isinstance(v,float) else v for v in a] for k,a in lby.items() if k[1] in G])
+open(O+'lb.json','w').write(json.dumps(lbY,separators=(',',':')))
+open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS),separators=(',',':')))
+import os; print('lb.json',os.path.getsize(O+'lb.json')//1024,'KB data.json',os.path.getsize(O+'data.json')//1024,'KB')
