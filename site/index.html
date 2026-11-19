@@ -10,13 +10,11 @@
    PICTURE: a moving board of player tags; a US map of where overachievers come from.
    COLOUR and TYPE: paper, ink navy, stamp red, gold only for first-round outcomes; Oswald + Source Sans 3.
    LAYOUT: four folder tabs, short answers first, details on tap, method notes at the bottom. */
-:root{color-scheme:light dark;
---bg:light-dark(#F6F3EC,#0E1730);--ink:light-dark(#14213D,#ECE7DB);--pen:light-dark(#5B6170,#A6ACBA);
---red:light-dark(#B23A2E,#E36A5C);--gold:light-dark(#A8841A,#D9B640);--goldbg:light-dark(#F1E3B0,#4A3D12);
---card:light-dark(#FFFFFF,#16213F);--line:light-dark(#DDD7C8,#2A3658);--band:light-dark(#14213D,#1D2A4D);--onband:#F6F3EC;
---tab:light-dark(#E9E3D4,#1A2546);--cell:light-dark(#F3F0E8,#1B2748);--rail:light-dark(#1b1b1b,#05080f);--boardbg:light-dark(#E7E9EC,#0A1124)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
-html[data-vt=light]{color-scheme:light!important}html[data-vt=dark]{color-scheme:dark!important}
+:root{color-scheme:light;--bg:#F6F3EC;--ink:#14213D;--pen:#5B6170;--red:#B23A2E;--gold:#A8841A;--goldbg:#F1E3B0;--card:#FFFFFF;--line:#DDD7C8;--band:#14213D;--tab:#E9E3D4;--cell:#F3F0E8;--rail:#1b1b1b;--boardbg:#E7E9EC;--onband:#F6F3EC}
+@media (prefers-color-scheme:dark){:root:not([data-vt=light]){color-scheme:dark;--bg:#0E1730;--ink:#ECE7DB;--pen:#A6ACBA;--red:#E36A5C;--gold:#D9B640;--goldbg:#4A3D12;--card:#16213F;--line:#2A3658;--band:#1D2A4D;--tab:#1A2546;--cell:#1B2748;--rail:#05080f;--boardbg:#0A1124}}
+html[data-vt=dark]{color-scheme:dark;--bg:#0E1730;--ink:#ECE7DB;--pen:#A6ACBA;--red:#E36A5C;--gold:#D9B640;--goldbg:#4A3D12;--card:#16213F;--line:#2A3658;--band:#1D2A4D;--tab:#1A2546;--cell:#1B2748;--rail:#05080f;--boardbg:#0A1124}
+html[data-vt=light]{color-scheme:light;--bg:#F6F3EC;--ink:#14213D;--pen:#5B6170;--red:#B23A2E;--gold:#A8841A;--goldbg:#F1E3B0;--card:#FFFFFF;--line:#DDD7C8;--band:#14213D;--tab:#E9E3D4;--cell:#F3F0E8;--rail:#1b1b1b;--boardbg:#E7E9EC;--onband:#F6F3EC}
+
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip;font-variant-numeric:tabular-nums}
 h1,h2,h3,.d{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;line-height:1.08;text-wrap:balance;margin:0}
@@ -73,10 +71,10 @@ section+section{margin-top:56px}
 .tag .nm{font-family:Oswald;font-size:clamp(22px,3.2vw,30px);line-height:1}.tag .nm span{font-size:.6em;font-weight:400}
 .tag .sub{font-size:15px;color:var(--pen);margin:4px 0 8px;font-weight:600}
 .cells{display:flex;flex-wrap:wrap}
-.cells div{border:1px solid color-mix(in srgb,currentColor 25%,transparent);margin:0 -1px -1px 0;text-align:center;min-width:64px}
-.cells .k{font-family:Oswald;font-size:13px;padding:2px 6px;background:color-mix(in srgb,currentColor 7%,transparent);color:var(--pen);display:block}
+.cells div{border:1px solid rgba(20,33,61,.22);border:1px solid color-mix(in srgb,currentColor 25%,transparent);margin:0 -1px -1px 0;text-align:center;min-width:64px}
+.cells .k{font-family:Oswald;font-size:13px;padding:2px 6px;background:rgba(20,33,61,.05);background:color-mix(in srgb,currentColor 7%,transparent);color:var(--pen);display:block}
 .cells .v{font-family:Oswald;font-size:16px;padding:2px 6px;display:block;white-space:nowrap}
-.tag .cor{padding:10px 14px;text-align:right;font-family:Oswald;line-height:1.05;display:flex;flex-direction:column;justify-content:center;gap:2px;border-left:1px dashed color-mix(in srgb,currentColor 25%,transparent)}
+.tag .cor{padding:10px 14px;text-align:right;font-family:Oswald;line-height:1.05;display:flex;flex-direction:column;justify-content:center;gap:2px;border-left:1px dashed rgba(20,33,61,.25);border-left:1px dashed color-mix(in srgb,currentColor 25%,transparent)}
 .cor .p{font-size:15px}.cor .yr{font-size:24px}.cor .pm{font-size:22px}.cor .ip{font-size:12px;color:var(--pen);font-family:"Source Sans 3"}
 .pos{color:var(--red)}.neg{color:var(--pen)}
 .hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,52px);align-items:center}
@@ -126,8 +124,8 @@ summary::-webkit-details-marker{display:none}
 details.row>summary:hover{background:var(--cell)}
 #rz details.row[open]{border:2px solid var(--ink);border-radius:6px;margin:8px 0;background:var(--card)}
 #rz details.row[open]>summary{background:var(--ink);color:var(--bg);border-radius:4px 4px 0 0}
-#rz details.row[open]>summary .rk,#rz details.row[open]>summary small{color:color-mix(in srgb,var(--bg) 75%,transparent)}
-#rz details.row[open]>summary .bar i.up{background:var(--bg)}
+#rz details.row[open]>summary .rk,#rz details.row[open]>summary small{color:rgba(255,255,255,.85)}
+#rz details.row[open]>summary .bar i.up,#rz details.row[open]>summary .bar i.dn{background:rgba(255,255,255,.45)}#rz details.row[open]>summary .bar::before{border-color:rgba(255,255,255,.6)}
 #rz details.row[open]>summary .pn::after{content:" · report card";font-weight:400;font-size:13px;opacity:.8}
 #rz details.row[open]>.slot>.sheet{border:0;margin:0}
 details.row[open]>summary{background:var(--cell)}
