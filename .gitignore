@@ -1,0 +1,12 @@
+# never commit the API key
+*key*
+*.key
+.env
+cfbd*.txt
+# raw data pulls stay local
+engine/data/
+HANDOFF.md
+__pycache__/
+.DS_Store
+node_modules/
+.wrangler/

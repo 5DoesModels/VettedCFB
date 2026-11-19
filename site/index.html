@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Vetted CFB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a recruiting office's honest scouting desk: plain-spoken, exact, sample sizes always shown.
+   IDEA: the magnet board and the printed scouting sheet from a college staff room.
+   PICTURE: a moving board of player tags; a US map of where overachievers come from.
+   COLOUR and TYPE: paper, ink navy, stamp red, gold only for first-round outcomes; Oswald + Source Sans 3.
+   LAYOUT: four folder tabs, short answers first, details on tap, method notes at the bottom. */
+:root{color-scheme:light dark;
+--bg:light-dark(#F6F3EC,#0E1730);--ink:light-dark(#14213D,#ECE7DB);--pen:light-dark(#5B6170,#A6ACBA);
+--red:light-dark(#B23A2E,#E36A5C);--gold:light-dark(#A8841A,#D9B640);--goldbg:light-dark(#F1E3B0,#4A3D12);
+--card:light-dark(#FFFFFF,#16213F);--line:light-dark(#DDD7C8,#2A3658);--band:light-dark(#14213D,#1D2A4D);--onband:#F6F3EC;
+--tab:light-dark(#E9E3D4,#1A2546);--cell:light-dark(#F3F0E8,#1B2748);--rail:light-dark(#1b1b1b,#05080f);--boardbg:light-dark(#E7E9EC,#0A1124)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+html[data-vt=light]{color-scheme:light!important}html[data-vt=dark]{color-scheme:dark!important}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;overflow-x:clip;font-variant-numeric:tabular-nums}
+h1,h2,h3,.d{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5vw,50px)}h2{font-size:clamp(24px,3vw,32px)}h3{font-size:20px}
+a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,16px)}
+header{border-bottom:2px solid var(--ink);padding-top:14px;position:relative;z-index:20}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.brand b{font-family:Oswald;font-weight:500;font-size:26px;letter-spacing:.05em;line-height:1}
+.brand small{display:block;font-family:Oswald;color:var(--red);letter-spacing:.32em;font-size:12px;margin-top:2px}
+.mode{flex:none}.mode button{min-height:40px;padding:0 14px;font-family:Oswald;font-size:15px}
+.loc{margin:18px 0 6px;display:grid;gap:6px;max-width:640px}.loc label{font-size:17px}.loc input{min-height:52px;font-size:17px;padding:8px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--card)}
+.loccard{margin-top:10px;border:3px solid #E0B12A;border-radius:10px;background:var(--card);padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.12)}.loccard .lh{display:flex;justify-content:space-between;gap:10px;align-items:start}.ln{font-family:Oswald;font-size:30px;line-height:1.1}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px;margin-top:12px}.lr{display:flex;gap:10px;align-items:center;background:var(--cell);border-radius:8px;padding:8px 10px}.lrk{font-family:Oswald;font-size:26px;min-width:2.4em;color:var(--red)}.lr small{display:block;color:var(--pen)}
+.qwrap{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px;align-items:start;margin-top:10px}@media(max-width:820px){.qwrap{grid-template-columns:1fr}}
+.qcard{border:3px solid #E0B12A;border-radius:10px;background:var(--card);padding:16px;position:sticky;top:12px}.qcard.flash{animation:flash .5s ease-out}@keyframes flash{from{background:color-mix(in srgb,#F2C230 35%,var(--card))}}
+.qstats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.qstats div{background:var(--cell);border-radius:6px;padding:8px}.qstats b{display:block;font-family:Oswald;font-size:24px}.qstats span{font-size:13px;color:var(--pen)}
+.hitpulse{fill:none;stroke:#F2C230;stroke-width:4}@media(prefers-reduced-motion:no-preference){.hitpulse{animation:pulse 1.1s ease-out infinite}@keyframes pulse{from{r:10px;opacity:1}to{r:30px;opacity:0}}}
+.rkp{display:inline-block;font-size:12px;background:var(--ink);color:var(--bg);border-radius:10px;padding:0 7px;margin-left:4px;font-family:Oswald}
+.rolepick{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}.rolepick span{font-family:Oswald;font-size:20px;margin-right:4px}.rolepick button{min-height:48px;padding:0 18px;border:2px solid var(--red);background:var(--card);color:var(--ink);border-radius:24px;font-family:Oswald;font-size:17px;cursor:pointer}.rolepick button[aria-pressed=true],.rolepick button:hover{background:var(--red);color:#fff}
+.recs{margin-top:30px;padding:20px;border:2px solid var(--red);border-radius:12px;background:var(--card)}.recs h2{font-size:26px}
+@media(prefers-reduced-motion:no-preference){.recs{animation:rise .45s ease-out both}}
+.thm{flex:none;min-height:44px;border:1.5px solid var(--line);background:var(--card);border-radius:22px;padding:0 14px;cursor:pointer;font-family:Oswald;font-size:15px}
+.plain{background:var(--goldbg);border-left:5px solid var(--gold);padding:10px 14px;margin:14px 0;font-size:16px;color:var(--ink)}
+#teambar{position:fixed;left:0;right:0;top:0;z-index:30;background:var(--red);color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+#teambar .tb{display:flex;align-items:center;gap:10px;min-height:58px;flex-wrap:wrap}#teambar b{font-family:Oswald;font-size:26px;letter-spacing:.03em;text-transform:uppercase}#teambar .tbk{font-family:Oswald;font-size:16px;opacity:.9}
+#teambar button{margin-left:auto;min-height:44px;border:2px solid #fff;background:transparent;color:#fff;border-radius:6px;padding:0 14px;font-family:Oswald;font-size:16px;cursor:pointer}
+@media(prefers-reduced-motion:no-preference){#teambar:not([hidden]){animation:slidedown .3s ease-out}@keyframes slidedown{from{transform:translateY(-100%)}}}
+#rz details.row[open]{border:3px solid var(--red)!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--red) 18%,transparent)}
+#rz details.row[open]>summary{background:var(--red)!important;color:#fff}
+.concept{font-size:12px;color:var(--pen);border:1px dashed var(--line);padding:2px 9px;border-radius:20px;flex:none}
+.search{position:relative;margin-left:auto;flex:1 1 300px;max-width:420px}
+.search input{width:100%;min-height:44px;font-size:16px;padding:8px 12px 8px 38px;border:1.5px solid var(--line);border-radius:22px;background:var(--card)}
+.search svg{position:absolute;left:13px;top:13px;pointer-events:none}
+.res{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:4px;box-shadow:0 12px 30px rgba(0,0,0,.18);max-height:70vh;overflow:auto;display:none}
+.res.on{display:block}.res h4{margin:0;padding:8px 12px 4px;font:500 13px Oswald;color:var(--pen);letter-spacing:.04em}
+.res button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 12px;min-height:44px;cursor:pointer}.res button:hover,.res button:focus-visible{background:var(--cell)}
+.res button small{color:var(--pen);display:block;font-size:13px}.res p{margin:0;padding:12px;color:var(--pen);font-size:15px}
+@media(max-width:640px){.search{flex-basis:100%;max-width:none;order:3}}
+nav{display:flex;gap:4px;margin-top:14px;overflow-x:auto;scrollbar-width:none}
+nav a{flex:none;font-family:Oswald;font-size:17px;text-decoration:none;padding:10px 16px 8px;background:var(--tab);color:var(--pen);border-radius:8px 8px 0 0;min-height:44px;display:flex;align-items:center;transition:background .2s,color .2s}
+nav a[aria-current]{background:var(--ink);color:var(--bg)}
+.subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:8px;background:var(--cell);border-radius:10px}.subnav a{flex:1 1 140px;text-align:center;text-decoration:none;font-family:Oswald;font-size:18px;min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:7px;color:var(--pen);border:2px solid transparent}.subnav a:hover{border-color:var(--ink);color:var(--ink)}.subnav a[aria-current]{background:var(--ink);color:var(--bg)}
+main{padding:28px 0 40px;min-height:60vh}
+.lede{font-size:19px;color:var(--pen);max-width:62ch;margin:10px 0 0}
+section+section{margin-top:56px}
+.notes{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:15px;color:var(--pen);max-width:75ch}
+.notes h3{font-size:16px;color:var(--ink);margin-bottom:6px}.range b{color:var(--ink);font-weight:600}
+.tag{display:grid;grid-template-columns:1fr auto;background:var(--card);color:var(--ink);border-block:5px solid var(--rail);border-radius:3px;box-shadow:0 2px 0 rgba(0,0,0,.08);overflow:hidden}
+.tag.gold{background:var(--goldbg)}
+.tag .m{padding:10px 14px 12px}
+.tag .nm{font-family:Oswald;font-size:clamp(22px,3.2vw,30px);line-height:1}.tag .nm span{font-size:.6em;font-weight:400}
+.tag .sub{font-size:15px;color:var(--pen);margin:4px 0 8px;font-weight:600}
+.cells{display:flex;flex-wrap:wrap}
+.cells div{border:1px solid color-mix(in srgb,currentColor 25%,transparent);margin:0 -1px -1px 0;text-align:center;min-width:64px}
+.cells .k{font-family:Oswald;font-size:13px;padding:2px 6px;background:color-mix(in srgb,currentColor 7%,transparent);color:var(--pen);display:block}
+.cells .v{font-family:Oswald;font-size:16px;padding:2px 6px;display:block;white-space:nowrap}
+.tag .cor{padding:10px 14px;text-align:right;font-family:Oswald;line-height:1.05;display:flex;flex-direction:column;justify-content:center;gap:2px;border-left:1px dashed color-mix(in srgb,currentColor 25%,transparent)}
+.cor .p{font-size:15px}.cor .yr{font-size:24px}.cor .pm{font-size:22px}.cor .ip{font-size:12px;color:var(--pen);font-family:"Source Sans 3"}
+.pos{color:var(--red)}.neg{color:var(--pen)}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,52px);align-items:center}
+.hero h1{font-size:clamp(38px,5.8vw,62px)}
+.hero .lede{font-size:20px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border-radius:6px;border:2px solid var(--ink);text-decoration:none;font-family:Oswald;font-size:18px;cursor:pointer;background:transparent;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}.btn.solid{background:var(--ink);color:var(--bg)}
+.wall{height:480px;overflow:hidden;background:var(--boardbg);border:1px solid var(--line);border-radius:12px;position:relative;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.wall .col{display:grid;gap:14px;padding:14px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.wall{height:330px}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));margin-top:34px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.stats div{padding:12px 12px 14px 0}.stats .d{font-size:clamp(28px,3.6vw,38px)}.stats p{margin:0;font-size:14px;color:var(--pen)}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:18px}
+@media(max-width:820px){.mapwrap{grid-template-columns:1fr}}
+.map svg{width:100%;height:auto;display:block}
+.map path{stroke:var(--bg);stroke-width:1;cursor:pointer;transition:fill .5s,opacity .3s}
+.map path:hover{stroke:var(--ink);stroke-width:2}
+.map path.sel,.map path:focus-visible{stroke:var(--red);stroke-width:3}.map path:focus{outline:none}
+.map text{font:500 11px Oswald;fill:var(--onband);pointer-events:none;text-anchor:middle}
+.legend{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--pen);margin-top:8px;flex-wrap:wrap}
+.legend{gap:6px 14px}.lg{display:inline-flex;align-items:center;gap:6px}.lg b{display:inline-block;width:18px;height:14px;border-radius:2px;border:1px solid rgba(0,0,0,.15)}
+.panel{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);padding:16px 18px;min-height:280px}
+.panel .big{font-family:Oswald;font-size:46px;line-height:1}
+.panel ol{margin:8px 0 0;padding-left:1.3em}.panel li{margin:4px 0}
+.ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;margin-top:18px}
+.way{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);border-radius:4px;padding:18px;transition:transform .2s,border-color .2s}
+.way:hover{transform:translateY(-4px);border-color:var(--ink)}.way p{margin:6px 0 0;color:var(--pen);font-size:16px}.way .go{display:inline-block;margin-top:12px;font-family:Oswald;color:var(--red)}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:14px}
+.cmp .c{background:var(--card);border:1px solid var(--line);padding:14px 16px}.cmp .big{font-family:Oswald;font-size:34px}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 12px;align-items:end}
+.ctrl label{font-size:14px;color:var(--pen);display:grid;gap:4px}
+.ctrl input,.ctrl select,.form input,.form select,.form textarea{font-size:16px;min-height:44px;padding:6px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--card)}
+.ctrl input[type=search]{width:min(320px,100%)}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:6px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);padding:0 16px;min-height:44px;cursor:pointer;transition:background .2s}
+.bigseg{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}.bigseg button{flex:1 1 150px;min-height:54px;border:2px solid var(--ink);background:var(--card);border-radius:8px;font-family:Oswald;font-size:18px;cursor:pointer;padding:0 14px}.bigseg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.bigbtn{display:block;width:100%;min-height:56px;margin-top:12px;border:2px solid var(--ink);background:var(--card);border-radius:8px;font-family:Oswald;font-size:19px;cursor:pointer}.bigbtn:hover{background:var(--ink);color:var(--bg)}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 6px;cursor:pointer;min-height:56px}.prow:hover{background:var(--cell)}.prow b{font-size:18px}.prow small{display:block;color:var(--pen);font-size:14px}.prow .o{font-family:Oswald;font-size:17px;text-align:right;white-space:nowrap}
+.pbar{height:8px;background:var(--cell);border-radius:4px;overflow:hidden;margin-top:6px;width:120px;margin-left:auto}.pbar i{display:block;height:100%;background:var(--ink)}
+.big2{font-family:Oswald;font-size:clamp(40px,6vw,60px);line-height:1}.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.list{border-top:2px solid var(--ink)}
+details.row{border-bottom:1px solid var(--line)}
+details.row>summary{list-style:none;display:grid;grid-template-columns:2.2em minmax(7em,15em) minmax(0,1fr) 4.6em;gap:10px;align-items:center;padding:10px 4px;cursor:pointer;min-height:48px}
+details.row.nb>summary{grid-template-columns:2.2em minmax(0,1fr) 4.6em}
+summary::-webkit-details-marker{display:none}
+details.row>summary:hover{background:var(--cell)}
+#rz details.row[open]{border:2px solid var(--ink);border-radius:6px;margin:8px 0;background:var(--card)}
+#rz details.row[open]>summary{background:var(--ink);color:var(--bg);border-radius:4px 4px 0 0}
+#rz details.row[open]>summary .rk,#rz details.row[open]>summary small{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+#rz details.row[open]>summary .bar i.up{background:var(--bg)}
+#rz details.row[open]>summary .pn::after{content:" · report card";font-weight:400;font-size:13px;opacity:.8}
+#rz details.row[open]>.slot>.sheet{border:0;margin:0}
+details.row[open]>summary{background:var(--cell)}
+#rz details.row[open]>summary{background:var(--ink)}
+.rk{font-family:Oswald;color:var(--pen);text-align:right}.pn{font-weight:600}.pn small{display:block;font-weight:400;color:var(--pen);font-size:13px}
+.bar{position:relative;height:14px}.bar i{position:absolute;top:0;height:100%;display:block}
+.bar::before{content:"";position:absolute;left:var(--z);top:-4px;bottom:-4px;border-left:1px solid var(--pen)}
+.bar .up{background:var(--ink);transform-origin:left}.bar .dn{background:var(--red);transform-origin:right}
+.val{font-family:Oswald;font-size:18px;text-align:right;white-space:nowrap}
+@media(max-width:600px){details.row>summary{grid-template-columns:1.8em minmax(0,1fr) 3.8em;row-gap:4px}.bar{grid-column:2/4;grid-row:2}}
+.sheet{background:var(--card);border:1px solid var(--line);margin:0 0 16px;padding:16px clamp(10px,2vw,20px) 18px}
+.take{margin:0 0 12px;font-size:17px}
+details.more{margin-top:10px;border:1.5px solid var(--line);border-radius:6px;background:var(--card)}
+details.more>summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:Oswald;font-size:19px;padding:8px 14px;background:var(--cell);border-radius:6px}
+details.more>summary:hover{border-color:var(--ink);background:var(--tab)}
+details.more>summary::after{content:"Show ▾";font-size:15px;color:var(--red);flex:none;font-family:Oswald}
+details.more[open]>summary::after{content:"Hide ▴"}
+details.more[open]>summary{border-radius:6px 6px 0 0;border-bottom:1px solid var(--line)}
+details.more>*:not(summary){margin-left:12px;margin-right:12px}details.more>*:last-child{margin-bottom:12px}
+details.more>summary small{font-family:"Source Sans 3";color:var(--pen);font-size:14px;margin-left:8px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{font-family:Oswald;font-weight:500;font-size:14px;background:var(--cell);color:var(--pen);padding:6px 8px;border:1px solid var(--line);text-align:right;white-space:nowrap}
+td{padding:6px 8px;border:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+td.l,th.l{text-align:left;white-space:normal}
+.tags2{display:grid;gap:10px;margin-top:10px}.mini .tag .nm{font-size:22px}
+.chk{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:3px;font-size:14px;line-height:1;background:var(--ink);color:var(--bg)}
+.vs h4{font-family:Oswald;font-weight:500;font-size:18px;margin:22px 0 0;background:var(--band);color:var(--onband);text-align:center;padding:6px;letter-spacing:.04em}
+.vs table td,.vs table th{white-space:normal;text-align:left}.vs td.c{text-align:center}
+.small{font-size:14px;color:var(--pen)}
+.empty{padding:24px;border:1px dashed var(--line);text-align:center;color:var(--pen)}
+.morebtn{margin-top:14px;min-height:44px;padding:0 18px;border:1.5px solid var(--ink);background:transparent;border-radius:6px;cursor:pointer;font-family:Oswald;font-size:16px}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);color:var(--pen);font-weight:400;vertical-align:2px;white-space:nowrap}
+.pill.w{border-color:var(--ink);color:var(--ink)}.pill.r{border-color:var(--red);color:var(--red)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin:14px 0}
+.lk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:32px}
+.meter{display:grid;gap:10px;align-items:center;font-size:15px;margin:8px 0}.meter i{display:block;background:var(--ink)}.meter>span:last-child{font-family:Oswald;text-align:right}
+.avgline{background:var(--cell);border-left:5px solid var(--ink);padding:12px 14px;margin:18px 0 6px;font-size:16px}
+.four{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.two .c{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);padding:12px 14px}.two .c.bad{border-top-color:var(--red)}
+.two ol{margin:6px 0 0;padding-left:1.3em}.two li{margin:3px 0}
+.pl td{font-size:14px}.pl td:first-child{font-weight:600}
+.prose{max-width:68ch}.prose p{margin:0 0 14px}.prose h2{margin:30px 0 10px}
+.form{display:grid;gap:14px;max-width:560px;margin-top:20px}.form label{display:grid;gap:4px;font-size:15px;color:var(--pen)}.form textarea{min-height:150px;resize:vertical}
+.err{color:var(--red);font-size:14px;min-height:1em}
+footer{border-top:2px solid var(--ink);padding:22px 0 40px;font-size:14px;color:var(--pen)}
+footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer .links a,footer .links button{font-family:Oswald;font-size:16px;color:var(--ink);text-decoration:none;background:none;border:0;padding:8px 0;cursor:pointer;min-height:44px}
+.ask{position:fixed;inset:0;background:rgba(10,15,30,.55);display:grid;place-items:center;z-index:50;padding:16px}
+.ask .box{background:var(--card);color:var(--ink);border-top:8px solid var(--ink);max-width:440px;width:100%;padding:22px;border-radius:4px;max-height:90vh;overflow:auto}
+.ask .box.wide{max-width:640px;background:var(--boardbg)}
+.ask .opts{display:grid;gap:10px;margin-top:16px}.ask .opts button{min-height:52px;border:2px solid var(--ink);background:transparent;border-radius:6px;font-family:Oswald;font-size:19px;cursor:pointer;text-align:left;padding:0 16px}
+.ask .opts button:hover,.ask .opts button:focus-visible{background:var(--ink);color:var(--bg)}
+.ask .skip{margin-top:10px;background:none;border:0;color:var(--pen);text-decoration:underline;cursor:pointer;min-height:44px;padding:0}
+@media(prefers-reduced-motion:no-preference){
+ .page{animation:rise .45s ease-out both}@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+ .wall .col{animation:scrollup 60s linear infinite}.wall:hover .col{animation-play-state:paused}@keyframes scrollup{to{transform:translateY(-50%)}}
+ .bar i{animation:grow .7s cubic-bezier(.2,.8,.2,1) both}@keyframes grow{from{transform:scaleX(0)}}
+ details[open]>.slot>*,details.more[open]>*:not(summary){animation:drop .3s ease-out both}@keyframes drop{from{opacity:0;transform:translateY(-6px)}}
+ .ask .box{animation:rise .3s ease-out both}
+ .map path{animation:fadein .6s ease-out both;animation-delay:calc(var(--i)*12ms)}@keyframes fadein{from{opacity:0}}
+}
+@media(max-width:600px){table{font-size:13px}}
+.ticker{background:var(--ink);color:var(--bg);border-radius:8px;padding:14px 18px;margin-top:20px;display:flex;gap:14px;align-items:center;min-height:74px}
+.ticker .lbl{font-family:Oswald;color:#F2B8AE;flex:none;font-size:15px}.ticker .tx{font-size:17px;transition:opacity .4s,transform .4s}.ticker .tx.out{opacity:0;transform:translateY(8px)}
+.quad text{font-family:"Source Sans 3"}
+@media(prefers-reduced-motion:no-preference){.meter i{animation:grow .8s cubic-bezier(.2,.8,.2,1) both;transform-origin:left}.dot{animation:pop .5s ease-out both}@keyframes pop{from{opacity:0;transform:scale(.2)}}.dot{transform-box:fill-box;transform-origin:center}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<clipPath id="cL"><rect x="0" y="0" width="22" height="52"/></clipPath><clipPath id="cR"><rect x="22" y="0" width="30" height="52"/></clipPath>
+<symbol id="mark" viewBox="0 0 52 52"><g fill="none" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M6 14 L22 44 L46 6" stroke="var(--ink)" clip-path="url(#cL)"/><path d="M6 14 L22 44 L46 6" stroke="var(--red)" clip-path="url(#cR)"/></g></symbol>
+</defs></svg>
+<header><div class="wrap">
+<div class="top"><a class="brand" href="#home" aria-label="Vetted CFB home"><svg width="44" height="44" aria-hidden="true"><use href="#mark"/></svg><span><b>VETTED</b><small>CFB</small></span></a>
+<span class="concept">Preview</span>
+<button class="thm" id="thm" type="button" aria-label="Switch light or dark mode"><span id="thmi">☾</span> <span id="thml">Dark</span></button><div class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+<input type="search" id="sq" placeholder="Search any player, school or coach" aria-label="Search any player, school or coach" autocomplete="off"><div class="res" id="sr" role="listbox"></div></div></div>
+<nav aria-label="Sections"><a href="#home">Home</a><a href="#find">Find a Program</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#analytics">Analytics</a><a href="#about">About</a></nav>
+</div></header>
+<div id="teambar" hidden><div class="wrap tb"><span>You're viewing</span><b id="tbn"></b><span class="tbk" id="tbk">report card</span><button id="tbc" type="button">Close ✕</button></div></div>
+<main class="wrap" id="app"><p class="empty">Loading the board…</p></main>
+<footer><div class="wrap"><div class="links"><a href="#about">About</a><a href="#contact">Contact</a><a href="#methods">Methods</a><button type="button" id="prev">Preview the welcome question</button></div>
+<div>Vetted CFB · Independent; not affiliated with any school, conference or the NCAA. Recruiting data from the College Football Data API (247Sports composite). No team logos, mascots or player photos. Findings are early and will change as the model is tuned.</div></div></footer>
+<script>
+{
+const app=document.getElementById('app');
+const LS2={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let D=null,MAP=null,IDX=null;const FIN={};
+const POS={QB:'Quarterback',RB:'Running back',WR:'Wide receiver',TE:'Tight end',OL:'Offensive line',DL:'Defensive tackle',EDGE:'Edge rusher',LB:'Linebacker',DB:'Defensive back'};
+const ST={AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'Washington, D.C.',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f1=x=>x==null?'—':(x>0?'+':x<0?'−':'')+Math.abs(x).toFixed(1);
+const f0=x=>(Math.round(x)>0?'+':Math.round(x)<0?'−':'')+Math.abs(Math.round(x));
+const pct=(a,b)=>b?(100*a/b).toFixed(b>=200?1:0)+'%':'—';
+const rat=(p,e)=>e>0?(p/e).toFixed(2)+'×':'—';
+const stars=n=>'★'.repeat(n||0)||'NR';
+const yy=y=>"’"+String(y).slice(2);
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SUF=new Set(['Jr.','Jr','Sr.','Sr','II','III','IV','V']);
+function split(n){const p=n.split(' ');let s='';if(p.length>2&&SUF.has(p[p.length-1]))s=' '+p.pop();const last=p.pop();return [last+s,p.join(' ')]}
+const pathTxt=(sg,mv)=>esc(sg)+(mv||[]).map(m=>' → '+esc(m[1]||'portal, no school yet')+' '+yy(m[0])).join('');
+function tag(t){
+  const [l,f]=split(t.n);const cls=t.o&&t.o<=32?'gold':'';
+  const dr=t.dy?`<div><span class="k">Drafted</span><span class="v">${t.dy} · ${esc(t.dt)}</span></div><div><span class="k">Pick</span><span class="v">#${t.o}</span></div>`:`<div><span class="k">Draft</span><span class="v">${t.y>=2024?'Too early':t.y>2020?'Not yet':'Undrafted'}</span></div>`;
+  return `<article class="tag ${cls}"><div class="m"><div class="nm">${esc(l.toUpperCase())}<span>, ${esc(f)}</span></div>
+  <div class="sub">${esc(t.h)} · ${pathTxt(t.sg,t.mv)}${t.jc?' · JUCO/prep':''}</div>
+  <div class="cells"><div><span class="k">Stars</span><span class="v" style="color:var(--gold)">${stars(t.s)}</span></div><div><span class="k">Rating</span><span class="v">${t.rt?t.rt.toFixed(4):'—'}</span></div>${dr}<div><span class="k">Points</span><span class="v">${t.pts}</span></div><div><span class="k">Expected</span><span class="v">${t.e==null?'—':t.e.toFixed(1)}</span></div></div></div>
+  <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span><span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.y>2020?'<span class="ip">in progress</span>':''}</div></article>`}
+const T=i=>D.tags[i];
+function findTag(name){for(const k in D.tags){if(D.tags[k].n===name)return D.tags[k]}}
+const notes=h=>`<details class="more" style="margin-top:40px"><summary><span>How these numbers work<small>the fine print</small></span></summary><div class="notes" style="margin-top:8px;border:0;padding-top:0">${h}${rangeLine()}</div></details>`;
+const rangeLine=()=>{const m=D.meta;return `<p class="range">Covers players who signed in <b>${m.classes[0]}–${m.classes[1]}</b>, NFL drafts <b>${m.draft[0]}–${m.draft[1]}</b> and the transfer portal <b>${m.portal[0]}–${m.portal[1]}</b>. Grades use players who signed in ${m.scored[0]}–${m.scored[1]}: those who signed by ${m.complete[1]} have finished college; those who signed ${m.complete[1]+1}–${m.scored[1]} are still being drafted, so their grades will move.</p>`};
+const moreA=(t,b,s)=>more(t,b,s).replace('<details class="more"','<details class="more adv"');
+const more=(title,body,sub)=>`<details class="more"><summary><span>${title}${sub?`<small>${sub}</small>`:''}</span></summary>${body}</details>`;
+const cellsHTML=c=>`<div class="cells">${c.map(([k,v])=>`<div><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}</div>`;
+const posTable=pos=>`<div class="scroll"><table><tr><th>Position</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>Pts vs exp.</th><th>Ratio</th></tr>${Object.entries(pos).filter(([g,a])=>a[0]>=10).map(([g,a])=>`<tr><td>${POS[g]}</td><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td class="${a[3]>=a[4]?'pos':'neg'}">${f0(a[3]-a[4])}</td><td>${rat(a[3],a[4])}</td></tr>`).join('')}</table></div>`;
+const GROUPS={players:[['players','Search players'],['predictions','Predictions'],['transfers','Transfers']],analytics:[['analytics','Does it win?'],['stayhome','Stay home or leave'],['nfl','NFL careers']],about:[['about','About'],['contact','Contact'],['methods','How it works']]};
+const GOF={};for(const g in GROUPS)for(const [r] of GROUPS[g])GOF[r]=g;
+function setNav(r){const g=GOF[r]||r;document.querySelectorAll('nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+g))}
+function subnav(r){const g=GOF[r];if(!g)return;app.insertAdjacentHTML('afterbegin',`<nav class="subnav" aria-label="${g} sections">${GROUPS[g].map(([k,l])=>`<a href="#${k}"${k===r?' aria-current="page"':''}>${l}</a>`).join('')}</nav>`)}
+function rowsList(el,items,fmtVal,base,open){
+  const vs=items.map(r=>r.v);const lo=Math.min(base,...vs),hi=Math.max(base,...vs),sp=(hi-lo)||1,z=(base-lo)/sp*100;
+  el.innerHTML=items.length?items.map((it,n)=>{const x=(it.v-lo)/sp*100;return `<details class="row" data-k="${esc(it.key)}"><summary><span class="rk">${it.rk}</span><span class="pn">${esc(it.key)}${it.sub?`<small>${it.sub}</small>`:''}</span><span class="bar" style="--z:${z}%" aria-hidden="true"><i class="${it.v>=base?'up':'dn'}" style="left:${Math.min(x,z)}%;width:${Math.max(Math.abs(x-z),.4)}%;animation-delay:${Math.min(n,25)*25}ms"></i></span><span class="val">${fmtVal(it.v)}</span></summary><div class="slot"></div></details>`}).join(''):'<p class="empty">Nothing matches that search. Try a shorter name.</p>';
+  el.querySelectorAll('details.row').forEach(d=>d.addEventListener('toggle',()=>{if(d.open&&!d.querySelector('.slot').innerHTML)d.querySelector('.slot').innerHTML=open(d.dataset.k)}))}
+function openRow(key){const d=[...app.querySelectorAll('details.row')].find(x=>x.dataset.k===key);if(d){d.open=true;setTimeout(()=>d.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'}),60)}}
+function countUp(root){
+  const els=root.querySelectorAll('[data-n]');
+  if(RM||!('IntersectionObserver' in window)){els.forEach(e=>e.textContent=(+e.dataset.n).toLocaleString());return}
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;io.unobserve(en.target);const el=en.target,to=+el.dataset.n,t0=performance.now();
+    const step=t=>{const k=Math.min(1,(t-t0)/1200),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString();if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.4});
+  els.forEach(e=>{e.textContent='0';io.observe(e)})}
+
+/* ---------- HOME ---------- */
+let mapMode='ratio',mapSel=null,tour=null;
+function home(){
+  const m=D.meta,sr=m.sr;const ex3=sr[3][3],ex5=sr[5][3];
+  const wallNames=['Khalil Mack','Kyle Pitts','DeVonta Smith','Justin Jefferson','Brock Purdy','Aaron Donald','Malik Nabers',"Ja'Marr Chase",'Joe Burrow','Travis Hunter'];
+  const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
+  app.innerHTML=`<div class="page"><section class="hero"><div><h1>Who really develops college football players?</h1>
+  <p class="lede">Recruiting rankings tell you who a program signs. Vetted CFB tracks what happens next, for every signee since ${m.classes[0]}, and shows which programs and coaches turn players into more than anyone expected.</p>
+  <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div>
+  <div class="rolepick"><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></div>
+  <div class="wall" aria-label="Moving board of player cards"><div class="col">${wt}${wt}</div></div></section>
+  <div id="rolebox"></div>
+  <div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal moves</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
+  <div class="ticker" id="tk1"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div>
+  <section><h2>Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
+  <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button></div></div>
+  <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>
+  <section><h2>Ways in</h2><div class="ways">
+  <a class="way" href="#find"><h3>Find a Program</h3><p>For recruits and families. Pick a position, star rating and home state, and see every player like you: where he went and how it turned out.</p><span class="go">Start here →</span></a>
+  <a class="way" href="#rankings"><h3>Rankings</h3><p>For fans and staff. Programs, head coaches and position-by-position leaderboards, ranked by development beyond recruiting.</p><span class="go">See who's on top →</span></a>
+  <a class="way" href="#transfers"><h3>Transfers</h3><p>Stay or go? Draft odds for players who stayed versus transferred, and who develops transfers best.</p><span class="go">Explore the portal →</span></a></div></section>
+  <section><h2>How the score works</h2><p class="lede">Every player is judged against what players with his star rating, composite rating and position usually do in the NFL draft. Same draft slot, very different credit:</p>
+  <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted in round one</div><div class="big">60 − ${ex3.toFixed(1)} = <span class="pos">+${(60-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
+  <div class="c"><div class="small">A typical 5-star, drafted in round one</div><div class="big">60 − ${ex5.toFixed(1)} = <span class="pos">+${(60-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
+  <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About Vetted CFB</a></p></section></div>`;
+  countUp(app);ticker('tk1',facts());roleBox(LS2.get('vc_role'));
+  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false);app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleBox(r,true)});
+  app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
+  (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
+  statePanel(null)}
+const RB=[[0,.7,'#8E2A20',1],[.7,.9,'#D0705F',1],[.9,1.1,'#E9DFC9',0],[1.1,1.4,'#93ABCF',0],[1.4,1.8,'#41629A',1],[1.8,99,'#14213D',1]];
+const PB=[[0,25,'#E9DFC9',0],[25,75,'#B5C5DF',0],[75,150,'#7C97C3',1],[150,300,'#41629A',1],[300,1e9,'#14213D',1]];
+function stBin(k){const s=D.states[k];if(!s||(mapMode==='ratio'&&s[0]<150))return ['#F4F1EA',0];const v=mapMode==='picks'?s[1]:s[3]/s[4];const b=(mapMode==='picks'?PB:RB).find(x=>v>=x[0]&&v<x[1]);return [b[2],b[3]]}
+function drawMap(){
+  const el=document.getElementById('map');if(!el||!MAP)return;
+  if(!el.querySelector('svg')||el.dataset.mode!==mapMode){el.dataset.mode=mapMode;
+    el.innerHTML=`<svg viewBox="0 0 975 610" role="img" aria-label="US map of high school signees by home state"><defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="transparent"/><line x1="0" y1="0" x2="0" y2="7" stroke="#8A8F9C" stroke-width="2.2"/></pattern></defs>${Object.entries(MAP).map(([k,[d]],i)=>`<path d="${d}" data-s="${k}" style="--i:${i}" tabindex="0" role="button" aria-label="${ST[k]||k}"><title>${ST[k]||k}</title></path>`).join('')}${mapMode!=='ratio'?'':Object.entries(MAP).filter(([k])=>!D.states[k]||D.states[k][0]<150).map(([k,[d]])=>`<path d="${d}" fill="url(#hatch)" style="pointer-events:none;stroke:none" class="hx"></path>`).join('')}${Object.entries(MAP).filter(([k])=>D.states[k]&&D.states[k][0]>=400).map(([k,[,c]])=>`<text x="${c[0]}" y="${c[1]+4}">${k}</text>`).join('')}</svg>`;
+    el.querySelectorAll('path[data-s]').forEach(p=>{const pick=()=>{stopTour();statePanel(p.dataset.s)};p.onclick=pick;p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}});
+    startTour()}
+  el.querySelectorAll('path[data-s]').forEach(p=>p.style.fill=stBin(p.dataset.s)[0]);
+  el.querySelectorAll('text').forEach(t=>{t.style.fill=stBin(t.textContent)[1]?'#F6F3EC':'#14213D'});
+  const chip=(c,l)=>`<span class="lg"><b style="background:${c}"></b>${l}</span>`;
+  document.getElementById('leg').innerHTML=(mapMode==='ratio'?[['#8E2A20','under 0.7×'],['#D0705F','0.7–0.9×'],['#E9DFC9','about expected'],['#93ABCF','1.1–1.4×'],['#41629A','1.4–1.8×'],['#14213D','1.8× and up']]:[['#E9DFC9','under 25'],['#B5C5DF','25–75'],['#7C97C3','75–150'],['#41629A','150–300'],['#14213D','300+']]).map(x=>chip(...x)).join('')+`${mapMode==='ratio'?'<span class="lg"><b style="background:repeating-linear-gradient(45deg,#F4F1EA 0 3px,#8A8F9C 3px 5px)"></b>not enough players to grade (under 150)</span>':''}`;
+  if(mapSel)statePanel(mapSel)}
+function statePanel(k){
+  mapSel=k;const el=document.getElementById('sp');if(!el)return;
+  document.querySelectorAll('#map path').forEach(p=>p.classList.toggle('sel',p.dataset.s===k));
+  if(!k){el.innerHTML=`<h3>Tap a state</h3><p class="small" style="margin-top:6px">Blue states produced more NFL draft value than their recruits' rankings predicted. Red states produced less. Striped states have fewer than 150 graded signees, too few to grade fairly.</p><p style="margin-top:14px">Biggest overachievers, 300+ signees:</p><ol>${Object.entries(D.states).filter(([s,a])=>a[0]>=300&&ST[s]).sort((a,b)=>b[1][3]/b[1][4]-a[1][3]/a[1][4]).slice(0,5).map(([s,a])=>`<li><b>${ST[s]}</b> · ${rat(a[3],a[4])}</li>`).join('')}</ol>`;return}
+  const s=D.states[k];
+  if(!s){el.innerHTML=`<h3>${ST[k]||k}</h3><p class="small">No graded high school signees from here.</p>`;return}
+  el.innerHTML=`<div class="small">${ST[k]||k} · high school signees, ${D.meta.scored[0]}–${D.meta.scored[1]}</div><div class="big ${s[3]>=s[4]?'':'pos'}">${rat(s[3],s[4])}</div><p class="small" style="margin:2px 0 10px">of expected draft value</p>
+  ${cellsHTML([['Signees',s[0].toLocaleString()],['Drafted',s[1]],['Rate',pct(s[1],s[0])],['1st round',s[2]]])}
+  ${s[5].length?`<p style="margin:14px 0 0"><b>Got the most out of ${ST[k]||k} players</b> <span class="small">(5+ players)</span></p><ol>${s[5].map(p=>`<li><b>${esc(p[0])}</b> · ${p[1]} players, ${p[2]} drafted · <span class="pos">${f0(p[4]-p[5])}</span></li>`).join('')}</ol>`:''}
+  ${s[0]<150?'<p class="small"><b>Not graded on the map:</b> fewer than 150 signees, so a few players swing the number a lot.</p>':''}
+  <p style="margin-top:14px"><button class="btn" data-fs="${k}">Find programs for ${ST[k]||k} recruits</button></p>`;
+  el.querySelector('[data-fs]').onclick=()=>{fSt=k;fS='';location.hash='#find'}}
+function startTour(){if(RM)return;const top=Object.entries(D.states).filter(([s,a])=>a[0]>=300&&MAP[s]).sort((a,b)=>b[1][3]/b[1][4]-a[1][3]/a[1][4]).slice(0,6).map(x=>x[0]);let i=0;stopTour();
+  tour=setInterval(()=>{if(!document.getElementById('map')){stopTour();return}document.querySelectorAll('#map path').forEach(p=>p.classList.toggle('sel',p.dataset.s===top[i%top.length]));i++},2200)}
+function stopTour(){if(tour){clearInterval(tour);tour=null}}
+
+/* ---------- RANKINGS ---------- */
+let rkMode='programs',wrEra='all',coView='dev',wrQ='',wrSort='per',coQ='',coAct=false,coSort='ps',lbP='WR',lbS='',lbSort='tot';
+function rankings(){
+  app.innerHTML=`<div class="page"><section><h1>Rankings</h1><p class="lede">Who develops talent beyond what recruiting rankings predicted. Tap any row for the full report card.</p>
+  <div class="bigseg" role="group" aria-label="Rank"><button data-rk="programs" aria-pressed="${rkMode==='programs'}">Programs</button><button data-rk="coaches" aria-pressed="${rkMode==='coaches'}">Head coaches</button><button data-rk="conf" aria-pressed="${rkMode==='conf'}">Conferences</button><button data-rk="position" aria-pressed="${rkMode==='position'}">By position</button></div>
+  <div class="loc"><label for="cl"><b>Look up a coach</b> <span class="small">see where he ranks on every list</span></label><input id="cl" list="cnames" placeholder="Type a coach's name, e.g. Kirby Smart" autocomplete="off"><datalist id="cnames">${D.coaches.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist><div id="clo"></div></div>
+  <div id="rz"></div></section><div id="rn"></div></div>`;
+  app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;rankings()});
+  const cl=document.getElementById('cl');cl.oninput=()=>{const c=D.coaches.find(x=>x.name.toLowerCase()===cl.value.trim().toLowerCase());if(c)locate(c)};
+  if(window._loc){const c=D.coaches.find(x=>x.name===window._loc);if(c){cl.value=c.name;locate(c,true)}}
+  ({programs:rkPrograms,coaches:rkCoaches,conf:rkConf,position:rkPosition})[rkMode]()}
+function rkPrograms(){
+  const P=D.progs,top15=new Set(P.slice().sort((a,b)=>b.r5-a.r5).slice(0,15).map(p=>p.name));
+  const hot=P.slice().sort((a,b)=>b.r5-a.r5).slice(0,3),cold=P.slice().sort((a,b)=>a.r5-b.r5).slice(0,3);
+  const rise=P.filter(p=>!top15.has(p.name)).sort((a,b)=>(b.r5-b.p11)-(a.r5-a.p11)).slice(0,3),sink=P.slice().sort((a,b)=>(a.r5-a.p11)-(b.r5-b.p11)).slice(0,3);
+  const card=(t,sub,list,f,cls)=>`<div class="c ${cls||''}"><h3>${t}</h3><p class="small">${sub}</p><ol>${list.map(p=>`<li><button class="lk" data-open="${esc(p.name)}">${esc(p.name)}</button> · ${f(p)}</li>`).join('')}</ol></div>`;
+  const callouts=`<div class="avgline"><b>What's average?</b> Zero. Every number here is "how much better or worse than expected," so an average program scores 0. A score of +50 means a program squeezed about one extra first-round pick out of each year's recruits, beyond what their rankings predicted. The average FBS program sends about ${D.stats.avg_draft} players a year to the draft.</div>
+  <div class="two four">${card('Hot right now','Last 5 years: most draft value above expectations per year (players who signed 2019–2023)',hot,p=>`<span class="pos">${f0(p.r5)}</span>`)}${card('Cold right now','Last 5 years: furthest below expectations',cold,p=>`<span class="neg">${f0(p.r5)}</span>`,'bad')}
+  ${card('Dark-horse risers','Biggest jump: the 11 years before vs the last 5, outside the current top 15',rise,p=>`${f0(p.p11)} → <span class="pos">${f0(p.r5)}</span>`)}${card('Sinking ships','Biggest drop: the 11 years before vs the last 5',sink,p=>`${f0(p.p11)} → <span class="neg">${f0(p.r5)}</span>`,'bad')}</div>`;
+  document.getElementById('rz').innerHTML=callouts+`<div class="ctrl"><div class="seg" role="group" aria-label="Era">${[['all','All years (signed 2008–2023)'],['early','Signed 2008–2018'],['recent','Last 5 years (signed 2019–2023)']].map(([k,l])=>`<button data-era="${k}" aria-pressed="${wrEra===k}">${l}</button>`).join('')}</div></div><div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Oregon" value="${esc(wrQ)}"></label>
+  <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Points per year</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div><div class="list" id="list"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>All ${D.progs.length} FBS programs with 150+ graded players. Points per class = (actual draft points − expected) ÷ ${D.meta.ncl} graded classes; it favours volume. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
+  const q=document.getElementById('q');q.oninput=()=>{wrQ=q.value;drawProgs()};
+  app.querySelectorAll('#rz [data-era]').forEach(b=>b.onclick=()=>{wrEra=b.dataset.era;if(wrEra!=='all')wrSort='per';rkPrograms()});
+  app.querySelectorAll('#rz [data-open]').forEach(b=>b.onclick=()=>{wrQ='';const k=b.dataset.open;drawProgs();openRow(k)});
+  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{wrSort=b.dataset.s;if(wrSort==='ratio')wrEra='all';rkPrograms()});drawProgs()}
+function drawProgs(){
+  const val=p=>wrSort==='ratio'?p.a[3]/p.a[4]:wrEra==='early'?p.p11:wrEra==='recent'?p.r5:(p.a[3]-p.a[4])/D.meta.ncl;
+  const all=D.progs.map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
+  const q=wrQ.trim().toLowerCase();
+  rowsList(document.getElementById('list'),all.filter(r=>!q||r.key.toLowerCase().includes(q)),v=>wrSort==='per'?f0(v):v.toFixed(2)+'×',wrSort==='per'?0:1,k=>progSheet(D.progs.find(p=>p.name===k)))}
+function progSheet(p){
+  const [n,d,r1,pts,exp]=p.a;
+  const bp=Object.entries(p.pos).filter(([g,a])=>a[0]>=20).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));
+  const sr=[5,4,3,2,0].map(s=>{const a=p.stars[s];return a&&a[0]?`<tr><td>${s?stars(s):'Unranked'}</td><td>${a[0]}</td><td>${a[1]}</td><td>${pct(a[1],a[0])}</td><td>${a[2]}</td><td>${rat(a[3],a[4])}</td></tr>`:''}).join('');
+  const co=p.coaches.map(c=>`<tr><td>${D.coaches.some(x=>x.name===c[0])?`<a href="#rankings" data-coach="${esc(c[0])}">${esc(c[0])}</a>`:esc(c[0])}</td><td>${c[6]}–${c[7]}</td><td>${c[1]}</td><td>${c[2]}</td><td>${c[3]}</td><td class="${c[4]>=c[5]?'pos':'neg'}">${rat(c[4],c[5])}</td></tr>`).join('');
+  const pi=p.pin,po=p.pout;
+  return `<div class="sheet"><p class="take"><b>${esc(p.name)}</b> earned ${Math.round(pts)} draft points against ${Math.round(exp)} expected (${rat(pts,exp)}).${bp.length?` Best at ${POS[bp[0][0]].toLowerCase()} (${f0(bp[0][1][3]-bp[0][1][4])}); lowest: ${POS[bp[bp.length-1][0]].toLowerCase()} (${f0(bp[bp.length-1][1][3]-bp[bp.length-1][1][4])}).`:''}</p>
+  <p class="plain simp">In plain English: ${esc(p.name)} got ${pts>=exp?`<b>${(pts/exp).toFixed(1)} times</b> the NFL draft results its recruits' rankings predicted`:`<b>${Math.round(100*pts/exp)}%</b> of the NFL draft results its recruits' rankings predicted`}. ${d} of its ${n.toLocaleString()} players since 2008 were drafted.</p>
+  ${cellsHTML([['Players',n.toLocaleString()],['Drafted',d],['Draft rate',pct(d,n)],['First round',r1],['Actual ÷ exp.',rat(pts,exp)]])}
+  <div class="tags2 mini">${p.best.slice(0,2).map(i=>tag(T(i))).join('')}</div>
+  ${more(`${esc(p.name)}: by position`,posTable(p.pos))}
+  ${moreA(`${esc(p.name)}: by star rating`,`<div class="scroll"><table><tr><th>Stars</th><th>Players</th><th>Drafted</th><th>Rate</th><th>1st rd</th><th>vs exp.</th></tr>${sr}</table></div>`)}
+  ${more(`${esc(p.name)}: by head coach`,`<div class="scroll"><table><tr><th>Head coach</th><th>Seasons</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>vs exp.</th></tr>${co}</table></div><p class="small">Coaches with 20+ graded players.</p>`,p.cur?`2026: ${esc(p.cur)}`:'')}
+  ${moreA(`${esc(p.name)}: transfer portal`,`${cellsHTML([['In',pi.n],['Out',po.n],['Net',f0(pi.n-po.n)],['Avg stars in',pi.st??'—'],['Avg stars out',po.st??'—'],['Drafted after arriving',p.pdrn]])}<div class="scroll" style="margin-top:10px"><table><tr><th>Season</th>${[2021,2022,2023,2024,2025,2026].map(y=>`<th>${y}</th>`).join('')}</tr><tr><td>In</td>${pi.by.map(x=>`<td>${x}</td>`).join('')}</tr><tr><td>Out</td>${po.by.map(x=>`<td>${x}</td>`).join('')}</tr></table></div>${p.pdr.length?`<div class="tags2 mini">${p.pdr.slice(0,2).map(i=>tag(T(i))).join('')}</div>`:''}`,'2021–2026')}
+  ${moreA(`${esc(p.name)}: finished careers vs still playing`,`<div class="scroll"><table><tr><th>Signed</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>Pts vs exp.</th><th>Ratio</th></tr>${[['Signed 2008–2020',p.full],['Signed 2021–2023',p.ip]].map(([l,a])=>`<tr><td>${l}</td><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td class="${a[3]>=a[4]?'pos':'neg'}">${f0(a[3]-a[4])}</td><td>${rat(a[3],a[4])}</td></tr>`).join('')}</table></div>`)}
+  ${more(`${esc(p.name)}: more best developments`,`<div class="tags2 mini">${p.best.slice(2,6).map(i=>tag(T(i))).join('')}</div>`)}
+  ${more(`${esc(p.name)}: biggest misses`,`<div class="tags2 mini">${p.miss.slice(0,3).map(i=>tag(T(i))).join('')}</div><p class="small">Players from complete classes who finished here undrafted against the highest expectations.</p>`)}</div>`}
+function rkCoaches(){
+  const vs=`<div class="ctrl"><div class="seg" role="group" aria-label="Coach view"><button data-cv="dev" aria-pressed="${coView==='dev'}">Development</button><button data-cv="lean" aria-pressed="${coView==='lean'}">Portal or recruiting?</button></div></div>`;
+  if(coView==='lean'){coachLean(vs);return}
+  document.getElementById('rz').innerHTML=vs+`<div class="plain"><b>Giving coaches a fair shake:</b> long careers and big-name schools pile up totals. "Per season" divides by seasons coached, and recruit rankings are already built into every grade, so a coach isn't rewarded just for signing 5-stars. "Vs his school's norm" also compares him with other coaches at the same schools.</div><div class="ctrl"><label>Find a coach or school<input type="search" id="q" placeholder="Saban" value="${esc(coQ)}"></label>
+  <div class="seg" role="group" aria-label="Rank by">${[['ps','Per season (fairest)'],['r5','Last 5 years'],['tot','Career total'],['adj','Vs his school\'s norm'],['ratio','Actual ÷ expected']].map(([k,l])=>`<button data-s="${k}" class="${k==='adj'||k==='ratio'?'adv':''}" aria-pressed="${coSort===k}">${l}</button>`).join('')}</div>
+  <div class="seg" role="group" aria-label="Which coaches"><button data-a="0" aria-pressed="${!coAct}">All</button><button data-a="1" aria-pressed="${coAct}">Head coach in 2026</button></div></div><div class="list" id="list"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Head coaches with 40+ graded players, across every school they led, current through the 2026 hires. Per season divides by seasons coached (2010–2025), so long careers don't win by volume; it needs 4+ seasons. Vs his school's norm compares him with how other coaches did at the same schools, pulled strongly toward average. Last 5 years uses players who signed 2019–2023 and needs 20+ of them. A player is credited to the head coach at the last school he played for, in his second year on campus (or his first season there, if he transferred in). Position coaches and coordinators are not in any free data source yet.</p>`);
+  app.querySelectorAll('#rz [data-cv]').forEach(b=>b.onclick=()=>{coView=b.dataset.cv;rkCoaches()});
+  const q=document.getElementById('q');q.oninput=()=>{coQ=q.value;drawCoaches()};
+  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{coSort=b.dataset.s;app.querySelectorAll('#rz [data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawCoaches()});
+  app.querySelectorAll('#rz [data-a]').forEach(b=>b.onclick=()=>{coAct=b.dataset.a==='1';app.querySelectorAll('#rz [data-a]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawCoaches()});drawCoaches()}
+
+
+/* ---------- COACH RANKS + LOCATOR ---------- */
+const sharez=c=>c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]);
+const leanOK=c=>c.now&&c.pl&&c.pl[8]>=2;
+const okHS=c=>c.pl[5]>=10&&c.pl[7]>=8,okTR=c=>c.pl[2]>=10&&c.pl[4]>=8;
+function rankBy(list,val){const s=list.slice().sort((a,b)=>val(b)-val(a));const m=new Map();s.forEach((c,i)=>m.set(c.name,i+1));return [m,s.length]}
+let RK=null;
+function coachRanks(){if(RK)return RK;const C=D.coaches,L=C.filter(leanOK);
+  RK={ps:rankBy(C.filter(c=>c.ns>=4),c=>c.ps),r5:rankBy(C.filter(c=>c.r5[0]>=20),c=>(c.r5[3]-c.r5[4])/5),tot:rankBy(C,c=>c.a[3]-c.a[4]),adj:rankBy(C.filter(c=>c.ns>=4),c=>c.adjps),ratio:rankBy(C,c=>c.a[3]/c.a[4]),
+   share:rankBy(L,sharez),hs:rankBy(L.filter(okHS),c=>c.pl[6]/c.pl[7]),tr:rankBy(L.filter(okTR),c=>c.pl[3]/c.pl[4])};return RK}
+function locate(c,quiet){const K=coachRanks(),o=document.getElementById('clo');if(!o)return;
+  const row=(k,label,val)=>{const [m,n]=K[k];const r=m.get(c.name);return `<div class="lr"><span class="lrk">${r?'#'+r:'—'}</span><span><b>${label}</b><small>${r?`of ${n} · ${val}`:'not enough data for this list'}</small></span></div>`};
+  const sh=c.pl?sharez(c):0;
+  o.innerHTML=`<div class="loccard"><div class="lh"><div><div class="small">COACH LOOKUP</div><div class="ln">${esc(c.name)}</div><div class="small">${c.now?'2026: head coach at <b>'+esc(c.now)+'</b> · ':''}${c.st.map(x=>esc(x[0])).join(' · ')} · ${c.w}–${c.l}</div></div><button class="morebtn" id="clx">Close</button></div>
+  <div class="lgrid">${row('ps','Per season (fairest)',f0(c.ps))}${row('r5','Last 5 years',f0((c.r5[3]-c.r5[4])/5))}${row('tot','Career total',f0(c.a[3]-c.a[4]))}${row('adj',"Vs his school's norm",f0(c.adjps))}${row('ratio','Actual ÷ expected',rat(c.a[3],c.a[4]))}
+  ${leanOK(c)?row('share','Most portal-heavy',Math.round(100*sh)+'% from the portal')+row('hs','Best with high school signees',rat(c.pl[6],c.pl[7]))+row('tr','Best with transfers',rat(c.pl[3],c.pl[4])):''}</div>
+  <div class="btns" style="margin-top:12px">${leanOK(c)?`<button class="btn solid" id="clq">Show him on the portal chart</button>`:''}<button class="btn" id="clr">Open his report card</button></div></div>`;
+  document.getElementById('clx').onclick=()=>{o.innerHTML='';document.getElementById('cl').value=''};
+  const q=document.getElementById('clq');if(q)q.onclick=()=>{rkMode='coaches';coView='lean';window._hl=c.name;window._loc=c.name;rankings();setTimeout(()=>document.getElementById('qfig')?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),80)};
+  document.getElementById('clr').onclick=()=>{rkMode='coaches';coView='dev';coQ='';coAct=false;coSort='tot';window._loc=c.name;rankings();openRow(c.name)};
+  if(!quiet)o.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})}
+
+let lnSort='share';
+const leanLab=sh=>sh>=.6?'<span class="pill r">leans portal</span>':sh<=.35?'<span class="pill w">leans recruiting</span>':'<span class="pill">balanced</span>';
+const goodBad=(n,p,e)=>n<10?'<span class="small">too few</span>':e<8?'<span class="small">too early to tell</span>':`${rat(p,e)} ${p>=e?'<span class="pos">good</span>':'<span class="neg">below</span>'}`;
+function coachLean(vs){
+  const K=coachRanks();const rows=D.coaches.filter(leanOK).map(c=>({c,sh:sharez(c)}));
+  const key={share:'share',hs:'hs',tr:'tr'}[lnSort];const m=K[key][0];
+  rows.sort((a,b)=>(m.get(a.c.name)||999)-(m.get(b.c.name)||999)||b.sh-a.sh);
+  const rk=(k,c)=>{const r=K[k][0].get(c.name);return r?`<span class="rkp">#${r}</span>`:''};
+  const dv=(ok,p,e,k,c)=>ok?`<b>${rat(p,e)}</b> ${rk(k,c)}`:(e<8&&p===0?'<span class="small">too early to tell</span>':'<span class="small">too few</span>');
+  document.getElementById('rz').innerHTML=vs+`<div class="plain"><b>Portal coach or high school coach?</b> Since 2021, every coach has had to choose how much to build through transfers versus high school recruiting. Here is how each 2026 head coach leans, and how well each approach has worked for him.</div>
+  <h2 style="margin-top:22px">Portal builders vs high school recruiters</h2><p class="small" style="font-size:15px">Each dot is a 2026 head coach. Left: builds mostly through high school recruiting. Right: mostly through the portal. Higher: his players beat expectations over his career. Hover or tap a dot.</p>
+  <div class="ctrl"><label>Find a coach on the chart<input id="qq" list="qnames" placeholder="Type a name" autocomplete="off"></label><datalist id="qnames">${rows.map(r=>`<option value="${esc(r.c.name)}">`).join('')}</datalist></div>
+  <div class="qwrap"><div class="fig quad" id="qfig" style="height:500px;position:relative"><svg id="qsvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><div class="qcard" id="qinfo"><div class="small">COACH DETAILS</div><p style="margin:8px 0 0">Hover over, tap or search for a coach to see his numbers here.</p></div></div>
+  <h2 style="margin-top:28px">Ranked</h2>
+  <div class="bigseg" role="group" aria-label="Sort">${[['share','Most portal-heavy'],['hs','Best with high school signees'],['tr','Best with transfers']].map(([k,l])=>`<button data-ln="${k}" aria-pressed="${lnSort===k}">${l}</button>`).join('')}</div>
+  <div class="scroll" style="margin-top:14px"><table><tr><th>Rank</th><th class="l">Coach</th><th class="l">School</th><th>Transfers in</th><th>HS signees</th><th>Portal share</th><th class="l">Lean</th><th>Develops HS signees</th><th>Develops transfers</th></tr>
+  ${rows.map(({c,sh})=>`<tr><td><b>${m.get(c.name)?'#'+m.get(c.name):'—'}</b></td><td class="l"><button class="lk" data-hl="${esc(c.name)}">${esc(c.name)}</button></td><td class="l">${esc(c.now)}</td><td>${c.pl[0]}</td><td>${c.pl[1]}</td><td><b>${Math.round(100*sh)}%</b> ${rk('share',c)}</td><td class="l">${leanLab(sh)}</td><td>${dv(okHS(c),c.pl[6],c.pl[7],'hs',c)}</td><td>${dv(okTR(c),c.pl[3],c.pl[4],'tr',c)}</td></tr>`).join('')}</table></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Head coaches in 2026 with at least two seasons since 2021, at any school. Transfers in = portal entries who arrived at his school in seasons he coached; HS signees = high school signees in classes he signed. Portal share = transfers ÷ (transfers + signees): 60%+ leans portal, 35% or less leans recruiting. "Develops" compares draft results with expectations across his whole career, split by players who arrived as transfers and players he signed. Rank among coaches with 10+ players in that group and enough expected draft value to judge (otherwise "too few" or "too early to tell"). Values: 1.00× = exactly as expected; 2.00× = twice the draft value expected.</p>`);
+  app.querySelectorAll('#rz [data-cv]').forEach(b=>b.onclick=()=>{coView=b.dataset.cv;rkCoaches()});
+  app.querySelectorAll('[data-ln]').forEach(b=>b.onclick=()=>{lnSort=b.dataset.ln;coachLean(vs)});
+  const qd=()=>quad(rows);new ResizeObserver(qd).observe(document.getElementById('qfig'));qd();
+  const qq=document.getElementById('qq');qq.oninput=()=>{const v=qq.value.trim().toLowerCase();const c=rows.find(r=>r.c.name.toLowerCase()===v);if(c){window._hl=c.c.name;quad(rows)}};
+  app.querySelectorAll('[data-hl]').forEach(b=>b.onclick=()=>{window._hl=b.dataset.hl;quad(rows);document.getElementById('qfig').scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})});
+  if(window._hl)qq.value=window._hl}
+function qcard(p){const c=p.c,el=document.getElementById('qinfo');if(!el)return;
+  el.innerHTML=`<div class="small">COACH DETAILS</div><div class="ln">${esc(c.name)}</div><div class="small">2026: ${esc(c.now)}</div>
+  <div class="qstats"><div><b>${Math.round(p.x*100)}%</b><span>of newcomers from the portal</span></div><div><b>${rat(c.a[3],c.a[4])}</b><span>career draft value vs expected</span></div><div><b>${c.pl[0]}</b><span>transfers brought in</span></div><div><b>${c.pl[1]}</b><span>high school signees</span></div></div>
+  <p style="margin:10px 0 0">${leanLab(p.x)} ${c.a[3]>=c.a[4]?'His players have beaten expectations.':'His players have fallen short of expectations so far.'}</p>`;
+  el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash')}
+function quad(rows){const s=document.getElementById('qsvg');if(!s)return;const W=s.clientWidth,H=s.clientHeight;if(!W)return;const small=W<520;const m={l:small?36:48,r:small?10:18,t:34,b:46};
+  const pts=rows.map(({c,sh})=>({c,x:sh,y:Math.log2(Math.max(.25,Math.min(4,(c.a[3]+15)/(c.a[4]+15))))}));
+  const X=v=>m.l+v*(W-m.l-m.r),Y=v=>m.t+(2.15-v)/4.3*(H-m.t-m.b);
+  const hl=window._hl;const hp=pts.find(p=>p.c.name===hl);
+  // labels: greedy, no overlaps
+  const placed=[];const fits=(x,y,w)=>x>m.l&&x+w<W-m.r&&y-12>m.t&&y<H-m.b&&placed.every(b=>x+w<b[0]||x>b[0]+b[2]||y<b[1]-13||y-13>b[1]);
+  const order=pts.slice().sort((a,b)=>(b.c.name===hl)-(a.c.name===hl)||(Math.abs(b.y)+Math.abs(b.x-.5))-(Math.abs(a.y)+Math.abs(a.x-.5)));
+  const labs=[];for(const p of order){if(labs.length>=(small?7:16)&&p.c.name!==hl)break;const t=p.c.name.split(' ').slice(-1)[0],w=t.length*6.6+4,cx=X(p.x),cy=Y(p.y)+4;
+    const off=p.c.name===hl?16:9;for(const [dx,anc] of [[off,'start'],[-off,'end']]){const x0=anc==='start'?cx+dx:cx+dx-w;if(fits(x0,cy,w)){placed.push([x0,cy,w]);labs.push(`<text x="${cx+dx}" y="${cy}" font-size="12" text-anchor="${anc}" fill="var(--ink)" font-weight="${p.c.name===hl?700:400}" style="paint-order:stroke;stroke:var(--bg);stroke-width:3.5px">${esc(t)}</text>`);break}}}
+  const corner=(x,y,t,a)=>`<text x="${x}" y="${y}" font-size="${small?11:13}" fill="var(--pen)" text-anchor="${a}" font-weight="700" style="paint-order:stroke;stroke:var(--bg);stroke-width:4px">${t}</text>`;
+  s.innerHTML=`<rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${Y(0)-m.t}" fill="color-mix(in srgb,var(--ink) 4%,transparent)"/>
+  <line x1="${X(.5)}" x2="${X(.5)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--pen)" stroke-dasharray="4 4"/><line x1="${m.l}" x2="${W-m.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--pen)" stroke-dasharray="4 4"/>
+  ${corner(m.l,m.t-12,small?'↖ Recruiters who develop':'↖ High school recruiters who develop','start')}${corner(W-m.r,m.t-12,small?'Portal + develop ↗':'Portal builders who develop ↗','end')}
+  ${[0,.25,.5,.75,1].map(t=>`<text x="${X(t)}" y="${H-m.b+18}" font-size="12" fill="var(--pen)" text-anchor="middle">${t*100}%</text>`).join('')}
+  <text x="${(W+m.l)/2}" y="${H-6}" font-size="13" fill="var(--pen)" text-anchor="middle">${small?'More portal →':'← More high school recruiting · Share of newcomers from the portal · More portal →'}</text>
+  ${[-2,-1,0,1,2].map(v=>`<text x="${m.l-6}" y="${Y(v)+4}" font-size="12" fill="var(--pen)" text-anchor="end">${v<0?'1/'+Math.pow(2,-v):Math.pow(2,v)}×</text>`).join('')}
+  ${pts.map((p,i)=>`<circle class="dot" style="animation-delay:${i*12}ms" cx="${X(p.x)}" cy="${Y(p.y)}" r="${small?6:7.5}" fill="${p.y>=0?'var(--ink)':'var(--red)'}" fill-opacity="${hl&&p.c.name!==hl?.5:.85}" stroke="var(--bg)" stroke-width="1.5" data-i="${i}"><title>${esc(p.c.name)}</title></circle>`).join('')}
+  ${labs.join('')}
+  ${hp?`<circle class="hitpulse" cx="${X(hp.x)}" cy="${Y(hp.y)}" r="10"/><circle cx="${X(hp.x)}" cy="${Y(hp.y)}" r="${small?8:10}" fill="#F2C230" stroke="var(--ink)" stroke-width="2.5"/>`:''}`;
+  s.querySelectorAll('circle[data-i]').forEach(c=>{const p=pts[+c.dataset.i];c.onclick=()=>{window._hl=p.c.name;quad(rows)};c.onmouseenter=()=>qcard(p)});
+  if(hp)qcard(hp)}
+function drawCoaches(){
+  const q=coQ.trim().toLowerCase();const val=c=>coSort==='tot'?c.a[3]-c.a[4]:coSort==='ps'?c.ps:coSort==='adj'?c.adjps:coSort==='r5'?(c.r5[3]-c.r5[4])/5:c.a[3]/c.a[4];
+  const all=D.coaches.filter(c=>(!coAct||c.now)&&(coSort==='r5'?c.r5[0]>=20:coSort==='ps'||coSort==='adj'?c.ns>=4:true)).map(c=>({key:c.name,v:val(c),sub:(c.now?`Now: ${esc(c.now)} · `:'')+c.st.map(s=>esc(s[0])).join(' · '),c})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}))
+   .filter(r=>!q||(r.key+' '+r.c.st.map(s=>s[0]).join(' ')).toLowerCase().includes(q));
+  rowsList(document.getElementById('list'),all,v=>coSort==='ratio'?v.toFixed(2)+'×':f0(v),coSort==='ratio'?1:0,k=>coachSheet(D.coaches.find(c=>c.name===k)))}
+function coachSheet(c){
+  const [n,d,r1,pts,exp]=c.a;const bp=Object.entries(c.pos).filter(([g,a])=>a[0]>=15).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));
+  return `<div class="sheet"><p class="take">${c.now?`<span class="small">2026: head coach at <b>${esc(c.now)}</b></span><br>`:''}<b>${esc(c.name)}</b>: ${n} graded players, ${d} drafted, ${r1} in the first round, ${rat(pts,exp)} expected draft value.${bp.length?` Best position group: ${POS[bp[0][0]].toLowerCase()}.`:''}</p>
+  ${cellsHTML([['Record',`${c.w}–${c.l}`],['Players',n],['Drafted',d],['First round',r1],['Actual ÷ exp.',rat(pts,exp)]])}
+  <div class="tags2 mini">${c.best.slice(0,1).map(i=>tag(T(i))).join('')}</div>
+  ${more('Career',`<div class="scroll"><table><tr><th>School</th><th>Seasons</th><th>Record</th></tr>${c.st.map(s=>`<tr><td>${esc(s[0])}</td><td>${s[1]}–${s[2]}</td><td>${s[3]}–${s[4]}</td></tr>`).join('')}</table></div>`)}
+  ${more('By school',`<div class="scroll"><table><tr><th>School</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>Pts vs exp.</th><th>Ratio</th></tr>${c.sch.map(a=>`<tr><td>${esc(a[0])}</td><td>${a[1]}</td><td>${a[2]}</td><td>${a[3]}</td><td class="${a[4]>=a[5]?'pos':'neg'}">${f0(a[4]-a[5])}</td><td>${rat(a[4],a[5])}</td></tr>`).join('')}</table></div>`)}
+  ${more('By position',posTable(c.pos))}
+  ${c.pl&&c.pl[8]?more('Portal or recruiting?',`${cellsHTML([['Transfers in',c.pl[0]],['HS signees',c.pl[1]],['Portal share',(100*c.pl[0]/Math.max(1,c.pl[0]+c.pl[1])).toFixed(0)+'%']])}<p style="margin-top:10px">${leanLab(c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]))} Develops signees: ${goodBad(c.pl[5],c.pl[6],c.pl[7])} · Develops transfers: ${goodBad(c.pl[2],c.pl[3],c.pl[4])}</p>`,'since 2021'):''}
+  ${more('More best developments',`<div class="tags2 mini">${c.best.slice(1).map(i=>tag(T(i))).join('')}</div>`)}</div>`}
+
+function rkConf(){
+  document.getElementById('rz').innerHTML=`<p class="lede" style="margin-top:16px">Average development per program, by 2026 conference membership. Tap a conference to see its programs.</p><div class="list" id="list" style="margin-top:12px"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Conferences use 2026 membership, so realignment moves a program's whole history with it. Win% is 2012–2025. Each program's number is draft points above expected per graded class; the conference figure is the average of its programs.</p>`);
+  rowsList(document.getElementById('list'),D.confs.map((c,i)=>({key:c[0],v:c[2],sub:`${c[1]} programs · ${c[3]}× expected · win% ${(100*c[6]).toFixed(0)}`,rk:i+1})),f0,0,k=>{const c=D.confs.find(x=>x[0]===k);
+    return `<div class="sheet">${cellsHTML([['Programs',c[1]],['Per program, per class',f0(c[2])],['Actual ÷ exp.',c[3]+'×'],['2008–15',f0(c[5])],['2016–23',f0(c[4])],['Win %',(100*c[6]).toFixed(1)+'%']])}
+    <div class="scroll" style="margin-top:12px"><table><tr><th>Program</th><th>Per class</th><th>2008–15</th><th>2016–23</th><th>Ratio</th></tr>${c[7].map(n=>{const p=D.progs.find(x=>x.name===n);return `<tr><td>${esc(n)}</td><td class="${p.a[3]>=p.a[4]?'pos':'neg'}">${f0((p.a[3]-p.a[4])/D.meta.ncl)}</td><td>${f0(p.early)}</td><td>${f0(p.recent)}</td><td>${rat(p.a[3],p.a[4])}</td></tr>`}).join('')}</table></div></div>`})}
+const STAROPT=(v,any)=>`<option value="">${any}</option>${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===v?' selected':''}>${l}</option>`).join('')}`;
+function lbLabel(){const p=lbP?POS[lbP].toLowerCase()+'s':'players';return (lbS==='0'?'unranked ':lbS?lbS+'-star ':'')+p}
+function rkPosition(){
+  document.getElementById('rz').innerHTML=`<div class="ctrl"><label>Position<select id="lp"><option value="">All positions</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===lbP?' selected':''}>${v}</option>`).join('')}</select></label>
+  <label>Stars<select id="ls">${STAROPT(lbS,'All stars')}</select></label>
+  <div class="seg" role="group" aria-label="Rank by"><button data-s="tot" aria-pressed="${lbSort==='tot'}">Total above expected</button><button data-s="ratio" aria-pressed="${lbSort==='ratio'}">Actual ÷ expected</button></div></div>
+  <p class="take" id="lt"></p><div class="list" id="list"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>To be ranked, a program needs 8+ matching players when position and stars are both chosen, 20+ when one is chosen, and 100+ otherwise. Total above expected rewards volume; actual ÷ expected rewards efficiency but swings more for small groups and low expectations (unranked and 2-star players).</p>`);
+  document.getElementById('lp').onchange=e=>{lbP=e.target.value;drawLB()};document.getElementById('ls').onchange=e=>{lbS=e.target.value;drawLB()};
+  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{lbSort=b.dataset.s;app.querySelectorAll('#rz [data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawLB()});drawLB()}
+function drawLB(){
+  const g={};for(const r of D.lb){if((lbP&&r[1]!==lbP)||(lbS!==''&&r[2]!==+lbS))continue;const a=g[r[0]]||(g[r[0]]=[0,0,0,0,0]);for(let i=0;i<5;i++)a[i]+=r[3+i]}
+  const min=lbP&&lbS!==''?8:(lbP||lbS!=='')?20:100;const val=a=>lbSort==='tot'?a[3]-a[4]:a[3]/a[4];
+  const items=Object.entries(g).filter(([k,a])=>a[0]>=min&&a[4]>0).map(([k,a])=>({key:k,v:val(a),a,sub:`${a[0]} players · ${a[1]} drafted`})).sort((x,y)=>y.v-x.v).map((r,i)=>({...r,rk:i+1}));
+  const lab=lbLabel();
+  document.getElementById('lt').innerHTML=items.length?`<b>${esc(items[0].key)}</b> has developed ${esc(lab)} best: ${f0(items[0].a[3]-items[0].a[4])} draft points above expected from ${items[0].a[0]} players, ${items[0].a[1]} drafted (${rat(items[0].a[3],items[0].a[4])}).`:'';
+  const el=document.getElementById('list');
+  rowsList(el,items,v=>lbSort==='tot'?f0(v):v.toFixed(2)+'×',lbSort==='tot'?0:1,k=>{const a=g[k];return `<div class="sheet">${cellsHTML([['Players',a[0]],['Drafted',a[1]],['Draft rate',pct(a[1],a[0])],['First round',a[2]],['Actual ÷ exp.',rat(a[3],a[4])]])}${lbP?`<p style="margin:12px 0 0"><button class="morebtn" data-go="${esc(k)}">See every player in Find a Program</button></p>`:''}</div>`});
+  if(!items.length)el.innerHTML=`<p class="empty">No program has ${min}+ graded ${esc(lab)}. Widen the position or star filter.</p>`;
+  el.onclick=e=>{const b=e.target.closest('[data-go]');if(!b)return;fP=lbP;fS=lbS;fSt='';fC='scored';location.hash='#find'}}
+
+/* ---------- FIND A PROGRAM ---------- */
+let fP='WR',fS='3',fSt='LA',fC='scored',fAll=false;
+const CL={scored:['Signed 2008–2023 (graded)',2008,2023],complete:['Signed 2008–2020 (college careers done)',2008,2020],ip:['Signed 2021–2023 (still playing)',2021,2023],early:['Signed 2024–2026 (too early to grade)',2024,2026],all:['Signed any year, 2008–2026',2008,2026]};
+function find(){
+  const states=Object.keys(ST).sort((a,b)=>ST[a].localeCompare(ST[b]));
+  app.innerHTML=`<div class="page"><section><h1>Find a program for players like you</h1><p class="lede">Choose a position, star rating and home state. See which programs got the most out of players like you, and every player who fits.</p>
+  <div class="ctrl"><label>Position<select id="fp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===fP?' selected':''}>${v}</option>`).join('')}</select></label>
+  <label>Stars<select id="fs">${STAROPT(fS,'Any')}</select></label>
+  <label>Home state<select id="fst"><option value="">Any state</option>${states.map(s=>`<option value="${s}"${s===fSt?' selected':''}>${ST[s]}</option>`).join('')}</select></label>
+  <label>Signing years<select id="fc">${Object.entries(CL).map(([k,v])=>`<option value="${k}"${k===fC?' selected':''}>${v[0]}</option>`).join('')}</select></label></div>
+  <div id="fo"><p class="empty">Loading players…</p></div></section>
+  ${notes(`<p>High school signees only. Each player counts for the last school he played for. Programs with fewer than 5 matching players are marked as a small sample, because one draft pick can swing them a lot. Classes 2024–2026 are listed with their transfers, but not graded yet. Want the national picture? See <a href="#rankings">Rankings → By position</a>.</p>`)}</div>`;
+  const upd=()=>{fAll=false;fP=document.getElementById('fp').value;fS=document.getElementById('fs').value;fSt=document.getElementById('fst').value;fC=document.getElementById('fc').value;loadFin()};
+  ['fp','fs','fst','fc'].forEach(id=>document.getElementById(id).onchange=upd);loadFin()}
+function loadFin(){
+  if(FIN[fP])return drawFinder();
+  document.getElementById('fo').innerHTML='<p class="empty">Loading players…</p>';
+  getFin(fP).then(drawFinder).catch(()=>{document.getElementById('fo').innerHTML='<p class="empty">Player list did not load. Change a filter to try again.</p>'})}
+function getFin(g){return FIN[g]?Promise.resolve(FIN[g]):fetch('f/'+g+'.json').then(r=>r.json()).then(j=>FIN[g]=j)}
+const outcome=r=>r[11]?`Rd ${r[12]} · #${r[10]} · ${r[11]}`:(r[1]>=2024?'Too early':r[1]>2020?'Not drafted yet':'Undrafted');
+function drawFinder(){
+  const [lab,y0,y1]=CL[fC];
+  const rows=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1);
+  const g={};for(const r of rows){const k=r[7];const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
+  const progs=Object.entries(g).map(([k,a])=>({k,...a,v:a.p-a.e}));
+  const desc=`${fS==='0'?'unranked ':fS?fS+'-star ':''}${POS[fP].toLowerCase()}s${fSt?' from '+ST[fSt]:''}`;
+  const dn=rows.filter(r=>r[11]).length,mv=rows.filter(r=>r[13].length).length;
+  if(!rows.length){document.getElementById('fo').innerHTML=`<p class="empty">No ${esc(desc)} signed with a college program in ${lab.toLowerCase()}. Try "Any state" or another star rating.</p>`;return}
+  const gp=progs.filter(p=>p.ge>0);const ok=gp.filter(p=>p.n>=3);
+  const good=ok.slice().sort((a,b)=>b.v-a.v).filter(p=>p.v>0).slice(0,5),bad=ok.slice().sort((a,b)=>a.v-b.v).filter(p=>p.v<0).slice(0,5);
+  const li=p=>`<li><b>${esc(p.k)}</b> · ${p.n} players, ${p.d} drafted · <span class="${p.v>=0?'pos':'neg'}">${f0(p.v)}</span></li>`;
+  progs.sort((a,b)=>(b.ge?b.v:-1e9)-(a.ge?a.v:-1e9)||b.n-a.n);
+  const big=progs.filter(p=>p.n>=3),small=progs.filter(p=>p.n<3);big.forEach((p,i)=>p.rank=i+1);small.forEach(p=>p.rank='');
+  const progRow=p=>`<details class="row nb"><summary><span class="rk">${p.rank}</span><span class="pn">${esc(p.k)}<small>${p.n} player${p.n>1?'s':''} · ${p.d} drafted ${p.n<5?'<span class="pill">small sample</span>':''} ${p.ge&&p.n>=3?(p.v>0?'<span class="pill w">worked</span>':'<span class="pill r">didn’t work</span>'):''}</small></span><span class="val ${p.v>=0?'pos':'neg'}">${p.ge?f0(p.v):'—'}</span></summary>
+  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">Path</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null?'':(r[8]-r[9]>=0?'pos':'neg')}">${r[9]==null?'—':f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
+  document.getElementById('fo').innerHTML=`<p class="take" style="font-size:19px"><b>${rows.length.toLocaleString()}</b> ${esc(desc)} signed with college programs (${lab.toLowerCase()}). <b>${dn}</b> were drafted (${pct(dn,rows.length)}), and <b>${mv}</b> entered the transfer portal.</p>
+  ${gp.length?`<div class="two"><div class="c"><h3>Worked</h3><p class="small">Most draft points above expected, 3+ players</p>${good.length?`<ol>${good.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players beat expectations.</p>'}</div>
+  <div class="c bad"><h3>Didn't work</h3><p class="small">Furthest below expected, 3+ players</p>${bad.length?`<ol>${bad.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players fell short.</p>'}</div></div>`:''}
+  ${(()=>{const cg={};for(const r of rows){if(r[9]==null||r[14]==null||r[14]<0)continue;const a=cg[r[14]]||(cg[r[14]]={n:0,d:0,p:0,e:0,best:null});a.n++;if(r[11])a.d++;a.p+=r[8];a.e+=r[9];if(r[11]&&(!a.best||r[10]<a.best[10]))a.best=r}
+    const L=Object.entries(cg).filter(([k,a])=>a.n>=2).map(([k,a])=>({k:D.cn[+k],...a,v:a.p-a.e}));if(!L.length)return '';
+    const gd=L.slice().sort((a,b)=>b.v-a.v).filter(x=>x.v>0).slice(0,5),bd=L.slice().sort((a,b)=>a.v-b.v).filter(x=>x.v<0).slice(0,3);
+    const li=c=>`<li><b>${esc(c.k)}</b> developed ${c.n} of these players: ${c.d} drafted${c.best?` (best: ${esc(c.best[0])}, pick #${c.best[10]})`:''} · <span class="${c.v>=0?'pos':'neg'}">${f0(c.v)}</span></li>`;
+    return `<div class="two"><div class="c"><h3>Coaches who developed players like you</h3><p class="small">Head coaches with 2+ of these players, most draft value above expected</p>${gd.length?`<ol>${gd.map(li).join('')}</ol>`:'<p class="small">None beat expectations yet.</p>'}</div><div class="c bad"><h3>Coaches who didn't</h3><p class="small">Furthest below expected</p>${bd.length?`<ol>${bd.map(li).join('')}</ol>`:'<p class="small">None fell short.</p>'}</div></div>`})()}
+  <h2 style="margin-top:30px">Every program and every player</h2><p class="small" style="font-size:16px">Tap a program to see each player: where he signed, where he ended up and how it turned out.</p>
+  <div class="list" style="margin-top:10px">${(fAll?big:big.slice(0,10)).map(progRow).join('')}${fAll&&small.length?`<details class="row nb"><summary><span class="rk"></span><span class="pn">${small.length} more programs with 1–2 players<small>${small.reduce((s,p)=>s+p.n,0)} players · ${small.reduce((s,p)=>s+p.d,0)} drafted · tap to show</small></span><span class="val">+</span></summary><div style="padding-left:12px">${small.map(progRow).join('')}</div></details>`:''}</div>
+  ${!fAll&&progs.length>10?`<button class="bigbtn" id="fall">Show all ${progs.length} programs</button>`:''}`;
+  const fa=document.getElementById('fall');if(fa)fa.onclick=()=>{fAll=true;drawFinder()}}
+
+/* ---------- TRANSFERS ---------- */
+let txSch='LSU',txPos='WR',txQ='',txAll=false,txTab='stay';
+function stay(k,g){const r=D.stay.find(x=>x[0]===k&&x[1]===g);return r?r.slice(2):[0,0,0,0]}
+function transfers(){
+  const m=D.meta;
+  app.innerHTML=`<div class="page"><section><h1>Transfer portal</h1><p class="lede">The portal changed college football. Here is what it has meant for players' NFL chances, school by school.</p>
+  <div class="stats" style="margin-top:20px"><div><div class="d"><span data-n="${Math.round(m.psh)}">${Math.round(m.psh)}</span>%</div><p>of 2021–23 signees entered the portal</p></div><div><div class="d"><span data-n="${Math.round(m.pmv)}">${Math.round(m.pmv)}</span>%</div><p>moved to a new school</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>portal entries, ${m.portal[0]}–${m.portal[1]}</p></div></div>
+  <div class="plain">How to read these: about <b>${Math.round(m.psh)} of every 100</b> players who signed in 2021–2023 have entered the portal at least once, and <b>${Math.round(m.pmv)} of every 100</b> have actually moved to a new school. So roughly <b>${Math.round(100*m.pmv/m.psh)}%</b> of players who enter end up somewhere new; the rest went back to their school, are still unsigned, or we couldn't match where they went.</div>
+  <div class="bigseg" role="group" aria-label="Transfer views">${[['stay','Stay or go'],['pos','By position'],['dev','Who develops transfers'],['traffic','Portal traffic']].map(([k,l])=>`<button data-tt="${k}" aria-pressed="${txTab===k}">${l}</button>`).join('')}</div>
+  <div id="tz" style="margin-top:20px"></div></section>
+  ${notes(`<p>Stayed = never moved to another school in the portal data. Transferred = moved to at least one new school. Power conference = SEC, Big Ten, Big 12, ACC and Pac-12 at the time of signing. Classes 2020–2022 are used because their college careers fall inside the portal data (2021–2026). Many 2021–22 signees are still in college, so rates will rise; both groups come from the same classes, so the comparison is fair. A true "stayed three or more years" measure needs roster data, the next data pull.</p>`)}</div>`;
+  countUp(app);
+  app.querySelectorAll('[data-tt]').forEach(b=>b.onclick=()=>{txTab=b.dataset.tt;app.querySelectorAll('[data-tt]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawTx()});drawTx()}
+function drawTx(){
+  const z=document.getElementById('tz');const schools=D.progs.map(p=>p.name).sort();
+  if(txTab==='stay'){z.innerHTML=`<h2>Stay or go?</h2><div class="ctrl"><label>School<select id="ts">${schools.map(k=>`<option${k===txSch?' selected':''}>${esc(k)}</option>`).join('')}</select></label>
+    <label>Position<select id="tp"><option value="ALL">All positions</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===txPos?' selected':''}>${v}</option>`).join('')}</select></label></div><div id="to"></div>`;
+    const so=()=>{txSch=document.getElementById('ts').value;txPos=document.getElementById('tp').value;drawStay()};document.getElementById('ts').onchange=so;document.getElementById('tp').onchange=so;drawStay();return}
+  if(txTab==='pos'){z.innerHTML=`<h2>Stayed vs transferred, by position</h2><p class="lede">Power-conference signees, classes 2020–2022. Share of each group drafted.</p><div class="scroll" style="margin-top:14px"><table><tr><th>Position</th><th>Stayed</th><th>Drafted</th><th>Rate</th><th>Transferred</th><th>Drafted</th><th>Rate</th></tr>${['ALL',...Object.keys(POS)].map(g=>{const a=stay('P4',g);return `<tr><td>${g==='ALL'?'<b>All positions</b>':POS[g]}</td><td>${a[0].toLocaleString()}</td><td>${a[1]}</td><td><b>${pct(a[1],a[0])}</b></td><td>${a[2].toLocaleString()}</td><td>${a[3]}</td><td><b>${pct(a[3],a[2])}</b></td></tr>`}).join('')}</table></div>`;return}
+  if(txTab==='dev'){z.innerHTML=`<h2>Who develops transfers best</h2><p class="lede">Players who transferred in and finished their careers there, graded against their recruiting rankings. Programs with 10+ such players. Tap one for its best transfers.</p><div class="list" id="txl" style="margin-top:14px"></div>`;
+    rowsList(document.getElementById('txl'),D.tx.map((r,i)=>({key:r[0],v:r[4]-r[5],sub:`${r[1]} transfers · ${r[2]} drafted`,rk:i+1})),f0,0,k=>{const r=D.tx.find(x=>x[0]===k);return `<div class="sheet">${cellsHTML([['Transfers finished here',r[1]],['Drafted',r[2]],['First round',r[3]],['Actual ÷ exp.',rat(r[4],r[5])]])}<div class="tags2 mini">${r[6].map(i=>tag(T(i))).join('')}</div></div>`});return}
+  z.innerHTML=`<h2>Portal traffic by program</h2><div class="ctrl"><label>Find a program<input type="search" id="tq" placeholder="Colorado" value="${esc(txQ)}"></label></div><div class="scroll" id="tt"></div>`;
+  const tq=document.getElementById('tq');tq.oninput=()=>{txQ=tq.value;drawTraffic()};drawTraffic()}
+function drawStay(){
+  const a=stay(txSch,txPos),p=stay('P4',txPos);const lab=txPos==='ALL'?'Players':POS[txPos]+'s';
+  const rs=a[0]?a[1]/a[0]:null,rp=p[0]?p[1]/p[0]:null;
+  const line=a[0]?`${lab} who signed with ${esc(txSch)} and stayed were drafted <b>${pct(a[1],a[0])}</b> of the time${rp&&rs!=null?`, <b>${(rs/rp).toFixed(1)}×</b> the power-conference rate for players who stayed (${pct(p[1],p[0])})`:''}.${a[0]<10?' <span class="pill">small sample</span>':''}`:`No ${esc(lab.toLowerCase())} who signed with ${esc(txSch)} in 2020–2022 stayed there.`;
+  document.getElementById('to').innerHTML=`<p class="take" style="font-size:19px">${line}</p><div class="cmp">
+  <div class="c"><div class="small">Stayed at ${esc(txSch)}</div><div class="big">${a[1]} of ${a[0]}</div><p class="small">drafted · ${pct(a[1],a[0])}</p></div>
+  <div class="c"><div class="small">Transferred out of ${esc(txSch)}</div><div class="big">${a[3]} of ${a[2]}</div><p class="small">drafted · ${pct(a[3],a[2])}</p></div>
+  <div class="c"><div class="small">Power-conference average, stayed</div><div class="big">${pct(p[1],p[0])}</div><p class="small">${p[1]} of ${p[0].toLocaleString()} drafted</p></div></div>`}
+function drawTraffic(){
+  const q=txQ.trim().toLowerCase();const allr=D.progs.filter(p=>!q||p.name.toLowerCase().includes(q)).sort((a,b)=>b.pin.n-a.pin.n);const rows=q||txAll?allr:allr.slice(0,20);
+  document.getElementById('tt').innerHTML=rows.length?`<table><tr><th>Program</th><th>In</th><th>Out</th><th>Net</th><th>Avg stars in</th><th>Avg stars out</th><th>Drafted after arriving</th></tr>${rows.map(p=>`<tr><td>${esc(p.name)}</td><td>${p.pin.n}</td><td>${p.pout.n}</td><td class="${p.pin.n>=p.pout.n?'pos':'neg'}">${f0(p.pin.n-p.pout.n)}</td><td>${p.pin.st??'—'}</td><td>${p.pout.st??'—'}</td><td>${p.pdrn}</td></tr>`).join('')}</table>${rows.length<allr.length?`<button class="bigbtn" id="txall">Show all ${allr.length} programs</button>`:''}`:'<p class="empty">No program matches that search.</p>';
+  const ta=document.getElementById('txall');if(ta)ta.onclick=()=>{txAll=true;drawTraffic()}}
+
+/* ---------- ABOUT / CONTACT / METHODS ---------- */
+function about(){
+  app.innerHTML=`<div class="page"><section class="prose"><h1>About Vetted CFB</h1>
+  <p class="lede">Recruiting rankings are everywhere. What happens after signing day mostly isn't measured. Vetted CFB measures it.</p>
+  <h2>Why "Vetted"</h2><p>On a recruiting staff, every target gets a magnet tag on the office wall, and nobody commits until he has been vetted against a list of criteria. The player cards on this site are modeled on those tags, and every program and coach here gets the same vetting.</p>
+  <h2>What we believe</h2><p>A 3-star who becomes a first-round pick says more about his coaches than a 5-star who goes where everyone predicted. So every player is graded against what players like him usually do, and credit goes to the people who developed him.</p>
+  <p>We say what the data does and doesn't show. Every number comes with its sample size, early findings are labeled as early, and the full method is public on the <a href="#methods">Methods</a> page.</p>
+  <h2>Who it's for</h2><p><b>Recruits and families</b> choosing where to develop. <b>Fans</b> who want to know how their program really runs. <b>Coaches and staff</b> who want an honest check against their peers.</p>
+  <h2>What's next</h2><p>Roster data (so we can measure players who stayed three or more years), recruiting classes before 2008, position coaches and coordinators for major programs, and a year-round College Football Playoff projector.</p>
+  <p class="small">Vetted CFB is independent and is not affiliated with any school, conference or the NCAA. No team logos, mascots or player photos are used.</p>
+  <h2>Follow along</h2><div class="btns" style="margin-top:8px"><a class="btn" href="https://x.com/Prod5CFB">@Prod5CFB on X</a><a class="btn" href="https://github.com/5DoesModels">GitHub</a><a class="btn solid" href="#contact">Get in touch</a></div></section></div>`}
+function contact(){
+  app.innerHTML=`<div class="page"><section class="prose"><h1>Contact</h1><p class="lede">Questions, corrections, a player we linked wrong, or an idea for what to measure next? Send it here.</p>
+  <form class="form" id="cf" novalidate>
+  <label>Your name <span class="small">(optional)</span><input id="cn" autocomplete="name"></label>
+  <label>Email, if you'd like a reply <span class="small">(optional)</span><input id="ce" type="email" autocomplete="email" placeholder="name@example.com"><span class="err" id="cee"></span></label>
+  <label>I am a<select id="cr"><option value="fan">Fan</option><option value="recruit">Recruit or family</option><option value="coach">Coach or staff</option><option value="media">Media</option><option value="other">Other</option></select></label>
+  <label>Message<textarea id="cm" placeholder="Your message"></textarea><span class="err" id="cme"></span></label>
+  <div><button class="btn solid" type="submit">Send message</button></div><p id="cs" aria-live="polite"></p></form>
+  <p style="margin-top:24px">Prefer X? Message <a href="https://x.com/Prod5CFB">@Prod5CFB</a>.</p></section></div>`;
+  const ce=document.getElementById('ce'),cm=document.getElementById('cm');
+  ce.oninput=()=>document.getElementById('cee').textContent='';cm.oninput=()=>document.getElementById('cme').textContent='';
+  document.getElementById('cf').onsubmit=async e=>{e.preventDefault();let bad=false;
+    if(!cm.value.trim()){document.getElementById('cme').textContent='Write a message first.';bad=true}
+    if(ce.value.trim()&&!/^\S+@\S+\.\S+$/.test(ce.value.trim())){document.getElementById('cee').textContent='That email doesn\'t look right. Check it or leave it blank.';bad=true}
+    if(bad)return;const cs=document.getElementById('cs');cs.textContent='Sending…';
+    const ok=await saveMsg({name:document.getElementById('cn').value.trim().slice(0,100),email:ce.value.trim().slice(0,200),role:document.getElementById('cr').value,msg:cm.value.trim().slice(0,4000)});
+    cs.innerHTML=ok?'<b>Message sent.</b> Thanks for reaching out.':'This preview couldn\'t send your message. Please message <a href="https://x.com/Prod5CFB">@Prod5CFB</a> on X instead.';
+    if(ok)document.getElementById('cf').reset()}}
+async function getDB(){try{if(!window.claude||!window.claude.use)return null;const db=await window.claude.use('db');const u=await window.claude.use('user');if(!db||!u)return null;const id=await u.id();return id?{db,id}:null}catch(e){return null}}
+async function saveMsg(m){const c=await getDB();if(!c)return false;try{const ref=c.db.collection('messages').doc(c.id);let items=[];try{const s=await ref.get();const v=s&&(typeof s.data==='function'?s.data():s);if(v&&Array.isArray(v.items))items=v.items}catch(e){}
+  items.push({...m,at:Date.now()});await ref.set({items:items.slice(-20)});return true}catch(e){return false}}
+function methods(){
+  const ok='<span class="chk" aria-label="yes">✓</span>',m=D.meta;
+  const tbl=(head,rows)=>`<div class="scroll"><table><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td${c===ok?' class="c"':''}>${c}</td>`).join('')}</tr>`).join('')}</table></div>`;
+  app.innerHTML=`<div class="page"><section class="vs"><h1>Methods</h1><p class="lede">How every number on Vetted CFB is built and checked, with the limits stated plainly.</p>
+  <h4>THE DATA</h4>${tbl(['Source','Years','Detail'],[
+   ['Recruits',`${m.classes[0]}–${m.classes[1]} classes`,`${m.n.toLocaleString()} high school, JUCO and prep signees with a school. Stars and composite rating from 247Sports, via the College Football Data API.`],
+   ['NFL draft',`${m.draft[0]}–${m.draft[1]}`,'Every pick, linked back to the player\'s recruiting profile.'],
+   ['Transfer portal',`${m.portal[0]}–${m.portal[1]}`,`${m.pn.toLocaleString()} portal entries; ${m.pl.toLocaleString()} signees linked to at least one move.`],
+   ['Head coaches','2005–2026','Head coach and record for every FBS season, including 2026 hires. When a school changed coaches mid-season, the coach who led more games gets the season.'],
+   ['Before 2008','Coming','Older recruiting classes (2000–2007) and drafts (2001–2009) can be added from the same source.']])}
+  <h4>WHO GETS GRADED</h4>${tbl(['Rule','Detail','Cleared'],[
+   ['Complete classes','2008–2020. A pick counts if it comes 1–8 years after the class.',ok],
+   ['In-progress classes','2021–2023 are graded against their own classmates, so a class is not punished for being young. Their numbers will move as more of them are drafted.',ok],
+   ['Too early','2024–2026 classes are listed, with their transfers, but not graded.',ok],
+   ['Credit: last school','Every player counts for the last school he played for. Drafted: the school he was drafted from (Joe Burrow counts for LSU, not Ohio State; Jack Bech for TCU, not LSU). Undrafted: the last school he transferred to (Aaron Anderson counts for LSU, not Alabama).',ok],
+   ['Head coach credit','The head coach at that last school in the player\'s second year on campus, or in his first season there if he transferred in.',ok],
+   ['Unranked recruits','Signees with no star rating are graded as their own group, against other unranked signees.',ok]])}
+  <h4>DRAFT POINTS</h4>${tbl(['Outcome','Points'],[['Top-10 pick',100],['Rest of round one',60],['Round two',35],['Round three',20],['Rounds four–five',10],['Rounds six–seven',5],['Undrafted',0]])}
+  <h4>EXPECTED POINTS</h4>${tbl(['Step','Detail'],[
+   ['1. Group similar recruits','By recruit type (high school or other), stars and composite rating in thirtieth-point slices. All 5-stars share one group. Built only from complete classes.'],
+   ['2. Steady small groups','Each group is pulled toward its star-level average, weighted like 150 extra players.'],
+   ['3. Adjust for position','Some positions are drafted more often. A position factor (smoothed by 50) corrects for it.'],
+   ['4. Compare within each class','Each class\'s expected total is set equal to what that class actually earned, so recruits are graded against their own classmates. This also corrects for players staying in school longer since COVID.'],
+   ['Development','Actual points minus expected points.']])}
+  <h4>LINKING RECORDS</h4>${tbl(['Check','Detail','Cleared'],[
+   ['Draft picks: ID first','The draft record\'s college player ID equals the recruit\'s ID.',ok],
+   ['Draft picks: then name','Names cleaned of accents and suffixes; class 2–8 years before the draft; same school +3, same home state +2, high school recruit +0.5. Ties left unlinked. Match rate: 46% of 2010–14 picks (many recruited before 2008), 86% of 2015–19, 95% of 2020–26.',ok],
+   ['Portal moves','Name plus the school he left, after his signing year. Ties and weak matches left unlinked: about 80% of portal entries are linked.',ok],
+   ['Spot checks','Ja\'Marr Chase, Joe Burrow, Justin Jefferson, DeVonta Smith, Kyle Pitts, Brock Purdy, Aaron Donald. Two name collisions (Justin Jefferson, Travon Walker) handled correctly.',ok]])}
+  <h4>KNOWN LIMITS</h4>${tbl(['Limit','What we\'re doing about it'],[
+   ['Head coach credit is approximate','Roster data will credit every year a player was on campus.'],
+   ['Last-school credit has a blind spot','A school that develops a player for three years gets nothing if he transfers and is drafted elsewhere. Roster data will allow split credit by years on campus.'],
+   ['No position coaches or coordinators','No free source exists. Hand-built lists for major programs, starting with receivers and quarterbacks.'],
+   ['State and school are tangled','Programs recruit some states heavily. Next step separates the state effect from the school effect.'],
+   ['The draft is one outcome','It misses long college careers. Roster and transfer studies come next.']])}</section></div>`}
+
+/* ---------- SEARCH ---------- */
+const sq=document.getElementById('sq'),sr=document.getElementById('sr');
+function loadIdx(){if(IDX)return Promise.resolve(IDX);return fetch('search.json').then(r=>r.json()).then(j=>IDX=j)}
+sq.addEventListener('focus',()=>{loadIdx().catch(()=>{});if(sq.value.trim())runSearch()});
+let sqT=null;sq.addEventListener('input',()=>{clearTimeout(sqT);sqT=setTimeout(runSearch,120)});
+sq.addEventListener('keydown',e=>{if(e.key==='Escape'){sr.classList.remove('on');sq.blur()}if(e.key==='ArrowDown'){const b=sr.querySelector('button');if(b){e.preventDefault();b.focus()}}});
+sr.addEventListener('keydown',e=>{const bs=[...sr.querySelectorAll('button')],i=bs.indexOf(document.activeElement);if(e.key==='ArrowDown'&&i<bs.length-1){e.preventDefault();bs[i+1].focus()}if(e.key==='ArrowUp'){e.preventDefault();i>0?bs[i-1].focus():sq.focus()}if(e.key==='Escape'){sr.classList.remove('on');sq.focus()}});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))sr.classList.remove('on')});
+function runSearch(){
+  const q=sq.value.trim().toLowerCase();if(!q||!D){sr.classList.remove('on');return}
+  const progs=D.progs.filter(p=>p.name.toLowerCase().includes(q)).slice(0,3);
+  const cos=D.coaches.filter(c=>c.name.toLowerCase().includes(q)).slice(0,3);
+  let pl=[];if(IDX&&q.length>=3){const sc=r=>{const n=r[0].toLowerCase(),last=n.split(' ').slice(1).join(' ');return (n===q?0:4)+(last.startsWith(q)||n.startsWith(q)?0:2)+(r[5]?0:1)};for(const r of IDX.p){if(r[0].toLowerCase().includes(q))pl.push(r)}pl.sort((a,b)=>sc(a)-sc(b)||(a[5]||999)-(b[5]||999)||b[1]-a[1]);pl=pl.slice(0,7)}
+  let h='';
+  if(progs.length)h+=`<h4>PROGRAMS</h4>`+progs.map(p=>`<button data-p="${esc(p.name)}">${esc(p.name)}<small>${p.cur?'Head coach: '+esc(p.cur):''}</small></button>`).join('');
+  if(cos.length)h+=`<h4>HEAD COACHES</h4>`+cos.map(c=>`<button data-c="${esc(c.name)}">${esc(c.name)}<small>${c.now?'Now at '+esc(c.now):esc(c.st.map(s=>s[0]).join(' · '))}</small></button>`).join('');
+  if(pl.length)h+=`<h4>PLAYERS</h4>`+pl.map(r=>`<button data-pl="${esc(r[0])}|${r[1]}|${r[2]}">${esc(r[0])}<small>${r[1]} · ${IDX.g[r[2]]} · ${esc(IDX.s[r[3]])}${r[4]!==r[3]?' → '+esc(IDX.s[r[4]]):''}${r[5]?' · pick #'+r[5]:''}</small></button>`).join('');
+  if(!h)h=q.length<3&&!IDX?'<p>Keep typing…</p>':`<p>No match for "${esc(sq.value)}". Try a last name or a school.</p>`;
+  if(!IDX&&q.length>=3)h+='<p>Loading players…</p>';
+  sr.innerHTML=h;sr.classList.add('on');
+  if(!IDX&&q.length>=3)loadIdx().then(runSearch).catch(()=>{})}
+sr.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sr.classList.remove('on');sq.value='';
+  if(b.dataset.p){rkMode='programs';wrQ='';goTo('rankings',()=>openRow(b.dataset.p))}
+  else if(b.dataset.c){rkMode='coaches';coQ='';coAct=false;goTo('rankings',()=>openRow(b.dataset.c))}
+  else if(b.dataset.pl){const [n,y,g]=b.dataset.pl.split('|');showPlayer(n,+y,IDX.g[+g])}});
+function goTo(r,after){if(location.hash==='#'+r){routes[r]();after&&after()}else{window._after=after;location.hash='#'+r}}
+function showPlayer(n,y,g){
+  const t0=Object.values(D.tags).find(t=>t.n===n&&t.y===y);
+  const open=html=>{const el=document.createElement('div');el.className='ask';el.innerHTML=`<div class="box wide" role="dialog" aria-modal="true" aria-label="${esc(n)}">${html}<p style="margin-top:12px"><button class="morebtn" data-x>Close</button></p></div>`;document.body.appendChild(el);el.querySelector('[data-x]').focus();
+    el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-x]'))el.remove()});el.addEventListener('keydown',e=>{if(e.key==='Escape')el.remove()})};
+  if(t0)return open(tag(t0));
+  if(!POS[g])return open(`<p>${esc(n)} (${y}, ${esc(g)}). Full cards for this position group are coming.</p>`);
+  getFin(g).then(rows=>{const r=rows.find(x=>x[0]===n&&x[1]===y);if(!r)return open(`<p>${esc(n)}, class of ${y}. Full card coming: this player signed as a JUCO or prep recruit.</p>`);
+    open(tag({n:r[0],y:r[1],s:r[2],rt:r[3],g,h:(r[5]?r[5]+', ':'')+r[4],sg:r[6],dt:r[11]?r[7]:null,dy:r[11],o:r[10],pts:r[8],e:r[9],pae:r[9]==null?null:r[8]-r[9],jc:false,mv:r[13]}))}).catch(()=>open('<p>That card did not load. Try again.</p>'))}
+
+/* ---------- PLAYERS ---------- */
+let plQ='',plPos='',plSt='',plCls='',plSch='',plHome='',plOut='',plN=30;
+const GLN={QB:'QB',RB:'RB',WR:'WR',TE:'TE',OL:'OL',DL:'DT',EDGE:'EDGE',LB:'LB',DB:'DB',ATH:'ATH',ST:'K/P'};
+const plOutTxt=r=>r[5]?`Rd ${r[9]} · #${r[5]}`:(r[1]>=2024?'Too early':r[1]>2020?'Not drafted yet':'Undrafted');
+function players(){
+  app.innerHTML=`<div class="page"><section><h1>Players</h1><p class="lede">Every signee since ${D.meta.classes[0]}: ${D.meta.n.toLocaleString()} players. Search by name, or filter by school, class, position and more. Tap a player for his card.</p>
+  <div class="ctrl" style="margin-top:20px"><label style="flex:1 1 320px">Name<input type="search" id="pq" placeholder="Start typing a name" value="${esc(plQ)}" style="width:100%;font-size:18px;min-height:52px"></label></div>
+  <div class="ctrl" id="pf"><p class="small">Loading every player…</p></div>
+  <div id="po"></div></section>${notes('<p>School matches either the school a player signed with or the last school he played for. Players are sorted by draft pick, then newest class first.</p>')}</div>`;
+  loadIdx().then(()=>{if(!document.getElementById('pf'))return;
+    const schools=IDX.s.map((n,i)=>[n,i]).filter(([n])=>D.progs.some(p=>p.name===n)).sort((a,b)=>a[0].localeCompare(b[0]));
+    const states=Object.keys(ST).sort((a,b)=>ST[a].localeCompare(ST[b]));const yrs=[];for(let y=D.meta.classes[1];y>=D.meta.classes[0];y--)yrs.push(y);
+    document.getElementById('pf').innerHTML=`<label>School<select id="pS"><option value="">Any school</option>${schools.map(([n,i])=>`<option value="${i}"${String(i)===plSch?' selected':''}>${esc(n)}</option>`).join('')}</select></label>
+    <label>Class<select id="pC"><option value="">Any class</option>${yrs.map(y=>`<option${String(y)===plCls?' selected':''}>${y}</option>`).join('')}</select></label>
+    <label>Position<select id="pP"><option value="">Any position</option>${IDX.g.map((g,i)=>`<option value="${i}"${String(i)===plPos?' selected':''}>${POS[g]||({ATH:'Athlete',ST:'Kicker / punter'})[g]||g}</option>`).join('')}</select></label>
+    <label>Stars<select id="pSt">${STAROPT(plSt,'Any')}</select></label>
+    <label>Home state<select id="pH"><option value="">Any state</option>${states.map(x=>`<option value="${x}"${x===plHome?' selected':''}>${ST[x]}</option>`).join('')}</select></label>
+    <label>Outcome<select id="pO">${[['','Any outcome'],['d','Drafted'],['r1','First round'],['t','Transferred'],['u','Not drafted']].map(([k,l])=>`<option value="${k}"${k===plOut?' selected':''}>${l}</option>`).join('')}</select></label>`;
+    const u=()=>{plSch=document.getElementById('pS').value;plCls=document.getElementById('pC').value;plPos=document.getElementById('pP').value;plSt=document.getElementById('pSt').value;plHome=document.getElementById('pH').value;plOut=document.getElementById('pO').value;plN=30;drawPlayers()};
+    ['pS','pC','pP','pSt','pH','pO'].forEach(id=>document.getElementById(id).onchange=u);
+    let t=null;document.getElementById('pq').oninput=e=>{clearTimeout(t);t=setTimeout(()=>{plQ=e.target.value;plN=30;drawPlayers()},150)};drawPlayers()}).catch(()=>{document.getElementById('pf').innerHTML='<p class="empty">Players did not load. Refresh to try again.</p>'})}
+function drawPlayers(){
+  const q=plQ.trim().toLowerCase(),sch=plSch===''?-1:+plSch,cls=+plCls||0,pos=plPos===''?-1:+plPos,stv=plSt===''?-1:+plSt;
+  const rows=IDX.p.filter(r=>(!q||r[0].toLowerCase().includes(q))&&(sch<0||r[3]===sch||r[4]===sch)&&(!cls||r[1]===cls)&&(pos<0||r[2]===pos)&&(stv<0||r[6]===stv)&&(!plHome||r[7]===plHome)&&
+    (!plOut||(plOut==='d'&&r[5])||(plOut==='r1'&&r[9]===1)||(plOut==='t'&&r[8])||(plOut==='u'&&!r[5])));
+  rows.sort((a,b)=>(a[5]||9999)-(b[5]||9999)||b[1]-a[1]||a[0].localeCompare(b[0]));
+  const o=document.getElementById('po');if(!o)return;
+  o.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> player${rows.length===1?'':'s'}</p>`+(rows.length?`<div class="list">${rows.slice(0,plN).map(r=>`<button class="prow" data-pl="${esc(r[0])}|${r[1]}|${r[2]}"><span><b>${esc(r[0])}</b><small>${r[1]} · ${GLN[IDX.g[r[2]]]||IDX.g[r[2]]} · <span style="color:var(--gold)">${stars(r[6])}</span> · ${r[7]?esc(ST[r[7]]||r[7])+' · ':''}${esc(IDX.s[r[3]])}${r[4]!==r[3]?' → '+esc(IDX.s[r[4]]):''}</small></span><span class="o ${r[9]===1?'pos':''}">${plOutTxt(r)}</span></button>`).join('')}</div>${rows.length>plN?`<button class="bigbtn" id="pm">Show ${Math.min(30,rows.length-plN)} more of ${(rows.length-plN).toLocaleString()}</button>`:''}`:`<p class="empty">No players match. Clear a filter or check the spelling.</p>`);
+  const pm=document.getElementById('pm');if(pm)pm.onclick=()=>{plN+=30;drawPlayers()};
+  o.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const [n,y,g]=b.dataset.pl.split('|');showPlayer(n,+y,IDX.g[+g])})}
+
+/* ---------- PREDICTIONS ---------- */
+let PRED=null,prMode='list',prCls='2026',prSch='',prPos='',prQ='',prSort='d',prN=25,cP='WR',cS='4',cSort='d',cAll=false,cQ='';
+const pc=x=>x>=.995?'>99%':x<.005?'<1%':(100*x).toFixed(x<.1?1:0)+'%';
+const remO=(p,k)=>{const M=PRED.M;p=Math.min(.9,p);return p*(1-M[k])/(1-p*M[k])};
+const yrIn=y=>Math.max(1,2026-y+1);
+function schoolList(){return `<datalist id="schl">${Object.keys(PRED.fac).sort().map(k=>`<option value="${esc(k)}">`).join('')}</datalist>`}
+function predictions(){
+  app.innerHTML=`<div class="page"><section><h1>Predictions</h1><p class="lede">What history says about today's players: the odds a current player gets drafted or transfers, based on everyone with his stars, rating and position since 2008, and on how players at his school have done.</p>
+  <div class="bigseg" role="group" aria-label="Prediction view"><button data-pm="list" aria-pressed="${prMode==='list'}">Current players</button><button data-pm="calc" aria-pressed="${prMode==='calc'}">What if I sign here?</button></div>
+  <div id="pz" style="margin-top:20px"><p class="empty">Loading predictions…</p></div></section><div id="pn"></div></div>`;
+  app.querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>{prMode=b.dataset.pm;app.querySelectorAll('[data-pm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawPred()});
+  (PRED?Promise.resolve():fetch('pred.json').then(r=>r.json()).then(j=>{PRED=j})).then(()=>{
+    const bt=PRED.bt,te=PRED.te;document.getElementById('pn').innerHTML=notes(`<p><b>Draft odds</b> start from every player since 2008 with the same star rating, composite rating and position. That is multiplied by how often players who signed with his school were drafted compared with expectations (2008–2018 classes; small programs are pulled toward average). For players already in college, years that have passed without being drafted are taken into account.</p>
+    <p><b>Transfer odds</b> start from the share of players with the same star rating and position in the 2020–2022 classes who moved to a new school (the first classes whose whole careers fall inside the portal data, 2021–2026). That is multiplied by how often that school's signees moved compared with similar players elsewhere. Entering the portal and returning does not count as a transfer.</p>
+    <p><b>Stay or transfer:</b> among 4- and 5-stars from the 2019–2022 classes, players who stayed were drafted ${te.stayed_hi}× as often as expected and players who transferred ${te.moved_hi}×. For 2- and 3-stars: ${te.stayed_lo}× stayed, ${te.moved_lo}× transferred. Part of that gap is who transfers (often players not winning a job), not the move itself.</p>
+    <p><b>How accurate is it?</b> Built from the 2008–2015 classes only, the model predicted the 2016–2018 classes. In five equal groups from least to most likely, predicted vs actual draft rates were ${bt.map(x=>`${x[0]}% vs ${x[1]}%`).join(' · ')}. These are odds, not verdicts: they can't see injuries, depth charts, coaching changes or NIL.</p>`);drawPred()}).catch(()=>{document.getElementById('pz').innerHTML='<p class="empty">Predictions did not load. Refresh to try again.</p>'})}
+function drawPred(){if(!PRED)return;prMode==='list'?predList():predCalc()}
+function predList(){
+  document.getElementById('pz').innerHTML=`${schoolList()}<div class="ctrl"><label>Class<select id="rc">${['2026','2025','2024','2023','2022'].map(y=>`<option value="${y}"${y===prCls?' selected':''}>${y} (year ${yrIn(+y)} in 2026)</option>`).join('')}</select></label>
+  <label>School<input id="rs" list="schl" placeholder="Type a school" value="${esc(prSch)}"></label>
+  <label>Position<select id="rp"><option value="">Any position</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===prPos?' selected':''}>${v}</option>`).join('')}</select></label>
+  <label>Name<input type="search" id="rq" placeholder="Search" value="${esc(prQ)}"></label></div>
+  <p class="small">2027, 2028 and 2029 commitments are coming with the next data pull.</p>
+  <div class="bigseg" role="group" aria-label="Sort by" style="margin-top:6px">${[['d','Draft odds'],['t','Transfer odds']].map(([k,l])=>`<button data-ps="${k}" aria-pressed="${prSort===k}">${l}</button>`).join('')}</div><div id="ro" style="margin-top:14px"></div>`;
+  const u=()=>{prCls=document.getElementById('rc').value;prPos=document.getElementById('rp').value;prN=25;drawPL()};
+  ['rc','rp'].forEach(id=>document.getElementById(id).onchange=u);
+  document.getElementById('rs').oninput=e=>{const v=e.target.value.trim();if(!v||PRED.fac[v]||Object.keys(PRED.fac).some(k=>k.toLowerCase()===v.toLowerCase())||v.length>=3){prSch=v;prN=25;drawPL()}};
+  document.getElementById('rq').oninput=e=>{prQ=e.target.value;prN=25;drawPL()};
+  app.querySelectorAll('[data-ps]').forEach(b=>b.onclick=()=>{prSort=b.dataset.ps;app.querySelectorAll('[data-ps]').forEach(x=>x.setAttribute('aria-pressed',x===b));prN=25;drawPL()});drawPL()}
+function drawPL(){
+  const G=PRED.g,q=prQ.trim().toLowerCase(),sq2=prSch.trim().toLowerCase(),col=prSort==='d'?9:11;
+  const rows=PRED.rows.filter(r=>r[1]===+prCls&&(!sq2||r[7].toLowerCase().includes(sq2)||r[8].toLowerCase().includes(sq2))&&(!prPos||G[r[2]]===prPos)&&(!q||r[0].toLowerCase().includes(q))).sort((a,b)=>b[col]-a[col]);
+  const lab=prSort==='d'?'to be drafted':'to transfer';
+  const el=document.getElementById('ro');
+  el.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> players from the ${prCls} class still in college${prSch?' matching “'+esc(prSch)+'”':''}, sorted by odds ${lab}.</p>`+(rows.length?`<div class="list">${rows.slice(0,prN).map((r,i)=>`<details class="row nb" data-i="${PRED.rows.indexOf(r)}"><summary><span class="rk">${i+1}</span><span class="pn">${esc(r[0])}<small>${GLN[G[r[2]]]||G[r[2]]} · <span style="color:var(--gold)">${stars(r[3])}</span> · ${pathTxt(r[7],r[13])}${r[12]?' <span class="pill r">transferred</span>':''}</small></span><span class="val">${r[12]&&prSort==='t'?'Moved':pc(r[col])}<span class="pbar"><i style="width:${Math.min(100,r[col]*100)}%"></i></span></span></summary><div class="slot"></div></details>`).join('')}</div>${rows.length>prN?`<button class="bigbtn" id="rm">Show ${Math.min(25,rows.length-prN)} more</button>`:''}`:'<p class="empty">No players match. Check the school name or try another class.</p>');
+  el.querySelectorAll('details.row').forEach(d=>d.addEventListener('toggle',()=>{if(d.open&&!d.querySelector('.slot').innerHTML){d.querySelector('.slot').innerHTML=predCard(PRED.rows[+d.dataset.i]);wireScen(d,PRED.rows[+d.dataset.i])}}));
+  const rm=document.getElementById('rm');if(rm)rm.onclick=()=>{prN+=25;drawPL()}}
+function scen(r,dest){
+  const hi=r[3]>=4?'hi':'lo',te=PRED.te,f=PRED.fac,k=r[14];
+  const fc=(f[r[8]]||[1])[0],fd=(f[dest]||[1])[0];
+  return {stay:remO(r[10]*fc,k),go:remO(r[10]*fd,k),hi}}
+function predCard(r){
+  const G=PRED.g,f=PRED.fac[r[8]],fs=PRED.fac[r[7]],pos=(POS[G[r[2]]]||G[r[2]]).toLowerCase(),prof=`${r[3]?r[3]+'-star':'unranked'} ${pos}`;
+  const dests=Object.keys(PRED.fac).sort();const def=dests.includes('Texas')&&r[8]!=='Texas'?'Texas':dests[0];
+  return `<div class="sheet">${cellsHTML([['Draft odds',pc(r[9])],['Transfer odds',r[12]?'Transferred':pc(r[11])],['Year in college',yrIn(r[1])],['Rating',r[4]?r[4].toFixed(4):'—'],['Hometown',esc((r[6]?r[6]+', ':'')+r[5])]])}
+  <h3 style="margin-top:16px">Why ${pc(r[9])} to be drafted</h3><p style="margin:6px 0 0">Players like him (${esc(prof)}, rating ${r[4]?r[4].toFixed(4):'n/a'}) were drafted about <b>${pc(r[10])}</b> of the time.${f?` Players who signed with ${esc(r[8])} were drafted <b>${f[0].toFixed(2)}×</b> as often as expected.`:''}${r[14]>0?` He has gone ${r[14]} draft${r[14]>1?'s':''} without being picked, which is built in.`:''} Chance he's picked in the 2027 draft: <b>${pc(r[15])}</b>.</p>
+  <h3 style="margin-top:16px">Why ${r[12]?'he already transferred':pc(r[11])+' to transfer'}</h3><p style="margin:6px 0 0">${r[12]?`He has already moved: ${pathTxt(r[7],r[13])}.`:`<b>${pc(r[16])}</b> of ${esc(prof)}s in the 2020–2022 classes moved to a new school.${fs?` Signees at ${esc(r[7])} moved <b>${r[17].toFixed(2)}×</b> as often as similar players elsewhere`+(fs[5]?` (${fs[4]} moved vs ${Math.round(fs[5])} expected)`:'')+'.':''}`}</p>
+  <h3 style="margin-top:16px">Stay or transfer?</h3>
+  <div class="ctrl"><label>Transfer to<input class="dest" list="schl" value="${esc(def)}"></label></div>
+  <div class="cmp scen"></div><p class="small scenote"></p></div>`}
+function wireScen(d,r){
+  const inp=d.querySelector('.dest'),out=d.querySelector('.scen');
+  const draw=()=>{const v=inp.value.trim();const key=Object.keys(PRED.fac).find(k=>k.toLowerCase()===v.toLowerCase());
+    if(!key){out.innerHTML=`<div class="c"><p class="small">Pick a school from the list to compare.</p></div>`;return}
+    const s=scen(r,key),diff=s.go-s.stay;
+    const te=PRED.te;d.querySelector('.scenote').innerHTML=`This compares the two schools' track records for players like him. History adds a caution: ${s.hi==='hi'?'4- and 5-stars':'2- and 3-stars'} who transferred (2019–2022 classes) were drafted ${te['moved_'+s.hi]}× as often as expected, against ${te['stayed_'+s.hi]}× for those who stayed. Part of that gap is who transfers, often players not winning a job, so it isn't counted in the numbers above.`;
+    out.innerHTML=`<div class="c"><div class="small">Stays at ${esc(r[8])}</div><div class="big">${pc(s.stay)}</div><p class="small">eventual draft odds</p></div><div class="c"><div class="small">Transfers to ${esc(key)}</div><div class="big ${diff>=0?'':'pos'}">${pc(s.go)}</div><p class="small">${diff>=0?'up':'down'} ${(Math.abs(diff)*100).toFixed(1)} points vs staying</p></div>`};
+  inp.addEventListener('input',draw);draw()}
+function predCalc(){
+  document.getElementById('pz').innerHTML=`<p class="take" style="font-size:18px">Pick a position and star rating. See how players like you have done at every school.</p>
+  <div class="ctrl"><label>Position<select id="cp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===cP?' selected':''}>${v}</option>`).join('')}</select></label>
+  <label>Stars<select id="cs">${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===cS?' selected':''}>${l}</option>`).join('')}</select></label>
+  <label>Find a school<input type="search" id="cq" placeholder="Type a school" value="${esc(cQ)}"></label></div><div id="co"></div>`;
+  const u=()=>{cP=document.getElementById('cp').value;cS=document.getElementById('cs').value;cAll=false;drawCalc()};document.getElementById('cp').onchange=u;document.getElementById('cs').onchange=u;
+  document.getElementById('cq').oninput=e=>{cQ=e.target.value;drawCalc()};drawCalc()}
+function drawCalc(){
+  const b=PRED.calc[cS+cP],o=document.getElementById('co');const lab=`${cS==='0'?'unranked':cS+'-star'} ${POS[cP].toLowerCase()}`;
+  if(!b){o.innerHTML=`<p class="empty">Too few ${esc(lab)}s since 2008 to estimate. Try another star rating.</p>`;return}
+  const all=Object.entries(PRED.fac).map(([k,f])=>({k,d:Math.min(.9,b[0]*f[0]),t:Math.min(.97,b[2]*f[1]),f})).sort((x,y)=>cSort==='t'?x.t-y.t:y.d-x.d);all.forEach((r,i)=>r.rank=i+1);
+  const q=cQ.trim().toLowerCase();const rows=q?all.filter(r=>r.k.toLowerCase().includes(q)):(cAll?all:all.slice(0,15));const top=all[0];
+  o.innerHTML=`<div class="cmp"><div class="c"><div class="small">A typical ${esc(lab)}, nationally</div><div class="big2">${pc(b[0])}</div><p class="small">drafted · ${pc(b[2])} transfer · ${b[3].toLocaleString()} players since 2008</p></div>
+  <div class="c"><div class="small">${cSort==='t'?'Least likely to transfer':'Best odds to be drafted'}</div><div class="big2">${pc(cSort==='t'?top.t:top.d)}</div><p class="small">at <b>${esc(top.k)}</b></p></div></div>
+  <div class="bigseg" role="group" aria-label="Sort schools by" style="margin-top:18px">${[['d','Draft odds'],['t','Least likely to transfer']].map(([k,l])=>`<button data-cs="${k}" aria-pressed="${cSort===k}">${l}</button>`).join('')}</div>
+  <div class="scroll" style="margin-top:14px">${rows.length?`<table><tr><th>Rank</th><th class="l">School</th><th>Draft odds</th><th>Transfer odds</th><th>Signees drafted vs expected</th></tr>${rows.map(r=>`<tr><td>${r.rank}</td><td class="l"><b>${esc(r.k)}</b></td><td>${pc(r.d)}</td><td>${pc(r.t)}</td><td>${r.f[2]} vs ${Math.round(r.f[3])}</td></tr>`).join('')}</table>`:`<p class="empty">No school matches "${esc(cQ)}".</p>`}</div>
+  ${!cAll&&!q?`<button class="bigbtn" id="call">Show all ${all.length} schools</button>`:''}<p class="small" style="margin-top:12px">Schools with few signees are pulled toward average, so small programs don't swing to the top on a handful of picks.</p>`;
+  app.querySelectorAll('[data-cs]').forEach(x=>x.onclick=()=>{cSort=x.dataset.cs;drawCalc()});const ca=document.getElementById('call');if(ca)ca.onclick=()=>{cAll=true;drawCalc()}}
+
+/* ---------- ANALYTICS ---------- */
+let anX='dev';
+const strength=r=>r>=.7?'very strong':r>=.5?'strong':r>=.3?'moderate':r>=.1?'weak':'no real';
+function analytics(){
+  const st=D.stats;
+  app.innerHTML=`<div class="page"><section><h1>Does development win games?</h1><p class="lede">We lined up every program's development grade against its record from 2012 to 2025. Short answer: yes. Programs that turn players into more than expected win more, and that adds something recruiting rankings alone don't explain.</p>
+  <div class="ticker" id="tk2"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div>
+  <div class="stats"><div><div class="d">${strength(st.r_dev_win)[0].toUpperCase()+strength(st.r_dev_win).slice(1)}</div><p>link between developing players and winning<span class="adv"> (correlation ${st.r_dev_win})</span></p></div>
+  <div><div class="d">${strength(st.r_tal_win)[0].toUpperCase()+strength(st.r_tal_win).slice(1)}</div><p>link between recruiting rankings and winning<span class="adv"> (correlation ${st.r_tal_win})</span></p></div>
+  <div><div class="d">${Math.round(st.r2_tal*10)} → ${Math.round(st.r2_both*10)} in 10</div><p>of the differences in winning explained: recruiting alone → recruiting plus development</p></div></div>
+  <div class="plain">What this means: signing great recruits matters, but what a staff does with them matters too. Two programs with the same recruiting can win very differently.</div>
+  <div class="bigseg" role="group" aria-label="Chart" style="margin-top:20px"><button data-ax="dev" aria-pressed="${anX==='dev'}">Development vs winning</button><button data-ax="tal" aria-pressed="${anX==='tal'}">Recruiting vs winning</button></div>
+  <p class="take" id="atake" style="margin-top:14px"></p><div class="fig" id="afig" style="height:440px;position:relative"><svg id="asvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><p class="small" id="ainfo">Each dot is a program. Tap one to see which.</p></section>
+  <section><h2>Conferences</h2><p class="lede">Which conferences get the most out of their players? Average draft value above expectations per program, per year, by 2026 membership.</p><div style="margin-top:14px">${D.confs.map(c=>{const mx=Math.max(...D.confs.map(x=>Math.abs(x[2])));return `<div class="meter" style="grid-template-columns:9em minmax(0,1fr) 3.6em"><span>${esc(c[0])}</span><span style="position:relative;height:16px;display:block"><i style="position:absolute;top:0;height:100%;${c[2]>=0?`left:50%;width:${50*c[2]/mx}%`:`right:50%;width:${50*-c[2]/mx}%;background:var(--red);transform-origin:right`}"></i><b style="position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px solid var(--pen)"></b></span><span>${f0(c[2])}</span></div>`}).join('')}</div>
+  <p class="small" style="margin-top:8px"><a href="#rankings" id="toconf">See conference report cards →</a> · <a href="#rankings" id="toquad">Portal coaches vs high school coaches →</a> · <a href="#stayhome">Stay home or leave →</a> · <a href="#nfl">NFL careers →</a></p></section>
+  ${notes(`<p>${st.n} FBS programs. Development = draft points above expected per graded signing year (2008–2023). Recruiting = expected draft points per year, which rises with star ratings. Win % and SRS are from 2012–2025. Correlation runs from −1 to 1; we call 0.5+ strong and 0.7+ very strong. This shows a relationship, not proof of cause: winning also brings better recruits and more NFL attention. Development vs SRS: ${st.r_dev_srs}; recruiting vs SRS: ${st.r_tal_srs}. Stay-home figures use high school signees whose school's state we know; transfer figures use players who signed 2020–2023.</p>`)}</div>`;
+  countUp(app);ticker('tk2',facts());
+  app.querySelectorAll('[data-ax]').forEach(b=>b.onclick=()=>{anX=b.dataset.ax;app.querySelectorAll('[data-ax]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawScatter()});
+  document.getElementById('toconf').onclick=()=>{rkMode='conf'};document.getElementById('toquad').onclick=()=>{rkMode='coaches';coView='lean'};
+  const ro=new ResizeObserver(drawScatter);ro.observe(document.getElementById('afig'));drawScatter();
+}
+function stayhome(){const is=D.instate;const hp=Math.round(100*is.all[0]/is.all[1]);
+  app.innerHTML=`<div class="page">  <section><h1>Stay home or leave?</h1><p class="lede">Where high school players sign, and what happens when they transfer.</p>
+  <div class="stats"><div><div class="d"><span data-n="${hp}">${hp}</span>%</div><p>of high school signees pick a school in their home state</p></div>
+  <div><div class="d"><span data-n="${Math.round(100*is.ins_tr/is.ins)}">${Math.round(100*is.ins_tr/is.ins)}</span>%</div><p>of players who stayed home (signed 2020–23) later transferred</p></div>
+  <div><div class="d"><span data-n="${Math.round(100*is.leave/is.ins_tr)}">${Math.round(100*is.leave/is.ins_tr)}</span>%</div><p>of those transfers left their home state</p></div>
+  <div><div class="d"><span data-n="${Math.round(100*is.come/is.outs_tr)}">${Math.round(100*is.come/is.outs_tr)}</span>%</div><p>of players who left home and then transferred came back home</p></div></div>
+  <div class="plain">Does staying home help? Not really. Players who signed in their home state reached the NFL draft at ${is.dr_in[2]}× expectations, and those who left at ${is.dr_out[2]}×: about the same.</div>
+  <div class="mapwrap"><div><div class="map" id="hmap"><p class="empty">Drawing the map…</p></div><div class="legend" id="hleg"></div></div><div class="panel" id="hp"><h3>Tap a state</h3><p class="small">Share of its high school signees who stayed in state. Darker = more players stay home.</p><p style="margin-top:12px">Keep the most talent home (300+ signees):</p><ol>${Object.entries(is.home).filter(([k,v])=>v[1]>=300&&ST[k]).sort((a,b)=>b[1][0]/b[1][1]-a[1][0]/a[1][1]).slice(0,5).map(([k,v])=>`<li><b>${ST[k]}</b> · ${Math.round(100*v[0]/v[1])}%</li>`).join('')}</ol></div></div></section>
+</div>`;countUp(app);
+  (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(homeMap).catch(()=>{})}
+function homeMap(){const el=document.getElementById('hmap');if(!el)return;const H=D.instate.home;
+  const bins=[[0,.25,'#E9DFC9',0],[.25,.4,'#B5C5DF',0],[.4,.55,'#7C97C3',1],[.55,.7,'#41629A',1],[.7,1.01,'#14213D',1]];
+  const col=k=>{const v=H[k];if(!v)return ['#F4F1EA',0];const r=v[0]/v[1];const b=bins.find(x=>r>=x[0]&&r<x[1]);return [b[2],b[3]]};
+  el.innerHTML=`<svg viewBox="0 0 975 610" role="img" aria-label="Map: share of each state's signees who stay home">${Object.entries(MAP).map(([k,[d]],i)=>`<path d="${d}" data-s="${k}" style="--i:${i};fill:${col(k)[0]}" tabindex="0"><title>${ST[k]||k}</title></path>`).join('')}${Object.entries(MAP).filter(([k])=>H[k]&&H[k][1]>=400).map(([k,[,c]])=>`<text x="${c[0]}" y="${c[1]+4}" style="fill:${col(k)[1]?'#F6F3EC':'#14213D'}">${k}</text>`).join('')}</svg>`;
+  document.getElementById('hleg').innerHTML=[['#E9DFC9','under 25%'],['#B5C5DF','25–40%'],['#7C97C3','40–55%'],['#41629A','55–70%'],['#14213D','70%+'],['#F4F1EA','no FBS data']].map(([c,l])=>`<span class="lg"><b style="background:${c}"></b>${l}</span>`).join('');
+  el.querySelectorAll('path').forEach(p=>{const pick=()=>{el.querySelectorAll('path').forEach(x=>x.classList.toggle('sel',x===p));const k=p.dataset.s,v=H[k];document.getElementById('hp').innerHTML=v?`<div class="small">${ST[k]||k}</div><div class="big">${Math.round(100*v[0]/v[1])}%</div><p class="small">of ${v[1].toLocaleString()} high school signees since 2008 signed with a school in ${ST[k]||k}.</p>`:`<h3>${ST[k]||k}</h3><p class="small">Too few signees or no FBS school here.</p>`};p.onclick=pick;p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}})}
+function drawScatter(){
+  const s=document.getElementById('asvg');if(!s)return;const W=s.clientWidth,H=s.clientHeight;if(!W)return;
+  const A=D.ana,xi=anX==='dev'?1:2,st=D.stats;const m={l:46,r:14,t:14,b:42};
+  const xs=A.map(a=>a[xi]),ys=A.map(a=>a[3]);const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  const X=v=>m.l+(v-x0)/(x1-x0)*(W-m.l-m.r),Y=v=>H-m.b-(v-y0)/(y1-y0)*(H-m.t-m.b);
+  const lab=new Set(A.slice().sort((a,b)=>b[xi]-a[xi]).slice(0,4).map(a=>a[0]).concat(A.slice().sort((a,b)=>b[3]-a[3]).slice(0,3).map(a=>a[0])));
+  const small=W<520;
+  document.getElementById('atake').innerHTML=anX==='dev'?`Dots to the right got more out of their players than expected, and they mostly sit higher: they won more.`:`Programs that sign better recruits (to the right) also win more. Recruiting and development together explain about ${Math.round(st.r2_both*10)} in 10 of the differences in winning.`;
+  const ticks=[0,.25,.5,.75,1].map(t=>y0+t*(y1-y0));
+  s.innerHTML=`${ticks.map(t=>`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--line)"/><text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end" font-size="12" fill="var(--pen)">${Math.round(t*100)}%</text>`).join('')}
+  ${anX==='dev'?`<line x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--pen)" stroke-dasharray="4 4"/>`:''}
+  <text x="${(W+m.l)/2}" y="${H-8}" text-anchor="middle" font-size="13" fill="var(--pen)">${anX==='dev'?'← develops worse than expected · develops better →':'← weaker recruiting · stronger recruiting →'}</text>
+  <text x="14" y="${m.t+4}" font-size="13" fill="var(--pen)" transform="rotate(-90 14 ${m.t+4})" text-anchor="end">Win %</text>
+  ${A.map((a,i)=>`<circle class="dot" style="animation-delay:${i*8}ms" cx="${X(a[xi])}" cy="${Y(a[3])}" r="${small?4:5.5}" fill="${a[1]>=0?'var(--ink)':'var(--red)'}" fill-opacity=".78" stroke="var(--bg)" data-i="${i}" style="cursor:pointer"><title>${esc(a[0])}</title></circle>`).join('')}
+  ${small?'':A.filter(a=>lab.has(a[0])).map(a=>{const x=X(a[xi]),r=x>W-120;return `<text x="${x+(r?-9:9)}" y="${Y(a[3])+4}" font-size="12" fill="var(--ink)" text-anchor="${r?'end':'start'}" style="paint-order:stroke;stroke:var(--bg);stroke-width:3px">${esc(a[0])}</text>`}).join('')}`;
+  s.querySelectorAll('circle').forEach(c=>c.onclick=()=>{const a=A[+c.dataset.i];document.getElementById('ainfo').innerHTML=`<b>${esc(a[0])}</b> (${esc(a[5]||'')}) · win % ${(a[3]*100).toFixed(1)} · development ${f0(a[1])} per class · recruiting talent ${a[2]} expected points per class`})}
+
+
+/* ---------- NFL ---------- */
+let NFLD=null,nfSort='ov',nfQ='',nfAll=false;
+function nfl(){
+  app.innerHTML=`<div class="page"><section><h1>Getting drafted isn't the finish line</h1><p class="lede">A draft pick shows NFL teams believed in a player. What happened next shows whether they were right. Which schools' players outlast and outplay where they were picked?</p><div id="nz"><p class="empty">Loading NFL careers…</p></div></section><div id="nn"></div></div>`;
+  (NFLD?Promise.resolve():fetch('nfl.json').then(r=>r.json()).then(j=>{NFLD=j})).then(drawNFL).catch(()=>{document.getElementById('nz').innerHTML='<p class="empty">NFL data did not load. Refresh to try again.</p>'})}
+function drawNFL(){
+  const N=NFLD,z=document.getElementById('nz');if(!z)return;
+  z.innerHTML=`<div class="stats"><div><div class="d">${N.avgsea}</div><p>seasons: the average NFL career of a player drafted 2010–2016</p></div><div><div class="d">${N.rnd[1][0]} vs ${N.rnd[7][0]}</div><p>average seasons for first-round vs seventh-round picks</p></div><div><div class="d">${N.pb}%</div><p>of picks made at least one Pro Bowl</p></div></div>
+  <div class="plain"><b>Do some schools make players look better than they are?</b> We checked. If big programs inflated their players, those players would play worse in the NFL than their draft slot predicts. They don't: there is <b>${strength(Math.abs(N.r))} link</b> between how well a school develops players and how its players do against their draft slot<span class="adv"> (correlation ${N.r})</span>. NFL teams mostly get what they pay for.</div>
+  <h2 style="margin-top:26px">How long careers last, by round</h2><p class="small">Players drafted 2010–2016, so most careers are complete.</p>
+  <div style="margin-top:10px">${Object.entries(N.rnd).map(([r,v])=>`<div class="meter" style="grid-template-columns:5em minmax(0,1fr) 9em"><span>Round ${r}</span><i style="height:16px;width:${v[0]/10*100}%"></i><span>${v[0]} seasons · ${v[1]}% 5+</span></div>`).join('')}</div>
+  <h2 style="margin-top:30px">Which schools' players beat their draft slot?</h2><p class="lede">Schools with 20+ picks since 2010. "Beat their slot" compares each player's NFL career value with players picked around the same spot in the same draft.</p>
+  <div class="ctrl"><label>Find a school<input type="search" id="nq" placeholder="LSU" value="${esc(nfQ)}"></label></div>
+  <div class="bigseg" role="group" aria-label="Sort">${[['ov','Beat their draft slot'],['sea','Longest careers'],['pb','Most Pro Bowls'],['act','Most still playing']].map(([k,l])=>`<button data-ns="${k}" aria-pressed="${nfSort===k}">${l}</button>`).join('')}</div>
+  <div class="list" id="nl" style="margin-top:14px"></div><div id="nm"></div>
+  <h2 style="margin-top:30px">Longest NFL careers since 2010</h2><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Games</th><th>Pro Bowls</th></tr>${N.lng.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[5]}</td><td>${x[6]}</td><td>${x[7]}</td></tr>`).join('')}</table></div>
+  <h2 style="margin-top:30px">Biggest steals since 2010</h2><p class="small">Players whose NFL careers beat their draft slot by the most.</p><div class="scroll" style="margin-top:10px"><table><tr><th class="l">Player</th><th class="l">School</th><th>Drafted</th><th>Pick</th><th>Value over slot</th><th>Pro Bowls</th></tr>${N.steals.map(x=>`<tr><td><b>${esc(x[0])}</b> <span class="small">${esc(x[4])}</span></td><td class="l">${esc(x[3])}</td><td>${x[1]}</td><td>#${x[2]}</td><td class="pos">${f0(x[5])}</td><td>${x[6]}</td></tr>`).join('')}</table></div>`;
+  document.getElementById('nn').innerHTML=notes(`<p>NFL career data from Pro Football Reference via the nflverse project, linked to every pick since 2010. "Career value" is Pro Football Reference's Approximate Value, a single number for how much a player contributed each season. Value over slot = a player's career value minus the average of players picked within 16 spots of him in the same draft, so recent picks are only compared with other recent picks. Career length uses drafts 2010–2016. "Still playing" means he appeared in 2026.</p>`);
+  countUp(z);
+  document.getElementById('nq').oninput=e=>{nfQ=e.target.value;drawNL()};
+  app.querySelectorAll('[data-ns]').forEach(b=>b.onclick=()=>{nfSort=b.dataset.ns;app.querySelectorAll('[data-ns]').forEach(x=>x.setAttribute('aria-pressed',x===b));nfAll=false;drawNL()});drawNL()}
+function drawNL(){
+  const N=NFLD,q=nfQ.trim().toLowerCase();const all=N.sch.filter(s=>s.nv>=20&&s.sea!=null).map(s=>({s,v:nfSort==='ov'?s.ov:nfSort==='sea'?s.sea:nfSort==='pb'?s.pb:s.act})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
+  const rows=q?all.filter(r=>r.s.k.toLowerCase().includes(q)):(nfAll?all:all.slice(0,15));
+  const fmt=v=>nfSort==='ov'?f1(v):nfSort==='sea'?v.toFixed(1):String(v);
+  rowsList(document.getElementById('nl'),rows.map(r=>({key:r.s.k,v:r.v,rk:r.rk,sub:`${r.s.n} picks · ${r.s.sea} seasons on average · ${r.s.pb} Pro Bowls`})),fmt,0,k=>{const s=N.sch.find(x=>x.k===k);
+    return `<div class="sheet"><p class="plain simp" style="margin-top:0">${esc(s.k)} players drafted 2010–2016 lasted <b>${s.sea} seasons</b> on average, and <b>${s.s5}%</b> lasted five or more. Compared with players picked at the same spots, they ${s.ov>=0?'did <b>better</b>':'did <b>worse</b>'} than expected.</p>
+    ${cellsHTML([['Picks since 2010',s.n],['Avg. seasons',s.sea],['5+ seasons',s.s5+'%'],['Value over slot',f1(s.ov)],['Pro Bowls',s.pb],['All-Pros',s.ap],['Still playing',s.act]])}
+    <h3 style="margin-top:14px">Best NFL careers</h3><div class="scroll"><table><tr><th class="l">Player</th><th>Drafted</th><th>Pick</th><th>Seasons</th><th>Games</th><th>Pro Bowls</th></tr>${s.top.map(x=>`<tr><td class="l"><b>${esc(x[0])}</b> <span class="small">${esc(x[3])}</span></td><td>${x[1]}</td><td>#${x[2]}</td><td>${x[4]}</td><td>${x[5]}</td><td>${x[6]}</td></tr>`).join('')}</table></div>
+    <div class="two"><div class="c"><h3>Steals</h3><ol>${s.steal.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="pos">${f0(x[4])}</span></li>`).join('')}</ol></div><div class="c bad"><h3>Fell short of their slot</h3><ol>${s.bust.map(x=>`<li><b>${esc(x[0])}</b> · ${x[1]} pick #${x[2]} · <span class="neg">${f0(x[4])}</span></li>`).join('')}</ol></div></div></div>`});
+  document.getElementById('nm').innerHTML=!q&&!nfAll&&all.length>15?`<button class="bigbtn" id="nall">Show all ${all.length} schools</button>`:'';
+  const na=document.getElementById('nall');if(na)na.onclick=()=>{nfAll=true;drawNL()}}
+
+/* ---------- ROUTER ---------- */
+const routes={home,find,rankings,players,transfers,predictions,nfl,analytics,stayhome,about,contact,methods};
+const ALIAS={finder:'find',programs:'rankings',coaches:'rankings','war-room':'rankings','board-tags':'players','vetting-sheet':'methods'};
+function go(){document.getElementById('teambar').hidden=true;let r=(location.hash||'#home').slice(1);if(ALIAS[r]){if(r==='coaches')rkMode='coaches';r=ALIAS[r]}const f=routes[r]||home;stopTour();setNav(routes[r]?r:'home');f();subnav(routes[r]?r:'home');if(go.ran)window.scrollTo(0,0);go.ran=1;if(window._after){const a=window._after;window._after=null;a()}}
+app.addEventListener('click',e=>{const a=e.target.closest('a[data-coach]');if(a){e.preventDefault();rkMode='coaches';coQ='';coAct=false;const k=a.dataset.coach;goTo('rankings',()=>openRow(k))}});
+
+/* ---------- ROLE SUGGESTIONS ---------- */
+const RECS={recruit:['Recruits and families',[['find','','Find a program for players like you','Every player with your position, stars and home state: where he went and how it turned out.'],['predictions','','What if I sign here?','Your draft and transfer odds at every school, side by side.'],['transfers','','Stay or go?','How staying or transferring has worked out, school by school.']]],
+ fan:['Fans',[['rankings','programs','Who is hot, who is sinking','Every program ranked, plus the risers and sinking ships of the last 5 years.'],['players','','Look up any player','Every signee since 2008: where he signed, where he ended up, and his draft result.'],['nfl','','NFL careers by school','Whose players last longest and beat their draft slot.']]],
+ coach:['Coaches and staff',[['rankings','lean','Portal or high school?','How every 2026 head coach builds his roster, and how well each approach develops.'],['rankings','position','Who develops each position best','Leaderboards by position and star rating.'],['analytics','','Does development win?','How development and recruiting connect to winning.']]]};
+function roleBox(r,scroll){const el=document.getElementById('rolebox');if(!el)return;if(!r||!RECS[r]){el.innerHTML='';return}const [t,list]=RECS[r];
+  el.innerHTML=`<div class="recs"><h2>Start here: picked for ${t.toLowerCase()}</h2><div class="ways">${list.map(([h,sub,ti,tx])=>`<a class="way" href="#${h}" data-sub="${sub}"><h3>${ti}</h3><p>${tx}</p><span class="go">Go →</span></a>`).join('')}</div></div>`;
+  el.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='programs'){rkMode='programs'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}});
+  if(scroll)el.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})}
+/* ---------- TICKER ---------- */
+let tickT=null;
+function ticker(id,facts){clearInterval(tickT);const el=document.getElementById(id);if(!el)return;let i=0;const tx=el.querySelector('.tx');tx.innerHTML=facts[0];if(RM||facts.length<2)return;
+  tickT=setInterval(()=>{if(!document.getElementById(id)){clearInterval(tickT);return}tx.classList.add('out');setTimeout(()=>{i=(i+1)%facts.length;tx.innerHTML=facts[i];tx.classList.remove('out')},400)},5200)}
+function facts(){const m=D.meta,st=D.stats,is=D.instate,sr=m.sr;const tp=D.progs.slice().sort((a,b)=>b.r5-a.r5)[0];
+  return [`Only <b>${(+sr[3][1]).toFixed(1)}%</b> of 3-star high school signees get drafted. For 5-stars it's <b>${sr[5][1]}%</b>.`,
+  `<b>${Math.round(100*is.all[0]/is.all[1])}%</b> of high school signees pick a school in their home state.`,
+  `About <b>${Math.round(m.psh)} in 100</b> recent signees have entered the transfer portal.`,
+  `<b>${esc(tp.name)}</b> has been the hottest developer over the last 5 years.`,
+  `Programs that develop well also tend to win more. Recruiting alone explains about <b>${Math.round(st.r2_tal*10)} in 10</b> of the gaps in winning; add development and it's about <b>${Math.round(st.r2_both*10)} in 10</b>.`,
+  `Of players who signed far from home and later transferred, <b>${Math.round(100*is.come/is.outs_tr)}%</b> came back to a school in their home state.`]}
+/* ---------- TEAM BANNER ---------- */
+function teamBar(){const open=[...document.querySelectorAll('#rz details.row[open]')];const tb=document.getElementById('teambar');
+  if(!open.length){tb.hidden=true;return}const d=open[open.length-1],r=d.getBoundingClientRect();
+  const sum=d.querySelector('summary').getBoundingClientRect();
+  if(r.bottom>120&&sum.bottom<0){tb.hidden=false;document.getElementById('tbn').textContent=d.dataset.k;document.getElementById('tbk').textContent=rkMode==='coaches'?'coach report card':rkMode==='conf'?'conference':'report card'}else tb.hidden=true}
+addEventListener('scroll',teamBar,{passive:true});document.addEventListener('toggle',teamBar,true);
+document.getElementById('tbc').onclick=()=>{const o=[...document.querySelectorAll('#rz details.row[open]')].pop();if(o){o.open=false;o.scrollIntoView({block:'center'})}teamBar()};
+/* ---------- DETAIL MODE ---------- */
+function effTheme(){const t=document.documentElement.dataset.vt;return t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function paintThm(){const d=effTheme()==='dark';document.getElementById('thmi').textContent=d?'☀':'☾';document.getElementById('thml').textContent=d?'Light':'Dark'}
+{const t=LS2.get('vc_theme');if(t)document.documentElement.dataset.vt=t;paintThm()}
+document.getElementById('thm').onclick=()=>{const n=effTheme()==='dark'?'light':'dark';document.documentElement.dataset.vt=n;LS2.set('vc_theme',n);paintThm();if(location.hash==='#home'||!location.hash)drawMap&&drawMap()};
+/* ---------- WELCOME QUESTION ---------- */
+
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let secs=+(LS.get('vc_secs')||0);
+setInterval(()=>{if(document.visibilityState!=='visible')return;secs+=15;LS.set('vc_secs',secs);if(secs>=300&&!LS.get('vc_asked'))showAsk(false)},15000);
+function showAsk(preview){
+  if(document.querySelector('.ask'))return;if(!preview&&LS.get('vc_asked'))return;if(!preview)LS.set('vc_asked','shown');
+  const el=document.createElement('div');el.className='ask';
+  el.innerHTML=`<div class="box" role="dialog" aria-modal="true" aria-labelledby="askh"><svg width="40" height="40" aria-hidden="true"><use href="#mark"/></svg><h2 id="askh" style="margin-top:6px">Quick question: who are you?</h2><p style="color:var(--pen);margin:8px 0 0">It helps us build Vetted CFB for the people using it. One tap, asked once.</p><div class="opts"><button data-r="coach">Coach or staff</button><button data-r="recruit">Recruit or family</button><button data-r="fan">Fan</button></div><button class="skip" data-r="skip">Skip</button></div>`;
+  document.body.appendChild(el);el.querySelector('.opts button').focus();
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(!b)return;const r=b.dataset.r;if(!preview){LS.set('vc_asked',r);if(r!=='skip')LS2.set('vc_role',r)}saveRole(r,preview);el.querySelector('.box').innerHTML=`<h2>${r==='skip'?'No problem':'Thanks'}</h2><p style="color:var(--pen)">${r==='skip'?'We won\'t ask again.':'Enjoy the site.'}</p>`;setTimeout(()=>el.remove(),1400)});
+  el.addEventListener('keydown',e=>{if(e.key==='Escape')el.remove()})}
+async function saveRole(role,preview){if(role==='skip')return;const c=await getDB();if(!c)return;try{await c.db.collection('audience').doc(c.id).set({role,at:Date.now(),mins:Math.round(secs/60),preview:!!preview})}catch(e){}}
+document.getElementById('prev').onclick=()=>showAsk(true);
+
+addEventListener('hashchange',go);
+fetch('data.json').then(r=>r.json()).then(j=>{D=j;go()}).catch(()=>{app.innerHTML='<p class="empty">The data file did not load. Refresh to try again.</p>'});
+}
+</script></body></html>
