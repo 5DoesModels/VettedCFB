@@ -361,20 +361,24 @@ def liftv(c):
         if len(others)>=3: d.append(k[3]-sum(others)/len(others))
     return sum(d)/len(d) if d else None
 def winv(c): return c['w']/(c['w']+c['l']) if c['w']+c['l']>=24 else None
+def mysg(c): return [r for r in P if 2020<=r['year']<=2024 and any(k[0]==r['year'] and k[1]==r['committedTo'] for k in c['cls'])]
 def retv(c):
-    sg=[r for r in P if 2020<=r['year']<=2024 and any(k[0]==r['year'] and k[1]==r['committedTo'] for k in c['cls'])]
-    return 100-100*sum(1 for r in sg if mvd_(r))/len(sg) if len(sg)>=20 else None
+    # players who left: did they beat expectations elsewhere? (lower = his calls look right)
+    mine={x['school'] for x in CAREER.get(c['name'],[])}
+    gone=[r for r in mysg(c) if mvd_(r) and r['exp'] is not None and r['year']<=2023 and not any(m[1] in mine for m in r['mv'] if m[1]!=r['committedTo'])]
+    return (sum(r['pts'] for r in gone)+5)/(sum(r['exp'] for r in gone)+5) if len(gone)>=8 else None
 def portv(c): return c['pl'][3]/c['pl'][4] if c.get('pl') and c['pl'][2]>=10 and c['pl'][4]>=8 else None
-CATS=[('dev','Development',devv,.35),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Keeping players',retv,.075),('port','Developing transfers',portv,.075)]
+CATS=[('dev','Development',devv,.35),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Players who left',retv,.075),('port','Developing transfers',portv,.075)]
+LOWBETTER={'ret'}
 vals={k:POOL(f) for k,_,f,_ in CATS}
 for c in coaches:
     g={};ps=[];ws=0
     for k,lab,f,w in CATS:
-        v=f(c); p=pctile(vals[k],v)
+        v=f(c); p=pctile(vals[k],v,hi=k not in LOWBETTER)
         g[k]=None if p is None else [letter(p),round(p),round(v,3) if isinstance(v,float) else v]
         if p is not None: ps.append(p*w); ws+=w
     g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
-    c['g']=g
+    c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
 # programs: development grade from per-year score
 pv=[(p['a'][3]-p['a'][4])/NCL for p in progs]
 for p in progs:

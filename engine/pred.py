@@ -81,6 +81,20 @@ for r in cur:
     mv=moved(r); t0=pt0(r['stars'] or 0,r['pg']); ft=ftt(r['committedTo'],'hi' if (r['stars'] or 0)>=4 else 'lo')
     t=1.0 if mv else cap(t0*ft)
     rows.append([r['name'],r['year'],GL.index(r['pg']),r['stars'] or 0,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],last(r),round(d,4),round(pd(r),4),round(t,3),1 if mv else 0,[[m[0],m[1]] for m in r['mv']],k,round(nxt,4),round(t0,3),round(ft,3)])
+# --- 2027 committed recruits (not signed yet)
+POS={'PRO':'QB','DUAL':'QB','QB':'QB','RB':'RB','APB':'RB','FB':'RB','WR':'WR','TE':'TE','OT':'OL','OG':'OL','OC':'OL','IOL':'OL','DT':'DL','DL':'DL','SDE':'EDGE','WDE':'EDGE','EDGE':'EDGE','ILB':'LB','OLB':'LB','LB':'LB','CB':'DB','S':'DB','ATH':'ATH','K':'ST','P':'ST','LS':'ST'}
+import os as _os
+R27p='/root/cfbd_pull/r2027.json'
+n27=0
+if _os.path.exists(R27p):
+    for x in json.load(open(R27p)):
+        if not x.get('committedTo'): continue
+        r=dict(name=x['name'],year=2027,recruitType='HighSchool',stars=x.get('stars'),rating=x.get('rating'),position=x.get('position'),committedTo=x['committedTo'],stateProvince=x.get('stateProvince'),city=x.get('city'),mv=[])
+        r['pg']=POS.get(r['position'],'ATH')
+        st=r['stars'] or 0; f=fdp(r['committedTo'],r['pg']); full=cap(pd(r)*f)
+        t0=pt0(st,r['pg']); ft=ftt(r['committedTo'],'hi' if st>=4 else 'lo')
+        rows.append([r['name'],2027,GL.index(r['pg']) if r['pg'] in GL else 9,st,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],r['committedTo'],round(full,4),round(pd(r),4),round(cap(t0*ft),3),0,[],0,0.0,round(t0,3),round(ft,3)]); n27+=1
+print('2027 commits scored',n27)
 # calculator tables: by stars x position, average base rates for HS signees in mature classes (rating varies within stars)
 calc={}
 for s in (0,2,3,4,5):
