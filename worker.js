@@ -61,7 +61,7 @@ async function inbox(req, env) {
   const page = (body, status = 200) => new Response(`<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vetted CFB inbox</title><style>body{font:16px/1.5 system-ui,sans-serif;max-width:900px;margin:24px auto;padding:0 16px;color:#14213D;background:#F6F3EC}h1,h2{font-family:Oswald,system-ui}table{border-collapse:collapse;width:100%;background:#fff}td,th{border:1px solid #DDD7C8;padding:6px 8px;text-align:left;vertical-align:top}th{background:#14213D;color:#fff}.m{white-space:pre-wrap}</style>${body}`,
     { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
   if (!env.INBOX_KEY || !env.DB) return page('<h1>Inbox not set up yet</h1><p>Add the D1 database binding (DB) and the INBOX_KEY secret in Cloudflare.</p>', 503);
-  if (key.length < 12 || key !== env.INBOX_KEY) return page('<h1>Not allowed</h1>', 401);
+  if (key.length < 10 || key !== env.INBOX_KEY) return page('<h1>Not allowed</h1>', 401);
   await ensureTables(env.DB);
   const roles = (await env.DB.prepare('SELECT role, src, COUNT(*) AS n FROM roles GROUP BY role, src ORDER BY n DESC').all()).results;
   const days = (await env.DB.prepare("SELECT date(at) AS d, role, COUNT(*) AS n FROM roles WHERE at > datetime('now','-30 day') GROUP BY d, role ORDER BY d DESC").all()).results;

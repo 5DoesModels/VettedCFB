@@ -8,6 +8,10 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
     "run_worker_first": ["/api/*", "/inbox"]
-  }
-  // After creating the D1 database in Cloudflare, a "d1_databases" entry with its ID goes here (binding name: DB).
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "vettedcfb", "database_id": "ca2ab27e-3537-4bb4-9d2c-870789e983db" }
+  ],
+  // INBOX_KEY is a secret set in the Cloudflare dashboard (Settings → Variables and Secrets). Never put it in this file.
+  "keep_vars": true
 }
