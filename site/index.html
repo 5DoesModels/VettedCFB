@@ -259,7 +259,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 <div id="teambar" hidden><div class="wrap tb"><span>You're viewing</span><b id="tbn"></b><span class="tbk" id="tbk">report card</span><button id="tbc" type="button">Close ✕</button></div></div>
 <main class="wrap" id="app"><p class="empty">Loading the board…</p></main>
 <footer><div class="wrap"><div class="links"><a href="#about">About</a><a href="#contact">Contact</a><a href="#methods">Methods</a><button type="button" id="prev">Preview the welcome question</button></div>
-<div>Vetted CFB · Independent; not affiliated with any school, conference or the NCAA. Recruiting data from the College Football Data API (247Sports composite). No team logos, mascots or player photos. Findings are early and will change as the model is tuned.</div></div></footer>
+<div>Vetted CFB · Independent; not affiliated with any school, conference or the NCAA. Recruiting ratings: 247Sports Composite (a blend of 247Sports, Rivals, ESPN and, for recent classes, On3), via the College Football Data API. <a href="https://x.com/Prod5CFB">Follow @Prod5CFB on X</a>. No team logos, mascots or player photos. Findings are early and will change as the model is tuned.</div></div></footer>
 <script>
 {
 const app=document.getElementById('app');
@@ -334,7 +334,7 @@ function home(){
   app.innerHTML=`<div class="page home"><section class="hero"><div><h1>Who really develops college football players?</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. We track what happens next.</p><p class="hsub">We compare NFL Draft outcomes with what players of similar recruiting ratings and positions typically achieve.</p>
   <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div>
-  <a class="evbtn" href="#everything">Explore the Vetted CFB research library <span>Every page, one place →</span></a><p class="dver">Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Methodology v1</p></div>
+  <a class="evbtn" href="#everything">Explore the Vetted CFB research library <span>Every page, one place →</span></a><p class="dver">Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1</p></div>
   <div class="wall" aria-label="Moving board of player cards"><div class="col"><div class="set">${wt}</div><div class="set" aria-hidden="true">${wt}</div></div></div></section>
   <section class="band"><h2>Who are you?</h2><p class="lede">Pick one and we'll show you where to start. Totally optional.</p><div class="rolepick" ><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></section>
   <section class="hstats"><h2>By the numbers</h2><div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal moves</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
@@ -350,7 +350,7 @@ function home(){
   <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About Vetted CFB</a></p></section></div>`;
   countUp(app);ticker('tk1',facts());roleHL(LS2.get('vc_role'),false);
   app.querySelectorAll('.dir [data-sub]').forEach(a=>a.onclick=()=>subGo(a));
-  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false);app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleHL(r,true)});
+  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false,'home');app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleHL(r,true)});
   app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
   (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
   statePanel(null)}
@@ -416,16 +416,17 @@ function rkPrograms(){
   <div class="two four">${card('Hot right now','Last 5 years',hot,p=>`<span class="pos">${f0(p.r5)}</span>`)}${card('Cold right now','Last 5 years',cold,p=>`<span class="neg">${f0(p.r5)}</span>`,'bad')}
   ${card('Dark-horse risers','Biggest jump lately',rise,p=>`${f0(p.p11)} → <span class="pos">${f0(p.r5)}</span>`)}${card('Sinking ships','Biggest drop lately',sink,p=>`${f0(p.p11)} → <span class="neg">${f0(p.r5)}</span>`,'bad')}</div>`;
   document.getElementById('rz').innerHTML=callouts+`<h2 style="margin-top:28px">Every program</h2><div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Type a school" value="${esc(wrQ)}"></label>
-  <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Points per year</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div>${yrFold('ry',2002,2023,rY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018'],[2002,2020,'Careers finished']])}<div class="list" id="list"></div>`;
-  document.getElementById('rn').innerHTML=notes(`<p>Hot and cold use players who signed 2019–2023; risers and sinking ships compare 2002–2018 with 2019–2023 (risers exclude the current top 15). All ${D.progs.length} FBS programs with 150+ graded players. Points per class = (actual draft points − expected) ÷ ${D.meta.ncl} graded classes; it favours volume. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
+  <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Per FBS season</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div>${yrFold('ry',2002,2023,rY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018'],[2002,2020,'Careers finished']])}<div class="list" id="list"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Hot and cold use players who signed 2019–2023; risers and sinking ships compare 2002–2018 with 2019–2023 (risers exclude the current top 15). All ${D.progs.length} FBS programs with 150+ graded players. Per FBS season = draft points above class-adjusted expectations, counting players from the signing classes when the school played FBS football, divided by that number of FBS seasons (2002–2023). A school that joined FBS in 2017 is compared over its FBS seasons only. Changed Nov. 19, 2026 from dividing every program by all 22 classes, which watered down newer FBS programs' results. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
   const q=document.getElementById('q');q.oninput=()=>{wrQ=q.value;drawProgs()};
   wireYr('ry',r=>{rY=r;yrSum('ry',r,2002,2023);drawProgs()});
   app.querySelectorAll('#rz [data-open]').forEach(b=>b.onclick=()=>{wrQ='';rkAll=true;const k=b.dataset.open;drawProgs();openRow(k)});
   app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{wrSort=b.dataset.s;rkPrograms()});drawProgs()}
 function drawProgs(){
-  const ny=rY[1]-rY[0]+1,val=p=>{const a=sumPy(p.py,rY);return wrSort==='ratio'?(a[4]>0?a[3]/a[4]:0):(a[3]-a[4])/ny};
+  const sumE=(p,[lo,hi])=>{const t=[0,0,0,0,0];let n=0;const E=new Set(p.fy||[]);for(let y=Math.max(lo,2002);y<=Math.min(hi,2023);y++){if(!E.has(y))continue;n++;const r=p.py[y-2002];for(let i=0;i<5;i++)t[i]+=r[i]}return [t,n]};
+  const val=p=>{const [a,n]=sumE(p,rY);return wrSort==='ratio'?(a[4]>0?a[3]/a[4]:0):(n?(a[3]-a[4])/n:0)};
   const fullR=rY[0]===2002&&rY[1]===2023,r5R=rY[0]===2019&&rY[1]===2023;
-  const all=D.progs.filter(p=>sumPy(p.py,rY)[0]>=10).map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
+  const all=D.progs.filter(p=>sumE(p,rY)[0][0]>=10).map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
   const q=wrQ.trim().toLowerCase();
   const sh=all.filter(r=>!q||r.key.toLowerCase().includes(q)),L=q||rkAll?sh:sh.slice(0,25);const el=document.getElementById('list');
   rowsList(el,L,v=>wrSort==='per'?f0(v):v.toFixed(2)+'×',wrSort==='per'?0:1,k=>progSheet(D.progs.find(p=>p.name===k)),all.length);moreBtn(el,L.length,sh.length,drawProgs)}
@@ -677,7 +678,7 @@ function find(){
   if(fType==='juco')return jucoView();
   if(fType==='tr')return trView();
   const states=Object.keys(ST).sort((a,b)=>ST[a].localeCompare(ST[b]));
-  app.innerHTML=`<div class="page"><section>${typeSeg()}<h1>Find a program for players like you</h1><p class="lede">Choose a position, star rating and home state. See which programs got the most out of players like you, and every player who fits.</p>
+  app.innerHTML=`<div class="page"><section>${typeSeg()}<h1>Find a program for players like you</h1><p class="lede">Choose a position, star rating and home state. See which programs got the most out of players like you, and every player who fits. Star ratings are the 247Sports Composite.</p>
   <div class="ctrl"><label>Position<select id="fp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===fP?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Stars<select id="fs">${STAROPT(fS,'Any')}</select></label>
   <label>Home state<select id="fst"><option value="">Any state</option>${states.map(s=>`<option value="${s}"${s===fSt?' selected':''}>${ST[s]}</option>`).join('')}</select></label>
@@ -818,21 +819,24 @@ function about(){
   <h2>Follow along</h2><div class="btns" style="margin-top:8px"><a class="btn" href="https://x.com/Prod5CFB">@Prod5CFB on X</a><a class="btn" href="https://github.com/5DoesModels">GitHub</a><a class="btn solid" href="#contact">Get in touch</a></div></section></div>`}
 function contact(){
   app.innerHTML=`<div class="page"><section class="prose"><h1>Contact</h1><p class="lede">Questions, corrections, a player we linked wrong, or an idea for what to measure next? Send it here.</p>
-  ${!(window.claude&&window.claude.use)?`<div class="plain" style="margin-top:16px"><b>Our contact form is being set up.</b> Until it's ready, message <a href="https://x.com/Prod5CFB">@Prod5CFB</a> on X. We read every message.</div>`:''}<form class="form" id="cf" novalidate ${!(window.claude&&window.claude.use)?'hidden':''}>
+  <form class="form" id="cf" novalidate><div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Leave this empty<input id="cw" tabindex="-1" autocomplete="off"></label></div>
   <label>Your name <span class="small">(optional)</span><input id="cn" autocomplete="name"></label>
   <label>Email, if you'd like a reply <span class="small">(optional)</span><input id="ce" type="email" autocomplete="email" placeholder="name@example.com"><span class="err" id="cee"></span></label>
   <label>I am a<select id="cr"><option value="fan">Fan</option><option value="recruit">Recruit or family</option><option value="coach">Coach or staff</option><option value="media">Media</option><option value="other">Other</option></select></label>
   <label>Message<textarea id="cm" placeholder="Your message"></textarea><span class="err" id="cme"></span></label>
-  <div><button class="btn solid" type="submit">Send message</button></div><p id="cs" aria-live="polite"></p></form>
-  <p style="margin-top:24px">Prefer X? Message <a href="https://x.com/Prod5CFB">@Prod5CFB</a>.</p></section></div>`;
+  <div><button class="btn solid" type="submit">Send message</button></div><p id="cs" aria-live="polite"></p><p class="small">Privacy: we keep your message, and your name, email and role if you give them, in a private database so we can read and reply. We never share them or add you to a mailing list. Ask us to delete your message any time.</p></form>
+  <p style="margin-top:24px">Prefer X? Follow and message <a href="https://x.com/Prod5CFB">@Prod5CFB</a>.</p></section></div>`;const cT0=Date.now();
   const ce=document.getElementById('ce'),cm=document.getElementById('cm');
   ce.oninput=()=>document.getElementById('cee').textContent='';cm.oninput=()=>document.getElementById('cme').textContent='';
   document.getElementById('cf').onsubmit=async e=>{e.preventDefault();let bad=false;
     if(!cm.value.trim()){document.getElementById('cme').textContent='Write a message first.';bad=true}
     if(ce.value.trim()&&!/^\S+@\S+\.\S+$/.test(ce.value.trim())){document.getElementById('cee').textContent='That email doesn\'t look right. Check it or leave it blank.';bad=true}
     if(bad)return;const cs=document.getElementById('cs');cs.textContent='Sending…';
-    const ok=await saveMsg({name:document.getElementById('cn').value.trim().slice(0,100),email:ce.value.trim().slice(0,200),role:document.getElementById('cr').value,msg:cm.value.trim().slice(0,4000)});
-    cs.innerHTML=ok?'<b>Message sent.</b> Thanks for reaching out.':'This preview couldn\'t send your message. Please message <a href="https://x.com/Prod5CFB">@Prod5CFB</a> on X instead.';
+    const m={name:document.getElementById('cn').value.trim().slice(0,100),email:ce.value.trim().slice(0,200),role:document.getElementById('cr').value,msg:cm.value.trim().slice(0,4000),website:document.getElementById('cw').value,t:Date.now()-cT0};
+    let ok=false,why='';try{const r=await fetch('/api/contact',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(m)});const j=await r.json().catch(()=>({}));ok=!!j.ok;why=j.reason||(r.ok?'':'down')}catch(e){why='down'}
+    if(!ok&&why!=='too_fast'&&why!=='email'&&why!=='rate_limited'&&window.claude&&window.claude.use)ok=await saveMsg(m);
+    const X='<a href="https://x.com/Prod5CFB">@Prod5CFB</a>';
+    cs.innerHTML=ok?'<b>Message sent.</b> Thanks for reaching out. We read every message.':why==='too_fast'?'That was quick. Give it a few seconds and press Send again.':why==='email'?'That email doesn\'t look right. Check it or leave it blank.':why==='rate_limited'?'You\'ve sent several messages in the last hour. Please try again later, or message '+X+' on X.':'We couldn\'t send your message right now. Please message '+X+' on X instead.';
     if(ok)document.getElementById('cf').reset()}}
 async function getDB(){try{if(!window.claude||!window.claude.use)return null;const db=await window.claude.use('db');const u=await window.claude.use('user');if(!db||!u)return null;const id=await u.id();return id?{db,id}:null}catch(e){return null}}
 async function saveMsg(m){const c=await getDB();if(!c)return false;try{const ref=c.db.collection('messages').doc(c.id);let items=[];try{const s=await ref.get();const v=s&&(typeof s.data==='function'?s.data():s);if(v&&Array.isArray(v.items))items=v.items}catch(e){}
@@ -842,7 +846,7 @@ function methods(){
   const tbl=(head,rows)=>`<div class="scroll"><table><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td${c===ok?' class="c"':''}>${c}</td>`).join('')}</tr>`).join('')}</table></div>`;
   app.innerHTML=`<div class="page"><section class="vs"><h1>Methods</h1><p class="lede">How every number on Vetted CFB is built and checked, with the limits stated plainly. Methodology version 1 (last-school credit), data as of Nov. 19, 2026.</p><div class="plain" style="margin-top:14px"><b>What the numbers measure.</b> Vetted CFB compares players' NFL Draft outcomes with expectations based on their original recruiting profiles and positions. The results show how a program's players performed relative to those expectations. They don't isolate the causal contribution of an individual school, coach or staff member. We use "development" as the plain-English name for that gap.</div>
   <h4>THE DATA</h4>${tbl(['Source','Years','Detail'],[
-   ['Recruits',`${m.classes[0]}–${m.classes[1]} classes`,`${m.n.toLocaleString()} high school, JUCO and prep signees with a school. Stars and composite rating from 247Sports, via the College Football Data API.`],
+   ['Recruits',`${m.classes[0]}–${m.classes[1]} classes`,`${m.n.toLocaleString()} high school, JUCO and prep signees with a school. Stars and rating from the 247Sports Composite (a blend of the major services), via the College Football Data API.`],
    ['NFL draft',`${m.draft[0]}–${m.draft[1]}`,'Every pick, linked back to the player\'s recruiting profile. NFL careers from Pro Football Reference, 2003 on.'],
    ['Transfer portal',`${m.portal[0]}–${m.portal[1]}`,`${m.pn.toLocaleString()} portal entries; ${m.pl.toLocaleString()} signees linked to at least one move.`],
    ['Head coaches','2005–2026','Head coach and record for every FBS season, including 2026 hires. When a school changed coaches mid-season, the coach who led more games gets the season.'],
@@ -858,6 +862,7 @@ function methods(){
    ['Early years','Before 2010 our data source lists only about half of each signing class (about 10 per program in 2002 vs 24 today). Players it doesn\'t list can\'t be credited when drafted, so coaches and programs from the 2000s are probably graded too low. Coaches with mostly pre-2010 players are marked "thin early data."',ok],
    ['Transfers','A player who transferred counts for his last school, even if he developed at his first one (Jordan Addison: Pitt, then USC). We can\'t split credit by years at each school, so read transfers\' numbers with a grain of salt.',ok],
    ['Careers cut short','Players who passed away during their college careers (Kyren Lacy, Devin Willock and others), and a few whose careers ended in an off-field legal case, are left out of every grade. A school or coach is never marked down for a tragedy. 50 players so far; <a href="#contact">tell us</a> if we missed one.',ok]])}
+  <div class="plain" style="margin:14px 0"><b>Where the recruiting rankings come from.</b> Every star rating and recruiting rating on Vetted CFB is the <b>247Sports Composite</b>: 247Sports' blend of the major recruiting services' ratings (247Sports, Rivals and ESPN, plus On3 for recent classes). We don't use any single service's own rankings, and we don't mix sources.</div>
   <h4>VETTED CFB DRAFT POINTS</h4><p class="small">Our own scale, not an official NFL draft-value chart. We tested two alternatives (a smooth pick-by-pick curve and a simpler round-based scale) and rebuilt every expectation under each: program rankings barely moved (rank correlation 0.97–0.98; 9–10 of the top 10 unchanged).</p>${tbl(['Outcome','Points'],[['Top-10 pick',100],['Rest of round one',60],['Round two',35],['Round three',20],['Rounds four–five',10],['Rounds six–seven',5],['Undrafted',0]])}
   <h4>EXPECTED POINTS</h4>${tbl(['Step','Detail'],[
    ['1. Group similar recruits','By recruit type (high school or other), stars and composite rating in thirtieth-point slices. All 5-stars share one group. Built only from complete classes.'],
@@ -1341,7 +1346,7 @@ function showAsk(preview){
   document.body.appendChild(el);el.querySelector('.opts button').focus();
   el.addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(!b)return;const r=b.dataset.r;if(!preview){LS.set('vc_asked',r);if(r!=='skip')LS2.set('vc_role',r)}saveRole(r,preview);el.querySelector('.box').innerHTML=`<h2>${r==='skip'?'No problem':'Thanks'}</h2><p style="color:var(--pen)">${r==='skip'?'We won\'t ask again.':'Enjoy the site.'}</p>`;setTimeout(()=>el.remove(),1400)});
   el.addEventListener('keydown',e=>{if(e.key==='Escape')el.remove()})}
-async function saveRole(role,preview){if(role==='skip')return;const c=await getDB();if(!c)return;try{await c.db.collection('audience').doc(c.id).set({role,at:Date.now(),mins:Math.round(secs/60),preview:!!preview})}catch(e){}}
+async function saveRole(role,preview,src){if(!preview){try{fetch('/api/role',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({role,src:src||'popup'}),keepalive:true}).catch(()=>{})}catch(e){}}if(role==='skip')return;const c=await getDB();if(!c)return;try{await c.db.collection('audience').doc(c.id).set({role,at:Date.now(),mins:Math.round(secs/60),preview:!!preview})}catch(e){}}
 document.getElementById('prev').onclick=()=>showAsk(true);
 
 addEventListener('hashchange',go);

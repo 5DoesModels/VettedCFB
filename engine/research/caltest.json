@@ -1,0 +1,247 @@
+{
+ "cal_before": {
+  "5-star top third": [
+   188,
+   1.38
+  ],
+  "5-star middle third": [
+   188,
+   0.93
+  ],
+  "5-star bottom third": [
+   189,
+   0.68
+  ],
+  "Prep school": [
+   150,
+   2.97
+  ],
+  "JUCO": [
+   5279,
+   0.97
+  ],
+  "High school": [
+   36122,
+   1.01
+  ]
+ },
+ "cal_after": {
+  "5-star top third": [
+   188,
+   1.14
+  ],
+  "5-star middle third": [
+   188,
+   0.97
+  ],
+  "5-star bottom third": [
+   189,
+   0.82
+  ],
+  "Prep school": [
+   150,
+   2.34
+  ],
+  "JUCO": [
+   5279,
+   1.05
+  ],
+  "High school": [
+   36122,
+   1.0
+  ]
+ },
+ "rho": 0.9988,
+ "top10": 10,
+ "top25": 25,
+ "grade_changes": 8,
+ "letter_changes": 2,
+ "movers": [
+  [
+   "Florida State",
+   74,
+   86,
+   "C-",
+   "D+"
+  ],
+  [
+   "USC",
+   35,
+   42,
+   "B",
+   "B-"
+  ],
+  [
+   "Ole Miss",
+   50,
+   45,
+   "C+",
+   "C+"
+  ],
+  [
+   "Troy",
+   83,
+   79,
+   "D+",
+   "C-"
+  ],
+  [
+   "Oregon State",
+   40,
+   37,
+   "B-",
+   "B-"
+  ],
+  [
+   "Wake Forest",
+   45,
+   48,
+   "C+",
+   "C+"
+  ],
+  [
+   "Oklahoma State",
+   49,
+   46,
+   "C+",
+   "C+"
+  ],
+  [
+   "Arizona State",
+   65,
+   62,
+   "C",
+   "C"
+  ],
+  [
+   "Tennessee",
+   68,
+   65,
+   "C",
+   "C"
+  ],
+  [
+   "Miami",
+   71,
+   74,
+   "C-",
+   "C-"
+  ],
+  [
+   "Tulane",
+   79,
+   82,
+   "C-",
+   "C-"
+  ],
+  [
+   "Nevada",
+   80,
+   77,
+   "C-",
+   "C-"
+  ]
+ ],
+ "players_moved_5plus": 59,
+ "examples_down": [
+  [
+   [
+    "Greg Olsen",
+    2003,
+    "Miami"
+   ],
+   -7.8
+  ],
+  [
+   [
+    "Prescott Burgess",
+    2003,
+    "Michigan"
+   ],
+   -7.2
+  ],
+  [
+   [
+    "Jeff Okudah",
+    2017,
+    "Ohio State"
+   ],
+   -6.7
+  ],
+  [
+   [
+    "Kyle Wright",
+    2003,
+    "Miami"
+   ],
+   -6.5
+  ],
+  [
+   [
+    "Ted Ginn Jr.",
+    2004,
+    "Ohio State"
+   ],
+   -6.3
+  ],
+  [
+   [
+    "Michael Bush",
+    2003,
+    "Louisville"
+   ],
+   -6.1
+  ]
+ ],
+ "examples_up": [
+  [
+   [
+    "Richard LeCounte III",
+    2017,
+    "Georgia"
+   ],
+   5.2
+  ],
+  [
+   [
+    "Antonio Cromartie",
+    2003,
+    "Florida State"
+   ],
+   5.4
+  ],
+  [
+   [
+    "Tony Cade",
+    2003,
+    "Oklahoma"
+   ],
+   5.4
+  ],
+  [
+   [
+    "Hunter Johnson",
+    2017,
+    "Clemson"
+   ],
+   5.5
+  ],
+  [
+   [
+    "Tua Tagovailoa",
+    2017,
+    "Alabama"
+   ],
+   5.5
+  ],
+  [
+   [
+    "Robert Lane",
+    2003,
+    "Ole Miss"
+   ],
+   5.8
+  ]
+ ],
+ "bands": "5-star rating bands: top >= 0.9941, middle 0.9887-0.9940, bottom < 0.9887 (thirds of 5-stars in complete classes)"
+}

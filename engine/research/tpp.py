@@ -247,3 +247,19 @@ report['sensUG']=sensUG
 x=report['methods']['UG']; print('UG GAIN',[(g[0],g[1],g[2],g[3],g[4],g[5]) for g in x['gain'][:8]]); print('UG LOSE',[(g[0],g[1],g[2],g[3],g[4],g[5]) for g in x['lose'][:8]])
 print('UG top10',[t[0] for t in x['top'][:10]])
 json.dump(report, open(O + 'tpp_report.json', 'w'), indent=1, default=str)
+
+# list of drafted multi-school players whose split can't be determined (for manual research)
+def why(p):
+    if p['unc']: return 'No verified seasons at: ' + ', '.join(p['unc'])
+    if cred(p['r']) not in p['schools']: return 'Finishing school not found on rosters'
+    miss=[k for k in p['schools'] if not p['avail'][k]]
+    if miss: return 'No game stats in our data for: ' + ', '.join(miss)
+    return ''
+U81=[]
+for p in dm:
+    b=basis(p)
+    if b.startswith('uncertain') or (b=='single school or uncertain path' and p['multi']):
+        r=p['r']; U81.append([r['name'], r['pg'], r['year'], r['committedTo'], ' → '.join(p['order']), cred(r), r['draftYear'], r['round'], r['overall'], why(p), '; '.join(f"{k} {p['seasons'][k][0]}–{p['seasons'][k][-1]}" if p['seasons'][k] else f"{k} ?" for k in p['order'])])
+U81.sort(key=lambda x:(x[6],x[8]))
+json.dump(U81, open(O+'uncertain81.json','w'), indent=1)
+print('UNCERTAIN', len(U81))

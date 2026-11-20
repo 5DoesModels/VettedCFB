@@ -61,6 +61,15 @@ for k,rs in byp.items():
       pos={g:agg([r for r in rs if r['pg']==g]) for g in G},coaches=cos,best=best,miss=miss,pin=pstats(pin[k]),pout=pstats(pout[k]),pdr=portalDrafted,
       pdrn=sum(1 for r in dr if r['mv'] and r['mv'][-1][1]==k)))
 NCL=len(range(2002,2024))
+# eligible FBS signing seasons per program (seasons it played FBS football, 2002-2023)
+FY=collections.defaultdict(set)
+for _c in C:
+    for _s in _c['seasons']:
+        if 2002<=_s['year']<=2023 and (_s['games'] or 0)>0: FY[_s['school']].add(_s['year'])
+def dpe(name,rs,yrs=None):
+    E=FY.get(name,set()) if yrs is None else (FY.get(name,set())&set(yrs))
+    if not E: return 0.0
+    return sum(r['pts']-r['exp'] for r in rs if r['year'] in E)/len(E)
 progs.sort(key=lambda p:-(p['a'][3]-p['a'][4]))
 # coaches
 byc=collections.defaultdict(list)
@@ -204,7 +213,7 @@ ana=[]
 for p in progs:
     w=W.get(p['name'])
     if not w or w[0]+w[1]<60: continue
-    ana.append([p['name'],round((p['a'][3]-p['a'][4])/NCL,1),round(p['a'][4]/NCL,1),round(w[0]/(w[0]+w[1]),3),round(sum(w[2])/len(w[2]),1) if w[2] else None,p['conf']])
+    ana.append([p['name'],round(dpe(p['name'],byp[p['name']]),1),round(p['a'][4]/NCL,1),round(w[0]/(w[0]+w[1]),3),round(sum(w[2])/len(w[2]),1) if w[2] else None,p['conf']])
 def corr(x,y):
     n=len(x);mx=sum(x)/n;my=sum(y)/n;sx=math.sqrt(sum((a-mx)**2 for a in x));sy=math.sqrt(sum((b-my)**2 for b in y))
     return sum((a-mx)*(b-my) for a,b in zip(x,y))/(sx*sy)
@@ -233,7 +242,7 @@ stats=dict(n=len(ana),r_dev_win=round(corr(dev,wp),2),r_tal_win=round(corr(tal,w
 cf=collections.defaultdict(list)
 for p in progs:
     if p['conf']: cf[p['conf']].append(p)
-confs=[[k,len(v),round(sum((p['a'][3]-p['a'][4])/NCL for p in v)/len(v),1),round(sum(p['a'][3] for p in v)/sum(p['a'][4] for p in v),2),round(sum(p['recent'] for p in v)/len(v),1),round(sum(p['early'] for p in v)/len(v),1),
+confs=[[k,len(v),round(sum(dpe(p['name'],byp[p['name']]) for p in v)/len(v),1),round(sum(p['a'][3] for p in v)/sum(p['a'][4] for p in v),2),round(sum(p['recent'] for p in v)/len(v),1),round(sum(p['early'] for p in v)/len(v),1),
         round(sum(W[p['name']][0] for p in v)/max(1,sum(W[p['name']][0]+W[p['name']][1] for p in v)),3),[p['name'] for p in sorted(v,key=lambda p:-(p['a'][3]-p['a'][4]))]] for k,v in cf.items() if len(v)>=6]
 confs.sort(key=lambda x:-x[2])
 # coach portal lean (seasons 2021-2026)
@@ -257,7 +266,7 @@ import sys as _s; _s.path.insert(0,'/home/claude/concept'); from schoolstate imp
 R5=range(2019,2024); PRIOR=range(2002,2019)
 for p in progs:
     rs=byp[p['name']]; a=[r for r in rs if r['year'] in R5]; b=[r for r in rs if r['year'] in PRIOR]
-    p['r5']=round((sum(r['pts'] for r in a)-sum(r['exp'] for r in a))/5,1); p['p11']=round((sum(r['pts'] for r in b)-sum(r['exp'] for r in b))/len(PRIOR),1); p['r5a']=agg(a)
+    p['r5']=round(dpe(p['name'],rs,R5),1); p['p11']=round(dpe(p['name'],rs,PRIOR),1); p['r5a']=agg(a)
 # coaches: last five, per season, school-adjusted
 schoolC=collections.defaultdict(lambda:collections.defaultdict(lambda:[0,0]))
 for c_,rs in byc.items():
@@ -416,9 +425,10 @@ for c in coaches:
     g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
     c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
 # programs: development grade from per-year score
-pv=[(p['a'][3]-p['a'][4])/NCL for p in progs]
+for p in progs: p['dpe']=round(dpe(p['name'],byp[p['name']]),2); p['fy']=sorted(FY.get(p['name'],()))
+pv=[p['dpe'] for p in progs]
 for p in progs:
-    v=(p['a'][3]-p['a'][4])/NCL; p['g']=letter(pctile(pv,v)); p['g5']=letter(pctile([q['r5'] for q in progs],p['r5']))
+    v=p['dpe']; p['g']=letter(pctile(pv,v)); p['g5']=letter(pctile([q['r5'] for q in progs],p['r5']))
 # ---- player grade cutoffs (development = actual - expected draft points, all graded players)
 pv_=sorted(r['pae'] for r in SC)
 meta['pcut']=[[c_,round(pv_[min(len(pv_)-1,int(len(pv_)*c_/100))],2)] for c_,_ in CUT if c_>0]

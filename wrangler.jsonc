@@ -1,2 +1,13 @@
-{ "name": "vettedcfb", "compatibility_date": "2026-11-01",
-  "assets": { "directory": "./site", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" } }
+{
+  "name": "vettedcfb",
+  "compatibility_date": "2026-11-01",
+  "main": "worker.js",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*", "/inbox"]
+  }
+  // After creating the D1 database in Cloudflare, a "d1_databases" entry with its ID goes here (binding name: DB).
+}
