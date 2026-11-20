@@ -14,6 +14,28 @@ def tier(d):
     if d['round']==3: return 'Third round',20
     if d['round']<=5: return 'Rounds 4-5',10
     return 'Rounds 6-7',5
+# Wrong draft-pick matches found in JC's review (linkfix.json): drop them
+FIX=json.load(open('linkfix.json')); BAD={(u['name'],u['year'],u['school'],u['draftYear'],u['overall']) for u in FIX['unlink']}
+nb=len(L); L={k:v for k,v in L.items() if (R[v]['name'],R[v]['year'],R[v]['committedTo'],D[k]['year'],D[k]['overall']) not in BAD}
+print('unlinked',nb-len(L),'of',len(BAD))
+# A recruit can pick up two draft picks with the same name (e.g. Robert Griffin III and guard Robert Griffin, both Baylor 2012).
+# Keep the pick whose position fits the recruit's, then the one from his signing school, then the earlier pick.
+DPOS={'Quarterback':'QB','Running Back':'RB','Fullback':'RB','Wide Receiver':'WR','Tight End':'TE','Offensive Tackle':'OL','Offensive Guard':'OL','Center':'OL','Offensive Line':'OL',
+      'Defensive Tackle':'DL','Defensive End':'EDGE','Defensive Edge':'EDGE','Outside Linebacker':'LB','Inside Linebacker':'LB','Linebacker':'LB','Cornerback':'DB','Safety':'DB','Defensive Back':'DB',
+      'Kicker':'ST','Punter':'ST','Long Snapper':'ST'}
+NEAR={frozenset(x) for x in (('EDGE','LB'),('EDGE','DL'),('DB','LB'),('RB','WR'),('WR','TE'),('TE','OL'),('DL','OL'))}
+def pfit(r,d):
+    a=POS.get(r['position'],'ATH'); b=DPOS.get(d['position'])
+    if a=='ATH' or b is None: return 1
+    return 2 if a==b else 1 if frozenset((a,b)) in NEAR else 0
+byrec=collections.defaultdict(list)
+for k,v in L.items(): byrec[v].append(k)
+for v,ks in byrec.items():
+    if len(ks)>1:
+        keep=max(ks,key=lambda k:(pfit(R[v],D[k]),D[k]['collegeTeam']==R[v]['committedTo'],-D[k]['year'],-D[k]['overall']))
+        print('two picks for',R[v]['name'],R[v]['year'],'-> kept',D[keep]['year'],D[keep]['overall'],D[keep]['name'])
+        for k in ks:
+            if k!=keep: del L[k]
 drafted={v:D[k] for k,v in L.items()}
 SA={(x['name'],x['year'],x['school']) for x in json.load(open('setaside.json'))['players']}   # passed away / career ended by a legal case
 pool=[r for r in R if 2002<=r['year']<=LAST and r['committedTo'] and r['recruitType'] in ('HighSchool','JUCO','PrepSchool') and (r['name'],r['year'],r['committedTo']) not in SA]

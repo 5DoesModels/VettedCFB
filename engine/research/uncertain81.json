@@ -1,44 +1,5 @@
 [
  [
-  "Carnell Williams",
-  "DB",
-  2003,
-  "UAB",
-  "UAB \u2192 Auburn",
-  "Auburn",
-  2005,
-  1,
-  5,
-  "No verified seasons at: UAB",
-  "UAB ?; Auburn 2004\u20132004"
- ],
- [
-  "Alex Smith",
-  "QB",
-  2002,
-  "Utah",
-  "Utah \u2192 Stanford",
-  "Stanford",
-  2005,
-  3,
-  71,
-  "No game stats in our data for: Utah, Stanford",
-  "Utah 2004\u20132004; Stanford 2004\u20132004"
- ],
- [
-  "Jacoby Jones",
-  "RB",
-  2004,
-  "Baylor",
-  "Baylor \u2192 Lane College",
-  "Lane College",
-  2007,
-  3,
-  73,
-  "No game stats in our data for: Baylor, Lane College",
-  "Baylor 2005\u20132006; Lane College 2006\u20132006"
- ],
- [
   "Michael Coe",
   "WR",
   2002,
@@ -65,19 +26,6 @@
   "Colorado State ?; Portland State 2006\u20132006"
  ],
  [
-  "Ryan Smith",
-  "DB",
-  2003,
-  "Utah",
-  "Utah \u2192 Florida",
-  "Florida",
-  2007,
-  6,
-  206,
-  "No verified seasons at: Utah",
-  "Utah ?; Florida 2006\u20132006"
- ],
- [
   "Chase Pittman",
   "DL",
   2002,
@@ -89,71 +37,6 @@
   213,
   "No verified seasons at: Texas",
   "Texas ?; LSU 2006\u20132006"
- ],
- [
-  "Dexter Jackson",
-  "DB",
-  2002,
-  "Kansas",
-  "Kansas \u2192 App State",
-  "App State",
-  2008,
-  2,
-  58,
-  "No verified seasons at: Kansas",
-  "Kansas ?; App State 2005\u20132007"
- ],
- [
-  "Craig Stevens",
-  "LB",
-  2006,
-  "Auburn",
-  "Auburn \u2192 California",
-  "California",
-  2008,
-  3,
-  85,
-  "No verified seasons at: Auburn",
-  "Auburn ?; California 2006\u20132007"
- ],
- [
-  "Marcus Smith",
-  "EDGE",
-  2002,
-  "Arizona",
-  "Arizona \u2192 New Mexico",
-  "New Mexico",
-  2008,
-  4,
-  106,
-  "No verified seasons at: Arizona",
-  "Arizona ?; New Mexico 2004\u20132007"
- ],
- [
-  "Lavelle Hawkins",
-  "WR",
-  2004,
-  "LSU",
-  "LSU \u2192 California",
-  "California",
-  2008,
-  4,
-  126,
-  "No verified seasons at: LSU",
-  "LSU ?; California 2005\u20132007"
- ],
- [
-  "Trevor Scott",
-  "OL",
-  2005,
-  "Illinois",
-  "Illinois \u2192 Buffalo",
-  "Buffalo",
-  2008,
-  6,
-  169,
-  "No verified seasons at: Illinois",
-  "Illinois ?; Buffalo 2005\u20132005"
  ],
  [
   "Kareem Moore",
@@ -169,58 +52,6 @@
   "Ole Miss ?; Nicholls 2006\u20132006"
  ],
  [
-  "Michael Mitchell",
-  "ATH",
-  2006,
-  "UTEP",
-  "UTEP \u2192 Ohio",
-  "Ohio",
-  2009,
-  2,
-  47,
-  "No verified seasons at: UTEP",
-  "UTEP ?; Ohio 2008\u20132008"
- ],
- [
-  "LeSean McCoy",
-  "RB",
-  2006,
-  "Miami",
-  "Miami \u2192 Pittsburgh",
-  "Pittsburgh",
-  2009,
-  2,
-  53,
-  "No verified seasons at: Miami",
-  "Miami ?; Pittsburgh 2007\u20132008"
- ],
- [
-  "Brandon Tate",
-  "WR",
-  2004,
-  "West Virginia",
-  "West Virginia \u2192 North Carolina",
-  "North Carolina",
-  2009,
-  3,
-  83,
-  "No game stats in our data for: West Virginia, North Carolina",
-  "West Virginia 2006\u20132006; North Carolina 2005\u20132008"
- ],
- [
-  "Tyrone McKenzie",
-  "LB",
-  2004,
-  "Michigan State",
-  "Michigan State \u2192 South Florida",
-  "South Florida",
-  2009,
-  3,
-  97,
-  "No verified seasons at: Michigan State",
-  "Michigan State ?; South Florida 2008\u20132008"
- ],
- [
   "Rhett Bomar",
   "QB",
   2004,
@@ -234,19 +65,6 @@
   "Oklahoma 2005\u20132005; Sam Houston 2007\u20132008"
  ],
  [
-  "Zach Miller",
-  "TE",
-  2004,
-  "Arizona State",
-  "Arizona State \u2192 Nebraska-Omaha",
-  "Nebraska-Omaha",
-  2009,
-  6,
-  180,
-  "No game stats in our data for: Arizona State, Nebraska-Omaha",
-  "Arizona State 2004\u20132006; Nebraska-Omaha 2008\u20132008"
- ],
- [
   "Coye Francies",
   "DB",
   2006,
@@ -258,19 +76,6 @@
   191,
   "No game stats in our data for: Oregon State, San Jos\u00e9 State",
   "Oregon State 2006\u20132006; San Jos\u00e9 State 2008\u20132008"
- ],
- [
-  "Courtney Greene",
-  "DB",
-  2004,
-  "Syracuse",
-  "Syracuse \u2192 Rutgers",
-  "Rutgers",
-  2009,
-  7,
-  245,
-  "No verified seasons at: Syracuse",
-  "Syracuse ?; Rutgers 2006\u20132008"
  ],
  [
   "Rashad Jennings",
@@ -312,19 +117,6 @@
   "Arizona State ?; Baylor 2009\u20132009"
  ],
  [
-  "Mike Johnson",
-  "QB",
-  2007,
-  "Tulsa",
-  "Tulsa \u2192 Alabama",
-  "Alabama",
-  2010,
-  3,
-  98,
-  "No verified seasons at: Tulsa",
-  "Tulsa ?; Alabama 2009\u20132009"
- ],
- [
   "Otis Hudson",
   "OL",
   2005,
@@ -338,19 +130,6 @@
   "Minnesota ?; Eastern Illinois 2009\u20132009"
  ],
  [
-  "Clifton Geathers",
-  "OL",
-  2006,
-  "Georgia",
-  "Georgia \u2192 South Carolina",
-  "South Carolina",
-  2010,
-  6,
-  186,
-  "No verified seasons at: Georgia",
-  "Georgia ?; South Carolina 2009\u20132009"
- ],
- [
   "Jeremy Ware",
   "DB",
   2005,
@@ -362,32 +141,6 @@
   215,
   "No verified seasons at: South Carolina",
   "South Carolina ?; Michigan State 2008\u20132009"
- ],
- [
-  "Steven Brown",
-  "ATH",
-  2005,
-  "UAB",
-  "UAB \u2192 Michigan",
-  "Michigan",
-  2010,
-  7,
-  251,
-  "No game stats in our data for: UAB",
-  "UAB 2006\u20132006; Michigan 2009\u20132009"
- ],
- [
-  "Cam Newton",
-  "QB",
-  2007,
-  "Florida",
-  "Florida \u2192 Auburn",
-  "Auburn",
-  2011,
-  1,
-  1,
-  "No game stats in our data for: Florida",
-  "Florida 2007\u20132008; Auburn 2010\u20132010"
  ],
  [
   "J.J. Watt",
@@ -416,32 +169,6 @@
   "Penn State ?; Baylor 2009\u20132010"
  ],
  [
-  "Ryan Mallett",
-  "QB",
-  2007,
-  "Michigan",
-  "Michigan \u2192 Arkansas",
-  "Arkansas",
-  2011,
-  3,
-  74,
-  "No game stats in our data for: Michigan",
-  "Michigan 2007\u20132007; Arkansas 2009\u20132010"
- ],
- [
-  "Kenrick Ellis",
-  "DL",
-  2006,
-  "South Carolina",
-  "South Carolina \u2192 Hampton",
-  "Hampton",
-  2011,
-  3,
-  94,
-  "No verified seasons at: South Carolina",
-  "South Carolina ?; Hampton 2010\u20132010"
- ],
- [
   "Lee Smith",
   "TE",
   2006,
@@ -468,19 +195,6 @@
   "Florida 2008\u20132010; North Alabama 2011\u20132011"
  ],
  [
-  "C.J. Wilson",
-  "ATH",
-  2008,
-  "NC State",
-  "NC State \u2192 Wisconsin",
-  "Wisconsin",
-  2012,
-  3,
-  75,
-  "No game stats in our data for: NC State",
-  "NC State 2008\u20132011; Wisconsin 2011\u20132011"
- ],
- [
   "Gino Gradkowski",
   "OL",
   2007,
@@ -492,71 +206,6 @@
   98,
   "No verified seasons at: West Virginia",
   "West Virginia ?; Delaware 2011\u20132011"
- ],
- [
-  "Christian Thompson",
-  "DB",
-  2008,
-  "Auburn",
-  "Auburn \u2192 South Carolina State",
-  "South Carolina State",
-  2012,
-  4,
-  130,
-  "No verified seasons at: Auburn",
-  "Auburn ?; South Carolina State 2011\u20132011"
- ],
- [
-  "Corey White",
-  "RB",
-  2007,
-  "Idaho",
-  "Idaho \u2192 Samford",
-  "Samford",
-  2012,
-  5,
-  162,
-  "No game stats in our data for: Idaho",
-  "Idaho 2008\u20132008; Samford 2011\u20132011"
- ],
- [
-  "Brandon Washington",
-  "OL",
-  2007,
-  "Tulsa",
-  "Tulsa \u2192 Miami",
-  "Miami",
-  2012,
-  6,
-  200,
-  "No verified seasons at: Tulsa",
-  "Tulsa ?; Miami 2009\u20132011"
- ],
- [
-  "Terrance Ganaway",
-  "ATH",
-  2007,
-  "Houston",
-  "Houston \u2192 Baylor",
-  "Baylor",
-  2012,
-  6,
-  202,
-  "No game stats in our data for: Houston",
-  "Houston 2007\u20132007; Baylor 2009\u20132011"
- ],
- [
-  "Toney Clemons",
-  "WR",
-  2007,
-  "Michigan",
-  "Michigan \u2192 Colorado",
-  "Colorado",
-  2012,
-  7,
-  231,
-  "No game stats in our data for: Michigan",
-  "Michigan 2007\u20132008; Colorado 2009\u20132011"
  ],
  [
   "Chris Harper",
@@ -585,32 +234,6 @@
   "Georgia Tech 2008\u20132010; Richmond 2012\u20132012"
  ],
  [
-  "Rufus Johnson",
-  "EDGE",
-  2008,
-  "New Mexico",
-  "New Mexico \u2192 Tarleton State",
-  "Tarleton State",
-  2013,
-  6,
-  183,
-  "No verified seasons at: New Mexico",
-  "New Mexico ?; Tarleton State 2012\u20132012"
- ],
- [
-  "Nathan Palmer",
-  "WR",
-  2007,
-  "Northern Illinois",
-  "Northern Illinois \u2192 Illinois State",
-  "Illinois State",
-  2013,
-  6,
-  193,
-  "No game stats in our data for: Northern Illinois",
-  "Northern Illinois 2008\u20132011; Illinois State 2012\u20132012"
- ],
- [
   "Walt Aikens",
   "ATH",
   2009,
@@ -622,45 +245,6 @@
   125,
   "No verified seasons at: Illinois",
   "Illinois ?; Liberty 2013\u20132013"
- ],
- [
-  "Trevor Reilly",
-  "LB",
-  2006,
-  "Texas Tech",
-  "Texas Tech \u2192 Utah",
-  "Utah",
-  2014,
-  7,
-  233,
-  "No verified seasons at: Texas Tech",
-  "Texas Tech ?; Utah 2009\u20132012"
- ],
- [
-  "Deon Simon",
-  "DL",
-  2009,
-  "UCF",
-  "UCF \u2192 Northwestern State",
-  "Northwestern State",
-  2015,
-  7,
-  223,
-  "No verified seasons at: UCF",
-  "UCF ?; Northwestern State 2014\u20132014"
- ],
- [
-  "Willie Beavers",
-  "OL",
-  2011,
-  "Illinois",
-  "Illinois \u2192 Western Michigan",
-  "Western Michigan",
-  2016,
-  4,
-  121,
-  "No verified seasons at: Illinois",
-  "Illinois ?; Western Michigan 2011\u20132015"
  ],
  [
   "Joe Dahl",
@@ -689,71 +273,6 @@
   "Oklahoma State 2014\u20132014; West Alabama 2015\u20132015"
  ],
  [
-  "Michael Roberts",
-  "TE",
-  2012,
-  "Ohio",
-  "Ohio \u2192 Toledo",
-  "Toledo",
-  2017,
-  4,
-  127,
-  "No verified seasons at: Ohio",
-  "Ohio ?; Toledo 2013\u20132016"
- ],
- [
-  "David Moore",
-  "DB",
-  2013,
-  "Ball State",
-  "Ball State \u2192 East Central",
-  "East Central",
-  2017,
-  7,
-  226,
-  "No game stats in our data for: East Central",
-  "Ball State 2013\u20132016; East Central 2016\u20132016"
- ],
- [
-  "Ejuan Price",
-  "LB",
-  2011,
-  "Ohio State",
-  "Ohio State \u2192 Pittsburgh",
-  "Pittsburgh",
-  2017,
-  7,
-  234,
-  "No verified seasons at: Ohio State",
-  "Ohio State ?; Pittsburgh 2011\u20132016"
- ],
- [
-  "Austin Corbett",
-  "LB",
-  2015,
-  "SMU",
-  "SMU \u2192 Nevada",
-  "Nevada",
-  2018,
-  2,
-  33,
-  "No verified seasons at: SMU",
-  "SMU ?; Nevada 2015\u20132017"
- ],
- [
-  "P.J. Hall",
-  "DB",
-  2016,
-  "Tulane",
-  "Tulane \u2192 Sam Houston",
-  "Sam Houston",
-  2018,
-  2,
-  57,
-  "No game stats in our data for: Sam Houston",
-  "Tulane 2016\u20132017; Sam Houston 2017\u20132017"
- ],
- [
   "Jamel Dean",
   "DB",
   2015,
@@ -765,19 +284,6 @@
   94,
   "No verified seasons at: Ohio State",
   "Ohio State ?; Auburn 2015\u20132018"
- ],
- [
-  "Netane Muti",
-  "DL",
-  2016,
-  "Hawai'i",
-  "Hawai'i \u2192 Fresno State",
-  "Fresno State",
-  2020,
-  6,
-  181,
-  "No verified seasons at: Hawai'i",
-  "Hawai'i ?; Fresno State 2017\u20132019"
  ],
  [
   "Jabril Cox",
@@ -806,32 +312,6 @@
   "Western Kentucky ?; UCF 2016\u20132020"
  ],
  [
-  "Zach Davidson",
-  "QB",
-  2014,
-  "Kansas State",
-  "Kansas State \u2192 Central Missouri",
-  "Central Missouri",
-  2021,
-  5,
-  168,
-  "No game stats in our data for: Central Missouri",
-  "Kansas State 2014\u20132015; Central Missouri 2020\u20132020"
- ],
- [
-  "Kaleb Smith",
-  "WR",
-  2018,
-  "Virginia Tech",
-  "Virginia Tech \u2192 Notre Dame",
-  "Virginia Tech",
-  2022,
-  6,
-  215,
-  "No verified seasons at: Notre Dame",
-  "Virginia Tech 2018\u20132021; Notre Dame ?"
- ],
- [
   "Christian Matthew",
   "DB",
   2015,
@@ -858,71 +338,6 @@
   "Montana 2017\u20132019; Nebraska 2021\u20132021"
  ],
  [
-  "A.C. White",
-  "QB",
-  2018,
-  "Old Dominion",
-  "Old Dominion \u2192 Georgia Tech",
-  "Georgia Tech",
-  2023,
-  2,
-  46,
-  "No game stats in our data for: Old Dominion",
-  "Old Dominion 2018\u20132021; Georgia Tech 2021\u20132022"
- ],
- [
-  "Raheim Sanders",
-  "ATH",
-  2021,
-  "Arkansas",
-  "Arkansas \u2192 South Carolina",
-  "Arkansas",
-  2023,
-  3,
-  67,
-  "No verified seasons at: South Carolina",
-  "Arkansas 2021\u20132022; South Carolina ?"
- ],
- [
-  "Chandler Morris",
-  "QB",
-  2020,
-  "Oklahoma",
-  "Oklahoma \u2192 TCU \u2192 North Texas \u2192 Virginia",
-  "Oklahoma",
-  2023,
-  3,
-  92,
-  "No verified seasons at: Virginia",
-  "Oklahoma 2020\u20132022; TCU 2021\u20132022; North Texas 2024\u20132024; Virginia ?"
- ],
- [
-  "Josh Hayes",
-  "DB",
-  2017,
-  "North Dakota State",
-  "North Dakota State \u2192 Kansas State",
-  "Kansas State",
-  2023,
-  6,
-  181,
-  "No verified seasons at: North Dakota State",
-  "North Dakota State ?; Kansas State 2022\u20132022"
- ],
- [
-  "Jalen Brooks",
-  "LB",
-  2020,
-  "North Carolina",
-  "North Carolina \u2192 Campbell \u2192 Missouri State \u2192 South Carolina",
-  "South Carolina",
-  2023,
-  7,
-  244,
-  "No verified seasons at: Missouri State",
-  "North Carolina 2020\u20132022; Campbell 2024\u20132024; Missouri State ?; South Carolina 2020\u20132022"
- ],
- [
   "Ja'Lynn Polk",
   "WR",
   2020,
@@ -934,19 +349,6 @@
   37,
   "No verified seasons at: Houston",
   "Texas Tech 2020\u20132020; Houston ?; Washington 2021\u20132023"
- ],
- [
-  "Decamerion Richardson",
-  "DB",
-  2020,
-  "Mississippi State",
-  "Mississippi State \u2192 Ole Miss",
-  "Mississippi State",
-  2024,
-  4,
-  112,
-  "No verified seasons at: Ole Miss",
-  "Mississippi State 2020\u20132023; Ole Miss ?"
  ],
  [
   "Devontez Walker",
@@ -973,83 +375,5 @@
   124,
   "No game stats in our data for: Richmond",
   "Richmond 2020\u20132020; Wake Forest 2021\u20132023"
- ],
- [
-  "Tylan Grable",
-  "QB",
-  2018,
-  "Jacksonville State",
-  "Jacksonville State \u2192 UCF",
-  "UCF",
-  2024,
-  6,
-  204,
-  "No game stats in our data for: Jacksonville State",
-  "Jacksonville State 2018\u20132021; UCF 2022\u20132023"
- ],
- [
-  "Kamal Hadden",
-  "DB",
-  2019,
-  "Central Michigan",
-  "Central Michigan \u2192 Tennessee",
-  "Tennessee",
-  2024,
-  6,
-  211,
-  "No verified seasons at: Central Michigan",
-  "Central Michigan ?; Tennessee 2021\u20132023"
- ],
- [
-  "Keagan Johnson",
-  "ATH",
-  2021,
-  "Iowa",
-  "Iowa \u2192 Kansas State \u2192 New Mexico",
-  "Iowa",
-  2025,
-  3,
-  83,
-  "No verified seasons at: New Mexico",
-  "Iowa 2021\u20132024; Kansas State 2023\u20132024; New Mexico ?"
- ],
- [
-  "Jay Toia",
-  "DL",
-  2021,
-  "USC",
-  "USC \u2192 UCLA",
-  "UCLA",
-  2025,
-  7,
-  217,
-  "No verified seasons at: USC",
-  "USC ?; UCLA 2021\u20132024"
- ],
- [
-  "Keagen Trost",
-  "OL",
-  2019,
-  "Morgan State",
-  "Morgan State \u2192 Missouri",
-  "Missouri",
-  2026,
-  3,
-  93,
-  "No verified seasons at: Morgan State",
-  "Morgan State ?; Missouri 2025\u20132025"
- ],
- [
-  "Kaleb Proctor",
-  "DL",
-  2022,
-  "Southeastern Louisiana",
-  "Southeastern Louisiana \u2192 SE Louisiana",
-  "SE Louisiana",
-  2026,
-  4,
-  104,
-  "No verified seasons at: Southeastern Louisiana",
-  "Southeastern Louisiana ?; SE Louisiana 2022\u20132025"
  ]
 ]

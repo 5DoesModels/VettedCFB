@@ -1,0 +1,570 @@
+{
+ "note": "Corrections from JC's review of the 81 uncertain drafted transfers (Nov 2026). 'unlink' removes a wrong draft-pick-to-recruit match; 'verified' gives checked games per school for Transfer Pipeline research. Pick numbers are overall picks.",
+ "unlink": [
+  {
+   "name": "Carnell Williams",
+   "year": 2003,
+   "school": "UAB",
+   "draftYear": 2005,
+   "overall": 5,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Two different players: the 2009 NFL draftee Carnell Williams was an Auburn RB (2001\u20132004); UAB Carnell Williams was a DB (2003 redshirt; played 2004\u20132006)."
+  },
+  {
+   "name": "Alex Smith",
+   "year": 2002,
+   "school": "Utah",
+   "draftYear": 2005,
+   "overall": 71,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Utah Alex Smith (QB): 2002\u20132004. Stanford Alex Smith (TE): Stanford 2000\u20132004 (his 2004 bio calls it his fifth Stanford season)."
+  },
+  {
+   "name": "Jacoby Jones",
+   "year": 2004,
+   "school": "Baylor",
+   "draftYear": 2007,
+   "overall": 73,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Drafted Jacoby Jones was a WR. He enrolled at Southeastern Louisiana on a track scholarship in 2002, then transferred to Lane College in 2003 and played there 2003\u20132006. Baylor is not supported."
+  },
+  {
+   "name": "Dexter Jackson",
+   "year": 2002,
+   "school": "Kansas",
+   "draftYear": 2008,
+   "overall": 58,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Appalachian State (drafted player; exact seasons not independently established); Kansas not supported. Drafted Dexter Jackson was a WR, not a DB."
+  },
+  {
+   "name": "Craig Stevens",
+   "year": 2006,
+   "school": "Auburn",
+   "draftYear": 2008,
+   "overall": 85,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "California 2003\u20132007 (2003 redshirt; played 2004\u20132007). Auburn Craig Stevens is a different player. Drafted California player was a TE, not an LB."
+  },
+  {
+   "name": "Marcus Smith",
+   "year": 2002,
+   "school": "Arizona",
+   "draftYear": 2008,
+   "overall": 106,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "New Mexico 2003\u20132007 (2003 redshirt; played 2004\u20132007). Arizona not established as a school attended."
+  },
+  {
+   "name": "Trevor Scott",
+   "year": 2005,
+   "school": "Illinois",
+   "draftYear": 2008,
+   "overall": 169,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Buffalo 2004\u20132007 (Illinois not established as a school attended)"
+  },
+  {
+   "name": "Michael Mitchell",
+   "year": 2006,
+   "school": "UTEP",
+   "draftYear": 2009,
+   "overall": 47,
+   "status": "Unconfirmed",
+   "reason": "Unconfirmed: the signing school could not be confirmed for the drafted player",
+   "note": "Ohio University 2005\u20132008 (drafted player Mike Mitchell); UTEP attendance not supported"
+  },
+  {
+   "name": "Brandon Tate",
+   "year": 2004,
+   "school": "West Virginia",
+   "draftYear": 2009,
+   "overall": 83,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "The 2009 NFL draftee was Brandon Tate, UNC WR (2005\u20132008). The Brandon Tate on West Virginia's 2005\u201306 roster was a different athlete from Mississippi who played TE; do not merge their histories."
+  },
+  {
+   "name": "Zach Miller",
+   "year": 2004,
+   "school": "Arizona State",
+   "draftYear": 2009,
+   "overall": 180,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Nebraska 2003 (redshirt); Nebraska\u2013Omaha 2004\u20132008; Arizona State not supported"
+  },
+  {
+   "name": "Courtney Greene",
+   "year": 2004,
+   "school": "Syracuse",
+   "draftYear": 2009,
+   "overall": 245,
+   "status": "Unconfirmed",
+   "reason": "Unconfirmed: the signing school could not be confirmed for the drafted player",
+   "note": "Rutgers 2005\u20132008; Syracuse attendance not supported for the drafted Courtney Greene"
+  },
+  {
+   "name": "Mike Johnson",
+   "year": 2007,
+   "school": "Tulsa",
+   "draftYear": 2010,
+   "overall": 98,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Alabama 2006\u20132009 (drafted Mike Johnson, offensive lineman); Tulsa not supported for this draft player"
+  },
+  {
+   "name": "Steven Brown",
+   "year": 2005,
+   "school": "UAB",
+   "draftYear": 2010,
+   "overall": 251,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Two different players: the 2010 NFL draftee was Stevie Brown, Michigan DB (2006\u20132009); UAB Steven Brown was a different WR who previously attended Auburn and transferred to UAB."
+  },
+  {
+   "name": "C.J. Wilson",
+   "year": 2008,
+   "school": "NC State",
+   "draftYear": 2012,
+   "overall": 75,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Do not assign this row's college path to the 2012 third-round, 75th-overall pick: that selection was Russell Wilson (Wisconsin), not C.J. Wilson"
+  },
+  {
+   "name": "Corey White",
+   "year": 2007,
+   "school": "Idaho",
+   "draftYear": 2012,
+   "overall": 162,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Samford 2008\u20132011 (drafted Corey White); Idaho participation not supported. Drafted player was a CB, not an RB."
+  },
+  {
+   "name": "Brandon Washington",
+   "year": 2007,
+   "school": "Tulsa",
+   "draftYear": 2012,
+   "overall": 200,
+   "status": "Unconfirmed",
+   "reason": "Unconfirmed: the signing school could not be confirmed for the drafted player",
+   "note": "Miami (Florida) 2009\u20132011; Tulsa attendance not supported for the drafted Brandon Washington"
+  },
+  {
+   "name": "Rufus Johnson",
+   "year": 2008,
+   "school": "New Mexico",
+   "draftYear": 2013,
+   "overall": 183,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Kilgore College 2008\u20132009; Tarleton State 2011\u20132012; New Mexico not supported"
+  },
+  {
+   "name": "Nathan Palmer",
+   "year": 2007,
+   "school": "Northern Illinois",
+   "draftYear": 2013,
+   "overall": 193,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Two different players: the 2013 draft pick was Nate Palmer, a linebacker who attended Illinois (2008 redshirt; played 2009\u20132010) and Illinois State (2011\u20132012). The Northern Illinois Nathan Palmer was a separate WR."
+  },
+  {
+   "name": "Trevor Reilly",
+   "year": 2006,
+   "school": "Texas Tech",
+   "draftYear": 2014,
+   "overall": 233,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Utah 2010\u20132013; Texas Tech attendance not supported for the 2014 draftee"
+  },
+  {
+   "name": "Deon Simon",
+   "year": 2009,
+   "school": "UCF",
+   "draftYear": 2015,
+   "overall": 223,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Northwestern State (Louisiana) 2011\u20132014; UCF attendance/participation is not supported."
+  },
+  {
+   "name": "Willie Beavers",
+   "year": 2011,
+   "school": "Illinois",
+   "draftYear": 2016,
+   "overall": 121,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Western Michigan 2011 (redshirt); 2012\u20132015. Illinois attendance/participation is not supported."
+  },
+  {
+   "name": "Michael Roberts",
+   "year": 2012,
+   "school": "Ohio",
+   "draftYear": 2017,
+   "overall": 127,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Toledo 2013\u20132016. The drafted Michael Roberts was a TE; 'Ohio' in the original path is his hometown-state association, not a confirmed Ohio University stop."
+  },
+  {
+   "name": "David Moore",
+   "year": 2013,
+   "school": "Ball State",
+   "draftYear": 2017,
+   "overall": 226,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "East Central University (Oklahoma) 2013\u20132016; Ball State not supported; drafted player was a WR, not a DB"
+  },
+  {
+   "name": "Ejuan Price",
+   "year": 2011,
+   "school": "Ohio State",
+   "draftYear": 2017,
+   "overall": 234,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Pittsburgh 2011\u20132016 (redshirted 2012 and 2014; played other seasons); Ohio State not supported."
+  },
+  {
+   "name": "Austin Corbett",
+   "year": 2015,
+   "school": "SMU",
+   "draftYear": 2018,
+   "overall": 33,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Nevada 2014\u20132017; SMU not supported for the drafted Austin Corbett. The draft player was an offensive lineman, not a linebacker."
+  },
+  {
+   "name": "P.J. Hall",
+   "year": 2016,
+   "school": "Tulane",
+   "draftYear": 2018,
+   "overall": 57,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Sam Houston State (drafted P.J. Hall, DL); the Tulane P.J. Hall DB is a different same-name player"
+  },
+  {
+   "name": "Netane Muti",
+   "year": 2016,
+   "school": "Hawai'i",
+   "draftYear": 2020,
+   "overall": 181,
+   "status": "Unconfirmed",
+   "reason": "Unconfirmed: the signing school could not be confirmed for the drafted player",
+   "note": "Fresno State 2016 (redshirt), 2017\u20132019; Hawaii attendance not confirmed (Hawaii appears in biographical hometown information)"
+  },
+  {
+   "name": "Zach Davidson",
+   "year": 2014,
+   "school": "Kansas State",
+   "draftYear": 2021,
+   "overall": 168,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Central Missouri 2016 (redshirt), 2017\u20132019; 2020 season canceled; Kansas State not supported"
+  },
+  {
+   "name": "Kaleb Smith",
+   "year": 2018,
+   "school": "Virginia Tech",
+   "draftYear": 2022,
+   "overall": 215,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Virginia Tech 2018\u20132022 (Kaleb Smith WR); Notre Dame attendance and the listed 2022 NFL draft selection are not substantiated as this player"
+  },
+  {
+   "name": "A.C. White",
+   "year": 2018,
+   "school": "Old Dominion",
+   "draftYear": 2023,
+   "overall": 46,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "This draft pick is Keion White: Old Dominion 2017\u20132020; Georgia Tech 2021\u20132022 (not A.C. White, QB)"
+  },
+  {
+   "name": "Raheim Sanders",
+   "year": 2021,
+   "school": "Arkansas",
+   "draftYear": 2023,
+   "overall": 67,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "The 2023 third-round, 67th-overall selection was Drew Sanders (Alabama 2020\u20132021; Arkansas 2022), not Raheim Sanders"
+  },
+  {
+   "name": "Chandler Morris",
+   "year": 2020,
+   "school": "Oklahoma",
+   "draftYear": 2023,
+   "overall": 92,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Chandler Morris's college path: Oklahoma \u2192 TCU \u2192 North Texas \u2192 Virginia; the 2023 third-round, 92nd-overall pick was Wanya Morris (Oklahoma OT), not Chandler Morris"
+  },
+  {
+   "name": "Jalen Brooks",
+   "year": 2020,
+   "school": "North Carolina",
+   "draftYear": 2023,
+   "overall": 244,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "The 2023 seventh-round, 244th-overall draftee was Jalen Brooks, WR: Wingate 2018\u20132019; Tarleton State (brief 2020 transfer, left before the season); South Carolina 2020\u20132022. This is not the supplied LB/North Carolina-Campbell-Missouri State path."
+  },
+  {
+   "name": "Kamal Hadden",
+   "year": 2019,
+   "school": "Central Michigan",
+   "draftYear": 2024,
+   "overall": 211,
+   "status": "wrong signing record",
+   "reason": "Same drafted player, but our signing record (school/class) is not supported, so the recruit record is not his",
+   "note": "Independence Community College 2019; Auburn spring practice 2021 (no Auburn season played); Tennessee 2021\u20132023. Central Michigan is not supported."
+  },
+  {
+   "name": "Keagan Johnson",
+   "year": 2021,
+   "school": "Iowa",
+   "draftYear": 2025,
+   "overall": 83,
+   "status": "N",
+   "reason": "Different player: the draft pick belongs to another athlete",
+   "note": "Keagan Johnson: Iowa 2021\u20132022; Kansas State 2023\u20132024; New Mexico 2025. The 2025 third-round/pick-83 draftee was Kaleb Johnson, not Keagan Johnson."
+  }
+ ],
+ "verified": [
+  {
+   "name": "Ryan Smith",
+   "year": 2003,
+   "school": "Utah",
+   "games": {
+    "Utah": 19,
+    "Florida": 14
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Lavelle Hawkins",
+   "year": 2004,
+   "school": "LSU",
+   "games": {
+    "LSU": 0,
+    "California": 35
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "LeSean McCoy",
+   "year": 2006,
+   "school": "Miami",
+   "games": {
+    "Miami": 0,
+    "Pittsburgh": 25
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Tyrone McKenzie",
+   "year": 2004,
+   "school": "Michigan State",
+   "games": {
+    "Michigan State": 11,
+    "Iowa State": 12,
+    "South Florida": 26
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Cam Newton",
+   "year": 2007,
+   "school": "Florida",
+   "games": {
+    "Florida": 6,
+    "Auburn": 14
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Ryan Mallett",
+   "year": 2007,
+   "school": "Michigan",
+   "games": {
+    "Michigan": 11,
+    "Arkansas": 26
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Kenrick Ellis",
+   "year": 2006,
+   "school": "South Carolina",
+   "games": {
+    "South Carolina": 12,
+    "Hampton": 32
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Christian Thompson",
+   "year": 2008,
+   "school": "Auburn",
+   "games": {
+    "Auburn": 10,
+    "South Carolina State": 34
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Terrance Ganaway",
+   "year": 2007,
+   "school": "Houston",
+   "games": {
+    "Houston": 13,
+    "Baylor": 38
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Toney Clemons",
+   "year": 2007,
+   "school": "Michigan",
+   "games": {
+    "Michigan": 18,
+    "Colorado": 25
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Josh Hayes",
+   "year": 2017,
+   "school": "North Dakota State",
+   "games": {
+    "North Dakota State": 51,
+    "Virginia": 3,
+    "Kansas State": 13
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Jay Toia",
+   "year": 2021,
+   "school": "USC",
+   "games": {
+    "USC": 0,
+    "UCLA": 50
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Keagen Trost",
+   "year": 2019,
+   "school": "Morgan State",
+   "games": {
+    "Morgan State": 4,
+    "Indiana State": 22,
+    "Wake Forest": 12,
+    "Missouri": 13
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Tylan Grable",
+   "year": 2018,
+   "school": "Jacksonville State",
+   "games": {
+    "Jacksonville State": 23,
+    "UCF": 27
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Clifton Geathers",
+   "year": 2006,
+   "school": "Georgia",
+   "games": {
+    "Georgia": 0,
+    "South Carolina": 34
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Devontez Walker",
+   "year": 2020,
+   "school": "North Carolina Central",
+   "games": {
+    "North Carolina Central": 0,
+    "Kent State": 20,
+    "North Carolina": null
+   },
+   "note": "Games per school from JC's research; null = played but count not verified"
+  },
+  {
+   "name": "Decamerion Richardson",
+   "year": 2020,
+   "school": "Mississippi State",
+   "games": {
+    "Mississippi State": null
+   },
+   "note": "Path fix: Ole Miss stop not supported; one school"
+  },
+  {
+   "name": "Kaleb Proctor",
+   "year": 2022,
+   "school": "Southeastern Louisiana",
+   "games": {
+    "Southeastern Louisiana": null
+   },
+   "note": "Path fix: SE Louisiana is the same school; one school"
+  }
+ ],
+ "still_uncertain": [
+  "Michael Coe",
+  "Adam Hayward",
+  "Chase Pittman",
+  "Kareem Moore",
+  "Rhett Bomar",
+  "Coye Francies",
+  "Rashad Jennings",
+  "Damian Williams",
+  "J.D. Walton",
+  "Otis Hudson",
+  "Jeremy Ware",
+  "J.J. Watt",
+  "Phil Taylor",
+  "Lee Smith",
+  "Janoris Jenkins",
+  "Gino Gradkowski",
+  "Chris Harper",
+  "Cooper Taylor",
+  "Walt Aikens",
+  "Joe Dahl",
+  "Tyreek Hill",
+  "Jamel Dean",
+  "Jabril Cox",
+  "Jacob Harris",
+  "Christian Matthew",
+  "Samori Toure",
+  "Ja'Lynn Polk",
+  "Malik Mustapha"
+ ]
+}

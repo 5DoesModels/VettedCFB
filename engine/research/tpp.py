@@ -105,7 +105,19 @@ for r in SC:
     if multi and (unc or not schools or (cred(r) not in schools)): uncertain.append(rec)
     players.append(rec)
 
+VER = {(v['name'], v['year'], v['school']): v['games'] for v in json.load(open(E + '/linkfix.json'))['verified']}
+def vshare(p):
+    """Hand-verified games per school (JC's research). Returns shares, or None if the verified counts can't settle it."""
+    g = VER.get((p['r']['name'], p['r']['year'], p['r']['committedTo']))
+    if not g: return None
+    live = {k: v for k, v in g.items() if v != 0}          # confirmed zero games -> no share
+    if len(live) == 1: return {next(iter(live)): 1.0}
+    if any(v is None for v in live.values()): return None  # a school he played for has no verified count
+    T = sum(live.values()); return {k: v / T for k, v in live.items()} if T else None
 def weights(p, method, lam=0.5):
+    if method in ('U', 'G', 'UG'):
+        vs = vshare(p)
+        if vs: return vs
     """Share of the residual for each school. Players with one school, or an uncertain path, keep last-school credit."""
     r = p['r']; c = cred(r)
     if not p['multi'] or p['unc'] or c not in p['schools']: return {c: 1.0}
@@ -219,6 +231,7 @@ print('drafted coverage', dict(cov), 'with production data', prodcov)
 for e in exs: print(e['n'], e['res'], [(s[0], s[1], s[2], s[3]) for s in e['sch']], 'A', e['A'], 'U', e['U'], 'G', e['G'], 'UG', e['UG'])
 
 def basis(p):
+    if vshare(p): return 'verified by hand (games per school)'
     if not p['multi'] or p['unc'] or cred(p['r']) not in p['schools']: return 'single school or uncertain path'
     S = p['schools']
     if not all(p['avail'][k] for k in S): return 'uncertain: a school season missing from stats'
@@ -258,6 +271,7 @@ def why(p):
 U81=[]
 for p in dm:
     b=basis(p)
+    if b.startswith('verified'): continue
     if b.startswith('uncertain') or (b=='single school or uncertain path' and p['multi']):
         r=p['r']; U81.append([r['name'], r['pg'], r['year'], r['committedTo'], ' → '.join(p['order']), cred(r), r['draftYear'], r['round'], r['overall'], why(p), '; '.join(f"{k} {p['seasons'][k][0]}–{p['seasons'][k][-1]}" if p['seasons'][k] else f"{k} ?" for k in p['order'])])
 U81.sort(key=lambda x:(x[6],x[8]))
