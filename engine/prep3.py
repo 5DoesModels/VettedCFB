@@ -111,6 +111,21 @@ for k,v in tx.items():
     if k not in FBS or len(v)<10: continue
     txd.append([k]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]]])
 txd.sort(key=lambda x:-(x[4]-x[5]))
+# ---- transfer finder rows (tr.json): players who transferred in and finished at that school
+def lvl(sch,y):
+    cf=CONF.get((sch,y)) or CONF.get((sch,y-1))
+    if sch not in FBS and not cf: return 2
+    if sch=='Notre Dame' or cf in ('SEC','Big Ten','Big 12','ACC') or (cf=='Pac-12' and y<=2023): return 0
+    return 1 if (sch in FBS or cf) else 2
+TRS=[r for r in SC if r['mv'] and cred(r)==last(r) and cred(r)!=r['committedTo']]
+TS=sorted({cred(r) for r in TRS}|{r['committedTo'] for r in TRS}); TCn=sorted({(HC.get((cred(r),[m for m in r['mv'] if m[1]==cred(r)][-1][0])) or '') for r in TRS})
+trows=[]
+for r in TRS:
+    arr=[m for m in r['mv'] if m[1]==cred(r)][-1][0]; prev=[m[1] for m in r['mv'] if m[1] and m[0]<arr]; frm=prev[-1] if prev else r['committedTo']
+    c_=HC.get((cred(r),arr)) or ''
+    trows.append([arr,TS.index(cred(r)),TCn.index(c_),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,lvl(frm,arr-1),r['stars'] or 0,TS.index(frm) if frm in TS else -1,1 if cred(r) in FBS else 0,lvl(cred(r),arr)])
+open(O+'tr.json','w').write(json.dumps(dict(S=TS,C=TCn,rows=trows),separators=(',',':')))
+print('TR rows',len(trows),'drafted',sum(t[6] for t in trows),'by arrival',sorted(collections.Counter(t[0] for t in trows).items()))
 for r in sorted([r for r in SC if r['draftYear']],key=lambda r:-r['pae'])[:60]: addtag(r)
 for nm in ['Shazz Preston','Aaron Anderson','Jack Bech']:
     for r in P:

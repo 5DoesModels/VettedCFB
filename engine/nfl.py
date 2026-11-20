@@ -39,6 +39,22 @@ for k,v in S.items():
       top=[[x['n'],x['y'],x['o'],x['pos'],x['sea'],x['g'],x['pb'],round(x['ov'],1),x['ap'],x['np']] for x in sorted(v,key=lambda x:-x['np'])[:5]],
       steal=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1),x['np'],round(x['ex'],1)] for x in sorted(vv,key=lambda x:-x['ov'])[:3]],
       bust=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1),x['np'],round(x['ex'],1)] for x in sorted(vv,key=lambda x:x['ov'])[:3]]))
+# ---- second contract: still in the NFL in his 5th season (rookie deals run 4 years). Drafts 2003-2021 only.
+E2=[x for x in rows if x['y']<=2021]
+for x in E2: x['c2']=x['sea']>=5; x['c2s']=x['sea']>=5 and x['st']>=3
+pr={}
+for x in E2: pr.setdefault(x['rd'],[]).append(x)
+rnd2={k:[round(100*sum(z['c2'] for z in v)/len(v)),round(100*sum(z['c2s'] for z in v)/len(v)),len(v)] for k,v in sorted(pr.items())}
+pos2=collections.defaultdict(list)
+for x in E2: pos2[x['pos']].append(x)
+POSG={'QB':'QB','RB':'RB','FB':'RB','WR':'WR','TE':'TE','T':'OL','G':'OL','C':'OL','OL':'OL','DT':'DL','NT':'DL','DL':'DL','DE':'EDGE','OLB':'LB','ILB':'LB','LB':'LB','CB':'DB','S':'DB','DB':'DB','SAF':'DB','K':'ST','P':'ST','LS':'ST'}
+pg2=collections.defaultdict(list)
+for x in E2: pg2[POSG.get(x['pos'],'Other')].append(x)
+posc2={k:[round(100*sum(z['c2'] for z in v)/len(v)),len(v)] for k,v in pg2.items() if len(v)>=50}
+c2tot=[round(100*sum(x['c2'] for x in E2)/len(E2)),round(100*sum(x['c2s'] for x in E2)/len(E2)),len(E2)]
+for s_ in sch:
+    v=[x for x in E2 if x['sch']==s_['k']]
+    s_['c2']=[len(v),sum(x['c2'] for x in v),round(sum(rnd2[x['rd']][0]/100 for x in v),1),sum(x['c2s'] for x in v)]
 sch.sort(key=lambda s:-s['ov'])
 lng=sorted([x for x in rows],key=lambda x:(-x['sea'],-x['g']))[:12]
 best=sorted(rows,key=lambda x:-x['np'])[:12]
@@ -53,7 +69,9 @@ def corr(a,b):
     n=len(a);ma=sum(a)/n;mb=sum(b)/n;return sum((x-ma)*(y-mb) for x,y in zip(a,b))/math.sqrt(sum((x-ma)**2 for x in a)*sum((y-mb)**2 for y in b))
 r=corr([p[0] for p in pairs],[p[1] for p in pairs])
 out=dict(best=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['st'],x['pb'],x['ap'],x['np']] for x in best],schools=sorted(SI,key=SI.get),picks=picks,rnd=rnd,sch=sch,lng=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['g'],x['pb']] for x in lng],steals=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],round(x['ov'],1),x['pb'],x['ap'],x['np'],round(x['ex'],1)] for x in steals],
-  r=round(r,2),n=len(rows),avgsea=round(sum(x['sea'] for x in old)/len(old),1),pb=round(100*sum(1 for x in old if x['pb'])/len(old),1))
+  rnd2=rnd2,posc2=posc2,c2tot=c2tot,r=round(r,2),n=len(rows),avgsea=round(sum(x['sea'] for x in old)/len(old),1),pb=round(100*sum(1 for x in old if x['pb'])/len(old),1))
 open('/home/claude/concept/nfl.json','w').write(json.dumps(out,separators=(',',':')))
 print('rounds',rnd);print('r dev vs nfl value',out['r'],len(pairs));print('top',[(s['k'],s['ov'],s['sea'],s['nv']) for s in sch[:6]]);print('bottom',[(s['k'],s['ov'],s['sea'],s['nv']) for s in sch[-6:]])
 lsu=[s for s in sch if s['k']=='LSU'][0];print('LSU',lsu['sea'],lsu['s5'],lsu['ov'],lsu['pb'],lsu['top'][:2])
+
+print('C2',c2tot,rnd2,posc2);print('C2 top',sorted([(x['k'],x['c2']) for x in sch if x['c2'][0]>=25],key=lambda t:-(t[1][1]-t[1][2])/t[1][0])[:6])
