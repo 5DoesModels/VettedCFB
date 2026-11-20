@@ -82,6 +82,20 @@ for c,rs in byc.items():
 coaches.sort(key=lambda c:-(c['a'][3]-c['a'][4]))
 for c in coaches:
     _r=byc[c['name']]; c['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
+# attribution transparency + data coverage on report cards
+_D=json.load(open(E+'/data/draft.json'))
+_picks=collections.Counter(d['collegeTeam'] for d in _D if 2003<=d['year']<=2026)
+_link=collections.Counter(r['draftTeam'] for r in P if r['draftYear'])
+for c in coaches:
+    _r=byc[c['name']]; first={}
+    for x in c['st']: first.setdefault(x[0],x[1])
+    inh=sum(1 for r in _r if r['year']<first.get(cred(r),r['year']) and cred(r)==r['committedTo'])
+    tin=sum(1 for r in _r if cred(r)!=r['committedTo'])
+    ys=sorted({r['year'] for r in _r})
+    c['attr']=[len(_r),inh,tin,ys[0] if ys else None,ys[-1] if ys else None,len(ys)]
+for p in progs:
+    _r=byp[p['name']]; ys=sorted({r['year'] for r in _r})
+    p['attr']=[len(_r),ys[0] if ys else None,ys[-1] if ys else None,_picks.get(p['name'],0),_link.get(p['name'],0)]
 for p in progs:
     _r=byp[p['name']]; p['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
 for c in coaches: c['now']=next((s['school'] for s in CAREER.get(c['name'],[]) if s['year']==2026),None)
