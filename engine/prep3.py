@@ -51,7 +51,7 @@ for k,rs in byp.items():
     for r in rs: co[coach(r) or 'Unknown'].append(r)
     cos=sorted([[c]+agg(v)+[min(r['year'] for r in v)+2,min(2026,max(r['year'] for r in v)+2)] for c,v in co.items() if len(v)>=20],key=lambda x:x[-2])
     dr=[r for r in rs if r['draftYear']]
-    best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:6]]
+    best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:8]]
     miss=[addtag(r) for r in sorted([r for r in full if not r['draftYear']],key=lambda r:r['pae'])[:4]]
     portalDrafted=[addtag(r) for r in sorted([r for r in dr if r['mv'] and r['mv'][-1][1]==k],key=lambda r:-r['pts'])[:6]]
     progs.append(dict(name=k,cur=CUR.get(k),a=agg(rs),full=agg(full),ip=agg(ip),stars={s:agg([r for r in rs if (r['stars'] or 0)==s]) for s in (0,2,3,4,5)},
@@ -395,6 +395,11 @@ for r in JU:
     c_=coach(r)
     if c_: jc[c_].append(r)
 cnow={c['name']:c['now'] for c in coaches}
+JS=sorted({cred(r) for r in JU}); JCn=sorted({coach(r) or '' for r in JU})
+jrows=[[r['year'],JS.index(cred(r)),JCn.index(coach(r) or ''),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,1 if cred(r) in FBS else 0] for r in JU]
+jcs={}  # schools each coach led (FBS seasons)
+for c in coaches: jcs[c['name']]=[[x[0],x[1],x[2]] for x in c['st']]
+open(O+'juco.json','w').write(json.dumps(dict(S=JS,C=JCn,rows=jrows,cnow={k:cnow.get(k) for k in JCn if cnow.get(k)},cst={k:jcs.get(k,[]) for k in JCn},fbs=sorted(FBS)),separators=(',',':')))
 juco=dict(n=len(JU),dr=sum(1 for r in JU if r['draftYear']),
   progs=[[k]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]]] for k,v in jp.items() if len(v)>=8],
   pos=[[k[0],k[1]]+agg(v) for k,v in jpg.items() if len(v)>=3],
@@ -411,3 +416,27 @@ cc=[c for c in coaches if c['g'].get('all')]
 print('GRADES',[(c['name'],c['g']['all'][0],{k:(v[0] if v else None) for k,v in c['g'].items() if k!='all'}) for c in sorted(cc,key=lambda c:-c['g']['all'][1])[:5]])
 print('KIRBY',[c['g'] for c in coaches if c['name']=='Kirby Smart'][0],[c['cls'][:3] for c in coaches if c['name']=='Kirby Smart'][0])
 print('PROG',[(p['name'],p['g'],p['g5']) for p in progs[:5]])
+
+# ---- recruiting heat map + portal adaptation (an2.json)
+heat={}
+for k in sorted(FBS):
+    h=collections.Counter(r['stateProvince'] for r in P if r['committedTo']==k and r['recruitType']=='HighSchool' and r['stateProvince'])
+    h5=collections.Counter(r['stateProvince'] for r in P if r['committedTo']==k and r['recruitType']=='HighSchool' and r['stateProvince'] and r['year']>=2022)
+    t=collections.Counter(SS.get(p['origin']) or '?' for p in PO if p['destination']==k)
+    t5=collections.Counter(SS.get(p['origin']) or '?' for p in PO if p['destination']==k and p['season']>=2024)
+    heat[k]=dict(st=SS.get(k),h=dict(h),h5=dict(h5),t=dict(t),t5=dict(t5))
+ad=collections.defaultdict(dict); nat={}
+for Y in range(2021,2027):
+    tin=collections.Counter(p['destination'] for p in PO if p['season']==Y and p['destination'])
+    hs=collections.Counter(r['committedTo'] for r in P if r['year']==Y and r['recruitType']=='HighSchool')
+    a_=b_=0
+    for k in FBS:
+        ti,hi=tin.get(k,0),hs.get(k,0)
+        if ti+hi==0: continue
+        a_+=ti; b_+=hi
+        c_=HC.get((k,Y))
+        if c_: ad[c_][Y]=[k,ti,hi]
+    nat[Y]=round(a_/(a_+b_),3)
+adapt=[[c_,[[y]+v for y,v in sorted(d.items())]] for c_,d in ad.items() if len(d)>=3]
+open(O+'an2.json','w').write(json.dumps(dict(heat=heat,adapt=adapt,nat=nat),separators=(',',':')))
+print('AN2',len(heat),len(adapt),nat)

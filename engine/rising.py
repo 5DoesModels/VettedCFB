@@ -90,6 +90,17 @@ for Y in range(2021, 2026):
     allmoves = sum(1 for r in b if moved_up(r['name'], Y)[0])
     bt.append(dict(y=Y, n=len(b), top=len(top), hits=len(hits), moves=allmoves, names=hits))
     print(Y, 'pool', len(b), 'top10 hired up', len(hits), 'of', allmoves, 'total moves up', hits)
+past = {}
+KEEP = ('name','school','conf','yrs','w','l','rw','rl','wp','before','rank','prior','p4','sa','score')
+for Y in range(2021, 2026):
+    bd = board(Y); out = []
+    for r in bd[:25]:
+        up, to = moved_up(r['name'], Y)
+        nxt = [s for s in BY.get(r['name'], []) if s[0] == Y + 1]
+        x = {k: (round(r[k], 3) if isinstance(r[k], float) else r[k]) for k in KEEP}
+        x['next'] = to if (nxt and to != r['school']) else None; x['up'] = up
+        out.append(x)
+    past[Y] = dict(n=len(bd), rows=out)
 cur = board(2026)
 for r in cur[:15]: print(round(r['score']), r['name'], r['school'], f"{r['w']}-{r['l']}", r['parts'], r['rank'], r['prior'])
-json.dump(dict(asof='2026-11-19', rows=[{k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items()} for r in cur], bt=bt), open(O + 'rising.json', 'w'), separators=(',', ':'))
+json.dump(dict(asof='2026-11-19', rows=[{k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items()} for r in cur], bt=bt, past=past), open(O + 'rising.json', 'w'), separators=(',', ':'))
