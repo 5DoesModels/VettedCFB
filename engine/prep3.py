@@ -139,7 +139,7 @@ for k,v in stx.items():
 # search index: every signee
 SCH=sorted({r['committedTo'] for r in P}|{cred(r) for r in P if r['exp'] is not None}|{last(r) for r in P}); SI={k:i for i,k in enumerate(SCH)}
 GL=G+['ATH','ST']
-idx=[[r['name'],r['year'],GL.index(r['pg']) if r['pg'] in GL else 9,SI[r['committedTo']],SI[cred(r) if r['exp'] is not None else last(r)],r['overall'] or 0,r['stars'] or 0,r['stateProvince'] or '',1 if any(m[1] and m[1]!=r['committedTo'] for m in r['mv']) else 0,r['round'] or 0] for r in P]
+idx=[[r['name'],r['year'],GL.index(r['pg']) if r['pg'] in GL else 9,SI[r['committedTo']],SI[cred(r) if r['exp'] is not None else last(r)],r['overall'] or 0,r['stars'] or 0,r['stateProvince'] or '',1 if any(m[1] and m[1]!=r['committedTo'] for m in r['mv']) else 0,r['round'] or 0,round(r['pae'],1) if r['exp'] is not None and r['k']>=3 else None] for r in P]
 open(O+'search.json','w').write(json.dumps(dict(s=SCH,g=GL,p=idx),separators=(',',':')))
 s=json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=lb,stay=stayd,tx=txd),separators=(',',':'))
 open(O+'data.json','w').write(s)
@@ -438,5 +438,18 @@ for Y in range(2021,2027):
         if c_: ad[c_][Y]=[k,ti,hi]
     nat[Y]=round(a_/(a_+b_),3)
 adapt=[[c_,[[y]+v for y,v in sorted(d.items())]] for c_,d in ad.items() if len(d)>=3]
-open(O+'an2.json','w').write(json.dumps(dict(heat=heat,adapt=adapt,nat=nat),separators=(',',':')))
+cheat={}
+HSk=collections.defaultdict(list)
+for r in P:
+    if r['recruitType']=='HighSchool' and r['stateProvince']: HSk[(r['committedTo'],r['year'])].append(r['stateProvince'])
+POk=collections.defaultdict(list)
+for p in PO:
+    if p['destination']: POk[(p['destination'],p['season'])].append(SS.get(p['origin']) or '?')
+for c in coaches:
+    h=collections.Counter(); t=collections.Counter()
+    for k in c.get('cls',[]): h.update(HSk.get((k[1],k[0]),[]))
+    for x in c['st']:
+        for y in range(max(2021,x[1]),x[2]+1): t.update(POk.get((x[0],y),[]))
+    if sum(h.values())>=20: cheat[c['name']]=dict(st=SS.get(c['now'] or c['st'][-1][0]),sch=c['now'] or c['st'][-1][0],h=dict(h),t=dict(t),n=[x[0] for x in c['st']])
+open(O+'an2.json','w').write(json.dumps(dict(heat=heat,adapt=adapt,nat=nat,cheat=cheat),separators=(',',':')))
 print('AN2',len(heat),len(adapt),nat)

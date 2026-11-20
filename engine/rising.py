@@ -95,12 +95,48 @@ KEEP = ('name','school','conf','yrs','w','l','rw','rl','wp','before','rank','pri
 for Y in range(2021, 2026):
     bd = board(Y); out = []
     for r in bd[:25]:
-        up, to = moved_up(r['name'], Y)
-        nxt = [s for s in BY.get(r['name'], []) if s[0] == Y + 1]
         x = {k: (round(r[k], 3) if isinstance(r[k], float) else r[k]) for k in KEEP}
-        x['next'] = to if (nxt and to != r['school']) else None; x['up'] = up
+        later = [s for s in BY.get(r['name'], []) if s[0] > Y and s[1] != r['school']]
+        if later:
+            s0 = later[0]; x['next'] = s0[1]; x['nyr'] = s0[0]; x['up'] = power(s0[4], s0[0], s0[1])
+        else: x['next'] = None; x['up'] = False
         out.append(x)
-    past[Y] = dict(n=len(bd), rows=out)
+    past[Y] = dict(n=len(bd), rows=out, ev=sum(1 for x in out[:10] if x['up']))
 cur = board(2026)
 for r in cur[:15]: print(round(r['score']), r['name'], r['school'], f"{r['w']}-{r['l']}", r['parts'], r['rank'], r['prior'])
 json.dump(dict(asof='2026-11-19', rows=[{k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items()} for r in cur], bt=bt, past=past), open(O + 'rising.json', 'w'), separators=(',', ':'))
+
+# ---- Group of Five coaches hired by power schools: how the new team and the old team fared
+def wp(sch, y):
+    v = S.get((sch, y)); return (v[1] / v[2]) if v and v[2] else None
+PO = json.load(open(E + '/data/portal.json'))
+moves = []
+for nm, ss in BY.items():
+    for a_, b_ in zip(ss, ss[1:]):
+        if b_[0] != a_[0] + 1 or a_[1] == b_[1] or a_[3] == 0: continue
+        if power(a_[4], a_[0], a_[1]) or not power(b_[4], b_[0], b_[1]): continue
+        Y = a_[0]
+        if Y < 2005: continue
+        old, new = a_[1], b_[1]
+        fol = [f"{p['firstName']} {p['lastName']}" for p in PO if p['origin'] == old and p['destination'] == new and p['season'] in (Y + 1,)]
+        moves.append(dict(c=nm, y=Y + 1, old=old, new=new,
+            nb=[wp(new, Y - 1), wp(new, Y)], n1=wp(new, Y + 1), n2=wp(new, Y + 2), n3=wp(new, Y + 3),
+            ob=[wp(old, Y - 1), wp(old, Y)], o1=wp(old, Y + 1), o2=wp(old, Y + 2), o3=wp(old, Y + 3),
+            oc=S.get((old, Y + 1), [None])[0], fol=fol))
+def avg(xs):
+    xs = [x for x in xs if x is not None]; return round(sum(xs) / len(xs), 3) if xs else None
+def b2(l): return avg(l)
+summ = {}
+for k in ('n', 'o'):
+    base = [b2(m[k + 'b']) for m in moves]
+    summ[k] = dict(base=avg(base), y1=avg([m[k + '1'] for m in moves]), y2=avg([m[k + '2'] for m in moves]), y3=avg([m[k + '3'] for m in moves]))
+# share of old teams that dropped below .500 in year one, and that were back to their old level by year three
+summ['o_drop'] = sum(1 for m in moves if m['o1'] is not None and m['o1'] < .5) / max(1, sum(1 for m in moves if m['o1'] is not None))
+summ['o_back'] = sum(1 for m in moves if m['o3'] is not None and b2(m['ob']) is not None and m['o3'] >= b2(m['ob']) - .05) / max(1, sum(1 for m in moves if m['o3'] is not None and b2(m['ob']) is not None))
+summ['n_up1'] = sum(1 for m in moves if m['n1'] is not None and b2(m['nb']) is not None and m['n1'] > b2(m['nb'])) / max(1, sum(1 for m in moves if m['n1'] is not None and b2(m['nb']) is not None))
+pe = [m for m in moves if m['y'] >= 2022]
+summ['fol'] = avg([len(m['fol']) for m in pe]); summ['pe'] = len(pe)
+moves.sort(key=lambda m: -m['y'])
+print('MOVES', len(moves), summ)
+J = json.load(open(O + 'rising.json')); J['moves'] = moves; J['msum'] = summ
+json.dump(J, open(O + 'rising.json', 'w'), separators=(',', ':'))
