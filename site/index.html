@@ -1248,7 +1248,7 @@ function recmap(){
   app.querySelectorAll('[data-hm]').forEach(b=>b.onclick=()=>{hmMode=b.dataset.hm;recmap()});
   loadAn2().then(()=>{const hq=document.getElementById('hq');if(!hq)return;
     document.getElementById('hnames').innerHTML=(hmMode==='prog'?Object.keys(AN2.heat):Object.keys(AN2.cheat)).map(n=>`<option value="${esc(n)}">`).join('');
-    hq.onchange=hq.oninput=()=>{const src=hmMode==='prog'?AN2.heat:AN2.cheat;const p=Object.keys(src).find(k=>k.toLowerCase()===hq.value.trim().toLowerCase());if(p){if(hmMode==='prog')hmP=p;else hmC=p;drawHeat()}};
+    hq.onchange=hq.oninput=()=>{const src=hmMode==='prog'?AN2.heat:AN2.cheat;const p=Object.keys(src).find(k=>k.toLowerCase()===hq.value.trim().toLowerCase());if(p){if(p===(hmMode==='prog'?hmP:hmC)&&document.querySelector('#hmmap path.h'))return;if(hmMode==='prog')hmP=p;else hmC=p;drawHeat()}};
     app.querySelectorAll('[data-hk]').forEach(b=>b.onclick=()=>{hmK=b.dataset.hk;app.querySelectorAll('[data-hk]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawHeat()});
     app.querySelectorAll('[data-hr]').forEach(b=>b.onclick=()=>{hmR=b.dataset.hr;app.querySelectorAll('[data-hr]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawHeat()});
     drawHeat()}).catch(()=>{const m=document.getElementById('hmmap');if(m)m.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'})}
@@ -1256,7 +1256,7 @@ function drawHeat(){const el=document.getElementById('hmmap');if(!el)return;cons
   const tot=Object.values(C).reduce((a,b)=>a+b,0),unk=C['?']||0,mx=Math.max(1,...Object.entries(C).filter(([k])=>k!=='?').map(([,v])=>v));
   const fill=k=>{const v=C[k]||0;if(!v)return 'var(--cell)';const t=Math.sqrt(v/mx);return `color-mix(in srgb,#B83A2E ${Math.round(12+88*t)}%,#F7EDE0)`};
   const dark=k=>(C[k]||0)/mx>.25;
-  el.innerHTML=`<svg viewBox="0 0 975 610" role="img" aria-label="Recruiting map for ${esc(nm)}">${Object.entries(MAP).map(([k,[d]])=>`<path d="${d}" style="cursor:pointer;fill:${fill(k)};${k===H.st?'stroke:#14213D;stroke-width:5':''}" data-s="${k}" tabindex="0" role="button" aria-label="${ST[k]||k}"><title>${ST[k]||k}: ${C[k]||0}</title></path>`).join('')}${Object.entries(MAP).filter(([k])=>!SMALLST.has(k)).map(([k,[,c]])=>`<text x="${c[0]}" y="${c[1]+4}" style="fill:${dark(k)?'#F6F3EC':'#14213D'}">${k}</text>`).join('')}</svg>`;
+  el.innerHTML=`<svg viewBox="0 0 975 610" role="img" aria-label="Recruiting map for ${esc(nm)}">${Object.entries(MAP).map(([k,[d]])=>`<path class="h" d="${d}" style="cursor:pointer;fill:${fill(k)};${k===H.st?'stroke:#14213D;stroke-width:5':''}" data-s="${k}" tabindex="0" role="button" aria-label="${ST[k]||k}"><title>${ST[k]||k}: ${C[k]||0}</title></path>`).join('')}${Object.entries(MAP).filter(([k])=>!SMALLST.has(k)).map(([k,[,c]])=>`<text x="${c[0]}" y="${c[1]+4}" style="fill:${dark(k)?'#F6F3EC':'#14213D'}">${k}</text>`).join('')}</svg>`;
   document.getElementById('hmleg').innerHTML=`<span class="small">Lighter = fewer players · darker = more · <b>navy outline</b> = home state</span>`;
   const top=Object.entries(C).filter(([k])=>k!=='?').sort((a,b)=>b[1]-a[1]).slice(0,6);const home=C[H.st]||0;
   const lab=hmK==='h'?'high school signees':'transfers in',yrs=isC?(hmK==='h'?'in classes he signed':'while he was head coach'):hmK==='h'?(hmR==='5'?'2022–2026':'2002–2026'):(hmR==='5'?'2024–2026':'2021–2026');
