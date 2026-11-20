@@ -96,8 +96,8 @@ nav a.allf{margin-left:auto;background:var(--red);color:#fff;font-weight:600}nav
 main{padding:28px 0 40px;min-height:60vh}
 .lede{font-size:20px;color:var(--pen);max-width:62ch;margin:10px 0 0}
 section+section{margin-top:56px}
-.home>section+section{margin-top:clamp(80px,12vh,140px)}.home .hero{min-height:min(78vh,760px)}.home .hero .lede{font-size:24px;max-width:30ch}.home .btns{margin-top:28px}.home .evbtn{margin-top:22px;max-width:520px}
-.band{text-align:center;padding:48px 20px;background:var(--cell);border-radius:14px}.band .lede{margin:10px auto 0}.band .rolepick{justify-content:center;margin-top:26px}
+.home>section+section{margin-top:clamp(48px,7vh,72px)}.home .hero{padding:24px 0 8px}.home .hero .lede{font-size:24px;max-width:30ch}.home .btns{margin-top:28px}.home .evbtn{margin-top:22px;max-width:520px}
+.band{text-align:center;padding:32px 20px;background:var(--cell);border-radius:14px}.band .lede{margin:10px auto 0}.band .rolepick{justify-content:center;margin-top:26px}
 .home h2{font-size:clamp(30px,3.6vw,40px)}.home .stats{margin-top:20px}.home .ticker{margin-top:28px}
 
 .notes{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;font-size:16px;color:var(--pen);max-width:75ch}
@@ -203,6 +203,7 @@ tr.tgood td:first-child{box-shadow:inset 5px 0 #1F6B45}tr.tbad td:first-child{bo
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin:14px 0}
 .lk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:32px}
 .meter{display:grid;gap:10px;align-items:center;font-size:16px;margin:8px 0}.meter i{display:block;background:var(--ink)}.meter>span:last-child{font-family:Oswald;text-align:right}
+.yrfold{margin:10px 0 4px}.yrfold>summary{cursor:pointer;list-style:none;font-size:16px;padding:8px 0;color:var(--ink)}.yrfold>summary::-webkit-details-marker{display:none}.yrfold .yrng{margin-top:6px}.four .c ol{margin:6px 0 0}.four .c h3{font-size:20px}
 .avgline{background:var(--cell);border-left:5px solid var(--ink);padding:12px 14px;margin:18px 0 6px;font-size:16px}
 .four{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .two .c{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);padding:12px 14px}.two .c.bad{border-top-color:var(--red)}
@@ -304,7 +305,7 @@ function rowsList(el,items,fmtVal,base,open,total){if(total)items.forEach(it=>{i
   const vs=items.map(r=>r.v);const lo=Math.min(base,...vs),hi=Math.max(base,...vs),sp=(hi-lo)||1,z=(base-lo)/sp*100;
   el.innerHTML=items.length?items.map((it,n)=>{const x=(it.v-lo)/sp*100;return `<details class="row" data-k="${esc(it.key)}"><summary><span class="rk">${it.rk}</span><span class="pn">${it.badge||''}${esc(it.key)}${it.sub?`<small>${it.sub}</small>`:''}</span><span class="bar" style="--z:${z}%" aria-hidden="true"><i class="${it.v>=base?'up':'dn'}" style="left:${Math.min(x,z)}%;width:${Math.max(Math.abs(x-z),.4)}%;animation-delay:${Math.min(n,25)*25}ms"></i></span><span class="val">${fmtVal(it.v)}</span></summary><div class="slot"></div></details>`}).join(''):'<p class="empty">Nothing matches that search. Try a shorter name.</p>';
   el.querySelectorAll('details.row').forEach(d=>d.addEventListener('toggle',()=>{if(d.open&&!d.querySelector('.slot').innerHTML)d.querySelector('.slot').innerHTML=open(d.dataset.k)}))}
-function openRow(key){const d=[...app.querySelectorAll('details.row')].find(x=>x.dataset.k===key);if(d){d.open=true;setTimeout(()=>d.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'}),60)}}
+function openRow(key){let d=[...app.querySelectorAll('details.row')].find(x=>x.dataset.k===key);if(!d&&!rkAll&&location.hash.startsWith('#rankings')){rkAll=true;if(rkMode==='programs')drawProgs();else if(rkMode==='coaches'&&coView==='dev')drawCoaches();d=[...app.querySelectorAll('details.row')].find(x=>x.dataset.k===key)}if(d){d.open=true;setTimeout(()=>d.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'}),60)}}
 function countUp(root){
   const els=root.querySelectorAll('[data-n]');
   if(RM||!('IntersectionObserver' in window)){els.forEach(e=>e.textContent=(+e.dataset.n).toLocaleString());return}
@@ -378,33 +379,38 @@ let rkMode='programs',wrEra='all',coView='dev',wrQ='',wrSort='per',coQ='',coAct=
 function rankings(){
   app.innerHTML=`<div class="page"><section><h1>Rankings</h1><p class="lede">Who develops talent beyond what recruiting rankings predicted. Tap any row for the full report card.</p>
   <div class="bigseg" role="group" aria-label="Rank"><button data-rk="programs" aria-pressed="${rkMode==='programs'}">Programs</button><button data-rk="coaches" aria-pressed="${rkMode==='coaches'}">Head coaches</button><button data-rk="conf" aria-pressed="${rkMode==='conf'}">Conferences</button><button data-rk="position" aria-pressed="${rkMode==='position'}">By position</button><button data-rk="rising" aria-pressed="${rkMode==='rising'}">Next big hire</button></div>
-  <div class="loc"><label for="cl"><b>Look up a coach</b> <span class="small">see where he ranks on every list</span></label><input id="cl" list="cnames" placeholder="Type a coach's name, e.g. Kirby Smart" autocomplete="off"><datalist id="cnames">${D.coaches.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist><div id="clo"></div></div>
+  ${rkMode==='coaches'?'':'<!--'}<div class="loc"><label for="cl"><b>Look up a coach or school</b> <span class="small">filters the list; pick a coach to see where he ranks on every list</span></label><input id="cl" list="cnames" placeholder="Type a coach or school, e.g. Kirby Smart" autocomplete="off"><datalist id="cnames">${D.coaches.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist><div id="clo"></div></div>${rkMode==='coaches'?'':'-->'}
   <div id="rz"></div></section><div id="rn"></div></div>`;
-  app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;window._loc=null;window._hl=null;rankings()});
-  const cl=document.getElementById('cl');cl.oninput=()=>{const c=D.coaches.find(x=>x.name.toLowerCase()===cl.value.trim().toLowerCase());if(c)locate(c)};
-  if(window._loc){const c=D.coaches.find(x=>x.name===window._loc);if(c){cl.value=c.name;locate(c,true)}}
+  app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;rkAll=false;window._loc=null;window._hl=null;rankings()});
+  const cl=document.getElementById('cl');if(cl)cl.oninput=()=>{if(rkMode==='coaches'&&coView==='dev'){coQ=cl.value;rkAll=false;drawCoaches()}const c=D.coaches.find(x=>x.name.toLowerCase()===cl.value.trim().toLowerCase());if(c)locate(c)};
+  if(window._loc&&cl){const c=D.coaches.find(x=>x.name===window._loc);if(c){cl.value=c.name;locate(c,true)}}
   ({programs:rkPrograms,coaches:rkCoaches,conf:rkConf,position:rkPosition,rising:rkRising})[rkMode]()}
+let rkAll=false;
+const yrFold=(id,mn,mx,r,pre,label)=>`<details class="yrfold"><summary>${label||'Signing years'}: <b id="${id}-s">${r[0]===mn&&r[1]===mx?'all years':r[0]+'–'+r[1]}</b> <span class="small">change ▾</span></summary>${yrHTML(id,mn,mx,r,pre,label)}</details>`;
+const yrSum=(id,r,mn,mx)=>{const e=document.getElementById(id+'-s');if(e)e.textContent=r[0]===mn&&r[1]===mx?'all years':r[0]===r[1]?String(r[0]):r[0]+'–'+r[1]};
+function moreBtn(el,shown,total,redraw){if(shown<total)el.insertAdjacentHTML('beforeend',`<button class="bigbtn" id="rkall">Show all ${total}</button>`);const b=document.getElementById('rkall');if(b)b.onclick=()=>{rkAll=true;redraw()}}
 function rkPrograms(){
   const P=D.progs,top15=new Set(P.slice().sort((a,b)=>b.r5-a.r5).slice(0,15).map(p=>p.name));
   const hot=P.slice().sort((a,b)=>b.r5-a.r5).slice(0,3),cold=P.slice().sort((a,b)=>a.r5-b.r5).slice(0,3);
   const rise=P.filter(p=>!top15.has(p.name)).sort((a,b)=>(b.r5-b.p11)-(a.r5-a.p11)).slice(0,3),sink=P.slice().sort((a,b)=>(a.r5-a.p11)-(b.r5-b.p11)).slice(0,3);
   const card=(t,sub,list,f,cls)=>`<div class="c ${cls||''}"><h3>${t}</h3><p class="small">${sub}</p><ol>${list.map(p=>`<li>${gp(p.g5)}<button class="lk" data-open="${esc(p.name)}">${esc(p.name)}</button> · ${f(p)}</li>`).join('')}</ol></div>`;
-  const callouts=`<div class="avgline"><b>How to read this:</b> each program gets a letter grade (S is the top 1%, C is about average, F is the bottom 10%). The number is draft points above or below expectations per year. <b>What's average?</b> Zero. Every number here is "how much better or worse than expected," so an average program scores 0. A score of +50 means a program squeezed about one extra first-round pick out of each year's recruits, beyond what their rankings predicted. The average FBS program sends about ${D.stats.avg_draft} players a year to the draft.</div>
-  <div class="two four">${card('Hot right now','Last 5 years: most draft value above expectations per year (players who signed 2019–2023)',hot,p=>`<span class="pos">${f0(p.r5)}</span>`)}${card('Cold right now','Last 5 years: furthest below expectations',cold,p=>`<span class="neg">${f0(p.r5)}</span>`,'bad')}
-  ${card('Dark-horse risers','Biggest jump from 2002–2018 to the last 5 years, outside the current top 15',rise,p=>`${f0(p.p11)} → <span class="pos">${f0(p.r5)}</span>`)}${card('Sinking ships','Biggest drop from 2002–2018 to the last 5 years',sink,p=>`${f0(p.p11)} → <span class="neg">${f0(p.r5)}</span>`,'bad')}</div>`;
-  document.getElementById('rz').innerHTML=callouts+`${yrHTML('ry',2002,2023,rY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018'],[2002,2020,'Careers finished']])}<div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Oregon" value="${esc(wrQ)}"></label>
-  <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Points per year</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div><div class="list" id="list"></div>`;
-  document.getElementById('rn').innerHTML=notes(`<p>All ${D.progs.length} FBS programs with 150+ graded players. Points per class = (actual draft points − expected) ÷ ${D.meta.ncl} graded classes; it favours volume. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
+  const callouts=`<details class="more" style="margin:14px 0 4px"><summary><span>How to read these numbers<small>what's average, what +50 means</small></span></summary><div class="avgline" style="margin-top:6px">Each program gets a letter grade (S is the top 1%, C is about average, F is the bottom 10%). The number is draft points above or below expectations per year. <b>What's average?</b> Zero. Every number here is "how much better or worse than expected," so an average program scores 0. A score of +50 means a program squeezed about one extra first-round pick out of each year's recruits, beyond what their rankings predicted. The average FBS program sends about ${D.stats.avg_draft} players a year to the draft.</div></details>
+  <div class="two four">${card('Hot right now','Last 5 years',hot,p=>`<span class="pos">${f0(p.r5)}</span>`)}${card('Cold right now','Last 5 years',cold,p=>`<span class="neg">${f0(p.r5)}</span>`,'bad')}
+  ${card('Dark-horse risers','Biggest jump lately',rise,p=>`${f0(p.p11)} → <span class="pos">${f0(p.r5)}</span>`)}${card('Sinking ships','Biggest drop lately',sink,p=>`${f0(p.p11)} → <span class="neg">${f0(p.r5)}</span>`,'bad')}</div>`;
+  document.getElementById('rz').innerHTML=callouts+`<h2 style="margin-top:28px">Every program</h2><div class="ctrl"><label>Find a program<input type="search" id="q" placeholder="Oregon" value="${esc(wrQ)}"></label>
+  <div class="seg" role="group" aria-label="Rank by"><button data-s="per" aria-pressed="${wrSort==='per'}">Points per year</button><button class="adv" data-s="ratio" aria-pressed="${wrSort==='ratio'}">Actual ÷ expected</button></div></div>${yrFold('ry',2002,2023,rY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018'],[2002,2020,'Careers finished']])}<div class="list" id="list"></div>`;
+  document.getElementById('rn').innerHTML=notes(`<p>Hot and cold use players who signed 2019–2023; risers and sinking ships compare 2002–2018 with 2019–2023 (risers exclude the current top 15). All ${D.progs.length} FBS programs with 150+ graded players. Points per class = (actual draft points − expected) ÷ ${D.meta.ncl} graded classes; it favours volume. Actual ÷ expected favours programs that recruit lower-rated players. Every player counts for the last school he played for.</p>`);
   const q=document.getElementById('q');q.oninput=()=>{wrQ=q.value;drawProgs()};
-  wireYr('ry',r=>{rY=r;drawProgs()});
-  app.querySelectorAll('#rz [data-open]').forEach(b=>b.onclick=()=>{wrQ='';const k=b.dataset.open;drawProgs();openRow(k)});
+  wireYr('ry',r=>{rY=r;yrSum('ry',r,2002,2023);drawProgs()});
+  app.querySelectorAll('#rz [data-open]').forEach(b=>b.onclick=()=>{wrQ='';rkAll=true;const k=b.dataset.open;drawProgs();openRow(k)});
   app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{wrSort=b.dataset.s;rkPrograms()});drawProgs()}
 function drawProgs(){
   const ny=rY[1]-rY[0]+1,val=p=>{const a=sumPy(p.py,rY);return wrSort==='ratio'?(a[4]>0?a[3]/a[4]:0):(a[3]-a[4])/ny};
   const fullR=rY[0]===2002&&rY[1]===2023,r5R=rY[0]===2019&&rY[1]===2023;
   const all=D.progs.filter(p=>sumPy(p.py,rY)[0]>=10).map(p=>({key:p.name,v:val(p),sub:[p.conf,p.cur?`Head coach: ${esc(p.cur)}`:''].filter(Boolean).join(' · ')})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}));
   const q=wrQ.trim().toLowerCase();
-  rowsList(document.getElementById('list'),all.filter(r=>!q||r.key.toLowerCase().includes(q)),v=>wrSort==='per'?f0(v):v.toFixed(2)+'×',wrSort==='per'?0:1,k=>progSheet(D.progs.find(p=>p.name===k)),all.length)}
+  const sh=all.filter(r=>!q||r.key.toLowerCase().includes(q)),L=q||rkAll?sh:sh.slice(0,25);const el=document.getElementById('list');
+  rowsList(el,L,v=>wrSort==='per'?f0(v):v.toFixed(2)+'×',wrSort==='per'?0:1,k=>progSheet(D.progs.find(p=>p.name===k)),all.length);moreBtn(el,L.length,sh.length,drawProgs)}
 function progSheet(p){
   const [n,d,r1,pts,exp]=p.a;
   const bp=Object.entries(p.pos).filter(([g,a])=>a[0]>=20).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));
@@ -427,15 +433,13 @@ function progSheet(p){
 function rkCoaches(){
   const vs=`<div class="bigseg" role="group" aria-label="Coach view" style="margin:0 0 16px"><button data-cv="dev" aria-pressed="${coView==='dev'}">Development report cards</button><button data-cv="lean" aria-pressed="${coView==='lean'}">Portal or recruiting?</button></div>`;
   if(coView==='lean'){coachLean(vs);return}
-  document.getElementById('rz').innerHTML=vs+`<div class="plain"><b>Giving coaches a fair shake:</b> long careers and big-name schools pile up totals. "Per season" divides by seasons coached, and recruit rankings are already built into every grade, so a coach isn't rewarded just for signing 5-stars. "Vs his school's norm" also compares him with other coaches at the same schools.</div><div class="ctrl"><label>Find a coach or school<input type="search" id="q" placeholder="Saban" value="${esc(coQ)}"></label>
-  <div class="seg" role="group" aria-label="Rank by">${[['ps','Per season (fairest)'],['tot','Total'],['adj','Vs his school\'s norm'],['ratio','Actual ÷ expected']].map(([k,l])=>`<button data-s="${k}" aria-pressed="${coSort===k}">${l}</button>`).join('')}</div>
-  <div class="seg" role="group" aria-label="Which coaches"><button data-a="0" aria-pressed="${!coAct}">All</button><button data-a="1" aria-pressed="${coAct}">Head coach in 2026</button></div></div>${yrHTML('cy',2002,2023,cY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018']],'Players who signed in')}<p class="small" id="cyn"></p><div class="list" id="list"></div>`;
-  wireYr('cy',r=>{cY=r;drawCoaches()});
+  document.getElementById('rz').innerHTML=vs+`<details class="more" style="margin:0 0 6px"><summary><span>Is this fair to coaches?<small>how long careers and big schools are handled</small></span></summary><div class="plain" style="margin-top:6px">Long careers and big-name schools pile up totals. "Per season" divides by seasons coached, and recruit rankings are already built into every grade, so a coach isn't rewarded just for signing 5-stars. "Vs his school's norm" also compares him with other coaches at the same schools.</div></details><div class="ctrl">
+  <label>Rank by<select id="cso">${[['ps','Per season (fairest)'],['tot','Career total'],['adj','Vs his school\'s norm'],['ratio','Actual ÷ expected']].map(([k,l])=>`<option value="${k}"${coSort===k?' selected':''}>${l}</option>`).join('')}</select></label>
+  <label>Show<select id="cact"><option value="0"${!coAct?' selected':''}>Every coach since 2002</option><option value="1"${coAct?' selected':''}>Head coaches in 2026</option></select></label></div>${yrFold('cy',2002,2023,cY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018']],'Players who signed in')}<p class="small" id="cyn"></p><div class="list" id="list"></div>`;
+  wireYr('cy',r=>{cY=r;yrSum('cy',r,2002,2023);drawCoaches()});
   document.getElementById('rn').innerHTML=notes(`<p>Head coaches with 40+ graded players, across every school they led, current through the 2026 hires. Per season divides by seasons coached (2004–2025), so long careers don't win by volume; it needs 4+ seasons. Vs his school's norm compares him with how other coaches did at the same schools, pulled strongly toward average. Last 5 years uses players who signed 2019–2023 and needs 20+ of them. A player is credited to the head coach at the last school he played for, in his second year on campus (or his first season there, if he transferred in). Position coaches and coordinators are not in any free data source yet.</p>`);
   app.querySelectorAll('#rz [data-cv]').forEach(b=>b.onclick=()=>{coView=b.dataset.cv;rkCoaches()});
-  const q=document.getElementById('q');q.oninput=()=>{coQ=q.value;drawCoaches()};
-  app.querySelectorAll('#rz [data-s]').forEach(b=>b.onclick=()=>{coSort=b.dataset.s;app.querySelectorAll('#rz [data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawCoaches()});
-  app.querySelectorAll('#rz [data-a]').forEach(b=>b.onclick=()=>{coAct=b.dataset.a==='1';app.querySelectorAll('#rz [data-a]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawCoaches()});drawCoaches()}
+  document.getElementById('cso').onchange=e=>{coSort=e.target.value;drawCoaches()};document.getElementById('cact').onchange=e=>{coAct=e.target.value==='1';drawCoaches()};drawCoaches()}
 
 
 /* ---------- NEXT BIG HIRE ---------- */
@@ -560,7 +564,7 @@ function drawCoaches(){
   const q=coQ.trim().toLowerCase();const val=c=>{if(full)return cs==='tot'?c.a[3]-c.a[4]:cs==='ps'?c.ps:cs==='adj'?c.adjps:c.a[3]/c.a[4];const a=sumPy(c.py,cY);return cs==='tot'?a[3]-a[4]:cs==='ratio'?(a[4]>0?a[3]/a[4]:0):(a[3]-a[4])/Math.max(1,yrsWith(c.py,cY))};
   const all=D.coaches.filter(c=>(!coAct||c.now)&&(full?(cs==='ps'||cs==='adj'?c.ns>=4:true):sumPy(c.py,cY)[0]>=20)).map(c=>({key:c.name,v:val(c),badge:c.g&&c.g.all?gp(c.g.all[0]):'',sub:(c.now?`Now: ${esc(c.now)} · `:'')+c.st.map(s=>esc(s[0])).join(' · '),c})).sort((a,b)=>b.v-a.v).map((r,i)=>({...r,rk:i+1}))
    .filter(r=>!q||(r.key+' '+r.c.st.map(s=>s[0]).join(' ')).toLowerCase().includes(q));
-  rowsList(document.getElementById('list'),all,v=>cs==='ratio'?v.toFixed(2)+'×':f0(v),cs==='ratio'?1:0,k=>coachSheet(D.coaches.find(c=>c.name===k)))}
+  const L=q||rkAll?all:all.slice(0,25),el=document.getElementById('list');rowsList(el,L,v=>cs==='ratio'?v.toFixed(2)+'×':f0(v),cs==='ratio'?1:0,k=>coachSheet(D.coaches.find(c=>c.name===k)));moreBtn(el,L.length,all.length,drawCoaches)}
 
 const CATX={dev:'How much his players beat their draft expectations, per season',rec:'How highly ranked his signing classes were nationally',lift:"How his classes compare with that school's other coaches",win:'Career win %',ret:"Players who transferred out (not to follow him): did they beat expectations elsewhere? A high grade means most didn't, so his calls look right",port:'How transfers he brought in developed'};
 function coachCard(c){if(!c.g)return '';const G=c.g;const tn=c.turn&&c.turn[1]>=10?`<div style="grid-column:1/-1;background:transparent;padding:2px 4px"><span class="small"><b>Roster turnover (not graded):</b> ${c.turn[0]} of his ${c.turn[1]} signees from 2020–2024 later moved to another school. Not graded, because a move can be the coach's call as much as the player's.</span></div>`:'';return `<div class="rc" style="margin:0 0 12px">${G.all?`<div style="grid-column:1/-1">${gp(G.all[0],1)}<span><b>Overall grade</b><small>a weighted blend of the grades below, compared with every head coach since 2002</small></span></div>`:''}${D.catn.map(([k,l])=>G[k]?`<div>${gp(G[k][0])}<span><b>${l}</b><small>${CATX[k]}</small></span></div>`:'').join('')}${tn}</div>`}
