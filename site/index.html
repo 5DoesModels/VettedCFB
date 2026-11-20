@@ -250,6 +250,77 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 .ticker .lbl{font-family:Oswald;color:#F2B8AE;flex:none;font-size:16px}.ticker .tx{font-size:18px;transition:opacity .4s,transform .4s}.ticker .tx.out{opacity:0;transform:translateY(8px)}
 .quad text{font-family:"Source Sans 3"}
 @media(prefers-reduced-motion:no-preference){.meter i{animation:grow .8s cubic-bezier(.2,.8,.2,1) both;transform-origin:left}.dot{animation:pop .5s ease-out both}@keyframes pop{from{opacity:0;transform:scale(.2)}}.dot{transform-box:fill-box;transform-origin:center}}
+
+/* ---------- Vetted destinations, statuses, roadmap ---------- */
+:root{--cd:#14213D;--cr:#B23A2E;--cp:#2F5A9C;--s-avail:#1F6B4E;--s-dev:#2F5A9C;--s-soon:#86680F;--s-research:#74468A;--s-maint:#B5602A}
+@media (prefers-color-scheme:dark){:root:not([data-vt=light]){--cd:#ECE7DB;--cr:#E36A5C;--cp:#8EB1E8;--s-avail:#6CC79F;--s-dev:#8EB1E8;--s-soon:#D9B640;--s-research:#C9A0DE;--s-maint:#E89A66}}
+html[data-vt=dark]{--cd:#ECE7DB;--cr:#E36A5C;--cp:#8EB1E8;--s-avail:#6CC79F;--s-dev:#8EB1E8;--s-soon:#D9B640;--s-research:#C9A0DE;--s-maint:#E89A66}
+html[data-vt=light]{--cd:#14213D;--cr:#B23A2E;--cp:#2F5A9C;--s-avail:#1F6B4E;--s-dev:#2F5A9C;--s-soon:#86680F;--s-research:#74468A;--s-maint:#B5602A}
+.eyebrow{margin:0 0 12px;font-family:Oswald;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.home .hero h1{font-size:clamp(40px,6vw,74px);line-height:.98;max-width:14ch}
+.home .hero .lede{max-width:36ch}
+.home .dver{margin-top:22px}
+button.btn{color:var(--ink)}
+.st{--c:var(--s-avail);flex:none;display:inline-flex;align-items:center;gap:6px;font-family:"Source Sans 3",system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;line-height:1;padding:5px 10px 5px 8px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.st-dev{--c:var(--s-dev)}.st-soon{--c:var(--s-soon)}.st-research{--c:var(--s-research)}.st-maint{--c:var(--s-maint)}
+.st-soon i{background:transparent;border:2px solid var(--c);width:9px;height:9px}.st-research i{border-radius:2px;transform:rotate(45deg)}
+.dcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin-top:26px}
+.dcard{--dc:var(--cd);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:inset 0 6px 0 var(--dc);overflow:hidden}
+.dc-r{--dc:var(--cr)}.dc-p{--dc:var(--cp)}
+.dtop{display:flex;flex-direction:column;gap:10px;padding:26px 24px 10px;text-decoration:none}
+.dk{font-family:Oswald;font-size:14px;letter-spacing:.18em;color:var(--dc)}
+.dt{font-family:Oswald;font-weight:600;font-size:clamp(26px,2.6vw,32px);line-height:1.05}
+.dd{font-size:17px;line-height:1.45;color:var(--pen)}
+.dtop:hover .dt{color:var(--dc)}
+.dl{list-style:none;margin:6px 0 0;padding:0 24px}
+.dl li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:16px}
+.dl li>a,.dl li>button{font-weight:600;text-decoration:none;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:var(--ink)}
+.dl li>a:hover,.dl li>button:hover{color:var(--dc);text-decoration:underline}
+.dgo{margin-top:auto;padding:16px 24px 22px;font-family:Oswald;font-size:19px;text-decoration:none;color:var(--dc)}
+.home .evbtn.evwide{margin-top:24px;max-width:none;font-size:24px;padding:22px 26px}
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:26px;position:relative}
+.road::before{content:"";position:absolute;left:24px;right:24px;top:22px;height:3px;background:linear-gradient(90deg,var(--ink),var(--line))}
+.stage{position:relative;padding:0 14px 0 0}
+.sh{display:flex;flex-direction:column;align-items:flex-start;gap:10px;position:relative}
+.sn{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:3px solid var(--ink);font-family:Oswald;font-size:20px;flex:none}
+.stage:first-child .sn{background:var(--ink);color:var(--bg)}
+.sh b{font-family:Oswald;font-size:21px;font-weight:600;display:block;line-height:1.1}.sh small{font-size:14px;color:var(--pen)}
+.stage ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.stage li>a,.stage li button{text-decoration:none;width:100%;text-align:left;display:grid;gap:3px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;color:var(--ink);transition:transform .15s,border-color .15s}
+.stage li>a:hover,.stage li button:hover{transform:translateY(-2px);border-color:var(--ink)}
+.stage li .st{justify-self:start;margin-bottom:4px}.stage li b{font-family:Oswald;font-weight:500;font-size:18px;line-height:1.15}.stage li span{font-size:14px;color:var(--pen);line-height:1.35}
+@media(max-width:900px){.road{grid-template-columns:1fr;gap:22px}.road::before{left:22px;right:auto;top:24px;bottom:24px;width:3px;height:auto;background:linear-gradient(var(--ink),var(--line))}.sh{flex-direction:row;align-items:center}.stage ul{margin-left:56px}}
+.stkey{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;color:var(--pen)}
+.stkey span{display:inline-flex;align-items:center;gap:8px}
+.vision .dhero{padding:20px 0 6px}.vision .dhero h1{font-size:clamp(38px,5.4vw,64px)}
+.dh-d .eyebrow{color:var(--cd)}.dh-r .eyebrow{color:var(--cr)}.dh-p .eyebrow{color:var(--cp)}
+.openl{margin:14px 0 0;font-weight:600}
+.pcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px;margin-top:18px}
+.pc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--ink);text-align:left;font:inherit}
+.pc h3{font-size:22px;margin-top:12px}.pc p{margin:8px 0 0;font-size:16px;line-height:1.45;color:var(--pen)}
+.pc .go{margin-top:auto;padding-top:14px;font-family:Oswald;font-size:17px}
+.pcm{display:flex;flex-direction:column;flex:1;padding:20px;text-decoration:none;align-items:flex-start}
+.pc-av{border-top:5px solid var(--s-avail)}
+.pc-av:hover{border-color:var(--ink);border-top-color:var(--s-avail)}
+.pcl{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 18px}
+.pcl a{font-size:15px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.pcl a:hover{border-color:var(--ink)}
+.pc-pv{padding:20px;cursor:pointer;border-style:dashed;align-items:flex-start;background:color-mix(in srgb,var(--card) 70%,transparent)}
+.pc-pv:hover{border-style:solid;border-color:var(--ink)}
+.morechips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px}
+.morechips>span{font-size:15px;color:var(--pen);margin-right:4px}
+.morechips .chip{text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;font-size:15px}
+.morechips .chip:hover{border-color:var(--ink)}
+dialog.pv{max-width:min(620px,94vw);width:100%;border:0;border-radius:14px;padding:0;background:var(--card);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog.pv::backdrop{background:rgba(10,15,30,.55)}
+.pvb{padding:28px 28px 24px;position:relative}
+.pvb h2{font-size:32px;margin:4px 0 12px}.pvb h3{font-size:17px;margin-top:20px;letter-spacing:.02em}.pvb p{margin:6px 0 0;font-size:17px;line-height:1.5}
+.pvk{font-family:Oswald;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--pen)!important;margin:0!important}
+.pvx{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:18px}
+.pvt{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.pvt a{font-weight:600;text-decoration:none;border:1.5px solid var(--ink);border-radius:8px;padding:8px 12px;font-size:16px}
+nav a .vt{display:inline}
+@media(max-width:640px){nav a .vt{display:none}nav a{padding:10px 12px 8px;font-size:17px}.dl{padding:0 18px}.dtop{padding:22px 18px 8px}.dgo{padding:14px 18px 20px}.pvb{padding:24px 18px 20px}.evwide{font-size:20px;flex-wrap:wrap}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <clipPath id="cL"><rect x="0" y="0" width="22" height="52"/></clipPath><clipPath id="cR"><rect x="22" y="0" width="30" height="52"/></clipPath>
@@ -260,11 +331,12 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 <span class="concept">Preview</span>
 <button class="thm" id="thm" type="button" aria-label="Switch light or dark mode"><span id="thmi">☾</span> <span id="thml">Dark</span></button><div class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
 <input type="search" id="sq" placeholder="Search any player, school or coach" aria-label="Search any player, school or coach" autocomplete="off"><div class="res" id="sr" role="listbox"></div></div></div>
-<nav aria-label="Sections"><a href="#home">Home</a><a href="#find">Find a Program</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#analytics">Analytics</a><a href="#about">About</a><a href="#everything" class="allf">☰ Research library</a></nav><div id="subbar" class="subrow" hidden></div>
+<nav aria-label="Sections"><a href="#home">Home</a><a href="#data"><span class="vt">Vetted&nbsp;</span>Data</a><a href="#recruiting"><span class="vt">Vetted&nbsp;</span>Recruiting</a><a href="#plus"><span class="vt">Vetted&nbsp;</span>Plus</a><a href="#about">About</a><a href="#everything" class="allf">☰ Explore everything</a></nav><div id="subbar" class="subrow" hidden></div>
 </div></header>
 <div id="teambar" hidden><div class="wrap tb"><span>You're viewing</span><b id="tbn"></b><span class="tbk" id="tbk">report card</span><button id="tbc" type="button">Close ✕</button></div></div>
-<main class="wrap" id="app"><p class="empty">Loading the board…</p></main>
-<footer><div class="wrap"><div class="links"><a href="#about">About</a><a href="#contact">Contact</a><a href="#methods">Methods</a><button type="button" id="prev">Preview the welcome question</button></div>
+<main class="wrap" id="app"><p class="empty">Loading…</p></main>
+<dialog id="pv" class="pv" aria-label="About this feature"></dialog>
+<footer><div class="wrap"><div class="links"><a href="#data">Vetted Data</a><a href="#recruiting">Vetted Recruiting</a><a href="#plus">Vetted Plus</a><a href="#everything">Explore everything</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#methods">Methods</a><button type="button" id="prev">Preview the welcome question</button></div>
 <div>Vetted CFB · Independent; not affiliated with any school, conference or the NCAA. Recruiting ratings: 247Sports Composite (a blend of 247Sports, Rivals, ESPN and, for recent classes, On3), via the College Football Data API. <a href="https://x.com/Prod5CFB">Follow @Prod5CFB on X</a>. No team logos, mascots or player photos. Findings are early and will change as the model is tuned.</div></div></footer>
 <script>
 {
@@ -287,11 +359,11 @@ function split(n){const p=n.split(' ');let s='';if(p.length>2&&SUF.has(p[p.lengt
 const pathTxt=(sg,mv)=>esc(sg)+(mv||[]).map(m=>' → '+esc(m[1]||'portal, no school yet')+' '+yy(m[0])).join('');
 function tag(t){
   const [l,f]=split(t.n);const cls=t.o&&t.o<=32?'gold':'';
-  const dr=t.dy?`<div><span class="k">Drafted</span><span class="v">${t.dy} · ${esc(t.dt)}</span></div><div><span class="k">Pick</span><span class="v">#${t.o}</span></div>`:`<div><span class="k">Draft</span><span class="v">${t.y>=2024?'Too early':t.y>2020?'Not yet':'Undrafted'}</span></div>`;
+  const dr=t.dy?`<div><span class="k">Drafted</span><span class="v">${t.dy} · ${esc(t.dt)}</span></div><div><span class="k">Pick</span><span class="v">#${t.o}</span></div>`:`<div><span class="k">Draft</span><span class="v">${t.ic===undefined?(t.y>=2024?'Too early':t.y>2020?'Not yet':'Undrafted'):t.ic?(t.y>=2025?'Too early':'Still in college'):t.y>=2025?'Too early':'Undrafted'}</span></div>`;
   return `<article class="tag ${cls}"><div class="m"><div class="nm">${esc(l.toUpperCase())}<span>, ${esc(f)}</span></div>
   <div class="sub">${esc(t.h)} · ${pathTxt(t.sg,t.mv)}${t.jc?' · JUCO/prep':''}</div>
   <div class="cells"><div><span class="k">Stars</span><span class="v" style="color:var(--gold)">${stars(t.s)}</span></div><div><span class="k">Rating</span><span class="v">${t.rt?t.rt.toFixed(4):'—'}</span></div>${dr}<div><span class="k">Points</span><span class="v">${t.pts}</span></div><div><span class="k">Expected</span><span class="v">${t.e==null?'—':t.e.toFixed(1)}</span></div></div></div>
-  <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span><span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.pae!=null?`<span style="margin-top:4px">${gpP(t.pae,!!t.o).replace('margin-right:6px','')}</span>`:''}${t.y>2020?'<span class="ip">in progress</span>':''}</div></article>`}
+  <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span><span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.pae!=null?`<span style="margin-top:4px">${gpP(t.pae,!!t.o).replace('margin-right:6px','')}</span>`:''}${t.y>2020&&t.ic!==0&&!t.dy?'<span class="ip">in progress</span>':''}</div></article>`}
 const T=i=>D.tags[i];
 function findTag(name){for(const k in D.tags){if(D.tags[k].n===name)return D.tags[k]}}
 function yrHTML(id,mn,mx,[lo,hi],presets,label){label=label||'Signing years';return `<div class="yrng" id="${id}"><div class="yrh"><b>${label}</b><span class="yrv">${lo}–${hi}</span></div><div class="yrs"><div class="yrt"><i></i></div><input type="range" min="${mn}" max="${mx}" step="1" value="${lo}" class="ya" aria-label="${label}: from"><input type="range" min="${mn}" max="${mx}" step="1" value="${hi}" class="yb" aria-label="${label}: to"></div><div class="yrp">${presets.map(([a,b,l])=>`<button type="button" data-y="${a}-${b}">${l}</button>`).join('')}</div></div>`}
@@ -307,10 +379,10 @@ const moreA=(t,b,s)=>more(t,b,s).replace('<details class="more"','<details class
 const more=(title,body,sub)=>`<details class="more"><summary><span>${title}${sub?`<small>${sub}</small>`:''}</span></summary>${body}</details>`;
 const cellsHTML=c=>`<div class="cells">${c.map(([k,v])=>`<div><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}</div>`;
 const posTable=pos=>`<div class="scroll"><table><tr><th>Position</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>Pts vs exp.</th><th>Ratio</th></tr>${Object.entries(pos).filter(([g,a])=>a[0]>=10).map(([g,a])=>`<tr><td>${POS[g]}</td><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td class="${a[3]>=a[4]?'pos':'neg'}">${f0(a[3]-a[4])}</td><td>${rat(a[3],a[4])}</td></tr>`).join('')}</table></div>`;
-const GROUPS={players:[['players','Search players'],['predictions','Predictions'],['transfers','Transfers']],analytics:[['analytics','Does it win?'],['recmap','Recruiting maps'],['moveup','Coaches moving up'],['adapt','Portal adaptation'],['stayhome','Distance and home'],['nfl','NFL careers']],about:[['about','About'],['contact','Contact'],['methods','How it works']]};
+const GROUPS={data:[['data','Overview'],['rankings','Rankings'],['players','Players'],['transfers','Transfer portal'],['nfl','NFL careers'],['analytics','Does it win?']],recruiting:[['recruiting','Overview'],['find','Find a Program'],['predictions','Predictions'],['recmap','Recruiting maps'],['stayhome','Distance and home']],plus:[['plus','Overview'],['adapt','Portal adaptation'],['moveup','Coaches moving up']],about:[['about','About'],['contact','Contact'],['methods','How it works']]};
 const GOF={};for(const g in GROUPS)for(const [r] of GROUPS[g])GOF[r]=g;
 function setNav(r){const g=GOF[r]||r;document.querySelectorAll('nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+g))}
-const GNAME={players:'Players',analytics:'Analytics',about:'About'};
+const GNAME={data:'Vetted Data',recruiting:'Vetted Recruiting',plus:'Vetted Plus',about:'About'};
 const GCUT=[[99,'S'],[96,'A+'],[90,'A'],[85,'A-'],[80,'B+'],[72,'B'],[65,'B-'],[58,'C+'],[45,'C'],[35,'C-'],[27,'D+'],[18,'D'],[10,'D-'],[0,'F']];
 const letterP=p=>GCUT.find(c=>p>=c[0])[1];
 const rankG=(rk,n)=>gp(letterP(n>0?100*(n-rk+0.5)/n:50));
@@ -333,33 +405,6 @@ function countUp(root){
 /* ---------- HOME ---------- */
 let mapMode='ratio',mapSel=null,tour=null;
 const SMALLST=new Set(['DC','RI','DE','CT','NJ','MA','VT','NH','MD']);
-function home(){
-  const m=D.meta,sr=m.sr;const ex3=sr[3][3],ex5=sr[5][3];
-  const wallNames=['Khalil Mack','Kyle Pitts','DeVonta Smith','Justin Jefferson','Brock Purdy','Aaron Donald','Malik Nabers',"Ja'Marr Chase",'Joe Burrow','Travis Hunter'];
-  const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
-  app.innerHTML=`<div class="page home"><section class="hero"><div><h1>Who really develops college football players?</h1>
-  <p class="lede">Recruiting rankings tell you who a program signs. We track what happens next.</p><p class="hsub">We compare NFL Draft outcomes with what players of similar recruiting ratings and positions typically achieve.</p>
-  <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div>
-  <a class="evbtn" href="#everything">Explore the Vetted CFB research library <span>Every page, one place →</span></a><p class="dver">Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1</p></div>
-  <div class="wall" aria-label="Moving board of player cards"><div class="col"><div class="set">${wt}</div><div class="set" aria-hidden="true">${wt}</div></div></div></section>
-  <section class="band"><h2>Who are you?</h2><p class="lede">Pick one and we'll show you where to start. Totally optional.</p><div class="rolepick" ><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></section>
-  <section class="hstats"><h2>By the numbers</h2><div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal moves</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
-  <div class="ticker" id="tk1"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div></section>
-  <section><h2>Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
-  <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button><button data-mm="cap" aria-pressed="${mapMode==='cap'}">Drafted per million residents</button></div></div>
-  <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>
-  <section id="homeall"><h2>Everything on Vetted CFB</h2><p class="lede">Every page, grouped by the question it answers. You can always get back here from <b>☰ Everything</b> at the top.</p><div class="dir">${DIR.slice(0,3).map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
-  <section><h2>How the score works</h2><p class="lede">Every player is judged against what players with his star rating, composite rating and position usually do in the NFL draft. Same draft slot, very different credit:</p>
-  <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted in round one</div><div class="big">60 − ${ex3.toFixed(1)} = <span class="pos">+${(60-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
-  <div class="c"><div class="small">A typical 5-star, drafted in round one</div><div class="big">60 − ${ex5.toFixed(1)} = <span class="pos">+${(60-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
-  <h3 style="margin-top:22px">Then every score gets a letter grade</h3><p class="small" style="font-size:16px;margin:4px 0 0">Grades compare players, programs and coaches with each other. They don't round up: an average result is a C. A player who gets drafted never grades below a D.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}<div><span class="gp gN">–</span><span>not enough data</span></div></div>
-  <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About Vetted CFB</a></p></section></div>`;
-  countUp(app);ticker('tk1',facts());roleHL(LS2.get('vc_role'),false);
-  app.querySelectorAll('.dir [data-sub]').forEach(a=>a.onclick=()=>subGo(a));
-  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false,'home');app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleHL(r,true)});
-  app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
-  (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
-  statePanel(null)}
 const RB=[[0,.7,'#8E2A20',1],[.7,.9,'#D0705F',1],[.9,1.1,'#E9DFC9',0],[1.1,1.4,'#93ABCF',0],[1.4,1.8,'#41629A',1],[1.8,99,'#14213D',1]];
 const POP={"AL":5.02,"AK":0.73,"AZ":7.15,"AR":3.01,"CA":39.54,"CO":5.77,"CT":3.61,"DE":0.99,"DC":0.69,"FL":21.54,"GA":10.71,"HI":1.46,"ID":1.84,"IL":12.81,"IN":6.79,"IA":3.19,"KS":2.94,"KY":4.51,"LA":4.66,"ME":1.36,"MD":6.18,"MA":7.03,"MI":10.08,"MN":5.71,"MS":2.96,"MO":6.15,"MT":1.08,"NE":1.96,"NV":3.1,"NH":1.38,"NJ":9.29,"NM":2.12,"NY":20.2,"NC":10.44,"ND":0.78,"OH":11.8,"OK":3.96,"OR":4.24,"PA":13.0,"RI":1.1,"SC":5.12,"SD":0.89,"TN":6.91,"TX":29.15,"UT":3.27,"VT":0.64,"VA":8.63,"WA":7.71,"WV":1.79,"WI":5.89,"WY":0.58};
 const CB=[[0,3,'#E9DFC9',0],[3,6,'#B5C5DF',0],[6,10,'#7C97C3',1],[10,18,'#41629A',1],[18,1e9,'#14213D',1]];
@@ -928,13 +973,14 @@ sr.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   else if(b.dataset.pl){const [n,y,g]=b.dataset.pl.split('|');showPlayer(n,+y,IDX.g[+g])}});
 function goTo(r,after){if(location.hash==='#'+r){routes[r]();after&&after()}else{window._after=after;location.hash='#'+r}}
 function showPlayer(n,y,g){
-  const t0=Object.values(D.tags).find(t=>t.n===n&&t.y===y);
+  const ir=IDX&&IDX.p.find(r=>r[0]===n&&r[1]===y),ic=ir?(ir[11]?1:0):undefined;
+  const t00=Object.values(D.tags).find(t=>t.n===n&&t.y===y),t0=t00?{...t00,ic}:null;
   const open=html=>{const el=document.createElement('div');el.className='ask';el.innerHTML=`<div class="box wide" role="dialog" aria-modal="true" aria-label="${esc(n)}">${html}<p style="margin-top:12px"><button class="morebtn" data-x>Close</button></p></div>`;document.body.appendChild(el);el.querySelector('[data-x]').focus();
     el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-x]'))el.remove()});el.addEventListener('keydown',e=>{if(e.key==='Escape')el.remove()})};
   if(t0)return open(tag(t0)+creditNote(t0));
   if(!POS[g])return open(`<p>${esc(n)} (${y}, ${esc(g)}). Full cards for this position group are coming.</p>`);
   getFin(g).then(rows=>{const r=rows.find(x=>x[0]===n&&x[1]===y);if(!r)return open(`<p>${esc(n)}, class of ${y}. Full card coming: this player signed as a JUCO or prep recruit.</p>`);
-    const t1={n:r[0],y:r[1],s:r[2],rt:r[3],g,h:(r[5]?r[5]+', ':'')+r[4],sg:r[6],dt:r[11]?r[7]:null,dy:r[11],o:r[10],pts:r[8],e:r[9],pae:r[9]==null?null:r[8]-r[9],jc:false,mv:r[13],sh:r[16]||null};open(tag(t1)+creditNote(t1))}).catch(()=>open('<p>That card did not load. Try again.</p>'))}
+    const t1={ic,n:r[0],y:r[1],s:r[2],rt:r[3],g,h:(r[5]?r[5]+', ':'')+r[4],sg:r[6],dt:r[11]?r[7]:null,dy:r[11],o:r[10],pts:r[8],e:r[9],pae:r[9]==null?null:r[8]-r[9],jc:false,mv:r[13],sh:r[16]||null};open(tag(t1)+creditNote(t1))}).catch(()=>open('<p>That card did not load. Try again.</p>'))}
 
 function creditNote(t){const mv=(t.mv||[]).filter(m=>m[1]&&m[1]!==t.sg);if(!mv.length)return'';
   return `<p class="small" style="margin-top:10px"><b>Who gets the credit?</b> His development counts for the last school he played for, ${esc(t.dt||mv[mv.length-1][1])}, even though he started at ${esc(t.sg)}. We can't split credit by how long he spent at each school or how much he'd already developed, so take transfers' numbers with a grain of salt.</p>`}
@@ -1293,20 +1339,199 @@ function drawNL(){
   const na=document.getElementById('nall');if(na)na.onclick=()=>{nfAll=true;drawNL()}}
 
 
+/* ---------- VETTED DESTINATIONS, PRODUCTS AND STATUSES ---------- */
+// One registry drives the homepage, the three destination pages, the roadmap and the preview dialogs, so a status
+// is only ever stated once. Status keys: avail, dev, soon, research, maint ("Under maintenance" = a released feature
+// that is temporarily off; nothing uses it today).
+const BRAND='Vetted';
+const STS={avail:'Available now',dev:'In development',soon:'Coming soon',research:'Research phase',maint:'Under maintenance'};
+const STX={avail:'Open it and use it today.',dev:'Actively being built.',soon:'Planned; not ready yet.',research:'Still being evaluated or validated before anything is built.',maint:'A released feature that is temporarily unavailable.'};
+const DEST={data:{n:'Vetted Data',k:'VETTED DATA',t:'Explore the data',c:'d',
+    d:'Which programs and coaches really develop players? Rankings, report cards, draft outcomes and the research behind them.',
+    lede:'The research side of Vetted: every FBS signee since 2002, graded against what players with his recruiting profile usually achieve.',go:'Start exploring'},
+  recruiting:{n:'Vetted Recruiting',k:'VETTED RECRUITING',t:'Find your recruiting path',c:'r',
+    d:'See where players like you went and how it turned out. Compare schools at your position, from high school, junior college or the portal.',
+    lede:'For recruits and families: research programs the way a staff would, using what actually happened to players with profiles like yours.',go:'Find your path'},
+  plus:{n:'Vetted Plus',k:'VETTED PLUS',t:'See the staff side',c:'p',
+    d:'Roster construction, transfer acquisition, personnel evaluation and program decision-making research. Built with staffs in mind, open to everyone.',
+    lede:'The staff-oriented side of Vetted: research on roster construction, recruiting strategy, transfer acquisition and program decisions.',go:'Take a look'}};
+// r = route ("route:sub"); links = extra routes shown on the card; what/why/now/try = preview dialog text.
+const PRODUCTS=[
+ // Vetted Data
+ {id:'rank',d:'data',s:'avail',n:'School Development Rankings',r:'rankings:programs',t:'Every FBS program graded A+ to F on how its players were drafted against expectations, plus who is hot and who is sinking.'},
+ {id:'coach',d:'data',s:'avail',n:'Head Coach Development',r:'rankings:coaches',t:'Report cards for every head coach: development, recruiting and winning, with every signing class and the players in it.'},
+ {id:'player',d:'data',s:'avail',n:'Player Development',r:'players',t:'Look up any signee since 2002: where he signed, where he finished, his draft result and his grade against expectations.'},
+ {id:'nfl',d:'data',s:'avail',n:'NFL Draft Outcomes',r:'nfl',t:'Whose players get drafted, last longest in the NFL and outplay their draft slot.'},
+ {id:'portal',d:'data',s:'avail',n:'Transfer Portal Report',r:'transfers',t:'How staying or transferring has worked out school by school, and who gains or loses talent in the portal.'},
+ {id:'pathway',d:'data',also:['recruiting'],s:'dev',n:'Player Pathway',t:'Every school, season, transfer and draft outcome for one player, on one page.',
+  what:'One page per player that follows his whole career: where he signed, each season he was on a roster, every transfer, the games where he recorded a statistic at his position, and his draft outcome.',
+  why:'See the real path behind a career instead of just signing day and draft day.',
+  now:'The shared player database it depends on is built and in review. Pathway will only show records that meet our evidence standards: uncertain identities and transfers will be labeled, never guessed.',
+  try:[['players','Look up any player today']]},
+ {id:'tags',d:'data',also:['recruiting'],s:'dev',n:'Player Tags',t:'Short factual labels on player records, each with a plain explanation of its rule.',
+  what:'Factual labels on player records, such as Transferred, JUCO route and Diamond in the Rough (a player rated two or three stars who was later drafted). Tapping a tag explains its rule and the evidence behind it.',
+  why:'Spot the interesting stories in a list at a glance, with the facts one tap away.',
+  now:'Transferred and JUCO route are live on the Predictions page. New tags appear only after their rules are approved and checked against the records.',
+  try:[['predictions:list','See tags on current players']]},
+ {id:'time',d:'data',also:['recruiting'],s:'soon',n:'Recruiting Class Time Machine',t:'Pick a signing class and see how every signee turned out against his ranking.',
+  what:'Choose any signing class and see how every signee turned out: who was drafted, who transferred, and who outperformed or fell short of his recruiting ranking.',
+  why:'Revisit a class with the benefit of hindsight, for any program or the whole country.',
+  now:'Planned for after Player Pathway. Classes from 2019 on are still being drafted, so their results will be marked as in progress.',
+  try:[['rankings:coaches','Class-by-class tables on coach report cards']]},
+ {id:'dna',d:'data',s:'soon',n:'Program DNA',t:'How each program builds and develops its roster, in one profile.',
+  what:'A one-page profile of how a program builds and develops its roster: where it recruits, which positions it develops best, how it mixes high school, junior college and transfer players, and how that has changed from one coaching staff to the next.',
+  why:'Understand a program\'s identity, not just its ranking.',
+  now:'Planned. Many of the pieces already exist in the rankings, report cards and recruiting maps; the combined profile has not been built yet.',
+  try:[['rankings:programs','Program report cards'],['recmap','Recruiting maps']]},
+ {id:'portal2',d:'data',s:'soon',n:'Transfer Portal Report: next version',t:'A fuller portal report built on reconciled transfer records.',
+  what:'A rebuilt portal report where confirmed, reported and inferred moves are kept separate, and every count says whether it means unique players, portal entries or transfer events.',
+  why:'Clearer, more trustworthy portal numbers.',
+  now:'Coming soon. The transfer records behind it have been reconciled and are in review. The current Transfer Portal Report stays available in the meantime.',
+  try:[['transfers','Current Transfer Portal Report']]},
+ {id:'ledger',d:'data',s:'research',n:'The Transfer Ledger',t:'A transfer-by-transfer record of who gained and lost talent, and how development credit is shared.',
+  what:'A transfer-by-transfer ledger: who gained and who lost talent in the portal, and how development credit is shared when a player spends time at more than one school.',
+  why:'Answer "who really developed him?" for players who changed schools.',
+  now:'Research phase. A method that shares credit by verified playing time is being tested separately and is not used in any grade. Official grades credit the last school a player played for.',
+  try:[['transfers:traffic','Portal traffic'],['find:tr','Transfers: where to go']]},
+ // Vetted Recruiting
+ {id:'likeyou',d:'recruiting',s:'avail',n:'Players Like You',r:'find',t:'Players with your position, stars and home state: where they went and how it turned out.'},
+ {id:'hsp',d:'recruiting',s:'avail',n:'Historical School & Position Outcomes',r:'predictions:calc',t:'How many signees at your position each school has had drafted, against expectations. Compare up to four schools.'},
+ {id:'cur',d:'recruiting',s:'avail',n:'Current Players: What History Shows',r:'predictions:list',t:'Today\'s college players next to how players with the same profile actually turned out. Group facts, not forecasts.'},
+ {id:'route',d:'recruiting',s:'avail',n:'JUCO and Transfer Routes',r:'find:juco',links:[['find:juco','JUCO players: where to go'],['find:tr','Transfers: where to go'],['transfers','Stay or go?']],t:'Which programs and coaches get the most out of junior college players and transfers.'},
+ {id:'profiles',d:'recruiting',s:'soon',n:'Recruiting Profiles',t:'A profile page for each recruit, with how comparable past players turned out.',
+  what:'A profile page for each recruit: ratings, position, hometown, signing school, and how past players with a comparable profile turned out.',
+  why:'One place for a recruit and his family to see his profile in historical context.',
+  now:'Coming soon. Every signee\'s basic record is already searchable.',
+  try:[['players','Search any player']]},
+ {id:'compare',d:'recruiting',s:'soon',n:'Program Comparisons',t:'A fuller side-by-side of programs for a recruit\'s position.',
+  what:'A side-by-side comparison of programs for a recruit\'s position: development record, draft outcomes, transfer patterns and coaching stability.',
+  why:'Compare offers on the things that shape a career.',
+  now:'Coming soon. You can already compare up to four schools\' draft history at a position.',
+  try:[['predictions:calc','Compare schools at your position']]},
+ {id:'classres',d:'recruiting',s:'soon',n:'Recruiting Class Research',t:'How signing classes are built, where they come from and how they turn out.',
+  what:'Research on signing classes: how they are built, where the players come from and how they turn out, including the Recruiting Class Time Machine.',
+  why:'See how your class and position group compare with the classes before it.',
+  now:'Coming soon. Recruiting maps and the distance research are available today.',
+  try:[['recmap','Recruiting maps'],['stayhome','Distance and home']]},
+ {id:'hsvt',d:'recruiting',s:'research',n:'High-School vs. Transfer Research',t:'How players who arrive from high school, junior college and the portal compare.',
+  what:'How players who arrive from high school, junior college and the transfer portal compare in playing time and draft outcomes, by position and program.',
+  why:'Understand what each route has historically meant for players like you.',
+  now:'Research phase. Transfer records are being reconciled so that confirmed, reported and inferred moves are never mixed together.',
+  try:[['transfers','Stay or go?'],['find:tr','Transfers: where to go']]},
+ // Vetted Plus
+ {id:'advtr',d:'plus',s:'avail',n:'Advanced Transfer Research',r:'rankings:lean',links:[['rankings:lean','Portal or high school?'],['adapt','Portal adaptation'],['find:tr','Who develops transfers'],['transfers:traffic','Portal traffic']],t:'How every 2026 head coach builds his roster, how programs have shifted toward the portal, and who develops transfers.'},
+ {id:'coachmkt',d:'plus',s:'avail',n:'Coaching Market Research',r:'rankings:rising',links:[['rankings:rising','G5 Coaches to Watch'],['moveup','Coaches moving up']],t:'Group of Five coaches who win, recruit and develop, and what happens when a program hires one.'},
+ {id:'bench',d:'plus',s:'avail',n:'Position and Conference Benchmarks',r:'rankings:position',links:[['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['analytics','Does development win?']],t:'Development leaderboards by position, star rating and conference, and how development connects to winning.'},
+ {id:'acq',d:'plus',s:'research',n:'High-School vs. Transfer Acquisition Intelligence',t:'For staffs weighing a high school signee against a transfer at a position.',
+  what:'Research for staffs weighing a high school signee against a transfer at a position: what history shows about each route\'s outcomes at programs like theirs.',
+  why:'Better-informed roster decisions at each position.',
+  now:'Research phase. It builds on the High-School vs. Transfer Research, which is still being validated.',
+  try:[['rankings:lean','Portal or high school? (today\'s version)']]},
+ {id:'poi',d:'plus',s:'research',n:'Player Outcome Intelligence',t:'Outcome research for player profiles: how players like a given player have turned out.',
+  what:'Outcome research for player evaluation: how players with a given profile, route and school context have turned out.',
+  why:'Put an individual evaluation in the context of thousands of past careers.',
+  now:'Research phase. Our earlier individual draft and transfer estimates did not pass testing and were removed. A new estimate will only appear after it passes. Historical group facts are on the Predictions page today.',
+  try:[['predictions:list','Current players: what history shows']]},
+ {id:'sim',d:'plus',s:'soon',n:'The Roster Portfolio Simulator',t:'Explore how a roster\'s mix of classes, positions and routes has historically played out.',
+  what:'A tool to explore how a roster\'s mix of classes, positions and acquisition routes (high school, junior college, portal) has historically played out, and to test what-if scenarios.',
+  why:'Think about a roster as a portfolio rather than one signing at a time.',
+  now:'Coming soon. It depends on Player Pathway and the transfer research being finished first.',
+  try:[['rankings:lean','How 2026 coaches build their rosters']]},
+ {id:'cost',d:'plus',s:'research',n:'Cost-versus-Outcome Intelligence',t:'Compare roster investments with outcomes.',
+  what:'A way to compare roster investments with player outcomes.',
+  why:'Weigh what a roster decision costs against what history says it returns.',
+  now:'Research phase, and last on the roadmap. No reliable public data on player compensation exists, so any version would use clearly labeled hypothetical inputs. We will not invent figures.',
+  try:[]}];
+const PBY={};PRODUCTS.forEach(p=>PBY[p.id]=p);
+const ROADMAP=[['Just finished','Live or in review',[['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.'],['p:cur','Predictions cleanup','Individual odds removed; historical group facts instead.']]],
+ ['Next','Being built',[['p:tags'],['p:pathway']]],
+ ['Then','Planned',[['p:time'],['p:dna'],['p:portal2'],['p:profiles'],['p:compare']]],
+ ['Later','Research and validation come first',[['p:ledger'],['p:hsvt'],['p:acq'],['p:poi'],['p:sim'],['p:cost']]]];
+const stChip=s=>`<span class="st st-${s}"><i aria-hidden="true"></i>${STS[s]}</span>`;
+const rLink=(r,label,cls)=>{const [route,sub]=r.split(':');return `<a href="#${route}" data-sub="${sub||''}"${cls?` class="${cls}"`:''}>${label}</a>`};
+function prodCard(p){
+  if(p.s==='avail'){const [route,sub]=p.r.split(':');
+    return `<div class="pc pc-av"><a class="pcm" href="#${route}" data-sub="${sub||''}">${stChip(p.s)}<h3>${esc(p.n)}</h3><p>${esc(p.t)}</p>${p.links?'':'<span class="go">Open →</span>'}</a>${p.links?`<div class="pcl">${p.links.map(([r,l])=>rLink(r,esc(l)+' →')).join('')}</div>`:''}</div>`}
+  return `<button type="button" class="pc pc-pv" data-pv="${p.id}">${stChip(p.s)}<h3>${esc(p.n)}</h3><p>${esc(p.t)}</p><span class="go">What it will do →</span></button>`}
+function stKey(list){const used=[...new Set(list.map(p=>p.s))];return `<div class="stkey" aria-label="Status key">${['avail','dev','soon','research','maint'].filter(s=>used.includes(s)).map(s=>`<span>${stChip(s)} ${STX[s]}</span>`).join('')}</div>`}
+function wireVision(root){root.querySelectorAll('[data-pv]').forEach(b=>b.onclick=()=>openPreview(b.dataset.pv));root.querySelectorAll('a[data-sub]').forEach(a=>a.addEventListener('click',()=>subGo(a)))}
+function openPreview(id){
+  const dlg=document.getElementById('pv');let p=PBY[id];
+  if(id==='foundation')p={n:'Shared player database',s:'dev',d:'data',what:'A single, fully sourced record of every player: his recruiting records, each school stint and season, every transfer (labeled confirmed, reported, inferred or unresolved), his participation and his draft outcome. Every row records where it came from.',why:'It is the base for Player Pathway, tags, the Time Machine and the Transfer Ledger, so they all agree with each other.',now:'Built and in review. It is not used on the site yet, and official grades do not depend on it.',try:[]};
+  if(!p)return;const ds=[p.d,...(p.also||[])].map(k=>DEST[k].n).join(' and ');
+  dlg.innerHTML=`<div class="pvb"><button type="button" class="pvx" aria-label="Close">✕</button><p class="pvk">${esc(ds)}</p><h2>${esc(p.n)}</h2>${stChip(p.s)}
+  <h3>What it is</h3><p>${esc(p.what||p.t)}</p>${p.why?`<h3>Why it matters</h3><p>${esc(p.why)}</p>`:''}<h3>Where it stands</h3><p>${esc(p.now||STX[p.s])}</p>
+  ${p.try&&p.try.length?`<h3>You can use today</h3><div class="pvt">${p.try.map(([r,l])=>rLink(r,esc(l)+' →')).join('')}</div>`:''}
+  <p class="small" style="margin-top:18px">Statuses are kept current. Nothing here is behind a paywall: all of ${BRAND} is open to everyone.</p></div>`;
+  dlg.querySelector('.pvx').onclick=()=>dlg.close();
+  dlg.querySelectorAll('a[data-sub]').forEach(a=>a.addEventListener('click',()=>{subGo(a);dlg.close()}));
+  if(dlg.showModal){dlg.showModal()}else dlg.setAttribute('open','')}
+function destCard(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.also||[]).includes(k));
+  const show=[...items.filter(p=>p.s==='avail').slice(0,3),...items.filter(p=>p.s!=='avail').slice(0,2)];
+  return `<div class="dcard dc-${d.c}"><a class="dtop" href="#${k}"><span class="dk">${d.k}</span><span class="dt">${d.t}</span><span class="dd">${d.d}</span></a>
+  <ul class="dl">${show.map(p=>`<li>${p.s==='avail'?rLink(p.r,esc(p.n)):`<button type="button" data-pv="${p.id}">${esc(p.n)}</button>`}${stChip(p.s)}</li>`).join('')}</ul>
+  <a class="dgo" href="#${k}">${d.go} →</a></div>`}
+function roadmapHTML(){return `<div class="road">${ROADMAP.map(([t,sub,list],i)=>`<div class="stage"><div class="sh"><span class="sn">${i+1}</span><div><b>${t}</b><small>${sub}</small></div></div><ul>${list.map(([id,n,tx])=>{const p=id.startsWith('p:')?PBY[id.slice(2)]:null;
+  const inner=`${stChip(p?p.s:'dev')}<b>${esc(p?p.n:n)}</b><span>${esc(p?p.t:tx)}</span>`;
+  return `<li>${p&&p.s==='avail'?(()=>{const [rt,sb]=p.r.split(':');return `<a href="#${rt}" data-sub="${sb||''}">${inner}</a>`})():`<button type="button" data-pv="${p?p.id:id}">${inner}</button>`}</li>`}).join('')}</ul></div>`).join('')}</div>`}
+function destPage(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.also||[]).includes(k));const av=items.filter(p=>p.s==='avail'),up=items.filter(p=>p.s!=='avail');
+  const others=Object.keys(DEST).filter(x=>x!==k);
+  const more={data:[['analytics','Does development win?'],['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['recmap','Recruiting maps'],['stayhome','Distance and home'],['moveup','Coaches moving up']],
+    recruiting:[['recmap','Recruiting maps'],['stayhome','Distance and home'],['players','Look up any player'],['rankings:programs','Program report cards']],
+    plus:[['rankings:coaches','Coach report cards'],['rankings:programs','Program rankings'],['nfl','NFL careers'],['players','Look up any player']]}[k];
+  app.innerHTML=`<div class="page vision"><section class="dhero dh-${d.c}"><p class="eyebrow">${d.k}</p><h1>${d.t}</h1><p class="lede">${d.lede}</p><p class="openl">Free and open to everyone. No sign-up, nothing locked.</p></section>
+  <section><h2>Available now</h2><div class="pcs">${av.map(prodCard).join('')}</div>
+  <div class="morechips"><span>More you can open today:</span>${more.map(([r,l])=>rLink(r,esc(l),'chip')).join('')}</div></section>
+  <section><h2>In development and coming</h2><p class="lede">What we're building here. Tap any of them to see what it will do and where it stands; none of these are usable yet.</p><div class="pcs">${up.map(prodCard).join('')}</div>${stKey(items)}</section>
+  <section><h2>The rest of ${BRAND}</h2><div class="ways">${others.map(o=>`<a class="way" href="#${o}"><h3>${DEST[o].n}</h3><p>${DEST[o].d}</p><span class="go">${DEST[o].go} →</span></a>`).join('')}<a class="way" href="#everything"><h3>Explore everything</h3><p>Every page on ${BRAND} in one place, grouped by the question it answers.</p><span class="go">See it all →</span></a></div></section></div>`;
+  wireVision(app)}
+function data(){destPage('data')}
+function recruiting(){destPage('recruiting')}
+function plus(){destPage('plus')}
+function home(){
+  const m=D.meta,sr=m.sr;const ex3=sr[3][3],ex5=sr[5][3];
+  const wallNames=['Khalil Mack','Kyle Pitts','DeVonta Smith','Justin Jefferson','Brock Purdy','Aaron Donald','Malik Nabers',"Ja'Marr Chase",'Joe Burrow','Travis Hunter'];
+  const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
+  app.innerHTML=`<div class="page home"><section class="hero"><div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
+  <p class="lede">Recruiting rankings tell you who a program signs. We follow every FBS signee since 2002 to see what happened next, and who really developed him.</p>
+  <div class="btns"><a class="btn solid" href="#everything">Explore everything</a><button type="button" class="btn" id="tostart">Help me pick a starting point ↓</button></div>
+  <p class="dver">Free and open to everyone · Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1</p></div>
+  <div class="wall" aria-label="Moving board of player cards"><div class="col"><div class="set">${wt}</div><div class="set" aria-hidden="true">${wt}</div></div></div></section>
+  <section id="start" class="startsec"><h2>Not sure where to start?</h2><p class="lede">Explore the area that interests you most. Everything is open to everyone, and you're always welcome to explore the entire platform.</p>
+  <div class="dcards">${['data','recruiting','plus'].map(destCard).join('')}</div>
+  <a class="evbtn evwide" href="#everything">Explore everything <span>Every page on ${BRAND} in one place →</span></a></section>
+  <section class="hstats"><h2>By the numbers</h2><div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal entries</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
+  <div class="ticker" id="tk1"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div></section>
+  <section class="roadsec"><h2>What we're building</h2><p class="lede">${BRAND} is growing. Here's what is being built next and what comes after it. Tap any item to see what it will do and where it stands.</p>${roadmapHTML()}${stKey(PRODUCTS)}</section>
+  <section><h2>Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
+  <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button><button data-mm="cap" aria-pressed="${mapMode==='cap'}">Drafted per million residents</button></div></div>
+  <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>
+  <section><h2>How the score works</h2><p class="lede">Every player is judged against what players with his star rating, composite rating and position usually do in the NFL draft. Same draft slot, very different credit:</p>
+  <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted in round one</div><div class="big">60 − ${ex3.toFixed(1)} = <span class="pos">+${(60-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
+  <div class="c"><div class="small">A typical 5-star, drafted in round one</div><div class="big">60 − ${ex5.toFixed(1)} = <span class="pos">+${(60-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
+  <h3 style="margin-top:22px">Then every score gets a letter grade</h3><p class="small" style="font-size:16px;margin:4px 0 0">Grades compare players, programs and coaches with each other. They don't round up: an average result is a C. A player who gets drafted never grades below a D.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}<div><span class="gp gN">–</span><span>not enough data</span></div></div>
+  <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About ${BRAND}</a></p></section></div>`;
+  countUp(app);ticker('tk1',facts());wireVision(app);
+  document.getElementById('tostart').onclick=()=>document.getElementById('start').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'});
+  app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
+  (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
+  statePanel(null)}
+
 /* ---------- EVERYTHING ---------- */
 function subGo(a){const sb=a.dataset.sub;if(sb==='tr'){fType='tr'}else if(sb==='juco'){fType='juco'}else if(a.getAttribute('href')==='#find'){fType='hs'}
-  if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='rising'){rkMode='rising'}else if(sb==='traffic'){txTab='traffic'}else if(sb==='calc'){prMode='calc'}else if(sb==='heat'||sb==='adapt'){const id=sb==='heat'?'hmmap':'adfig';window._after=()=>setTimeout(()=>document.getElementById(id)?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),400)}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(sb==='programs'||a.getAttribute('href')==='#rankings'&&!sb){rkMode='programs'}}
+  if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='rising'){rkMode='rising'}else if(sb==='traffic'){txTab='traffic'}else if(sb==='calc'){prMode='calc'}else if(sb==='list'){prMode='list'}else if(sb==='heat'||sb==='adapt'){const id=sb==='heat'?'hmmap':'adfig';window._after=()=>setTimeout(()=>document.getElementById(id)?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),400)}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(sb==='programs'||a.getAttribute('href')==='#rankings'&&!sb){rkMode='programs'}}
 const DIR=[['Recruits and families','"Where should I go?"',[['find','Find a Program','Players with your position, stars and home state: where they went and how it turned out.'],['find:juco','JUCO players: where to go','Which programs and coaches get the most out of junior college players.'],['find:tr','Transfers: where to go','Which programs and coaches get the most out of transfers like you.'],['predictions:calc','Historical School & Position Outcomes','How many signees at your position each school has had drafted, against expectations.'],['transfers','Stay or go?','How staying or transferring has worked out, school by school.'],['stayhome','Distance and home','How far schools recruit and whether staying close matters.'],['recmap','Recruiting maps','A heat map of where any program or head coach recruits, high school or transfers.']]],
  ['Fans','"How is my team really doing?"',[['rankings','Program rankings and grades','Every program graded A+ to F, plus who is hot and who is sinking.'],['rankings:coaches','Coach report cards','Every head coach graded on development, recruiting and winning, with every signing class and the players in it.'],['rankings:rising','G5 Coaches to Watch','Group of Five coaches who win, recruit and develop: who could land a bigger job.'],['players','Look up any player','Every signee since 2002.'],['nfl','NFL careers','Whose players last longest and outplay their draft slot.'],['transfers:traffic','Portal traffic','Who gains talent in the portal and who loses it.']]],
  ['Coaches and staff','"How do we compare?"',[['rankings:lean','Portal or high school?','How every 2026 coach builds his roster, and how well each approach works.'],['rankings:position','Who develops each position','Leaderboards by position, stars and years.'],['rankings:conf','Conferences','Which leagues get the most out of their players.'],['find:juco','Who develops JUCO players','Programs and head coaches ranked on junior college signees.'],['analytics','Does development win?','How development and recruiting connect to winning.'],['adapt','Adapting to the portal','How each coach has shifted toward transfers since 2021.'],['moveup','Coaches moving up','What happens to the team that hires a Group of Five coach, the team he leaves, and the players who follow.']]],
  ['About Vetted CFB','"How does this work?"',[['about','About','Who we are and what we believe.'],['methods','How it works','How every number and grade is built.'],['contact','Contact','Questions, corrections and ideas.']]]];
 function everything(){
-  app.innerHTML=`<div class="page"><section><h1>Everything on Vetted CFB</h1><p class="lede">Every page on the site, grouped by the question it answers. Lost? Start here.</p><div class="dir">${DIR.map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
-  <section><h2>What the grades mean</h2><p class="lede">Every score on the site gets a letter grade, so you don't have to decode the numbers. Grades compare programs, coaches and players with each other, and they don't round up: an average result is a C. A player who gets drafted never grades below a D.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}<div><span class="gp gN">–</span><span>not enough data</span></div></div></section></div>`;
-  app.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>subGo(a))}
+  app.innerHTML=`<div class="page vision"><section><p class="eyebrow">Explore everything</p><h1>Everything on ${BRAND}</h1><p class="lede">Every page that's open today, grouped by the question it answers. It's all free and open to everyone. Lost? Start here.</p><div class="morechips" style="margin-top:16px"><span>Or browse by destination:</span>${Object.keys(DEST).map(k=>`<a class="chip" href="#${k}">${DEST[k].n}</a>`).join('')}</div><div class="dir">${DIR.map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
+  <section><h2>What the grades mean</h2><p class="lede">Every score on the site gets a letter grade, so you don't have to decode the numbers. Grades compare programs, coaches and players with each other, and they don't round up: an average result is a C. A player who gets drafted never grades below a D.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}<div><span class="gp gN">–</span><span>not enough data</span></div></div></section>
+  <section><h2>Coming to ${BRAND}</h2><p class="lede">Not usable yet. Tap any of them to see what it will do and where it stands.</p><div class="pcs">${PRODUCTS.filter(p=>p.s!=='avail').map(prodCard).join('')}</div>${stKey(PRODUCTS)}</section></div>`;
+  app.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>subGo(a));app.querySelectorAll('[data-pv]').forEach(b=>b.onclick=()=>openPreview(b.dataset.pv))}
 
 /* ---------- ROUTER ---------- */
-const routes={adapt,moveup,recmap,home,everything,find,rankings,players,transfers,predictions,nfl,analytics,stayhome,about,contact,methods};
+const routes={data,recruiting,plus,adapt,moveup,recmap,home,everything,find,rankings,players,transfers,predictions,nfl,analytics,stayhome,about,contact,methods};
 const ALIAS={juco:'find',finder:'find',programs:'rankings',coaches:'rankings','war-room':'rankings','board-tags':'players','vetting-sheet':'methods'};
 function go(){document.getElementById('teambar').hidden=true;let r=(location.hash||'#home').slice(1);if(ALIAS[r]){if(r==='coaches')rkMode='coaches';if(r==='juco')fType='juco';r=ALIAS[r]}const f=routes[r]||home;stopTour();setNav(routes[r]?r:'home');f();subnav(routes[r]?r:'home');if(go.ran)window.scrollTo(0,0);go.ran=1;if(window._after){const a=window._after;window._after=null;a()}}
 app.addEventListener('click',e=>{const a=e.target.closest('a[data-coach]');if(a){e.preventDefault();rkMode='coaches';coQ='';coAct=false;const k=a.dataset.coach;goTo('rankings',()=>openRow(k))}});
@@ -1320,7 +1545,7 @@ function roleBox(r,scroll){const el=document.getElementById('rolebox');if(!el)re
   el.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='programs'){rkMode='programs'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}});
   if(scroll)el.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})}
 function roleHL(r,scroll){const i={recruit:0,fan:1,coach:2}[r];const g=[...document.querySelectorAll('#homeall .grp')];g.forEach((x,j)=>x.classList.toggle('hl',j===i));
-  if(scroll&&i!==undefined)document.getElementById('homeall').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}
+  if(scroll&&i!==undefined&&document.getElementById('homeall'))document.getElementById('homeall').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}
 /* ---------- TICKER ---------- */
 let tickT=null;
 function ticker(id,facts){clearInterval(tickT);const el=document.getElementById(id);if(!el)return;let i=0;const tx=el.querySelector('.tx');tx.innerHTML=facts[0];if(RM||facts.length<2)return;
