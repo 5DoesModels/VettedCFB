@@ -25,13 +25,15 @@ for y in RY:
         byname[(nm(f"{r['firstName']} {r['lastName']}"), r['team'])].add(y)
 # ---------- stats: per (name, team, season): production by position family, and whether any stat was recorded
 STATY = [y for y in range(2009, 2026) if os.path.exists(f'{CP}stats_{y}.json')]
-prod = collections.defaultdict(lambda: collections.defaultdict(float)); seen = set()
+prod = collections.defaultdict(lambda: collections.defaultdict(float)); seen = set(); use = collections.defaultdict(lambda: collections.defaultdict(float)); teamyr = set()
 for y in STATY:
     for s in json.load(open(f'{CP}stats_{y}.json')):
-        k = (nm(s['player']), s['team'], s['season']); seen.add(k)
+        k = (nm(s['player']), s['team'], s['season']); seen.add(k); teamyr.add((s['team'], s['season']))
         try: v = float(s['stat'])
         except: continue
         c, t = s['category'], s['statType']
+        u = use[k]
+        if (c, t) in (('passing', 'ATT'), ('rushing', 'CAR'), ('receiving', 'REC'), ('defensive', 'TOT'), ('defensive', 'SACKS'), ('defensive', 'PD'), ('interceptions', 'INT'), ('kicking', 'FGA'), ('punting', 'NO')): u[c + ':' + t] += v
         d = prod[k]
         if c in ('passing', 'rushing', 'receiving') and t == 'YDS': d[c] += v
         if c == 'defensive':
@@ -40,6 +42,19 @@ for y in STATY:
             if t == 'TFL': d['tfl'] += v
             if t == 'PD': d['pd'] += v
         if c == 'interceptions' and t == 'INT': d['int'] += v
+box = {}; boxyr = set()
+for y in range(2009, 2026):
+    f = f'{CP}box_{y}.json'
+    if not os.path.exists(f): continue
+    for k_, (nm_, tm, g, st) in json.load(open(f)).items():
+        box[(nm(nm_), tm, y)] = g; boxyr.add((tm, y))
+def usage(pg, u):
+    if pg == 'QB': return u['passing:ATT'] + u['rushing:CAR']
+    if pg == 'RB': return u['rushing:CAR'] + u['receiving:REC']
+    if pg in ('WR', 'TE', 'ATH'): return u['receiving:REC'] + u['rushing:CAR'] + (u['defensive:TOT'] if pg == 'ATH' else 0)
+    if pg in ('DL', 'EDGE', 'LB', 'DB'): return u['defensive:TOT'] + u['defensive:SACKS'] + u['defensive:PD'] + u['interceptions:INT']
+    if pg == 'ST': return u['kicking:FGA'] + u['punting:NO']
+    return 0.0   # OL: no counting stats
 def production(pg, d):
     if pg == 'QB': return d['passing'] + 2 * d['rushing']
     if pg in ('RB', 'WR', 'TE', 'ATH'): return d['rushing'] + d['receiving']
@@ -76,14 +91,17 @@ def path(r):
     # production per school
     pr = {k: sum(production(r['pg'], prod.get((nm(r['name']), k, y), collections.defaultdict(float))) for y in seasons[k]) for k in order}
     app = {k: sum(1 for y in seasons[k] if (nm(r['name']), k, y) in seen) for k in order}
-    return order, seasons, src, pr, app, unc
+    us = {k: sum(usage(r['pg'], use.get((nm(r['name']), k, y), collections.defaultdict(float))) for y in seasons[k]) for k in order}
+    gm = {k: sum(box.get((nm(r['name']), k, y), 0) for y in seasons[k]) for k in order}
+    avail = {k: all(((k, y) in teamyr) for y in seasons[k]) and bool(seasons[k]) for k in order}
+    return order, seasons, src, pr, app, unc, us, gm, avail
 
 players = []; uncertain = []
 for r in SC:
-    order, seasons, src, pr, app, unc = path(r)
+    order, seasons, src, pr, app, unc, us, gm, avail = path(r)
     schools = [k for k in order if seasons[k]]
     multi = len(order) > 1
-    rec = dict(r=r, order=order, seasons=seasons, src=src, pr=pr, app=app, schools=schools, multi=multi, unc=unc)
+    rec = dict(r=r, order=order, seasons=seasons, src=src, pr=pr, app=app, schools=schools, multi=multi, unc=unc, us=us, gm=gm, avail=avail)
     if multi and (unc or not schools or (cred(r) not in schools)): uncertain.append(rec)
     players.append(rec)
 
@@ -101,6 +119,15 @@ def weights(p, method, lam=0.5):
     tp = sum(p['pr'][k] for k in S)
     wb = {k: p['pr'][k] / tp for k in S} if tp > 0 else wa      # production share; falls back to time (OL, no stats)
     if method == 'B': return wb
+    if method in ('U', 'G', 'UG'):
+        # participation: own workload share (U), games-with-a-stat share (G), or their average (UG).
+        # A school whose season stats are missing from the data makes the split uncertain -> keep last-school credit.
+        if not all(p['avail'][k] for k in S): return {c: 1.0}
+        tu = sum(p['us'][k] for k in S); tg = sum(p['gm'][k] for k in S)
+        wu = {k: p['us'][k] / tu for k in S} if tu > 0 else None
+        wg = {k: p['gm'][k] / tg for k in S} if tg > 0 else None
+        pick = wu if method == 'U' else wg if method == 'G' else ({k: (wu[k] + wg[k]) / 2 for k in S} if wu and wg else (wu or wg))
+        return pick if pick else wa      # no measurable participation anywhere (OL): roster tenure fallback, flagged
     return {k: lam * wa[k] + (1 - lam) * wb[k] for k in S}       # 'C' hybrid
 
 def program_scores(method, lam=0.5):
@@ -126,7 +153,7 @@ def top(rk, n=25): return {k for k, v in rk.items() if v <= n}
 
 rV1 = rank(V1t); gV1 = grades(V1t)
 res = {}
-for m, lam in (('A', None), ('P', None), ('B', None), ('C25', .25), ('C50', .5), ('C75', .75)):
+for m, lam in (('A', None), ('P', None), ('U', None), ('G', None), ('UG', None), ('B', None), ('C25', .25), ('C50', .5), ('C75', .75)):
     meth = m[0]; t, n_, tr = program_scores(meth, lam if lam is not None else .5)
     assert abs(tr - total_res) < 1e-6 and abs(sum(t.values()) - sum(V1t.values())) < 1e-6   # conservation: no credit created or lost
     rk = rank(t); g = grades(t)
@@ -173,8 +200,8 @@ schools_inv = set(k for p in multi for k in p['schools'])
 def ex(p):
     r = p['r']; R = r['pts'] - r['exp']
     out = dict(n=r['name'], y=r['year'], g=r['pg'], st=r['stars'], signed=r['committedTo'], fin=cred(r), dy=r['draftYear'], o=r['overall'], pts=r['pts'], exp=round(r['exp'], 1), res=round(R, 1),
-               sch=[[k, p['seasons'][k], p['src'][k], round(p['pr'][k]), p['app'][k]] for k in p['order']])
-    for m in ('A', 'P', 'B', 'C'):
+               sch=[[k, p['seasons'][k], p['src'][k], round(p['pr'][k]), p['app'][k], round(p['us'][k]), p['gm'][k], p['avail'][k]] for k in p['order']])
+    for m in ('A', 'P', 'U', 'G', 'UG', 'B', 'C'):
         out[m] = {k: round(w, 3) for k, w in weights(p, m, .5).items()}
     return out
 EXN = ['Jordan Addison', 'Mansoor Delane', 'Joe Burrow', 'Bo Nix', 'Cam Ward', 'Jayden Daniels', 'Michael Penix Jr.', 'Caleb Williams', 'Jalen Hurts', 'Kyler Murray', 'Baker Mayfield', 'Justin Fields', 'Kenny Pickett', 'Travis Hunter', 'Jaxson Dart', 'Dillon Gabriel']
@@ -189,4 +216,34 @@ report = dict(n_graded=len(players), total_residual=round(total_res, 3), n_multi
 json.dump(report, open(O + 'tpp_report.json', 'w'), indent=1, default=str)
 print('graded', len(players), 'multi-school', len(multi), 'drafted multi', len(drafted_multi), '3+ schools', len(msch), 'schools', len(schools_inv), 'uncertain', len(uncertain), 'uncertain drafted', report['uncertain_drafted'])
 print('drafted coverage', dict(cov), 'with production data', prodcov)
-for e in exs: print(e['n'], e['res'], [(s[0], s[1], s[2], s[3]) for s in e['sch']], 'A', e['A'], 'P', e['P'], 'B', e['B'])
+for e in exs: print(e['n'], e['res'], [(s[0], s[1], s[2], s[3]) for s in e['sch']], 'A', e['A'], 'U', e['U'], 'G', e['G'], 'UG', e['UG'])
+
+def basis(p):
+    if not p['multi'] or p['unc'] or cred(p['r']) not in p['schools']: return 'single school or uncertain path'
+    S = p['schools']
+    if not all(p['avail'][k] for k in S): return 'uncertain: a school season missing from stats'
+    if sum(p['us'][k] for k in S) > 0 and sum(p['gm'][k] for k in S) > 0: return 'usage + games'
+    if sum(p['us'][k] for k in S) > 0 or sum(p['gm'][k] for k in S) > 0: return 'usage or games only'
+    return 'tenure fallback (no measurable participation)'
+dm = [p for p in players if p['multi'] and p['r']['draftYear']]
+bas = collections.Counter(basis(p) for p in dm)
+print('BASIS drafted multi-school', dict(bas))
+print('BASIS by position (tenure fallback)', dict(collections.Counter(p['r']['pg'] for p in dm if basis(p).startswith('tenure'))))
+report['basis'] = dict(bas)
+report['basis_fallback_pos'] = dict(collections.Counter(p['r']['pg'] for p in dm if basis(p).startswith('tenure')))
+report['zero_share'] = [[p['r']['name'], k, len(p['seasons'][k])] for p in dm for k in p['schools'] if basis(p) == 'usage + games' and weights(p, 'UG').get(k, 0) == 0][:40]
+json.dump(report, open(O + 'tpp_report.json', 'w'), indent=1, default=str)
+
+# sensitivity: usage vs games weight, 0..1 in 5% steps
+sensUG=[]; prev=None
+for i in range(21):
+    lam=i/20; tot=collections.defaultdict(float)
+    for p in players:
+        R=p['r']['pts']-p['r']['exp']; a=weights(p,'U'); b=weights(p,'G')
+        for k in set(a)|set(b): tot[k]+=R*(lam*a.get(k,0)+(1-lam)*b.get(k,0))
+    rk=rank(tot); sensUG.append([lam, round(spearman(rV1,rk),4), len(top(rV1)&top(rk)), len(top(prev)&top(rk)) if prev else None]); prev=rk
+print('sensUG',sensUG)
+report['sensUG']=sensUG
+x=report['methods']['UG']; print('UG GAIN',[(g[0],g[1],g[2],g[3],g[4],g[5]) for g in x['gain'][:8]]); print('UG LOSE',[(g[0],g[1],g[2],g[3],g[4],g[5]) for g in x['lose'][:8]])
+print('UG top10',[t[0] for t in x['top'][:10]])
+json.dump(report, open(O + 'tpp_report.json', 'w'), indent=1, default=str)
