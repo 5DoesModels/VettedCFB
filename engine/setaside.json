@@ -1,0 +1,305 @@
+{
+ "note": "Players set aside from all grading. Matched on name + signing class + signing school.",
+ "players": [
+  {
+   "name": "Avery Atkins",
+   "year": 2005,
+   "school": "Florida",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Brandon Adams",
+   "year": 2016,
+   "school": "Georgia Tech",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Corey Adams Jr.",
+   "year": 2025,
+   "school": "Ole Miss",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Mason Alexander",
+   "year": 2025,
+   "school": "Pittsburgh",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Bryce Beekman",
+   "year": 2019,
+   "school": "Washington State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Kaleb Boateng",
+   "year": 2019,
+   "school": "Clemson",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Tajh Boyd",
+   "year": 2023,
+   "school": "Liberty",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Austin Box",
+   "year": 2007,
+   "school": "Oklahoma",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Hunter Brown",
+   "year": 2020,
+   "school": "Air Force",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Devin Chandler",
+   "year": 2020,
+   "school": "Wisconsin",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Ben Christman",
+   "year": 2021,
+   "school": "Ohio State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Tylee Craft",
+   "year": 2020,
+   "school": "North Carolina",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Lavel Davis",
+   "year": 2020,
+   "school": "Virginia",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Aaron Douglas",
+   "year": 2008,
+   "school": "Tennessee",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Aaron Douglas",
+   "year": 2011,
+   "school": "Alabama",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jake Ehlinger",
+   "year": 2019,
+   "school": "Texas",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Alex Foster",
+   "year": 2024,
+   "school": "Baylor",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Tyler Heintz",
+   "year": 2017,
+   "school": "Kent State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jasper Howard",
+   "year": 2007,
+   "school": "UConn",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jaden Hullaby",
+   "year": 2020,
+   "school": "Texas",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Solomon Jackson",
+   "year": 2013,
+   "school": "Buffalo",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Ty Jordan",
+   "year": 2020,
+   "school": "Utah",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Ryan Keeler",
+   "year": 2021,
+   "school": "Rutgers",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jeremiah Kelly",
+   "year": 2025,
+   "school": "Cincinnati",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Luke Knox",
+   "year": 2018,
+   "school": "Ole Miss",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Kyren Lacy",
+   "year": 2020,
+   "school": "Louisiana",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Dale Lloyd",
+   "year": 2006,
+   "school": "Rice",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Aaron Lowe",
+   "year": 2019,
+   "school": "Utah",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jakell Mitchell",
+   "year": 2014,
+   "school": "Auburn",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Teigan Martin",
+   "year": 2022,
+   "school": "Liberty",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Tay McKibbins",
+   "year": 2025,
+   "school": "Georgia Southern",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jordan McNair",
+   "year": 2017,
+   "school": "Maryland",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Camdan McWright",
+   "year": 2022,
+   "school": "San Jos\u00e9 State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "D'Sean Perry",
+   "year": 2019,
+   "school": "Virginia",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Ereck Plancher",
+   "year": 2007,
+   "school": "UCF",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Andre Seldon",
+   "year": 2020,
+   "school": "Michigan",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Nic Smith",
+   "year": 2025,
+   "school": "Kentucky",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Altee Tenpenny",
+   "year": 2013,
+   "school": "Alabama",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Sione Veikoso",
+   "year": 2018,
+   "school": "Arizona State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Spencer Webb",
+   "year": 2018,
+   "school": "Oregon",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Jordan Wiggins",
+   "year": 2019,
+   "school": "Georgia Southern",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Devin Willock",
+   "year": 2020,
+   "school": "Georgia",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Khambrail Winters",
+   "year": 2019,
+   "school": "Texas State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Gavin Yates-Lyons",
+   "year": 2026,
+   "school": "Ball State",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Polo Manukainiu",
+   "year": 2012,
+   "school": "Texas A&M",
+   "reason": "Passed away during his college career"
+  },
+  {
+   "name": "Brandon Vandenburg",
+   "year": 2013,
+   "school": "Vanderbilt",
+   "reason": "College career ended by an off-field legal case"
+  },
+  {
+   "name": "Cory Batey",
+   "year": 2012,
+   "school": "Vanderbilt",
+   "reason": "College career ended by an off-field legal case"
+  },
+  {
+   "name": "Jonathan Taylor",
+   "year": 2012,
+   "school": "Georgia",
+   "reason": "College career ended by an off-field legal case"
+  },
+  {
+   "name": "Jonathan Taylor",
+   "year": 2015,
+   "school": "Alabama",
+   "reason": "College career ended by an off-field legal case"
+  },
+  {
+   "name": "Shawn Oakman",
+   "year": 2011,
+   "school": "Penn State",
+   "reason": "College career ended by an off-field legal case"
+  }
+ ]
+}

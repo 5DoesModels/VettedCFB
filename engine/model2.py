@@ -15,7 +15,9 @@ def tier(d):
     if d['round']<=5: return 'Rounds 4-5',10
     return 'Rounds 6-7',5
 drafted={v:D[k] for k,v in L.items()}
-pool=[r for r in R if 2002<=r['year']<=LAST and r['committedTo'] and r['recruitType'] in ('HighSchool','JUCO','PrepSchool')]
+SA={(x['name'],x['year'],x['school']) for x in json.load(open('setaside.json'))['players']}   # passed away / career ended by a legal case
+pool=[r for r in R if 2002<=r['year']<=LAST and r['committedTo'] and r['recruitType'] in ('HighSchool','JUCO','PrepSchool') and (r['name'],r['year'],r['committedTo']) not in SA]
+print('set aside',sum(1 for r in R if (r['name'],r['year'],r['committedTo']) in SA))
 for r in pool:
     r['pg']=POS.get(r['position'],'ATH'); d=drafted.get(r['i'])
     if d and not (r['year']+1<=d['year']<=r['year']+8): d=None

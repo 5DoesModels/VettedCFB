@@ -1,0 +1,14 @@
+{"note":"Manual fixes for 2027 commitments our data source has not caught yet. Checked against news reports on 2026-11-19.",
+ "asof":"2026-11-19",
+ "flips":[
+  {"name":"Easton Royal","from":"Texas","to":"Florida","date":"2026-10-11"},
+  {"name":"Mark Matthews","from":"Texas A&M","to":"Georgia","date":"2026-11-09"},
+  {"name":"Dontay Tyson","from":"Washington","to":"Wisconsin","date":"2026-10-31"},
+  {"name":"Tavares Harrington","from":"Michigan","to":"Ole Miss","date":"2026-11-14"},
+  {"name":"Braden Chaffin","from":"Stanford","to":"Michigan","date":"2026-11"},
+  {"name":"Terrance Grant Jr.","from":"Maryland","to":"Florida","date":"2026-11-17"},
+  {"name":"DJ Waluyn","from":"Duke","to":"Vanderbilt","date":"2026-11-19"},
+  {"name":"Jacobi Pasley","from":"West Virginia","to":"Vanderbilt","date":"2026-11-12"},
+  {"name":"Damion King","from":"App State","to":"Ohio State","date":"2026-11-18"},
+  {"name":"Michael Stringer","from":"Western Kentucky","to":"UCF","date":"2026-11-17"}
+ ]}

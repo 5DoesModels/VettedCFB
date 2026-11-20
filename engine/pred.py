@@ -87,8 +87,11 @@ import os as _os
 R27p='/root/cfbd_pull/r2027.json'
 n27=0
 if _os.path.exists(R27p):
+    FL={f['name']:f for f in json.load(open(E+'/flips_2027.json'))['flips']}
     for x in json.load(open(R27p)):
         if not x.get('committedTo'): continue
+        f=FL.get(x['name'])
+        if f and x['committedTo']==f['from']: x['committedTo']=f['to']
         r=dict(name=x['name'],year=2027,recruitType='HighSchool',stars=x.get('stars'),rating=x.get('rating'),position=x.get('position'),committedTo=x['committedTo'],stateProvince=x.get('stateProvince'),city=x.get('city'),mv=[])
         r['pg']=POS.get(r['position'],'ATH')
         st=r['stars'] or 0; f=fdp(r['committedTo'],r['pg']); full=cap(pd(r)*f)

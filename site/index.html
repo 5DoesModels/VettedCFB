@@ -731,7 +731,8 @@ function methods(){
    ['Too early','2024–2026 classes are listed, with their transfers, but not graded.',ok],
    ['Credit: last school','Every player counts for the last school he played for. Drafted: the school he was drafted from (Joe Burrow counts for LSU, not Ohio State; Jack Bech for TCU, not LSU). Undrafted: the last school he transferred to (Aaron Anderson counts for LSU, not Alabama).',ok],
    ['Head coach credit','The head coach at that last school in the player\'s second year on campus, or in his first season there if he transferred in.',ok],
-   ['Unranked recruits','Signees with no star rating are graded as their own group, against other unranked signees.',ok]])}
+   ['Unranked recruits','Signees with no star rating are graded as their own group, against other unranked signees.',ok],
+   ['Careers cut short','Players who passed away during their college careers (Kyren Lacy, Devin Willock and others), and a few whose careers ended in an off-field legal case, are left out of every grade. A school or coach is never marked down for a tragedy. 50 players so far; <a href="#contact">tell us</a> if we missed one.',ok]])}
   <h4>DRAFT POINTS</h4>${tbl(['Outcome','Points'],[['Top-10 pick',100],['Rest of round one',60],['Round two',35],['Round three',20],['Rounds four–five',10],['Rounds six–seven',5],['Undrafted',0]])}
   <h4>EXPECTED POINTS</h4>${tbl(['Step','Detail'],[
    ['1. Group similar recruits','By recruit type (high school or other), stars and composite rating in thirtieth-point slices. All 5-stars share one group. Built only from complete classes.'],
@@ -839,7 +840,7 @@ function predList(){
   <label>School<input id="rs" list="schl" placeholder="Type a school" value="${esc(prSch)}"></label>
   <label>Position<select id="rp"><option value="">Any position</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===prPos?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Name<input type="search" id="rq" placeholder="Search" value="${esc(prQ)}"></label></div>
-  <p class="small">2027 commitments can still change before signing day. The 2028 and 2029 classes will be added once rankings for them are published.</p>
+  <p class="small">2027 commitments are as of Nov. 19, 2026, including recent flips such as Easton Royal to Florida, and can still change before signing day. Spot a wrong one? <a href="#contact">Let us know</a>. The 2028 and 2029 classes will be added once our data source publishes them.</p>
   <div class="bigseg" role="group" aria-label="Sort by" style="margin-top:6px">${[['d','Draft odds'],['t','Transfer odds']].map(([k,l])=>`<button data-ps="${k}" aria-pressed="${prSort===k}">${l}</button>`).join('')}</div><div id="ro" style="margin-top:14px"></div>`;
   const u=()=>{prCls=document.getElementById('rc').value;prPos=document.getElementById('rp').value;prN=25;drawPL()};
   ['rc','rp'].forEach(id=>document.getElementById(id).onchange=u);
