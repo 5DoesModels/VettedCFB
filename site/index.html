@@ -260,6 +260,8 @@ html[data-vt=light]{--cd:#14213D;--cr:#B23A2E;--cp:#2F5A9C;--s-avail:#1F6B4E;--s
 .home .hero h1{font-size:clamp(40px,6vw,74px);line-height:.98;max-width:14ch}
 .home .hero .lede{max-width:36ch}
 .home .dver{margin-top:22px}
+.dline{font-size:17px;margin:14px 0 0;color:var(--pen)}.dline a{color:var(--ink);font-weight:600;text-underline-offset:3px}
+@media(max-width:640px){nav a{padding:10px 11px 8px;font-size:16px}}@media(max-width:420px){nav a[href="#about"]{display:none}}
 button.btn{color:var(--ink)}
 .st{--c:var(--s-avail);flex:none;display:inline-flex;align-items:center;gap:6px;font-family:"Source Sans 3",system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;line-height:1;padding:5px 10px 5px 8px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);white-space:nowrap}
 .st i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
@@ -356,14 +358,14 @@ const yy=y=>"’"+String(y).slice(2);
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const SUF=new Set(['Jr.','Jr','Sr.','Sr','II','III','IV','V']);
 function split(n){const p=n.split(' ');let s='';if(p.length>2&&SUF.has(p[p.length-1]))s=' '+p.pop();const last=p.pop();return [last+s,p.join(' ')]}
-const pathTxt=(sg,mv)=>esc(sg)+(mv||[]).map(m=>' → '+esc(m[1]||'portal, no school yet')+' '+yy(m[0])).join('');
+const pathTxt=(sg,mv)=>{let cur=sg,out=esc(sg);(mv||[]).forEach(m=>{if(m[1]&&m[1]===cur)return;out+=' → '+esc(m[1]||'portal, no school yet')+' '+yy(m[0]);if(m[1])cur=m[1]});return out};
 function tag(t){
   const [l,f]=split(t.n);const cls=t.o&&t.o<=32?'gold':'';
   const dr=t.dy?`<div><span class="k">Drafted</span><span class="v">${t.dy} · ${esc(t.dt)}</span></div><div><span class="k">Pick</span><span class="v">#${t.o}</span></div>`:`<div><span class="k">Draft</span><span class="v">${t.ic===undefined?(t.y>=2024?'Too early':t.y>2020?'Not yet':'Undrafted'):t.ic?(t.y>=2025?'Too early':'Still in college'):t.y>=2025?'Too early':'Undrafted'}</span></div>`;
   return `<article class="tag ${cls}"><div class="m"><div class="nm">${esc(l.toUpperCase())}<span>, ${esc(f)}</span></div>
   <div class="sub">${esc(t.h)} · ${pathTxt(t.sg,t.mv)}${t.jc?' · JUCO/prep':''}</div>
   <div class="cells"><div><span class="k">Stars</span><span class="v" style="color:var(--gold)">${stars(t.s)}</span></div><div><span class="k">Rating</span><span class="v">${t.rt?t.rt.toFixed(4):'—'}</span></div>${dr}<div><span class="k">Points</span><span class="v">${t.pts}</span></div><div><span class="k">Expected</span><span class="v">${t.e==null?'—':t.e.toFixed(1)}</span></div></div></div>
-  <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span><span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.pae!=null?`<span style="margin-top:4px">${gpP(t.pae,!!t.o).replace('margin-right:6px','')}</span>`:''}${t.y>2020&&t.ic!==0&&!t.dy?'<span class="ip">in progress</span>':''}</div></article>`}
+  <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span>${t.y>2020&&t.ic!==0&&!t.dy?'<span class="ip" title="Graded once his draft window has passed">career in progress</span>':`<span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.pae!=null?`<span style="margin-top:4px">${gpP(t.pae,!!t.o).replace('margin-right:6px','')}</span>`:''}`}</div></article>`}
 const T=i=>D.tags[i];
 function findTag(name){for(const k in D.tags){if(D.tags[k].n===name)return D.tags[k]}}
 function yrHTML(id,mn,mx,[lo,hi],presets,label){label=label||'Signing years';return `<div class="yrng" id="${id}"><div class="yrh"><b>${label}</b><span class="yrv">${lo}–${hi}</span></div><div class="yrs"><div class="yrt"><i></i></div><input type="range" min="${mn}" max="${mx}" step="1" value="${lo}" class="ya" aria-label="${label}: from"><input type="range" min="${mn}" max="${mx}" step="1" value="${hi}" class="yb" aria-label="${label}: to"></div><div class="yrp">${presets.map(([a,b,l])=>`<button type="button" data-y="${a}-${b}">${l}</button>`).join('')}</div></div>`}
@@ -400,7 +402,7 @@ function countUp(root){
   if(RM||!('IntersectionObserver' in window)){els.forEach(e=>e.textContent=(+e.dataset.n).toLocaleString());return}
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;io.unobserve(en.target);const el=en.target,to=+el.dataset.n,t0=performance.now();
     const step=t=>{const k=Math.min(1,(t-t0)/1200),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString();if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.4});
-  els.forEach(e=>{e.textContent='0';io.observe(e)})}
+  els.forEach(e=>io.observe(e))}
 
 /* ---------- HOME ---------- */
 let mapMode='ratio',mapSel=null,tour=null;
@@ -793,7 +795,7 @@ function drawFinder(){
   progs.sort((a,b)=>(b.ge?b.v:-1e9)-(a.ge?a.v:-1e9)||b.n-a.n);
   const big=progs.filter(p=>p.n>=3),small=progs.filter(p=>p.n<3);big.forEach((p,i)=>p.rank=i+1);small.forEach(p=>p.rank='');
   const progRow=p=>`<details class="row nb"><summary><span class="rk">${p.rank}</span><span class="pn">${p.rank?rankG(p.rank,big.length):''}${esc(p.k)}<small>${p.n} player${p.n>1?'s':''} · ${p.d} drafted ${p.n<5?'<span class="pill">small sample</span>':''} ${p.ge&&p.n>=3?(p.v>0?'<span class="pill w">worked</span>':'<span class="pill r">didn’t work</span>'):''}</small></span><span class="val ${p.v>=0?'pos':'neg'}">${p.ge?f0(p.v):'—'}</span></summary>
-  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">Path</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null?'':(r[8]-r[9]>=0?'pos':'neg')}">${r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
+  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">Path</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null||(r[15]&&!r[10])?'':(r[8]-r[9]>=0?'pos':'neg')}">${r[15]&&!r[10]?'<span class="ip" title="Graded once his draft window has passed">in progress</span>':r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
   document.getElementById('fo').innerHTML=`<p class="take" style="font-size:20px"><b>${rows.length.toLocaleString()}</b> ${esc(desc)} signed with college programs (${lab.toLowerCase()}). <b>${dn}</b> were drafted (${pct(dn,rows.length)}), and <b>${mv}</b> entered the transfer portal.</p>
   ${gp.length?`<div class="two"><div class="c"><h3>Worked</h3><p class="small">Most draft points above expected, 3+ players</p>${good.length?`<ol>${good.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players beat expectations.</p>'}</div>
   <div class="c bad"><h3>Didn't work</h3><p class="small">Furthest below expected, 3+ players</p>${bad.length?`<ol>${bad.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players fell short.</p>'}</div></div>`:''}
@@ -1371,7 +1373,7 @@ const PRODUCTS=[
  {id:'tags',d:'data',also:['recruiting'],s:'dev',n:'Player Tags',t:'Short factual labels on player records, each with a plain explanation of its rule.',
   what:'Factual labels on player records, such as Transferred, JUCO route and Diamond in the Rough (a player rated two or three stars who was later drafted). Tapping a tag explains its rule and the evidence behind it.',
   why:'Spot the interesting stories in a list at a glance, with the facts one tap away.',
-  now:'Transferred and JUCO route are live on the Predictions page. New tags appear only after their rules are approved and checked against the records.',
+  now:'Transferred and JUCO route are live on the Predictions page. Diamond in the Rough has an approved definition and will be added after it is checked against the records. Great Fit (a school-and-position tag) is in research and stays off until it has a rule that holds up across coaching staffs. New tags appear only after their rules are approved and checked.',
   try:[['predictions:list','See tags on current players']]},
  {id:'time',d:'data',also:['recruiting'],s:'soon',n:'Recruiting Class Time Machine',t:'Pick a signing class and see how every signee turned out against his ranking.',
   what:'Choose any signing class and see how every signee turned out: who was drafted, who transferred, and who outperformed or fell short of his recruiting ranking.',
@@ -1419,9 +1421,14 @@ const PRODUCTS=[
   now:'Research phase. Transfer records are being reconciled so that confirmed, reported and inferred moves are never mixed together.',
   try:[['transfers','Stay or go?'],['find:tr','Transfers: where to go']]},
  // Vetted Plus
- {id:'advtr',d:'plus',s:'avail',n:'Advanced Transfer Research',r:'rankings:lean',links:[['rankings:lean','Portal or high school?'],['adapt','Portal adaptation'],['find:tr','Who develops transfers'],['transfers:traffic','Portal traffic']],t:'How every 2026 head coach builds his roster, how programs have shifted toward the portal, and who develops transfers.'},
+ {id:'trnow',d:'plus',s:'avail',n:'Roster and Transfer Research',r:'rankings:lean',links:[['rankings:lean','Portal or high school?'],['adapt','Portal adaptation'],['find:tr','Who develops transfers'],['transfers:traffic','Portal traffic']],t:'How every 2026 head coach builds his roster, how programs have shifted toward the portal, and who develops transfers.'},
  {id:'coachmkt',d:'plus',s:'avail',n:'Coaching Market Research',r:'rankings:rising',links:[['rankings:rising','G5 Coaches to Watch'],['moveup','Coaches moving up']],t:'Group of Five coaches who win, recruit and develop, and what happens when a program hires one.'},
  {id:'bench',d:'plus',s:'avail',n:'Position and Conference Benchmarks',r:'rankings:position',links:[['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['analytics','Does development win?']],t:'Development leaderboards by position, star rating and conference, and how development connects to winning.'},
+ {id:'advtr',d:'plus',s:'soon',n:'Advanced Transfer Research',t:'Transfer research built on reconciled, evidence-graded transfer records.',
+  what:'Deeper transfer research for staffs: which kinds of transfers have worked at which programs and positions, using only transfers whose identity and movement are established, with confirmed, reported and inferred moves always kept apart.',
+  why:'Evaluate transfer acquisition on records you can trust.',
+  now:'Coming soon. The reconciled transfer records it needs are being finalized in our shared player database. Today\'s transfer pages stay available in the meantime.',
+  try:[['rankings:lean','Portal or high school?'],['transfers:traffic','Portal traffic']]},
  {id:'acq',d:'plus',s:'research',n:'High-School vs. Transfer Acquisition Intelligence',t:'For staffs weighing a high school signee against a transfer at a position.',
   what:'Research for staffs weighing a high school signee against a transfer at a position: what history shows about each route\'s outcomes at programs like theirs.',
   why:'Better-informed roster decisions at each position.',
@@ -1445,7 +1452,7 @@ const PRODUCTS=[
 const PBY={};PRODUCTS.forEach(p=>PBY[p.id]=p);
 const ROADMAP=[['Just finished','Live or in review',[['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.'],['p:cur','Predictions cleanup','Individual odds removed; historical group facts instead.']]],
  ['Next','Being built',[['p:tags'],['p:pathway']]],
- ['Then','Planned',[['p:time'],['p:dna'],['p:portal2'],['p:profiles'],['p:compare']]],
+ ['Then','Planned',[['p:time'],['p:dna'],['p:portal2'],['p:advtr'],['p:profiles'],['p:compare']]],
  ['Later','Research and validation come first',[['p:ledger'],['p:hsvt'],['p:acq'],['p:poi'],['p:sim'],['p:cost']]]];
 const stChip=s=>`<span class="st st-${s}"><i aria-hidden="true"></i>${STS[s]}</span>`;
 const rLink=(r,label,cls)=>{const [route,sub]=r.split(':');return `<a href="#${route}" data-sub="${sub||''}"${cls?` class="${cls}"`:''}>${label}</a>`};
@@ -1494,6 +1501,7 @@ function home(){
   const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
   app.innerHTML=`<div class="page home"><section class="hero"><div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. We follow every FBS signee since 2002 to see what happened next, and who really developed him.</p>
+  <p class="dline">One open platform, three destinations: <a href="#data">${BRAND} Data</a> · <a href="#recruiting">${BRAND} Recruiting</a> · <a href="#plus">${BRAND} Plus</a></p>
   <div class="btns"><a class="btn solid" href="#everything">Explore everything</a><button type="button" class="btn" id="tostart">Help me pick a starting point ↓</button></div>
   <p class="dver">Free and open to everyone · Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1</p></div>
   <div class="wall" aria-label="Moving board of player cards"><div class="col"><div class="set">${wt}</div><div class="set" aria-hidden="true">${wt}</div></div></div></section>
