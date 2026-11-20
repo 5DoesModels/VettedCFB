@@ -1,5 +1,5 @@
 import json,collections,sys
-B='build/FND-0.1/'
+B='build/FND-0.2/'
 L=lambda n:json.load(open(B+n+'.json'))
 P={p['pid']:p for p in L('players')}; RC=L('recruitments'); ST=L('school_stints'); EV=L('transfer_events'); OC=L('outcomes'); PS=L('player_seasons')
 by=lambda rows:collections.defaultdict(list,{})
@@ -19,8 +19,8 @@ def show(name,cls=None):
     for pid in pids:
         p=P[pid]; s=[f"\n## {p['name']} [{pid}] identity: {p['identity_status']} {p['link_methods']} {p['flags']}"]
         for r in RCi[pid]: s.append(f"  recruit: {r['class_year']} {r['route']} {r['stars']}* {r['rating']} {r['position']} {r['city']}, {r['state']} -> {r['signed_with']}")
-        for t in sorted(STi[pid],key=lambda t:t['first']): s.append(f"  stint: {t['school']} {t['first']}-{t['last']} ({','.join(map(str,t['seasons']))}) [{t['st']}]")
-        for e in EVi[pid]: s.append(f"  event: {e['category']} | {e['sub']} | {e['origin']} -> {e['destination']} ({e.get('last_season_at_origin','')}->{e.get('first_season_at_destination',e.get('portal_season',''))}){' FLAG '+e['flag'] if e.get('flag') else ''}")
+        for t in sorted(STi[pid],key=lambda t:t['first']): s.append(f"  stint: {t['school']} {t['first']}-{t['last']} ({','.join(map(str,t['seasons']))}) [{t['st']}]"+(f" HIDDEN: {t['hidden_reason']}" if t.get('hidden') else ''))
+        for e in EVi[pid]: s.append(f"  event: {e['category']} | {e['sub']} | {e['origin']} -> {e.get('portal_destination')}|roster {e.get('roster_destination')} ({e.get('last_season_at_origin','')}->{e.get('first_season_at_destination',e.get('portal_season',''))}){' FLAG '+e['flag'] if e.get('flag') else ''}")
         for ps in sorted(PSi[pid],key=lambda x:x['season']): s.append(f"  season {ps['season']} {ps['school']} {ps['roster_position']}: any {ps['games_any']}, position {ps['games_position']}, ST-only {ps['games_special_only']}")
         for o in OCi[pid]: s.append(f"  outcome: {o['type']} {o.get('year','')} R{o.get('round','')} #{o.get('overall','')} {o.get('college_team','')} [{o.get('src','')}]")
         out.append('\n'.join(s))

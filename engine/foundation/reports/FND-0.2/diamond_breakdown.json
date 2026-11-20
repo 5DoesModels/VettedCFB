@@ -1,0 +1,157 @@
+{
+ "total": 1941,
+ "by_stars": {
+  "3": 1391,
+  "2": 550
+ },
+ "by_class": {
+  "2002-2009": 517,
+  "2010-2014": 467,
+  "2015-2018": 543,
+  "2019-2022": 414
+ },
+ "by_round": {
+  "1": 159,
+  "2": 204,
+  "3": 267,
+  "4": 301,
+  "5": 327,
+  "6": 338,
+  "7": 345
+ },
+ "by_route": {
+  "HighSchool": 1744,
+  "JUCO": 188,
+  "PrepSchool": 9
+ },
+ "stars_x_round": {
+  "2": {
+   "1": 39,
+   "2": 46,
+   "3": 66,
+   "4": 86,
+   "5": 90,
+   "6": 101,
+   "7": 122
+  },
+  "3": {
+   "1": 120,
+   "2": 158,
+   "3": 201,
+   "4": 215,
+   "5": 237,
+   "6": 237,
+   "7": 223
+  }
+ },
+ "stars_x_class": {
+  "2": {
+   "2002-2009": 295,
+   "2010-2014": 109,
+   "2015-2018": 120,
+   "2019-2022": 26
+  },
+  "3": {
+   "2002-2009": 222,
+   "2010-2014": 358,
+   "2015-2018": 423,
+   "2019-2022": 388
+  }
+ },
+ "excluded_unranked": 83,
+ "multi_record_players_with_different_stars": 10,
+ "changed_examples": [
+  [
+   "Duke Williams",
+   [
+    [
+     "HighSchool",
+     3
+    ],
+    [
+     "HighSchool",
+     2
+    ]
+   ]
+  ],
+  [
+   "Jerell Adams",
+   [
+    [
+     "HighSchool",
+     3
+    ],
+    [
+     "PrepSchool",
+     4
+    ]
+   ]
+  ],
+  [
+   "Cordrea Tankersley",
+   [
+    [
+     "HighSchool",
+     4
+    ],
+    [
+     "PrepSchool",
+     3
+    ]
+   ]
+  ],
+  [
+   "Kendall Sheffield",
+   [
+    [
+     "HighSchool",
+     5
+    ],
+    [
+     "JUCO",
+     4
+    ]
+   ]
+  ],
+  [
+   "Chad Kelly",
+   [
+    [
+     "HighSchool",
+     4
+    ],
+    [
+     "JUCO",
+     3
+    ]
+   ]
+  ],
+  [
+   "Juwann Winfree",
+   [
+    [
+     "HighSchool",
+     4
+    ],
+    [
+     "JUCO",
+     3
+    ]
+   ]
+  ]
+ ],
+ "first_rounders": [
+  "Aaron Rodgers (3\u2605 2003, 2005 #24)",
+  "Adam Jones (2\u2605 2002, 2005 #6)",
+  "Ahmad Gardner (3\u2605 2019, 2022 #4)",
+  "Akheem Mesidor (3\u2605 2020, 2026 #22)",
+  "Alex Mack (2\u2605 2004, 2009 #21)",
+  "Alex Smith (2\u2605 2002, 2005 #1)",
+  "Amobi Okoye (2\u2605 2003, 2007 #10)",
+  "Anthony Spencer (3\u2605 2002, 2007 #26)",
+  "Aqib Talib (2\u2605 2004, 2008 #20)",
+  "Armand Membou (3\u2605 2022, 2025 #7)",
+  "Ashton Jeanty (3\u2605 2022, 2025 #6)",
+  "Ben Grubbs (3\u2605 2002, 2007 #29)"
+ ]
+}

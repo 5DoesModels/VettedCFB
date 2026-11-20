@@ -1,5 +1,5 @@
 import json,collections
-B='build/FND-0.1/'
+B='build/FND-0.2/'
 L=lambda n:json.load(open(B+n+'.json'))
 P=L('players'); RC=L('recruitments'); EV=L('transfer_events'); OC=L('outcomes'); X=L('exceptions'); M=L('manifest'); PS=L('player_seasons')
 PI={p['pid']:p for p in P}

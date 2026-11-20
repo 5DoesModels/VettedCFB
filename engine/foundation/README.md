@@ -1,6 +1,6 @@
 # Vetted CFB shared data foundation (Stage 0)
 
-Build: **FND-0.1** · Status: **for review, not used anywhere on the site**
+Build: **FND-0.2** · Status: **for review, not used anywhere on the site**
 
 This folder holds the code that builds one shared, provenance-tagged set of player records for the future
 Predictions page, Player Pathway, Transfer Ledger and other features.

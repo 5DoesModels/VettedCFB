@@ -1,0 +1,16 @@
+{
+ "rows: no game data for that season/school": 54206,
+ "rows hidden (padded roster listing)": 2357,
+ "rows measured": 315454,
+ "appearances: games with any stat": 817548,
+ "rows: on roster, no stat in any game": 157608,
+ "position-specific games": 619653,
+ "special-teams-only games": 19426,
+ "fumble-only games": 4562,
+ "other-stat-only games": 24766,
+ "qualifies: position stat in 6+ games": 49467,
+ "games not classified (unknown_position)": 27700,
+ "games not classified (not_available)": 115803,
+ "games not classified (not_applicable)": 5638,
+ "parts_mismatch": 0
+}

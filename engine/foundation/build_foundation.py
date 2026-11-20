@@ -12,7 +12,7 @@ Usage: python3 build_foundation.py OUT_DIR
 """
 import json, re, os, sys, glob, hashlib, collections, time
 
-BV = 'FND-0.1'
+BV = 'FND-0.2'
 ENG = '/home/claude/vetted-cfb/engine/data/'
 RAW = '/root/cfbd_pull/'
 GAMES = '/home/claude/foundation/raw_box/'
@@ -145,6 +145,17 @@ for i, r in enumerate(R):
             hits |= {a for y in (p['season'], p['season'] + 1) for a in name_team.get((nm(r['name']), p['destination'], y), ())}
     if len(hits) == 1: L[i][hits.pop()] = 'name_school_window'; via_portal += 1
 note('recruits linked through a portal entry from the signing school', via_portal)
+# Maintained identity-resolution file (JC decision 4): only entries with status "approved" are applied.
+IRF = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'identity_resolution.json')
+manual = json.load(open(IRF))['cases'] if os.path.exists(IRF) else []
+applied = 0
+for c in manual:
+    if c.get('status') != 'approved': continue
+    i = rid.get(str(c.get('recruit_id')))
+    if i is None: continue
+    if c['decision'] == 'link' and c.get('athlete_id') in ath: L[i] = {c['athlete_id']: 'manual_approved'}; applied += 1
+    elif c['decision'] == 'separate': L.pop(i, None); applied += 1
+note('identity-resolution cases', len(manual), '| approved and applied', applied)
 conflicts = []
 for i, m in L.items():
     if len(m) > 1:
@@ -163,7 +174,7 @@ held = []                                 # links not merged because names disag
 NICK = {'mike': 'michael', 'matt': 'matthew', 'chris': 'christopher', 'nick': 'nicholas', 'josh': 'joshua', 'tony': 'anthony', 'joe': 'joseph',
         'will': 'william', 'bill': 'william', 'rob': 'robert', 'bob': 'robert', 'jim': 'james', 'jimmy': 'james', 'tom': 'thomas', 'dan': 'daniel',
         'danny': 'daniel', 'dave': 'david', 'alex': 'alexander', 'zach': 'zachary', 'zack': 'zachary', 'sam': 'samuel', 'ben': 'benjamin',
-        'nate': 'nathan', 'andy': 'andrew', 'drew': 'andrew', 'jake': 'jacob', 'cam': 'cameron', 'jon': 'jonathan', 'johnny': 'john', 'tj': 't', 'cj': 'c', 'aj': 'a', 'dj': 'd', 'jj': 'j'}
+        'nate': 'nathan', 'kenny': 'kenneth', 'ken': 'kenneth', 'mitch': 'mitchell', 'ced': 'cedric', 'greg': 'gregory', 'pat': 'patrick', 'tim': 'timothy', 'jeff': 'jeffrey', 'steve': 'steven', 'stephen': 'steven', 'andy': 'andrew', 'drew': 'andrew', 'jake': 'jacob', 'cam': 'cameron', 'jon': 'jonathan', 'johnny': 'john', 'tj': 't', 'cj': 'c', 'aj': 'a', 'dj': 'd', 'jj': 'j'}
 def first(s):
     t = re.sub(r'[^a-z ]', '', (s or '').lower()).split()
     return NICK.get(t[0], t[0]) if t else ''
@@ -171,22 +182,28 @@ def lparts(s):
     t = [x for x in re.sub(r'\b(jr|sr|ii|iii|iv|v)\b\.?', '', (s or '').lower()).replace('.', ' ').split() if x]
     return set(re.sub(r'[^a-z]', '', p) for p in t[-1].split('-')) if t else set()
 def same_person_name(rname, rows):
-    """Same person if full names match, or last names match (hyphen parts count) and first names share an initial."""
+    """Same person if full names match, or last names match (hyphen parts count) and first names agree (nickname, short form or initials)."""
     if nm(rname) in {nm(x['firstName'] + ' ' + x['lastName']) for x in rows}: return True
     for x in rows:
         if lparts(rname) & lparts(x['firstName'] + ' ' + x['lastName']):
             f1, f2 = first(rname), first(x['firstName'])
-            if f1 and f2 and f1[0] == f2[0]: return True
+            # same first name after nicknames, one a short form of the other (Cam/Cameron), or initials (AJ/Akii)
+            if f1 and f2 and (f1 == f2 or (len(min(f1, f2, key=len)) >= 2 and max(f1, f2, key=len).startswith(min(f1, f2, key=len)))
+                              or (len(min(f1, f2, key=len)) <= 2 and f1[0] == f2[0])): return True
     return False
-STRENGTH = {'roster_recruit_id': 0, 'cfbd_athlete_id': 1, 'name_school_window': 2}
+STRENGTH = {'manual_approved': -1, 'roster_recruit_id': 0, 'cfbd_athlete_id': 1, 'name_school_window': 2}
 comp_recs = collections.defaultdict(list)   # athlete id -> recruitments already joined to it
+dup_records = []                            # the same recruitment listed twice by the source (same name, class, school, route)
 for i, a, meth in sorted(((i, a, meth) for i, m in L.items() for a, meth in m.items()), key=lambda t: STRENGTH[t[2]]):
     find(('r', i)); find(('a', a))
     why = None
-    if not same_person_name(R[i]['name'], ath[a]): why = 'recruit name does not match roster name'
+    if meth == 'manual_approved': why = None
+    elif not same_person_name(R[i]['name'], ath[a]): why = 'recruit name does not match roster name'
     else:
         root = find(('a', a)); others = [j for j in comp_recs[root] if j != i]
         for j in others:   # a player can have a high school AND a JUCO/prep record, never two of the same route
+            if (nm(R[j]['name']), R[j]['year'], R[j]['committedTo'], R[j]['recruitType']) == (nm(R[i]['name']), R[i]['year'], R[i]['committedTo'], R[i]['recruitType']):
+                dup_records.append([R[j]['id'], R[i]['id'], R[i]['name'], R[i]['year'], R[i]['committedTo']]); continue   # exact duplicate record of one recruitment
             if R[j]['recruitType'] == R[i]['recruitType'] or nm(R[j]['name']) != nm(R[i]['name']) and first(R[j]['name'])[:3] != first(R[i]['name'])[:3]:
                 why = f"athlete already joined to recruitment {R[j]['name']} ({R[j]['year']} {R[j]['recruitType']}, {R[j]['committedTo']})"; break
     if why:
@@ -196,7 +213,7 @@ for i, a, meth in sorted(((i, a, meth) for i, m in L.items() for a, meth in m.it
     ra, rr = find(('a', a)), find(('r', i))
     merged = comp_recs[ra] + comp_recs[rr] + [i]
     union(('r', i), ('a', a)); comp_recs[find(('a', a))] = sorted(set(merged))
-note('recruit-athlete links held back', len(held), collections.Counter(h['reason'].split(' (')[0][:40] for h in held))
+note('exact duplicate recruiting records joined', len(dup_records)); note('recruit-athlete links held back', len(held), collections.Counter(h['reason'].split(' (')[0][:40] for h in held))
 # Portal bridge (a name + school + season-window link, flagged): CFBD sometimes gives a player a new athlete id at his new school.
 # Join the origin-roster athlete and the destination-roster athlete when a portal entry names both schools, each school's
 # roster has exactly one player with that name in the matching season, and neither id fails the identity check.
@@ -243,113 +260,6 @@ for i, r in enumerate(R):
                              signed_with=r['committedTo'] or None, state=r['stateProvince'], city=r['city'],
                              src='cfbd recruiting (247Sports Composite)', st='reported', bv=BV))
 
-# ---------------------------------------------------------------- school stints (consecutive roster seasons at one school)
-stints = []
-for a, rows in ath.items():
-    seq = sorted({(x['season'], x['team']) for x in rows})
-    cur = None
-    for y, t in seq:
-        if cur and cur['school'] == t and y - cur['last'] <= 2:
-            cur['last'] = y; cur['seasons'].append(y)
-        else:
-            if cur: stints.append(cur)
-            cur = dict(pid=pid_of_a[a], athlete_id=a, school=t, first=y, last=y, seasons=[y])
-    if cur: stints.append(cur)
-for s in stints:
-    s.update(src='cfbd rosters', st='unknown' if s['athlete_id'] in BAD else 'verified', bv=BV,
-             note='roster listing only; does not show games played')
-
-# ---------------------------------------------------------------- transfer events (one unit: a school movement or a portal entry)
-drafted_in = {}   # pid -> draft year (official recruit linkage, or draft collegeAthleteId = roster id)
-for i, r in enumerate(R):
-    q = POOL.get(i)
-    if q and q.get('draftYear'): drafted_in[pid_of_r[i]] = q['draftYear']
-for d in DRAFT:
-    a = str(d.get('collegeAthleteId') or '')
-    if a in pid_of_a: drafted_in.setdefault(pid_of_a[a], d['year'])
-moves = []        # roster movements between consecutive seasons, different school, per player (all his athlete ids)
-pid_ids = collections.defaultdict(list)
-for a in ath: pid_ids[pid_of_a[a]].append(a)
-for pid, ids in pid_ids.items():
-    rows = [x for a in ids for x in ath[a]]
-    seq = sorted({(x['season'], x['team'], x['id']) for x in rows})
-    for (y1, t1, a1), (y2, t2, a2) in zip(seq, seq[1:]):
-        if t1 != t2 and y2 > y1:
-            moves.append(dict(pid=pid, athlete_id=a1, to_athlete_id=a2, bad=a1 in BAD or a2 in BAD, bridged=a1 != a2, from_season=y1, origin=t1, to_season=y2, destination=t2,
-                              name=nm(ath[a1][0]['firstName'] + ' ' + ath[a1][0]['lastName'])))
-pidx = collections.defaultdict(list)
-for e, p in enumerate(PORTAL):
-    pidx[(nm(p['firstName'] + ' ' + p['lastName']), p['origin'])].append(e)
-plast = collections.defaultdict(list)
-for e, p in enumerate(PORTAL): plast[(last(p['firstName'] + ' ' + p['lastName']), p['origin'])].append(e)
-used = {}
-events = []
-for m in moves:
-    gap = m['to_season'] - m['from_season']
-    cand = [e for e in pidx.get((m['name'], m['origin']), []) if PORTAL[e]['season'] in (m['to_season'], m['to_season'] - 1, m['from_season'], m['from_season'] + 1) and e not in used]
-    same = [e for e in cand if PORTAL[e]['destination'] == m['destination']]
-    ev = dict(pid=m['pid'], athlete_id=m['athlete_id'], origin=m['origin'], destination=m['destination'],
-              last_season_at_origin=m['from_season'], first_season_at_destination=m['to_season'], portal_entry=None, bv=BV)
-    dy = drafted_in.get(m['pid'])
-    if dy and m['to_season'] >= dy:
-        ev.update(category='Unknown/unresolved', sub='roster lists the player after he was drafted (roster error)', src='cfbd rosters', st='unknown')
-    elif m['bad']:
-        ev.update(category='Unknown/unresolved', sub='roster id fails the identity check (' + coll_verdict.get(m['athlete_id'], coll_verdict.get(m['to_athlete_id'], '')) + ')', src='cfbd rosters', st='unknown')
-    elif same:
-        e = same[0]; used[e] = 1
-        ev.update(category='Confirmed', sub='portal entry and destination roster agree' + (' (new athlete id at destination, joined by name)' if m['bridged'] else ''), portal_entry=e, src='cfbd portal + rosters', st='verified')
-    elif cand:
-        e = cand[0]; used[e] = 1
-        ev.update(category='Confirmed', sub='portal entry from origin; roster shows a different destination than listed' if PORTAL[e]['destination'] else 'portal entry from origin (no destination listed); roster shows destination',
-                  portal_entry=e, portal_destination=PORTAL[e]['destination'] or None, src='cfbd portal + rosters', st='verified')
-    else:
-        ev.update(category='Inferred school movement', sub='pre-2021 (before portal data)' if m['to_season'] <= 2020 else '2021+ (no matching portal entry)',
-                  src='cfbd rosters', st='derived')
-    if gap >= 3 and not m['bad']: ev['flag'] = f'{gap}-season gap; the schools have no roster data for the missing seasons'
-    if ev['category'] == 'Inferred school movement' and m['to_season'] >= 2021:
-        ln = last(ath[m['athlete_id']][0]['firstName'] + ' ' + ath[m['athlete_id']][0]['lastName'])
-        if any(PORTAL[e]['season'] in (m['to_season'], m['to_season'] - 1) for e in plast.get((ln, m['origin']), ())):
-            ev['sub'] = '2021+ (portal entry from origin with same last name, different first name: possible name variant)'
-    events.append(ev)
-# portal entries not tied to a roster movement
-ros_at = collections.defaultdict(set)    # (name, team) -> seasons
-for a, rows in ath.items():
-    for x in rows: ros_at[(nm(x['firstName'] + ' ' + x['lastName']), x['team'])].add(x['season'])
-entry_class = collections.Counter()
-for e, p in enumerate(PORTAL):
-    if e in used: entry_class['tied to a roster movement (part of a Confirmed event)'] += 1; continue
-    n = nm(p['firstName'] + ' ' + p['lastName']); s = p['season']
-    back = any(y in ros_at.get((n, p['origin']), ()) for y in (s, s + 1))
-    if p['destination'] and p['destination'] == p['origin']:
-        entry_class['destination is the origin school (withdrew or returned): not a transfer'] += 1; continue
-    if not p['destination'] and back:
-        entry_class['no destination; back on origin roster next season: not a transfer'] += 1; continue
-    ev = dict(pid=None, athlete_id=None, origin=p['origin'], destination=p['destination'] or None, portal_entry=e, portal_season=s, bv=BV)
-    cands = [a for a in {a for y in (s - 1, s) for a in name_team.get((n, p['origin'], y), ())}]
-    if len(cands) == 1: ev.update(pid=pid_of_a[cands[0]], athlete_id=cands[0])
-    dest_ids = {a for y in (s, s + 1) for a in name_team.get((n, p['destination'], y), ())} if p['destination'] else set()
-    if len(dest_ids) == 1:
-        a2 = next(iter(dest_ids))
-        if not ev['pid'] and a2 not in BAD: ev.update(pid=pid_of_a[a2], athlete_id=a2)
-        ev.update(category='Confirmed', sub='portal entry + destination roster (same name); no origin-roster movement on file', src='cfbd portal + rosters (name)', st='verified')
-        entry_class['destination confirmed on its roster by name (Confirmed event without an origin-roster movement)'] += 1
-    elif len(dest_ids) > 1:
-        ev.update(category='Reported', sub='destination roster has 2+ players with this name', src='cfbd portal', st='reported')
-        entry_class['destination listed, no roster confirmation (Reported event)'] += 1
-    elif p['destination']:
-        ev.update(category='Reported', sub='portal lists a destination; not confirmed on a roster' + ('' if p['destination'] in roster_teams else ' (destination outside our roster coverage)'),
-                  src='cfbd portal', st='reported')
-        entry_class['destination listed, no roster confirmation (Reported event)'] += 1
-    else:
-        ev.update(category='Unknown/unresolved', sub='portal entry, no destination and not found at origin next season', src='cfbd portal', st='unknown')
-        entry_class['no destination, outcome unknown (Unknown/unresolved event)'] += 1
-    events.append(ev)
-ecat = collections.Counter((e['category'], e['sub']) for e in events)
-note('transfer events', len(events)); [note('  ', k, v) for k, v in sorted(ecat.items())]
-note('portal entries', len(PORTAL)); [note('  ', k, v) for k, v in sorted(entry_class.items())]
-assert sum(entry_class.values()) == len(PORTAL)
-assert sum(1 for e in events if e.get('portal_entry') is not None) + entry_class['destination is the origin school (withdrew or returned): not a transfer'] + entry_class['no destination; back on origin roster next season: not a transfer'] == len(PORTAL)
-
 # ---------------------------------------------------------------- player-seasons with participation (game-level cache if present)
 SPEC = {'kickReturns', 'puntReturns', 'kicking', 'punting'}
 POSCAT = {'QB': {'passing'}, 'RB': {'rushing', 'receiving'}, 'FB': {'rushing', 'receiving'}, 'WR': {'receiving'}, 'TE': {'receiving'},
@@ -372,6 +282,150 @@ for f in gfiles:
                     for x in ty['athletes']:
                         gl[(x['id'], t['team'], y)][g['id']].add(c['name'])
 note('game-level files', len(gfiles), '| athlete-team-seasons with game records', len(gl))
+
+# ---------------------------------------------------------------- padded roster seasons (JC decision 3)
+# A roster listing before the player's enrollment (before his first class year, or at his JUCO signing school before
+# that JUCO class year) is hidden unless game records show he played that season. Hidden rows stay in the data.
+recs_of = collections.defaultdict(list)
+for i, r in enumerate(R): recs_of[pid_of_r[i]].append(r)
+HIDDEN = {}
+for a, rows in ath.items():
+    rs = recs_of.get(pid_of_a[a])
+    if not rs: continue
+    y0 = min(r['year'] for r in rs)
+    for x in rows:
+        y, t = x['season'], x['team']
+        why = None
+        if y < y0: why = f'listed {y}, before his first signing class ({y0})'
+        else:
+            for r in rs:
+                if r['recruitType'] in ('JUCO', 'PrepSchool') and r['committedTo'] == t and y < r['year']:
+                    why = f'listed at {t} in {y}, before his {r["recruitType"]} signing class ({r["year"]})'
+        if why and not gl.get((a, t, y)): HIDDEN[(a, t, y)] = why
+drafted_in = {}   # pid -> draft year (official recruit linkage, or draft collegeAthleteId = roster id)
+for i, r in enumerate(R):
+    q = POOL.get(i)
+    if q and q.get('draftYear'): drafted_in[pid_of_r[i]] = q['draftYear']
+for d in DRAFT:
+    a = str(d.get('collegeAthleteId') or '')
+    if a in pid_of_a and any(nm(d['name']) == nm(x['firstName'] + ' ' + x['lastName']) or (last(d['name']) == last(x['firstName'] + ' ' + x['lastName']) and first(d['name'])[:3] == first(x['firstName'])[:3]) for x in ath[a]):
+        drafted_in.setdefault(pid_of_a[a], d['year'])
+post_draft = 0
+for a, rows in ath.items():
+    dy_ = drafted_in.get(pid_of_a[a])
+    if not dy_: continue
+    for x in rows:
+        if x['season'] >= dy_ and (a, x['team'], x['season']) not in HIDDEN and not gl.get((a, x['team'], x['season'])):
+            HIDDEN[(a, x['team'], x['season'])] = f"listed in {x['season']}, after he was drafted in {dy_} (roster error)"; post_draft += 1
+note('padded roster seasons hidden (no game record that season)', len(HIDDEN), '| of which after the draft', post_draft)
+# ---------------------------------------------------------------- school stints (consecutive roster seasons at one school)
+stints = []
+for a, rows in ath.items():
+    seq = sorted({(x['season'], x['team']) for x in rows if (a, x['team'], x['season']) not in HIDDEN})
+    cur = None
+    for y, t in seq:
+        if cur and cur['school'] == t and y - cur['last'] <= 2:
+            cur['last'] = y; cur['seasons'].append(y)
+        else:
+            if cur: stints.append(cur)
+            cur = dict(pid=pid_of_a[a], athlete_id=a, school=t, first=y, last=y, seasons=[y])
+    if cur: stints.append(cur)
+hidden_by_a = collections.defaultdict(list)
+for (a, t, y), why in HIDDEN.items(): hidden_by_a[a].append(dict(school=t, season=y, reason=why))
+for a, h in hidden_by_a.items():
+    stints.append(dict(pid=pid_of_a[a], athlete_id=a, school=h[0]['school'], first=min(x['season'] for x in h), last=max(x['season'] for x in h),
+                       seasons=sorted(x['season'] for x in h), hidden=True, hidden_reason='; '.join(x['reason'] for x in h)))
+for s in stints:
+    s.setdefault('hidden', False)
+    s.update(src='cfbd rosters', st='unknown' if s['athlete_id'] in BAD else 'verified', bv=BV,
+             note='roster listing only; does not show games played')
+
+# ---------------------------------------------------------------- transfer events (one unit: a school movement or a portal entry)
+moves = []        # roster movements between consecutive seasons, different school, per player (all his athlete ids)
+pid_ids = collections.defaultdict(list)
+for a in ath: pid_ids[pid_of_a[a]].append(a)
+for pid, ids in pid_ids.items():
+    rows = [x for a in ids for x in ath[a] if (a, x['team'], x['season']) not in HIDDEN]
+    seq = sorted({(x['season'], x['team'], x['id']) for x in rows})
+    for (y1, t1, a1), (y2, t2, a2) in zip(seq, seq[1:]):
+        if t1 != t2 and y2 > y1:
+            moves.append(dict(pid=pid, athlete_id=a1, to_athlete_id=a2, bad=a1 in BAD or a2 in BAD, bridged=a1 != a2, from_season=y1, origin=t1, to_season=y2, destination=t2,
+                              name=nm(ath[a1][0]['firstName'] + ' ' + ath[a1][0]['lastName'])))
+pidx = collections.defaultdict(list)
+for e, p in enumerate(PORTAL):
+    pidx[(nm(p['firstName'] + ' ' + p['lastName']), p['origin'])].append(e)
+plast = collections.defaultdict(list)
+for e, p in enumerate(PORTAL): plast[(last(p['firstName'] + ' ' + p['lastName']), p['origin'])].append(e)
+used = {}
+events = []
+for m in moves:
+    gap = m['to_season'] - m['from_season']
+    cand = [e for e in pidx.get((m['name'], m['origin']), []) if PORTAL[e]['season'] in (m['to_season'], m['to_season'] - 1, m['from_season'], m['from_season'] + 1) and e not in used]
+    same = [e for e in cand if PORTAL[e]['destination'] == m['destination']]
+    ev = dict(pid=m['pid'], athlete_id=m['athlete_id'], origin=m['origin'], roster_destination=m['destination'], portal_destination=None,
+              last_season_at_origin=m['from_season'], first_season_at_destination=m['to_season'], portal_entry=None, bv=BV)
+    dy = drafted_in.get(m['pid'])
+    if dy and m['to_season'] >= dy:
+        ev.update(category='Unknown/unresolved', sub='roster lists the player after he was drafted (roster error)', src='cfbd rosters', st='unknown')
+    elif m['bad']:
+        ev.update(category='Unknown/unresolved', sub='roster id fails the identity check (' + coll_verdict.get(m['athlete_id'], coll_verdict.get(m['to_athlete_id'], '')) + ')', src='cfbd rosters', st='unknown')
+    elif same:
+        e = same[0]; used[e] = 1
+        ev.update(category='Confirmed', sub='portal entry and destination roster agree' + (' (new athlete id at destination, joined by name)' if m['bridged'] else ''), portal_entry=e, portal_destination=PORTAL[e]['destination'], src='cfbd portal + rosters', st='verified')
+    elif cand:
+        e = cand[0]; used[e] = 1
+        if PORTAL[e]['destination']:   # conflict: keep both destinations, never overwrite; not confirmed
+            ev.update(category='Reported', sub='conflict: portal destination differs from the roster destination', portal_entry=e, portal_destination=PORTAL[e]['destination'], src='cfbd portal + rosters', st='reported')
+        else:
+            ev.update(category='Confirmed', sub='portal entry from origin (no destination listed); same roster id shows the move', portal_entry=e, src='cfbd portal + rosters', st='verified')
+    else:
+        ev.update(category='Inferred school movement', sub='pre-2021 (before portal data)' if m['to_season'] <= 2020 else '2021+ (no matching portal entry)',
+                  src='cfbd rosters', st='derived')
+    if gap >= 3 and not m['bad']: ev['flag'] = f'{gap}-season gap; the schools have no roster data for the missing seasons'
+    if ev['category'] == 'Inferred school movement' and m['to_season'] >= 2021:
+        ln = last(ath[m['athlete_id']][0]['firstName'] + ' ' + ath[m['athlete_id']][0]['lastName'])
+        if any(PORTAL[e]['season'] in (m['to_season'], m['to_season'] - 1) for e in plast.get((ln, m['origin']), ())):
+            ev['sub'] = '2021+ (portal entry from origin with same last name, different first name: possible name variant)'
+    events.append(ev)
+# portal entries not tied to a roster movement
+ros_at = collections.defaultdict(set)    # (name, team) -> seasons
+for a, rows in ath.items():
+    for x in rows: ros_at[(nm(x['firstName'] + ' ' + x['lastName']), x['team'])].add(x['season'])
+entry_class = collections.Counter()
+for e, p in enumerate(PORTAL):
+    if e in used: entry_class['tied to a roster movement (Confirmed, or Reported when the two destinations conflict)'] += 1; continue
+    n = nm(p['firstName'] + ' ' + p['lastName']); s = p['season']
+    back = any(y in ros_at.get((n, p['origin']), ()) for y in (s, s + 1))
+    if p['destination'] and p['destination'] == p['origin']:
+        entry_class['destination is the origin school (withdrew or returned): not a transfer'] += 1; continue
+    if not p['destination'] and back:
+        entry_class['no destination; back on origin roster next season: not a transfer'] += 1; continue
+    ev = dict(pid=None, athlete_id=None, origin=p['origin'], portal_destination=p['destination'] or None, roster_destination=None, portal_entry=e, portal_season=s, bv=BV)
+    cands = [a for a in {a for y in (s - 1, s) for a in name_team.get((n, p['origin'], y), ())}]
+    if len(cands) == 1: ev.update(pid=pid_of_a[cands[0]], athlete_id=cands[0])
+    dest_ids = {a for y in (s, s + 1) for a in name_team.get((n, p['destination'], y), ())} if p['destination'] else set()
+    if len(dest_ids) == 1:
+        a2 = next(iter(dest_ids))
+        if not ev['pid'] and a2 not in BAD: ev.update(pid=pid_of_a[a2], athlete_id=a2)
+        ev.update(category='Reported', sub='destination roster shows a player with this name; movement not established (no origin-roster record on the same id)', roster_destination_observed=p['destination'], src='cfbd portal + rosters (name)', st='reported')
+        entry_class['destination roster shows the name, movement not established (Reported event)'] += 1
+    elif len(dest_ids) > 1:
+        ev.update(category='Reported', sub='destination roster has 2+ players with this name', src='cfbd portal', st='reported')
+        entry_class['destination listed, no roster confirmation (Reported event)'] += 1
+    elif p['destination']:
+        ev.update(category='Reported', sub='portal lists a destination; not confirmed on a roster' + ('' if p['destination'] in roster_teams else ' (destination outside our roster coverage)'),
+                  src='cfbd portal', st='reported')
+        entry_class['destination listed, no roster confirmation (Reported event)'] += 1
+    else:
+        ev.update(category='Unknown/unresolved', sub='portal entry, no destination and not found at origin next season', src='cfbd portal', st='unknown')
+        entry_class['no destination, outcome unknown (Unknown/unresolved event)'] += 1
+    events.append(ev)
+ecat = collections.Counter((e['category'], e['sub']) for e in events)
+note('transfer events', len(events)); [note('  ', k, v) for k, v in sorted(ecat.items())]
+note('portal entries', len(PORTAL)); [note('  ', k, v) for k, v in sorted(entry_class.items())]
+assert sum(entry_class.values()) == len(PORTAL)
+assert sum(1 for e in events if e.get('portal_entry') is not None) + entry_class['destination is the origin school (withdrew or returned): not a transfer'] + entry_class['no destination; back on origin roster next season: not a transfer'] == len(PORTAL)
+
 pseasons = []
 for a, rows in ath.items():
     for x in rows:
@@ -382,13 +436,19 @@ for a, rows in ath.items():
         else:
             G = gl.get((a, t, y), {})
             row['games_any'] = len(G)
-            row['games_special_only'] = sum(1 for c in G.values() if c <= SPEC)
+            qual = POSCAT.get(pos, set())   # kickers and punters: kicking/punting is their position statistic, not special-teams-only
+            row['games_special_only'] = sum(1 for c in G.values() if c <= SPEC and not (c & qual))
+            row['games_fumble_only'] = sum(1 for c in G.values() if c == {'fumbles'})
+            row['games_other_only'] = sum(1 for c in G.values() if c and not (c & qual) and not c <= SPEC and c != {'fumbles'})
+            if pos in DEF and 2016 <= y < 2019:   # retained for research only (JC decision 1); not comparable with 2019+
+                row['games_position_research'] = sum(1 for c in G.values() if c & POSCAT[pos]); row['research_note'] = 'defensive game data 2016-2018: research only'
             if pos in OL: row['games_position'] = 'not_applicable'
             elif pos in DEF and y < 2019: row['games_position'] = 'not_available'      # D6: defensive measure 2019 onward only
             elif pos in POSCAT: row['games_position'] = sum(1 for c in G.values() if c & POSCAT[pos])
             else: row['games_position'] = 'unknown_position'
             row['st'] = 'derived'
             if not G: row['no_record_note'] = 'on roster; no stat recorded in any game'
+        if (a, t, y) in HIDDEN: row.update(hidden=True, hidden_reason=HIDDEN[(a, t, y)])
         pseasons.append(row)
 note('player-seasons', len(pseasons))
 
@@ -410,9 +470,9 @@ for d in DRAFT:
     a = str(d.get('collegeAthleteId') or '')
     if a in pid_of_a and pid_of_a[a] in {o['pid'] for o in outcomes}:
         draft_conflicts.append(dict(pick=[d['year'], d['overall']], name=d['name'], college=d['collegeTeam'], pid=pid_of_a[a], reason='player already has a draft outcome; athlete id shared by two people?')); continue
-    if a in pid_of_a and last(d['name']) in {last(x['firstName'] + ' ' + x['lastName']) for x in ath[a]}:
+    if a in pid_of_a and any(nm(d['name']) == nm(x['firstName'] + ' ' + x['lastName']) or (last(d['name']) == last(x['firstName'] + ' ' + x['lastName']) and first(d['name'])[:3] == first(x['firstName'])[:3]) for x in ath[a]):
         outcomes.append(dict(pid=pid_of_a[a], type='drafted', year=d['year'], round=d['round'], overall=d['overall'], college_team=d['collegeTeam'],
-                             src='cfbd draft collegeAthleteId = roster id, last name checked', st='derived', bv=BV, note='not used by official grades'))
+                             src='cfbd draft collegeAthleteId = roster id, full name checked', st='derived', bv=BV, note='not used by official grades'))
         linked_picks.add((d['year'], d['overall']))
 for d in DRAFT:
     if (d['year'], d['overall']) in linked_picks: continue
@@ -465,7 +525,7 @@ for name, obj in [('players', players), ('recruitments', recruitments), ('school
                   ('player_seasons', pseasons), ('outcomes', outcomes), ('tags', tags), ('schools', schools), ('coach_seasons', coach_seasons)]:
     dump(name, obj)
 dump('exceptions', dict(identity_collisions={a: dict(reasons=collision[a], verdict=coll_verdict[a]) for a in sorted(collision)}, ambiguous_name_school=ambiguous,
-                        recruit_multi_athlete=conflicts, held_name_mismatch=held, portal_bridges=bridges, draft_conflicts=draft_conflicts, roster_rows_after_draft=after_draft, unlinked_draft_picks=unlinked_picks,
+                        recruit_multi_athlete=conflicts, held_name_mismatch=held, portal_bridges=bridges, duplicate_recruiting_records=dup_records, draft_conflicts=draft_conflicts, roster_rows_after_draft=after_draft, unlinked_draft_picks=unlinked_picks,
                         school_alias_suspects=alias_suspects, schools_outside_roster_coverage=outside))
 manifest = dict(build=BV, built=time.strftime('%Y-%m-%d %H:%M'), seconds=round(time.time() - t0), inputs=INPUTS,
                 game_files=len(gfiles), record_types=['Player', 'Recruitment', 'School stint', 'Transfer event', 'Player-season', 'Outcome', 'Tag'],

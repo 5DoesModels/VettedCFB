@@ -1,0 +1,157 @@
+{
+ "build": "FND-0.2",
+ "counts": {
+  "players": 184819,
+  "recruitments": 90121,
+  "school_stints": 174286,
+  "transfer_events": 27766,
+  "player_seasons": 372017,
+  "outcomes": 184819,
+  "tags": 21080,
+  "schools": 648,
+  "coach_seasons": 3537
+ },
+ "record_types": [
+  "Player",
+  "Recruitment",
+  "School stint",
+  "Transfer event",
+  "Player-season",
+  "Outcome",
+  "Tag"
+ ],
+ "reference_tables": [
+  "School",
+  "Coach-season"
+ ],
+ "identity": {
+  "roster_only": 93736,
+  "linked": 42526,
+  "linked_by_name_school": 10469,
+  "identity_unresolved": 2225,
+  "recruitment_only": 35863
+ },
+ "coverage_by_class": {
+  "2002-08": {
+   "name+school link": "16%",
+   "id link": "9%",
+   "no roster record": "74%",
+   "identity unresolved": "0%",
+   "n": 15383
+  },
+  "2009-14": {
+   "id link": "60%",
+   "no roster record": "36%",
+   "name+school link": "5%",
+   "identity unresolved": "0%",
+   "n": 19837
+  },
+  "2015-18": {
+   "id link": "36%",
+   "name+school link": "22%",
+   "no roster record": "40%",
+   "identity unresolved": "1%",
+   "n": 19051
+  },
+  "2019-21": {
+   "name+school link": "10%",
+   "id link": "56%",
+   "no roster record": "32%",
+   "identity unresolved": "2%",
+   "n": 13418
+  },
+  "2022-26": {
+   "name+school link": "8%",
+   "id link": "66%",
+   "no roster record": "24%",
+   "identity unresolved": "1%",
+   "n": 22432
+  }
+ },
+ "exceptions": {
+  "identity_collisions": 2540,
+  "ambiguous_name_school": 61,
+  "recruit_multi_athlete": 0,
+  "held_name_mismatch": 1340,
+  "portal_bridges": 61,
+  "duplicate_recruiting_records": 23,
+  "draft_conflicts": 4,
+  "roster_rows_after_draft": 13,
+  "unlinked_draft_picks": 1098,
+  "school_alias_suspects": 33,
+  "schools_outside_roster_coverage": 254
+ },
+ "collision_verdicts": {
+  "same_season_overlap": 264,
+  "unresolved": 2225,
+  "coverage_gap": 51
+ },
+ "transfers": {
+  "Inferred school movement": {
+   "events": 8164,
+   "players": 7621
+  },
+  "Unknown/unresolved": {
+   "events": 4290,
+   "players": 3258
+  },
+  "Confirmed": {
+   "events": 12477,
+   "players": 10531
+  },
+  "Reported": {
+   "events": 2835,
+   "players": 2025
+  }
+ },
+ "transfer_units": {
+  "events": 27766,
+  "with_roster_movement": 22313,
+  "with_portal_entry": 18160,
+  "with_both": 12707,
+  "portal_entries_total": 18906,
+  "portal_entries_by_class": {
+   "tied to a roster movement (Confirmed, or Reported when the two destinations conflict)": 12707,
+   "no destination, outcome unknown (Unknown/unresolved event)": 2848,
+   "no destination; back on origin roster next season: not a transfer": 613,
+   "destination listed, no roster confirmation (Reported event)": 1362,
+   "destination roster shows the name, movement not established (Reported event)": 1243,
+   "destination is the origin school (withdrew or returned): not a transfer": 133
+  }
+ },
+ "transfer_subcategories": {
+  "Confirmed | portal entry and destination roster agree": 10928,
+  "Confirmed | portal entry and destination roster agree (new athlete id at destination, joined by name)": 59,
+  "Confirmed | portal entry from origin (no destination listed); same roster id shows the move": 1490,
+  "Inferred school movement | 2021+ (no matching portal entry)": 4776,
+  "Inferred school movement | 2021+ (portal entry from origin with same last name, different first name: possible name variant)": 617,
+  "Inferred school movement | pre-2021 (before portal data)": 2771,
+  "Reported | conflict: portal destination differs from the roster destination": 230,
+  "Reported | destination roster has 2+ players with this name": 11,
+  "Reported | destination roster shows a player with this name; movement not established (no origin-roster record on the same id)": 1243,
+  "Reported | portal lists a destination; not confirmed on a roster": 1094,
+  "Reported | portal lists a destination; not confirmed on a roster (destination outside our roster coverage)": 257,
+  "Unknown/unresolved | portal entry, no destination and not found at origin next season": 2848,
+  "Unknown/unresolved | roster id fails the identity check (unresolved)": 1440,
+  "Unknown/unresolved | roster lists the player after he was drafted (roster error)": 2
+ },
+ "outcomes": {
+  "drafted": 5042,
+  "no_linked_draft_record_through_2026": 112823,
+  "still_in_college": 31587,
+  "unknown": 35367
+ },
+ "outcome_sources": {
+  "official draft linkage v1.28 (link.py + linkfix.json)": 3790,
+  "cfbd draft collegeAthleteId = roster id, full name checked": 759,
+  "name + college roster match (pre-2019 rosters often use placeholder ids)": 493
+ },
+ "participation": {
+  "games_any | not_available": 54274,
+  "games_position | not_available": 120193,
+  "games_any | measured": 317743,
+  "games_position | measured": 186488,
+  "games_position | unknown_position": 15153,
+  "games_position | not_applicable": 50183
+ }
+}

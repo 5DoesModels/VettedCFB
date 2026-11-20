@@ -1,0 +1,38 @@
+{
+ "counts": {
+  "correct | linked_by_name_school": 88,
+  "ambiguous | linked_by_name_school": 8,
+  "correct | identity_unresolved": 3,
+  "correct | recruitment_only": 1
+ },
+ "changed": [
+  [
+   11,
+   "Kevin LeDee",
+   2017,
+   "Tulane",
+   "identity_unresolved"
+  ],
+  [
+   15,
+   "Chris Kolarevic",
+   2017,
+   "Northern Iowa",
+   "identity_unresolved"
+  ],
+  [
+   24,
+   "Sherrod Greene",
+   2017,
+   "South Carolina",
+   "recruitment_only"
+  ],
+  [
+   95,
+   "Aubry Payne",
+   2016,
+   "Western Carolina",
+   "identity_unresolved"
+  ]
+ ]
+}
