@@ -29,7 +29,7 @@ links={}; how=collections.Counter()
 for k,d in enumerate(D):
     # CFBD's athlete ids are sometimes attached to the wrong recruit (Rara Thomas carried Zavion Thomas's id).
     # Only trust an id match when the names agree (same last name, same first initial, or a known nickname).
-    c=[r for r in byath.get(str(d.get('collegeAthleteId')),[]) if same(d['name'],r['name'])]
+    c=[r for r in byath.get(str(d.get('collegeAthleteId')),[]) if same(d['name'],r['name']) or (toks(d['name'])[-1:]==toks(r['name'])[-1:] and d.get('collegeTeam')==r.get('committedTo'))]
     if c:
         r=max(c,key=lambda r:(r['recruitType']=='HighSchool',r['year'])); links[k]=r['i']; how['id']+=1; continue
     c=[r for r in byname.get(nn(d['name']),[]) if 2<=d['year']-r['year']<=8]

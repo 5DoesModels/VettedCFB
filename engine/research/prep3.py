@@ -28,8 +28,12 @@ SA_SCH={'Army','Navy','Air Force'}   # service academies: military commitment, s
 SC=[r for r in P if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])) and cred(r) not in SA_SCH]
 # Transfer credit (approved by JC, Nov 2026): a transfer's development is shared across the schools he played for,
 # by participation (season workload + games with a recorded stat; tshare.json from tpp.py). Uncertain paths keep last-school credit.
+# OFFICIAL methodology v1 = last-school credit. The playing-time split is EXPERIMENTAL (Transfer Ledger research):
+# it runs only with EXPERIMENTAL=1 and must never feed the public site's grades or rankings (JC, Nov 20 2026).
 import os as _os
-SH=json.load(open(O+'tshare.json')) if _os.path.exists(O+'tshare.json') else {}
+EXPERIMENTAL=_os.environ.get('EXPERIMENTAL')=='1'
+SH=json.load(open(O+'tshare.json')) if EXPERIMENTAL and _os.path.exists(O+'tshare.json') else {}
+if EXPERIMENTAL: print('*** EXPERIMENTAL transfer split ON: research output only, never publish ***')
 def shares(r): return SH.get(f"{r['name']}|{r['year']}|{r['committedTo']}")
 def split(rs):
     out=[]
@@ -148,7 +152,9 @@ for r in TS:
 stayd=[[a,b]+v for (a,b),v in stay.items() if a in FBS or a in ('ALL','P4')]
 # who develops transfers best: players who finished at a school they transferred into
 tx=collections.defaultdict(list)
-def into(r): return r['mv'] and cred(r)!=r['committedTo'] and any(m[1]==cred(r) for m in r['mv'])
+def into(r):
+    if EXPERIMENTAL: return r['mv'] and cred(r)!=r['committedTo'] and any(m[1]==cred(r) for m in r['mv'])
+    return r['mv'] and cred(r)==last(r) and cred(r)!=r['committedTo']   # official: finished at a school he transferred into
 for r in SCX:
     if into(r): tx[cred(r)].append(r)
 txd=[]
@@ -291,7 +297,7 @@ for c in coaches:
     tin=sum(1 for p_ in PO if p_['destination'] and (p_['destination'],p_['season']) in set(ten))
     sg=sum(1 for r in P if (r['committedTo'],r['year']-1) in set(ten) and r['recruitType']=='HighSchool')
     mine=[r for r in byc.get(c['name'],[])]
-    vp=[r for r in mine if into(r)]; vs=[r for r in mine if not into(r)]
+    vp=[r for r in mine if (into(r) if EXPERIMENTAL else (r['mv'] and cred(r)!=r['committedTo']))]; vs=[r for r in mine if r not in vp]
     c['pl']=[tin,sg,len(vp),round(sum(r['pts'] for r in vp),1),round(sum(r['exp'] for r in vp),1),len(vs),round(sum(r['pts'] for r in vs),1),round(sum(r['exp'] for r in vs),1),len(set(ten))]
 open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=lb,stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs),separators=(',',':')))
 print('STATS',stats)

@@ -18,6 +18,11 @@ def tier(d):
 FIX=json.load(open('linkfix.json')); BAD={(u['name'],u['year'],u['school'],u['draftYear'],u['overall']) for u in FIX['unlink']}
 nb=len(L); L={k:v for k,v in L.items() if (R[v]['name'],R[v]['year'],R[v]['committedTo'],D[k]['year'],D[k]['overall']) not in BAD}
 print('unlinked',nb-len(L),'of',len(BAD))
+# Manual links from linkfix.json (checked by hand; the automatic matcher skipped them)
+for u in FIX.get('link',[]):
+    k=next(i for i,d in enumerate(D) if d['year']==u['draftYear'] and d['overall']==u['overall'])
+    v=next(i for i,r in enumerate(R) if r['name']==u['name'] and r['year']==u['year'] and r['committedTo']==u['school'])
+    L[k]=v; print('manual link',u['name'],u['draftYear'],u['overall'])
 # A recruit can pick up two draft picks with the same name (e.g. Robert Griffin III and guard Robert Griffin, both Baylor 2012).
 # Keep the pick whose position fits the recruit's, then the one from his signing school, then the earlier pick.
 DPOS={'Quarterback':'QB','Running Back':'RB','Fullback':'RB','Wide Receiver':'WR','Tight End':'TE','Offensive Tackle':'OL','Offensive Guard':'OL','Center':'OL','Offensive Line':'OL',
