@@ -76,7 +76,10 @@ nav a[aria-current]{background:var(--ink);color:var(--bg)}
 .subrow .sbl{font-size:14px;color:var(--pen)}.subrow a{font-family:Oswald;font-size:18px;text-decoration:none;color:var(--pen);padding:6px 2px;min-height:40px;display:inline-flex;align-items:center;border-bottom:3px solid transparent}
 .subrow a:hover{color:var(--ink)}.subrow a[aria-current]{color:var(--ink);border-bottom-color:var(--red)}
 .crumb{font-size:14px;color:var(--pen);margin:0 0 6px}.crumb a{color:var(--pen)}
-nav a.allf{margin-left:auto;background:transparent;border:1.5px solid var(--line);border-bottom:0}
+nav a.allf{margin-left:auto;background:var(--red);color:#fff;font-weight:600}nav a.allf[aria-current]{background:var(--ink);color:var(--bg)}
+.evbtn{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 0;padding:16px 20px;border-radius:10px;background:var(--ink);color:var(--bg);text-decoration:none;font-family:Oswald;font-size:21px}.evbtn span{font-family:inherit;font-size:15px;opacity:.85}.evbtn:hover{background:var(--red);color:#fff}
+.dir .grp.hl{border-top-color:var(--red);box-shadow:0 0 0 3px var(--red);animation:pulse 1.2s ease 2}@keyframes pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--red) 35%,transparent)}}
+.rise{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:4px 12px;align-items:center}.rise .why{grid-column:2/4;font-size:14px;color:var(--pen)}.rise .tagx{display:inline-block;font-size:12px;padding:1px 7px;border-radius:9px;border:1px solid var(--line);margin-left:6px;color:var(--pen)}
 .dir{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:16px}.dir .grp{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);border-radius:6px;padding:14px 16px}
 .dir h3{font-size:22px}.dir .q{font-size:14px;color:var(--pen);margin:2px 0 8px}.dir a{display:block;text-decoration:none;padding:9px 0;border-top:1px solid var(--line)}.dir a b{font-family:Oswald;font-weight:500;font-size:18px}.dir a span{display:block;font-size:14px;color:var(--pen)}.dir a:hover b{color:var(--red)}
 .gp{display:inline-grid;place-items:center;min-width:2.3em;height:1.75em;padding:0 6px;border-radius:6px;font-family:Oswald;font-size:16px;font-weight:500;vertical-align:1px;margin-right:6px;color:#fff;background:#5B6170}
@@ -233,7 +236,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 <span class="concept">Preview</span>
 <button class="thm" id="thm" type="button" aria-label="Switch light or dark mode"><span id="thmi">☾</span> <span id="thml">Dark</span></button><div class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
 <input type="search" id="sq" placeholder="Search any player, school or coach" aria-label="Search any player, school or coach" autocomplete="off"><div class="res" id="sr" role="listbox"></div></div></div>
-<nav aria-label="Sections"><a href="#home">Home</a><a href="#find">Find a Program</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#analytics">Analytics</a><a href="#about">About</a><a href="#everything" class="allf">☰ Everything</a></nav><div id="subbar" class="subrow" hidden></div>
+<nav aria-label="Sections"><a href="#home">Home</a><a href="#find">Find a Program</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#analytics">Analytics</a><a href="#about">About</a><a href="#everything" class="allf">☰ Everything we offer</a></nav><div id="subbar" class="subrow" hidden></div>
 </div></header>
 <div id="teambar" hidden><div class="wrap tb"><span>You're viewing</span><b id="tbn"></b><span class="tbk" id="tbk">report card</span><button id="tbc" type="button">Close ✕</button></div></div>
 <main class="wrap" id="app"><p class="empty">Loading the board…</p></main>
@@ -311,23 +314,22 @@ function home(){
   const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
   app.innerHTML=`<div class="page"><section class="hero"><div><h1>Who really develops college football players?</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. Vetted CFB tracks what happens next, for every signee since ${m.classes[0]}, and shows which programs and coaches turn players into more than anyone expected.</p>
-  <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div>
-  <div class="rolehelp"><b>Need help getting started?</b> Tell us who you are and we'll point you to the best places to look. Totally optional.</div><div class="rolepick" style="margin-top:10px"><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></div>
+  <div class="btns"><a class="btn solid" href="#find">Find a program for a recruit</a><a class="btn" href="#rankings">See the rankings</a></div><a class="evbtn" href="#everything">Click here to view everything we offer <span>Every page, one place →</span></a>
+  <div class="rolehelp"><b>Need help getting started?</b> Tell us who you are and we'll take you to the pages picked for you. Totally optional.</div><div class="rolepick" style="margin-top:10px"><span>I'm a</span>${[['recruit','Recruit or family'],['fan','Fan'],['coach','Coach or staff']].map(([k,l])=>`<button data-role="${k}" aria-pressed="${LS2.get('vc_role')===k}">${l}</button>`).join('')}</div></div>
   <div class="wall" aria-label="Moving board of player cards"><div class="col">${wt}${wt}</div></div></section>
-  <div id="rolebox"></div>
   <div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal moves</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
   <div class="ticker" id="tk1"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div>
   <section><h2>Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
   <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button></div></div>
   <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>
-  <section><h2>Everything on Vetted CFB</h2><p class="lede">Every page, grouped by the question it answers. You can always get back here from <b>☰ Everything</b> at the top.</p><div class="dir">${DIR.slice(0,3).map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
+  <section id="homeall"><h2>Everything on Vetted CFB</h2><p class="lede">Every page, grouped by the question it answers. You can always get back here from <b>☰ Everything</b> at the top.</p><div class="dir">${DIR.slice(0,3).map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
   <section><h2>How the score works</h2><p class="lede">Every player is judged against what players with his star rating, composite rating and position usually do in the NFL draft. Same draft slot, very different credit:</p>
   <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted in round one</div><div class="big">60 − ${ex3.toFixed(1)} = <span class="pos">+${(60-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
   <div class="c"><div class="small">A typical 5-star, drafted in round one</div><div class="big">60 − ${ex5.toFixed(1)} = <span class="pos">+${(60-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
   <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About Vetted CFB</a></p></section></div>`;
-  countUp(app);ticker('tk1',facts());roleBox(LS2.get('vc_role'));
-  app.querySelectorAll('.dir [data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(a.getAttribute('href')==='#rankings'){rkMode='programs'}});
-  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false);app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleBox(r,true)});
+  countUp(app);ticker('tk1',facts());roleHL(LS2.get('vc_role'),false);
+  app.querySelectorAll('.dir [data-sub]').forEach(a=>a.onclick=()=>subGo(a));
+  app.querySelectorAll('[data-role]').forEach(b=>b.onclick=()=>{const r=b.dataset.role;LS2.set('vc_role',r);LS.set('vc_asked',r);saveRole(r,false);app.querySelectorAll('[data-role]').forEach(x=>x.setAttribute('aria-pressed',x===b));roleHL(r,true)});
   app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
   (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
   statePanel(null)}
@@ -366,13 +368,13 @@ let rY=[2002,2023],cY=[2002,2023],lY=[2002,2023],fY=[2002,2023],pY=[2002,2026],n
 let rkMode='programs',wrEra='all',coView='dev',wrQ='',wrSort='per',coQ='',coAct=false,coSort='ps',lbP='WR',lbS='',lbSort='tot';
 function rankings(){
   app.innerHTML=`<div class="page"><section><h1>Rankings</h1><p class="lede">Who develops talent beyond what recruiting rankings predicted. Tap any row for the full report card.</p>
-  <div class="bigseg" role="group" aria-label="Rank"><button data-rk="programs" aria-pressed="${rkMode==='programs'}">Programs</button><button data-rk="coaches" aria-pressed="${rkMode==='coaches'}">Head coaches</button><button data-rk="conf" aria-pressed="${rkMode==='conf'}">Conferences</button><button data-rk="position" aria-pressed="${rkMode==='position'}">By position</button></div>
+  <div class="bigseg" role="group" aria-label="Rank"><button data-rk="programs" aria-pressed="${rkMode==='programs'}">Programs</button><button data-rk="coaches" aria-pressed="${rkMode==='coaches'}">Head coaches</button><button data-rk="conf" aria-pressed="${rkMode==='conf'}">Conferences</button><button data-rk="position" aria-pressed="${rkMode==='position'}">By position</button><button data-rk="rising" aria-pressed="${rkMode==='rising'}">Next big hire</button></div>
   <div class="loc"><label for="cl"><b>Look up a coach</b> <span class="small">see where he ranks on every list</span></label><input id="cl" list="cnames" placeholder="Type a coach's name, e.g. Kirby Smart" autocomplete="off"><datalist id="cnames">${D.coaches.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist><div id="clo"></div></div>
   <div id="rz"></div></section><div id="rn"></div></div>`;
   app.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>{rkMode=b.dataset.rk;window._loc=null;window._hl=null;rankings()});
   const cl=document.getElementById('cl');cl.oninput=()=>{const c=D.coaches.find(x=>x.name.toLowerCase()===cl.value.trim().toLowerCase());if(c)locate(c)};
   if(window._loc){const c=D.coaches.find(x=>x.name===window._loc);if(c){cl.value=c.name;locate(c,true)}}
-  ({programs:rkPrograms,coaches:rkCoaches,conf:rkConf,position:rkPosition})[rkMode]()}
+  ({programs:rkPrograms,coaches:rkCoaches,conf:rkConf,position:rkPosition,rising:rkRising})[rkMode]()}
 function rkPrograms(){
   const P=D.progs,top15=new Set(P.slice().sort((a,b)=>b.r5-a.r5).slice(0,15).map(p=>p.name));
   const hot=P.slice().sort((a,b)=>b.r5-a.r5).slice(0,3),cold=P.slice().sort((a,b)=>a.r5-b.r5).slice(0,3);
@@ -426,6 +428,26 @@ function rkCoaches(){
   app.querySelectorAll('#rz [data-a]').forEach(b=>b.onclick=()=>{coAct=b.dataset.a==='1';app.querySelectorAll('#rz [data-a]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawCoaches()});drawCoaches()}
 
 
+/* ---------- NEXT BIG HIRE ---------- */
+let RISE=null,riQ='';
+function rkRising(){const z=document.getElementById('rz');z.innerHTML='<p class="empty">Loading…</p>';
+  (RISE?Promise.resolve():fetch('rising.json').then(r=>r.json()).then(j=>{RISE=j})).then(()=>{
+  const B=RISE.bt,hits=B.reduce((a,b)=>a+b.hits,0),moves=B.reduce((a,b)=>a+b.moves,0),pool=Math.round(B.reduce((a,b)=>a+b.n,0)/B.length);
+  const ex=B.flatMap(b=>b.names.map(n=>`${esc(n[0])} (${esc(n[1])} → ${esc(n[2])}, ${b.y+1})`)).slice(-5);
+  z.innerHTML=`<div class="plain"><b>Who could get a bigger job?</b> Curt Cignetti at James Madison, Jon Sumrall at Tulane and Bob Chesney at James Madison all fit one profile before they moved up: winning big at a Group of Five school while signing better classes than the school had before them. This list finds the coaches who fit that profile right now.</div>
+  <div class="stats"><div><div class="d">${hits} of ${moves}</div><p>Group of Five coaches hired to power-conference jobs (2022–2026) were in our top 10 the season before</p></div><div><div class="d">${pool}</div><p>Group of Five head coaches checked each year</p></div></div>
+  <p class="small">Recent hits: ${ex.join(' · ')}.</p>
+  <div class="ctrl" style="margin-top:14px"><label>Find a coach or school<input type="search" id="riq" placeholder="Type a name or school" value="${esc(riQ)}"></label></div><div id="ril"></div>`;
+  const q=document.getElementById('riq');q.oninput=()=>{riQ=q.value;drawRise()};drawRise();
+  document.getElementById('rn').innerHTML=notes(`<p>Head coaches leading a non-power-conference FBS program in 2026 (Group of Five and independents other than Notre Dame) with at least 18 games as an FBS head coach since 2024. The score blends four things, each compared with the other coaches on the list: <b>winning</b> (record over the last three seasons, 40%), <b>turnaround</b> (his record at this school vs the school's record in the three seasons before he arrived, 20%), <b>recruiting lift</b> (the national rank of his recruiting classes there vs the three classes before him, 30%) and <b>development</b> (his draft development grade, 10%; average if he is too new to have one). 2026 records are through Nov. 19. The 2027 class rank uses current commitments. To test it, we built the same list at the end of each season from 2021 to 2025 and checked who was hired by a power-conference school the next year. This is not a prediction of who will be hired: age, contracts, buyouts, ties to a region and which jobs open all matter. Success below FBS (like Cignetti at Elon or Chesney at Holy Cross) is not in our data.</p>`)}).catch(()=>{z.innerHTML='<p class="empty">This list did not load. Refresh to try again.</p>'})}
+function drawRise(){const el=document.getElementById('ril');if(!el)return;const R=RISE.rows,n=R.length,q=riQ.trim().toLowerCase();
+  const L=R.map((r,i)=>({r,rk:i+1})).filter(({r})=>!q||r.name.toLowerCase().includes(q)||r.school.toLowerCase().includes(q));
+  const wl=(w,l)=>`${w}–${l}`;
+  el.innerHTML=L.length?`<div class="list">${L.slice(0,q?60:25).map(({r,rk})=>{const why=[`${Math.round(100*r.wp)}% wins over the last three seasons (${wl(r.rw,r.rl)})`];
+    if(r.before!=null)why.push(`school won ${Math.round(100*r.before)}% in the three seasons before him`);
+    if(r.rank&&r.prior)why.push(`his classes rank about #${r.rank} nationally, vs #${r.prior} before him`);
+    return `<div class="row nb" style="padding:12px 14px"><div class="rise"><span class="rk">${rk}</span><span class="pn">${gp(rankG(rk,n))}<b>${esc(r.name)}</b><small>${esc(r.school)} · ${esc(r.conf||'')} · ${r.yrs} season${r.yrs>1?'s':''} there, ${wl(r.w,r.l)}${r.p4?'<span class="tagx">former power-conference head coach</span>':''}${r.sa?'<span class="tagx">service academy</span>':''}</small></span>
+    <span class="val" title="Score out of 100">${Math.round(r.score)}</span><span class="why">${why.join(' · ')}.</span></div></div>`}).join('')}</div>${!q&&n>25?`<p class="small">Showing the top 25 of ${n}. Search to find anyone else.</p>`:''}`:'<p class="empty">No Group of Five head coach matches that. Power-conference coaches aren\'t on this list.</p>'}
 /* ---------- COACH RANKS + LOCATOR ---------- */
 const sharez=c=>c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]);
 const leanOK=c=>c.now&&c.pl&&c.pl[8]>=2;
@@ -460,13 +482,14 @@ function coachLean(vs){
   <h2 style="margin-top:22px">Portal builders vs high school recruiters</h2><p class="small" style="font-size:15px">Each dot is a 2026 head coach. Left: builds mostly through high school recruiting. Right: mostly through the portal. Higher: his players beat expectations over his career. Hover or tap a dot.</p>
   <div class="ctrl"><label>Find a coach on the chart<input id="qq" list="qnames" placeholder="Type a name" autocomplete="off"></label><datalist id="qnames">${rows.map(r=>`<option value="${esc(r.c.name)}">`).join('')}</datalist></div>
   <div class="qwrap"><div class="fig quad" id="qfig" style="height:500px;position:relative"><svg id="qsvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><div class="qcard" id="qinfo"><div class="small">COACH DETAILS</div><p style="margin:8px 0 0">Hover over, tap or search for a coach to see his numbers here.</p></div></div>
-  <h2 style="margin-top:28px">Ranked</h2>
+  <h2 style="margin-top:28px">Ranked</h2><div class="ctrl"><label>Find a coach or school<input type="search" id="lnq" placeholder="Type a name or school" autocomplete="off"></label></div>
   <div class="bigseg" role="group" aria-label="Sort">${[['share','Most portal-heavy'],['hs','Best with high school signees'],['tr','Best with transfers']].map(([k,l])=>`<button data-ln="${k}" aria-pressed="${lnSort===k}">${l}</button>`).join('')}</div>
   <div class="scroll" style="margin-top:14px"><table><tr><th>Rank</th><th class="l">Coach</th><th class="l">School</th><th>Transfers in</th><th>HS signees</th><th>Portal share</th><th class="l">Lean</th><th>Develops HS signees</th><th>Develops transfers</th></tr>
-  ${rows.map(({c,sh})=>`<tr><td><b>${m.get(c.name)?'#'+m.get(c.name):'—'}</b></td><td class="l"><button class="lk" data-hl="${esc(c.name)}">${esc(c.name)}</button></td><td class="l">${esc(c.now)}</td><td>${c.pl[0]}</td><td>${c.pl[1]}</td><td><b>${Math.round(100*sh)}%</b> ${rk('share',c)}</td><td class="l">${leanLab(sh)}</td><td>${dv(okHS(c),c.pl[6],c.pl[7],'hs',c)}</td><td>${dv(okTR(c),c.pl[3],c.pl[4],'tr',c)}</td></tr>`).join('')}</table></div>`;
+  ${rows.map(({c,sh})=>`<tr data-f="${esc((c.name+' '+c.now).toLowerCase())}"><td><b>${m.get(c.name)?'#'+m.get(c.name):'—'}</b></td><td class="l"><button class="lk" data-hl="${esc(c.name)}">${esc(c.name)}</button></td><td class="l">${esc(c.now)}</td><td>${c.pl[0]}</td><td>${c.pl[1]}</td><td><b>${Math.round(100*sh)}%</b> ${rk('share',c)}</td><td class="l">${leanLab(sh)}</td><td>${dv(okHS(c),c.pl[6],c.pl[7],'hs',c)}</td><td>${dv(okTR(c),c.pl[3],c.pl[4],'tr',c)}</td></tr>`).join('')}</table></div>`;
   document.getElementById('rn').innerHTML=notes(`<p>Head coaches in 2026 with at least two seasons since 2021, at any school. Transfers in = portal entries who arrived at his school in seasons he coached; HS signees = high school signees in classes he signed. Portal share = transfers ÷ (transfers + signees): 60%+ leans portal, 35% or less leans recruiting. "Develops" compares draft results with expectations across his whole career, split by players who arrived as transfers and players he signed. Rank among coaches with 10+ players in that group and enough expected draft value to judge (otherwise "too few" or "too early to tell"). Values: 1.00× = exactly as expected; 2.00× = twice the draft value expected.</p>`);
   app.querySelectorAll('#rz [data-cv]').forEach(b=>b.onclick=()=>{coView=b.dataset.cv;rkCoaches()});
   app.querySelectorAll('[data-ln]').forEach(b=>b.onclick=()=>{lnSort=b.dataset.ln;coachLean(vs)});
+  const lq=document.getElementById('lnq');lq.oninput=()=>{const t=lq.value.trim().toLowerCase();app.querySelectorAll('tr[data-f]').forEach(r=>r.hidden=!!t&&!r.dataset.f.includes(t))};
   const qd=()=>quad(rows);new ResizeObserver(qd).observe(document.getElementById('qfig'));qd();
   const qq=document.getElementById('qq');qq.oninput=()=>{const v=qq.value.trim().toLowerCase();const c=rows.find(r=>r.c.name.toLowerCase()===v);if(c){window._hl=c.c.name;quad(rows)}};
   app.querySelectorAll('[data-hl]').forEach(b=>b.onclick=()=>{window._hl=b.dataset.hl;quad(rows);document.getElementById('qfig').scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})});
@@ -574,17 +597,18 @@ function find(){
   const upd=()=>{fAll=false;fP=document.getElementById('fp').value;fS=document.getElementById('fs').value;fSt=document.getElementById('fst').value;loadFin()};
   ['fp','fs','fst'].forEach(id=>document.getElementById(id).onchange=upd);wireYr('fy',r=>{fY=r;fAll=false;if(FIN[fP])drawFinder()});loadFin()}
 
-function typeSeg(){return `<div class="bigseg" role="group" aria-label="Player type" style="margin:0 0 18px"><button data-ty="hs" aria-pressed="${fType==='hs'}">High school recruit</button><button data-ty="juco" aria-pressed="${fType==='juco'}">JUCO player</button></div>`}
+function typeSeg(){return `<div class="bigseg" role="group" aria-label="Player type" style="margin:0 0 18px"><button data-ty="hs" aria-pressed="${fType==='hs'}">I'm a high school recruit</button><button data-ty="juco" aria-pressed="${fType==='juco'}">I'm a JUCO player</button></div>`}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-ty]');if(!b)return;fType=b.dataset.ty;find();subnav('find')});
 function jucoView(){const J=D.juco;
   app.innerHTML=`<div class="page"><section>${typeSeg()}<h1>Where should a JUCO player go?</h1><p class="lede">Junior college players get one or two years to prove themselves at the next level. These programs and coaches got the most NFL draft value out of JUCO signees, compared with what their rankings predicted.</p>
   <div class="stats"><div><div class="d">${J.n.toLocaleString()}</div><p>JUCO signees graded since 2002</p></div><div><div class="d">${J.dr}</div><p>of them drafted (${pct(J.dr,J.n)})</p></div></div>
   <div class="ctrl" style="margin-top:18px"><label>Position<select id="jp"><option value="">Any position</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===jP?' selected':''}>${v}</option>`).join('')}</select></label>
-  <div class="seg" role="group" aria-label="Rank"><button data-jm="progs" aria-pressed="${jMode==='progs'}">Programs</button><button data-jm="coaches" aria-pressed="${jMode==='coaches'}">Head coaches</button></div></div>
+  <label>Find a school or coach<input type="search" id="jq" placeholder="Type a name" autocomplete="off"></label><div class="seg" role="group" aria-label="Rank"><button data-jm="progs" aria-pressed="${jMode==='progs'}">Programs</button><button data-jm="coaches" aria-pressed="${jMode==='coaches'}">Head coaches</button></div></div>
   <p class="take" id="jt"></p><div class="list" id="jl"></div>
   <h2 style="margin-top:30px">Best JUCO developments</h2><div class="board">${J.best.map(i=>tag(T(i))).join('')}</div></section>
   ${notes(`<p>JUCO signees who signed with FBS programs 2002–2023, credited to the last school they played for and its head coach. Programs need 8+ JUCO signees (3+ at a chosen position); coaches need 6+. Expected draft results come from JUCO players with the same stars, rating and position, so a program isn't rewarded just for signing top junior college prospects.</p>`)}</div>`;
   document.getElementById('jp').onchange=e=>{jP=e.target.value;if(jP)jMode='progs';drawJ()};
+  const jq=document.getElementById('jq');jq.oninput=()=>{const t=jq.value.trim().toLowerCase();app.querySelectorAll('#jl details.row').forEach(d=>d.hidden=!!t&&!(d.dataset.k+' '+d.querySelector('small').textContent).toLowerCase().includes(t))};
   app.querySelectorAll('[data-jm]').forEach(b=>b.onclick=()=>{jMode=b.dataset.jm;if(jMode==='coaches')jP='';app.querySelectorAll('[data-jm]').forEach(x=>x.setAttribute('aria-pressed',x===b));const sel=document.getElementById('jp');if(sel)sel.value=jP;drawJ()});drawJ()}
 function drawJ(){const J=D.juco,el=document.getElementById('jl');if(!el)return;let items,open,lab;
   if(jMode==='coaches'){const L=J.coaches.slice().sort((a,b)=>(b[5]-b[6])-(a[5]-a[6]));lab='JUCO players';
@@ -599,7 +623,7 @@ function drawJ(){const J=D.juco,el=document.getElementById('jl');if(!el)return;l
     items=L.map((p,i)=>({key:p[0],v:p[4]-p[5],rk:i+1,sub:`${p[1]} JUCO signees · ${p[2]} drafted`}));
     open=k=>{const p=J.progs.find(x=>x[0]===k);return `<div class="sheet">${cellsHTML([['JUCO players',p[1]],['Drafted',p[2]],['Draft rate',pct(p[2],p[1])],['First round',p[3]],['Actual ÷ exp.',rat(p[4],p[5])]])}${p[6].length?`<div class="tags2 mini">${p[6].map(i=>tag(T(i))).join('')}</div>`:''}</div>`};
     document.getElementById('jt').innerHTML=L.length?`<b>${esc(L[0][0])}</b> has developed JUCO players best: ${L[0][2]} of ${L[0][1]} drafted, ${f0(L[0][4]-L[0][5])} draft points above expected.`:''}
-  rowsList(el,items,f0,0,open,items.length);if(!items.length)el.innerHTML=`<p class="empty">Too few JUCO ${esc(lab)} to rank. Try "Any position".</p>`}
+  rowsList(el,items,f0,0,open,items.length);if(!items.length)el.innerHTML=`<p class="empty">Too few JUCO ${esc(lab)} to rank. Try "Any position".</p>`;const jq=document.getElementById('jq');if(jq&&jq.value)jq.oninput()}
 function loadFin(){
   if(FIN[fP])return drawFinder();
   document.getElementById('fo').innerHTML='<p class="empty">Loading players…</p>';
@@ -925,13 +949,14 @@ function analytics(){
   <div><div class="d">${Math.round(st.r2_tal*10)} → ${Math.round(st.r2_both*10)} in 10</div><p>of the differences in winning explained: recruiting alone → recruiting plus development</p></div></div>
   <div class="plain">What this means: signing great recruits matters, but what a staff does with them matters too. Two programs with the same recruiting can win very differently.</div>
   <div class="bigseg" role="group" aria-label="Chart" style="margin-top:20px"><button data-ax="dev" aria-pressed="${anX==='dev'}">Development vs winning</button><button data-ax="tal" aria-pressed="${anX==='tal'}">Recruiting vs winning</button></div>
-  <p class="take" id="atake" style="margin-top:14px"></p><div class="fig" id="afig" style="height:440px;position:relative"><svg id="asvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><p class="small" id="ainfo">Each dot is a program. Tap one to see which.</p></section>
+  <div class="ctrl" style="margin-top:14px"><label>Find a school<input id="aq" list="anames" placeholder="Type a school, e.g. Tulane" autocomplete="off"></label><datalist id="anames">${D.ana.map(a=>`<option value="${esc(a[0])}">`).join('')}</datalist></div><p class="take" id="atake" style="margin-top:14px"></p><div class="fig" id="afig" style="height:440px;position:relative"><svg id="asvg" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><p class="small" id="ainfo">Each dot is a program. Tap one to see which.</p></section>
   <section><h2>Conferences</h2><p class="lede">Which conferences get the most out of their players? Average draft value above expectations per program, per year, by 2026 membership.</p><div style="margin-top:14px">${D.confs.map(c=>{const mx=Math.max(...D.confs.map(x=>Math.abs(x[2])));return `<div class="meter" style="grid-template-columns:9em minmax(0,1fr) 3.6em"><span>${esc(c[0])}</span><span style="position:relative;height:16px;display:block"><i style="position:absolute;top:0;height:100%;${c[2]>=0?`left:50%;width:${50*c[2]/mx}%`:`right:50%;width:${50*-c[2]/mx}%;background:var(--red);transform-origin:right`}"></i><b style="position:absolute;left:50%;top:-3px;bottom:-3px;border-left:1px solid var(--pen)"></b></span><span>${f0(c[2])}</span></div>`}).join('')}</div>
   <p class="small" style="margin-top:8px"><a href="#rankings" id="toconf">See conference report cards →</a> · <a href="#rankings" id="toquad">Portal coaches vs high school coaches →</a> · <a href="#stayhome">Stay home or leave →</a> · <a href="#nfl">NFL careers →</a></p></section>
   ${notes(`<p>${st.n} FBS programs. Development = draft points above expected per graded signing year (2002–2023). Recruiting = expected draft points per year, which rises with star ratings. Win % and SRS are from 2012–2025. Correlation runs from −1 to 1; we call 0.5+ strong and 0.7+ very strong. This shows a relationship, not proof of cause: winning also brings better recruits and more NFL attention. Development vs SRS: ${st.r_dev_srs}; recruiting vs SRS: ${st.r_tal_srs}. Stay-home figures use high school signees whose school's state we know; transfer figures use players who signed 2020–2023.</p>`)}</div>`;
   countUp(app);ticker('tk2',facts());
   app.querySelectorAll('[data-ax]').forEach(b=>b.onclick=()=>{anX=b.dataset.ax;app.querySelectorAll('[data-ax]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawScatter()});
   document.getElementById('toconf').onclick=()=>{rkMode='conf'};document.getElementById('toquad').onclick=()=>{rkMode='coaches';coView='lean'};
+  const aq=document.getElementById('aq');aq.value=anHL||'';aq.oninput=()=>{const a=D.ana.find(x=>x[0].toLowerCase()===aq.value.trim().toLowerCase());anHL=a?a[0]:'';drawScatter()};
   const ro=new ResizeObserver(drawScatter);ro.observe(document.getElementById('afig'));drawScatter();
 }
 function stayhome(){const is=D.instate;const hp=Math.round(100*is.all[0]/is.all[1]);
@@ -960,12 +985,14 @@ function homeMap(){const el=document.getElementById('hmap');if(!el)return;const 
   el.innerHTML=`<svg viewBox="0 0 975 610" role="img" aria-label="Map: share of each state's signees who stay home">${Object.entries(MAP).map(([k,[d]],i)=>`<path d="${d}" data-s="${k}" style="--i:${i};fill:${col(k)[0]}" tabindex="0"><title>${ST[k]||k}</title></path>`).join('')}${Object.entries(MAP).filter(([k])=>H[k]&&H[k][1]>=400).map(([k,[,c]])=>`<text x="${c[0]}" y="${c[1]+4}" style="fill:${col(k)[1]?'#F6F3EC':'#14213D'}">${k}</text>`).join('')}</svg>`;
   document.getElementById('hleg').innerHTML=[['#E9DFC9','under 25%'],['#B5C5DF','25–40%'],['#7C97C3','40–55%'],['#41629A','55–70%'],['#14213D','70%+'],['#F4F1EA','no FBS data']].map(([c,l])=>`<span class="lg"><b style="background:${c}"></b>${l}</span>`).join('');
   el.querySelectorAll('path').forEach(p=>{const pick=()=>{el.querySelectorAll('path').forEach(x=>x.classList.toggle('sel',x===p));const k=p.dataset.s,v=H[k];document.getElementById('hp').innerHTML=v?`<div class="small">${ST[k]||k}</div><div class="big">${Math.round(100*v[0]/v[1])}%</div><p class="small">of ${v[1].toLocaleString()} high school signees since 2002 signed with a school in ${ST[k]||k}.</p>`:`<h3>${ST[k]||k}</h3><p class="small">Too few signees or no FBS school here.</p>`};p.onclick=pick;p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}}})}
+let anHL='';
+function aInfo(a){return `<b>${esc(a[0])}</b> (${esc(a[5]||'')}) · win % ${(a[3]*100).toFixed(1)} · development ${f0(a[1])} per class · recruiting talent ${a[2]} expected points per class`}
 function drawScatter(){
   const s=document.getElementById('asvg');if(!s)return;const W=s.clientWidth,H=s.clientHeight;if(!W)return;
   const A=D.ana,xi=anX==='dev'?1:2,st=D.stats;const m={l:46,r:14,t:14,b:42};
   const xs=A.map(a=>a[xi]),ys=A.map(a=>a[3]);const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
   const X=v=>m.l+(v-x0)/(x1-x0)*(W-m.l-m.r),Y=v=>H-m.b-(v-y0)/(y1-y0)*(H-m.t-m.b);
-  const lab=new Set(A.slice().sort((a,b)=>b[xi]-a[xi]).slice(0,4).map(a=>a[0]).concat(A.slice().sort((a,b)=>b[3]-a[3]).slice(0,3).map(a=>a[0])));
+  const lab=new Set(A.slice().sort((a,b)=>b[xi]-a[xi]).slice(0,4).map(a=>a[0]).concat(A.slice().sort((a,b)=>b[3]-a[3]).slice(0,3).map(a=>a[0])));if(anHL)lab.add(anHL);
   const small=W<520;
   document.getElementById('atake').innerHTML=anX==='dev'?`Dots to the right got more out of their players than expected, and they mostly sit higher: they won more.`:`Programs that sign better recruits (to the right) also win more. Recruiting and development together explain about ${Math.round(st.r2_both*10)} in 10 of the differences in winning.`;
   const ticks=[0,.25,.5,.75,1].map(t=>y0+t*(y1-y0));
@@ -973,9 +1000,10 @@ function drawScatter(){
   ${anX==='dev'?`<line x1="${X(0)}" x2="${X(0)}" y1="${m.t}" y2="${H-m.b}" stroke="var(--pen)" stroke-dasharray="4 4"/>`:''}
   <text x="${(W+m.l)/2}" y="${H-8}" text-anchor="middle" font-size="13" fill="var(--pen)">${anX==='dev'?'← develops worse than expected · develops better →':'← weaker recruiting · stronger recruiting →'}</text>
   <text x="14" y="${m.t+4}" font-size="13" fill="var(--pen)" transform="rotate(-90 14 ${m.t+4})" text-anchor="end">Win %</text>
-  ${A.map((a,i)=>`<circle class="dot" style="animation-delay:${i*8}ms" cx="${X(a[xi])}" cy="${Y(a[3])}" r="${small?4:5.5}" fill="${a[1]>=0?'var(--ink)':'var(--red)'}" fill-opacity=".78" stroke="var(--bg)" data-i="${i}" style="cursor:pointer"><title>${esc(a[0])}</title></circle>`).join('')}
+  ${A.map((a,i)=>`<circle class="dot" style="animation-delay:${i*8}ms" cx="${X(a[xi])}" cy="${Y(a[3])}" r="${a[0]===anHL?(small?8:10):(small?4:5.5)}" fill="${a[0]===anHL?'var(--gold)':a[1]>=0?'var(--ink)':'var(--red)'}" fill-opacity="${a[0]===anHL?1:.78}" stroke="${a[0]===anHL?'var(--ink)':'var(--bg)'}" stroke-width="${a[0]===anHL?2.5:1}" data-i="${i}" style="cursor:pointer"><title>${esc(a[0])}</title></circle>`).join('')}
   ${small?'':A.filter(a=>lab.has(a[0])).map(a=>{const x=X(a[xi]),r=x>W-120;return `<text x="${x+(r?-9:9)}" y="${Y(a[3])+4}" font-size="12" fill="var(--ink)" text-anchor="${r?'end':'start'}" style="paint-order:stroke;stroke:var(--bg);stroke-width:3px">${esc(a[0])}</text>`}).join('')}`;
-  s.querySelectorAll('circle').forEach(c=>c.onclick=()=>{const a=A[+c.dataset.i];document.getElementById('ainfo').innerHTML=`<b>${esc(a[0])}</b> (${esc(a[5]||'')}) · win % ${(a[3]*100).toFixed(1)} · development ${f0(a[1])} per class · recruiting talent ${a[2]} expected points per class`})}
+  s.querySelectorAll('circle').forEach(c=>c.onclick=()=>{const a=A[+c.dataset.i];document.getElementById('ainfo').innerHTML=aInfo(a)});
+  if(anHL){const a=A.find(x=>x[0]===anHL);if(a)document.getElementById('ainfo').innerHTML=aInfo(a);const d=[...s.querySelectorAll('circle')].find(c=>A[+c.dataset.i][0]===anHL);if(d)s.appendChild(d)}}
 
 
 /* ---------- NFL ---------- */
@@ -1020,19 +1048,21 @@ function drawNL(){
 
 
 /* ---------- EVERYTHING ---------- */
-const DIR=[['Recruits and families','"Where should I go?"',[['find','Find a Program','Players with your position, stars and home state: where they went and how it turned out. JUCO players too.'],['predictions','What if I sign here?','Your draft and transfer odds at every school; compare up to four.'],['transfers','Stay or go?','How staying or transferring has worked out, school by school.'],['stayhome','Distance and home','How far schools recruit and whether staying close matters.']]],
- ['Fans','"How is my team really doing?"',[['rankings','Program rankings and grades','Every program graded A+ to F, plus who is hot and who is sinking.'],['rankings:coaches','Coach report cards','Every head coach graded on development, recruiting, winning and more.'],['players','Look up any player','Every signee since 2002.'],['nfl','NFL careers','Whose players last longest and outplay their draft slot.']]],
- ['Coaches and staff','"How do we compare?"',[['rankings:lean','Portal or high school?','How every 2026 coach builds his roster, and how well each approach works.'],['rankings:position','Who develops each position','Leaderboards by position, stars and years.'],['rankings:conf','Conferences','Which leagues get the most out of their players.'],['analytics','Does development win?','How development and recruiting connect to winning.']]],
+function subGo(a){const sb=a.dataset.sub;if(sb==='juco'){fType='juco'}else if(a.getAttribute('href')==='#find'){fType='hs'}
+  if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='rising'){rkMode='rising'}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(sb==='programs'||a.getAttribute('href')==='#rankings'&&!sb){rkMode='programs'}}
+const DIR=[['Recruits and families','"Where should I go?"',[['find','Find a Program','Players with your position, stars and home state: where they went and how it turned out.'],['find:juco','JUCO players: where to go','Which programs and coaches get the most out of junior college players.'],['predictions','What if I sign here?','Your draft and transfer odds at every school; compare up to four.'],['transfers','Stay or go?','How staying or transferring has worked out, school by school.'],['stayhome','Distance and home','How far schools recruit and whether staying close matters.']]],
+ ['Fans','"How is my team really doing?"',[['rankings','Program rankings and grades','Every program graded A+ to F, plus who is hot and who is sinking.'],['rankings:coaches','Coach report cards','Every head coach graded on development, recruiting, winning and more.'],['rankings:rising','Next big hire','Group of Five coaches who win, recruit and develop: who could land a bigger job.'],['players','Look up any player','Every signee since 2002.'],['nfl','NFL careers','Whose players last longest and outplay their draft slot.']]],
+ ['Coaches and staff','"How do we compare?"',[['rankings:lean','Portal or high school?','How every 2026 coach builds his roster, and how well each approach works.'],['rankings:position','Who develops each position','Leaderboards by position, stars and years.'],['rankings:conf','Conferences','Which leagues get the most out of their players.'],['find:juco','Who develops JUCO players','Programs and head coaches ranked on junior college signees.'],['analytics','Does development win?','How development and recruiting connect to winning.']]],
  ['About Vetted CFB','"How does this work?"',[['about','About','Who we are and what we believe.'],['methods','How it works','How every number and grade is built.'],['contact','Contact','Questions, corrections and ideas.']]]];
 function everything(){
   app.innerHTML=`<div class="page"><section><h1>Everything on Vetted CFB</h1><p class="lede">Every page on the site, grouped by the question it answers. Lost? Start here.</p><div class="dir">${DIR.map(([t,q,list])=>`<div class="grp"><h3>${t}</h3><p class="q">${q}</p>${list.map(([h,ti,tx])=>{const [route,sub]=h.split(':');return `<a href="#${route}" data-sub="${sub||''}"><b>${ti}</b><span>${tx}</span></a>`}).join('')}</div>`).join('')}</div></section>
   <section><h2>What the grades mean</h2><p class="lede">Every score on the site gets a letter grade, so you don't have to decode the numbers. Grades compare programs, coaches and players with each other, and they don't round up: an average result is a C.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}</div></section></div>`;
-  app.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(a.getAttribute('href')==='#rankings'){rkMode='programs'}})}
+  app.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>subGo(a))}
 
 /* ---------- ROUTER ---------- */
 const routes={home,everything,find,rankings,players,transfers,predictions,nfl,analytics,stayhome,about,contact,methods};
-const ALIAS={finder:'find',programs:'rankings',coaches:'rankings','war-room':'rankings','board-tags':'players','vetting-sheet':'methods'};
-function go(){document.getElementById('teambar').hidden=true;let r=(location.hash||'#home').slice(1);if(ALIAS[r]){if(r==='coaches')rkMode='coaches';r=ALIAS[r]}const f=routes[r]||home;stopTour();setNav(routes[r]?r:'home');f();subnav(routes[r]?r:'home');if(go.ran)window.scrollTo(0,0);go.ran=1;if(window._after){const a=window._after;window._after=null;a()}}
+const ALIAS={juco:'find',finder:'find',programs:'rankings',coaches:'rankings','war-room':'rankings','board-tags':'players','vetting-sheet':'methods'};
+function go(){document.getElementById('teambar').hidden=true;let r=(location.hash||'#home').slice(1);if(ALIAS[r]){if(r==='coaches')rkMode='coaches';if(r==='juco')fType='juco';r=ALIAS[r]}const f=routes[r]||home;stopTour();setNav(routes[r]?r:'home');f();subnav(routes[r]?r:'home');if(go.ran)window.scrollTo(0,0);go.ran=1;if(window._after){const a=window._after;window._after=null;a()}}
 app.addEventListener('click',e=>{const a=e.target.closest('a[data-coach]');if(a){e.preventDefault();rkMode='coaches';coQ='';coAct=false;const k=a.dataset.coach;goTo('rankings',()=>openRow(k))}});
 
 /* ---------- ROLE SUGGESTIONS ---------- */
@@ -1043,6 +1073,8 @@ function roleBox(r,scroll){const el=document.getElementById('rolebox');if(!el)re
   el.innerHTML=`<div class="recs"><h2>Start here: picked for ${t.toLowerCase()}</h2><div class="ways">${list.map(([h,sub,ti,tx])=>`<a class="way" href="#${h}" data-sub="${sub}"><h3>${ti}</h3><p>${tx}</p><span class="go">Go →</span></a>`).join('')}</div></div>`;
   el.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='programs'){rkMode='programs'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}});
   if(scroll)el.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})}
+function roleHL(r,scroll){const i={recruit:0,fan:1,coach:2}[r];const g=[...document.querySelectorAll('#homeall .grp')];g.forEach((x,j)=>x.classList.toggle('hl',j===i));
+  if(scroll&&i!==undefined)document.getElementById('homeall').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}
 /* ---------- TICKER ---------- */
 let tickT=null;
 function ticker(id,facts){clearInterval(tickT);const el=document.getElementById(id);if(!el)return;let i=0;const tx=el.querySelector('.tx');tx.innerHTML=facts[0];if(RM||facts.length<2)return;
