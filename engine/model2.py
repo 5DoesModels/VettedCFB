@@ -8,12 +8,16 @@ POS={'PRO':'QB','DUAL':'QB','QB':'QB','RB':'RB','APB':'RB','FB':'RB','WR':'WR','
 def tier(d):
     if d is None: return 'Undrafted',0
     o=d['overall']
+    # Vetted draft points v2 (approved by JC Nov. 20, 2026)
     if o<=10: return 'Top 10 pick',100
-    if d['round']==1: return 'First round',60
-    if d['round']==2: return 'Second round',35
-    if d['round']==3: return 'Third round',20
-    if d['round']<=5: return 'Rounds 4-5',10
-    return 'Rounds 6-7',5
+    if o<=22: return 'First round',90
+    if d['round']==1: return 'First round',80
+    if d['round']==2: return 'Second round',50
+    if d['round']==3: return 'Third round',30
+    if d['round']==4: return 'Fourth round',20
+    if d['round']==5: return 'Fifth round',12
+    if d['round']==6: return 'Sixth round',8
+    return 'Seventh round',5
 # Wrong draft-pick matches found in JC's review (linkfix.json): drop them
 FIX=json.load(open('linkfix.json')); BAD={(u['name'],u['year'],u['school'],u['draftYear'],u['overall']) for u in FIX['unlink']}
 nb=len(L); L={k:v for k,v in L.items() if (R[v]['name'],R[v]['year'],R[v]['committedTo'],D[k]['year'],D[k]['overall']) not in BAD}

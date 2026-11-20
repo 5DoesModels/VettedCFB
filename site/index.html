@@ -260,8 +260,21 @@ html[data-vt=light]{--cd:#14213D;--cr:#B23A2E;--cp:#2F5A9C;--s-avail:#1F6B4E;--s
 .home .hero h1{font-size:clamp(40px,6vw,74px);line-height:.98;max-width:14ch}
 .home .hero .lede{max-width:36ch}
 .home .dver{margin-top:22px}
+.tgs{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 2px}.tgs.mini{margin:4px 0 0}
+.tg{display:inline-flex;align-items:center;gap:5px;font:600 12.5px/1 'Source Sans 3',system-ui,sans-serif;padding:4px 9px 4px 7px;border-radius:999px;border:1.5px solid;white-space:nowrap;background:var(--card);cursor:pointer;color:var(--ink)}
+span.tg{cursor:default}.tgs.mini .tg{font-size:11.5px;padding:2px 7px 2px 5px}
+.tg i{font-style:normal;font-size:12px}.tg.big{font-size:16px;padding:6px 12px}
+.tk-nfl{border-color:#C9A227;background:color-mix(in srgb,#F2C230 18%,var(--card))}.tk-draft{border-color:#1F6B45;background:color-mix(in srgb,#1F6B45 10%,var(--card))}
+.tk-fun{border-color:#8A5A9E;background:color-mix(in srgb,#8A5A9E 10%,var(--card))}.tk-route{border-color:#41629A;background:color-mix(in srgb,#41629A 9%,var(--card))}
+.tk-hist{border-color:var(--pen);border-style:dashed;background:var(--card)}
+button.tg:hover{filter:brightness(.96)}button.tg:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.linkb{background:none;border:0;padding:0;font:inherit;color:var(--ink);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.hbrand{display:flex;align-items:center;gap:clamp(10px,1.6vw,18px);margin:4px 0 22px}.hbm{width:clamp(58px,8vw,104px);height:clamp(58px,8vw,104px);flex:none}
+.hbw{display:block;font-family:Oswald;font-weight:700;font-size:clamp(64px,10.5vw,138px);line-height:.82;letter-spacing:.02em;text-transform:uppercase;color:var(--ink)}
+.hbt{display:block;margin-top:10px;font-family:Oswald;font-size:clamp(14px,1.5vw,18px);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.home .hero h1{font-size:clamp(34px,4.6vw,56px)}
 .dline{font-size:17px;margin:14px 0 0;color:var(--pen)}.dline a{color:var(--ink);font-weight:600;text-underline-offset:3px}
-@media(max-width:640px){nav a{padding:10px 11px 8px;font-size:16px}}@media(max-width:420px){nav a[href="#about"]{display:none}}
+@media(max-width:640px){nav a{padding:10px 11px 8px;font-size:16px}}@media(max-width:420px){nav a[href="#about"]{display:none}}@media(max-width:640px){nav a.allf{font-size:0;padding:0 14px;flex:0 0 auto}nav a.allf::before{content:"☰";font-size:22px}}
 button.btn{color:var(--ink)}
 .st{--c:var(--s-avail);flex:none;display:inline-flex;align-items:center;gap:6px;font-family:"Source Sans 3",system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;line-height:1;padding:5px 10px 5px 8px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);white-space:nowrap}
 .st i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
@@ -363,7 +376,7 @@ function tag(t){
   const [l,f]=split(t.n);const cls=t.o&&t.o<=32?'gold':'';
   const dr=t.dy?`<div><span class="k">Drafted</span><span class="v">${t.dy} · ${esc(t.dt)}</span></div><div><span class="k">Pick</span><span class="v">#${t.o}</span></div>`:`<div><span class="k">Draft</span><span class="v">${t.ic===undefined?(t.y>=2024?'Too early':t.y>2020?'Not yet':'Undrafted'):t.ic?(t.y>=2025?'Too early':'Still in college'):t.y>=2025?'Too early':'Undrafted'}</span></div>`;
   return `<article class="tag ${cls}"><div class="m"><div class="nm">${esc(l.toUpperCase())}<span>, ${esc(f)}</span></div>
-  <div class="sub">${esc(t.h)} · ${pathTxt(t.sg,t.mv)}${t.jc?' · JUCO/prep':''}</div>
+  <div class="sub">${esc(t.h)} · ${pathTxt(t.sg,t.mv)}${t.jc?' · JUCO/prep':''}</div>${tagStrip(t.n,t.y)}
   <div class="cells"><div><span class="k">Stars</span><span class="v" style="color:var(--gold)">${stars(t.s)}</span></div><div><span class="k">Rating</span><span class="v">${t.rt?t.rt.toFixed(4):'—'}</span></div>${dr}<div><span class="k">Points</span><span class="v">${t.pts}</span></div><div><span class="k">Expected</span><span class="v">${t.e==null?'—':t.e.toFixed(1)}</span></div></div></div>
   <div class="cor"><span class="p">${esc(t.g)}</span><span class="yr">${t.y}</span>${t.y>2020&&t.ic!==0&&!t.dy?'<span class="ip" title="Graded once his draft window has passed">career in progress</span>':`<span class="pm ${t.pae>=0?'pos':'neg'}">${f1(t.pae)}</span>${t.pae!=null?`<span style="margin-top:4px">${gpP(t.pae,!!t.o).replace('margin-right:6px','')}</span>`:''}`}</div></article>`}
 const T=i=>D.tags[i];
@@ -724,7 +737,8 @@ function drawLB(){
   el.onclick=e=>{const b=e.target.closest('[data-go]');if(!b)return;fP=lbP;fS=lbS;fSt='';fY=lY.slice();location.hash='#find'}}
 
 /* ---------- FIND A PROGRAM ---------- */
-let fP='WR',fS='3',fSt='',fC='scored',fAll=false;
+let fP='WR',fS='3',fSt='',fC='scored',fAll=false,fRk='prog';
+const fIP=r=>!!(r[15]&&!r[10]);   // still in college and not drafted yet: listed, never graded
 const CL={scored:['Signed 2002–2023 (graded)',2002,2023],complete:['Signed 2002–2020 (college careers done)',2002,2020],ip:['Signed 2021–2023 (still playing)',2021,2023],early:['Signed 2024–2026 (too early to grade)',2024,2026],all:['Signed any year, 2002–2026',2002,2026]};
 let fType='hs',jP='',jMode='progs';
 function find(){
@@ -735,11 +749,11 @@ function find(){
   <div class="ctrl"><label>Position<select id="fp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===fP?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Stars<select id="fs">${STAROPT(fS,'Any')}</select></label>
   <label>Home state<select id="fst"><option value="">Any state</option>${states.map(s=>`<option value="${s}"${s===fSt?' selected':''}>${ST[s]}</option>`).join('')}</select></label>
-  </div>${yrHTML('fy',2002,2026,fY,[[2002,2023,'All graded (2002–23)'],[2002,2020,'Careers finished'],[2019,2023,'Last 5 graded'],[2021,2026,'Still playing'],[2002,2026,'Every year']])}<p class="small">Players who signed 2024–2026 are listed but not graded yet.</p>
+  </div><div class="bigseg" role="group" aria-label="Rank by" style="margin:6px 0 4px"><button data-fr="prog" aria-pressed="${fRk==='prog'}">Rank programs</button><button data-fr="coach" aria-pressed="${fRk==='coach'}">Rank head coaches</button></div>${yrHTML('fy',2002,2026,fY,[[2002,2023,'All graded (2002–23)'],[2002,2020,'Careers finished'],[2019,2023,'Last 5 graded'],[2021,2026,'Still playing'],[2002,2026,'Every year']])}<p class="small">Players still in college are listed but not graded until their draft window has passed, so they never count for or against a program or coach.</p>
   <div id="fo"><p class="empty">Loading players…</p></div></section>
   ${notes(`<p>High school signees only. Each player counts for the last school he played for. Programs with fewer than 5 matching players are marked as a small sample, because one draft pick can swing them a lot. Classes 2024–2026 are listed with their transfers, but not graded yet. Want the national picture? See <a href="#rankings">Rankings → By position</a>.</p>`)}</div>`;
   const upd=()=>{fAll=false;fP=document.getElementById('fp').value;fS=document.getElementById('fs').value;fSt=document.getElementById('fst').value;loadFin()};
-  ['fp','fs','fst'].forEach(id=>document.getElementById(id).onchange=upd);wireYr('fy',r=>{fY=r;fAll=false;if(FIN[fP])drawFinder()});loadFin()}
+  ['fp','fs','fst'].forEach(id=>document.getElementById(id).onchange=upd);app.querySelectorAll('[data-fr]').forEach(b=>b.onclick=()=>{fRk=b.dataset.fr;fAll=false;app.querySelectorAll('[data-fr]').forEach(x=>x.setAttribute('aria-pressed',x===b));if(FIN[fP])drawFinder()});wireYr('fy',r=>{fY=r;fAll=false;if(FIN[fP])drawFinder()});loadFin()}
 
 function typeSeg(){return `<div class="bigseg" role="group" aria-label="Player type" style="margin:0 0 18px"><button data-ty="hs" aria-pressed="${fType==='hs'}">I'm a high school recruit</button><button data-ty="juco" aria-pressed="${fType==='juco'}">I'm a JUCO player</button><button data-ty="tr" aria-pressed="${fType==='tr'}">I'm a transfer</button></div>`}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-ty]');if(!b)return;fType=b.dataset.ty;find();subnav('find')});
@@ -783,7 +797,8 @@ const outcome=r=>r[11]?`Rd ${r[12]} · #${r[10]} · ${r[11]}`:(r[15]?(r[1]>=2025
 function drawFinder(){
   const [y0,y1]=fY;const lab=`signed ${y0===y1?y0:y0+'–'+y1}`;
   const rows=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1);
-  const g={};for(const r of rows){const k=r[7];const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
+  const isCo=fRk==='coach',U=isCo?'head coach':'program',Us=isCo?'head coaches':'programs';
+  const g={};for(const r of rows){const k=isCo?(r[14]!=null&&r[14]>=0?D.cn[r[14]]:null):r[7];if(!k)continue;const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null&&!fIP(r)){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
   const progs=Object.entries(g).map(([k,a])=>({k,...a,v:a.p-a.e}));
   const desc=`${fS==='0'?'unranked ':fS?fS+'-star ':''}${PLUR[fP]}${fSt?' from '+ST[fSt]:''}`;
   const dn=rows.filter(r=>r[11]).length,mv=rows.filter(r=>r[13].length).length;
@@ -795,18 +810,18 @@ function drawFinder(){
   progs.sort((a,b)=>(b.ge?b.v:-1e9)-(a.ge?a.v:-1e9)||b.n-a.n);
   const big=progs.filter(p=>p.n>=3),small=progs.filter(p=>p.n<3);big.forEach((p,i)=>p.rank=i+1);small.forEach(p=>p.rank='');
   const progRow=p=>`<details class="row nb"><summary><span class="rk">${p.rank}</span><span class="pn">${p.rank?rankG(p.rank,big.length):''}${esc(p.k)}<small>${p.n} player${p.n>1?'s':''} · ${p.d} drafted ${p.n<5?'<span class="pill">small sample</span>':''} ${p.ge&&p.n>=3?(p.v>0?'<span class="pill w">worked</span>':'<span class="pill r">didn’t work</span>'):''}</small></span><span class="val ${p.v>=0?'pos':'neg'}">${p.ge?f0(p.v):'—'}</span></summary>
-  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">Path</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null||(r[15]&&!r[10])?'':(r[8]-r[9]>=0?'pos':'neg')}">${r[15]&&!r[10]?'<span class="ip" title="Graded once his draft window has passed">in progress</span>':r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
+  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">${isCo?'Path (coach credited at last school)':'Path'}</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}${tagStrip(r[0],r[1])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null||fIP(r)?'':(r[8]-r[9]>=0?'pos':'neg')}">${fIP(r)?'<span class="ip" title="Graded once his draft window has passed">in progress</span>':r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
   document.getElementById('fo').innerHTML=`<p class="take" style="font-size:20px"><b>${rows.length.toLocaleString()}</b> ${esc(desc)} signed with college programs (${lab.toLowerCase()}). <b>${dn}</b> were drafted (${pct(dn,rows.length)}), and <b>${mv}</b> entered the transfer portal.</p>
-  ${gp.length?`<div class="two"><div class="c"><h3>Worked</h3><p class="small">Most draft points above expected, 3+ players</p>${good.length?`<ol>${good.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players beat expectations.</p>'}</div>
-  <div class="c bad"><h3>Didn't work</h3><p class="small">Furthest below expected, 3+ players</p>${bad.length?`<ol>${bad.map(li).join('')}</ol>`:'<p class="small">No program with 3+ players fell short.</p>'}</div></div>`:''}
-  ${(()=>{const cg={};for(const r of rows){if(r[9]==null||r[14]==null||r[14]<0)continue;const a=cg[r[14]]||(cg[r[14]]={n:0,d:0,p:0,e:0,best:null});a.n++;if(r[11])a.d++;a.p+=r[8];a.e+=r[9];if(r[11]&&(!a.best||r[10]<a.best[10]))a.best=r}
+  ${gp.length?`<div class="two"><div class="c"><h3>Worked</h3><p class="small">Most draft points above expected, 3+ graded players</p>${good.length?`<ol>${good.map(li).join('')}</ol>`:`<p class="small">No ${U} with 3+ players beat expectations.</p>`}</div>
+  <div class="c bad"><h3>Didn't work</h3><p class="small">Furthest below expected, 3+ players</p>${bad.length?`<ol>${bad.map(li).join('')}</ol>`:`<p class="small">No ${U} with 3+ players fell short.</p>`}</div></div>`:''}
+  ${(()=>{if(isCo)return '';const cg={};for(const r of rows){if(r[9]==null||fIP(r)||r[14]==null||r[14]<0)continue;const a=cg[r[14]]||(cg[r[14]]={n:0,d:0,p:0,e:0,best:null});a.n++;if(r[11])a.d++;a.p+=r[8];a.e+=r[9];if(r[11]&&(!a.best||r[10]<a.best[10]))a.best=r}
     const L=Object.entries(cg).filter(([k,a])=>a.n>=2).map(([k,a])=>({k:D.cn[+k],...a,v:a.p-a.e}));if(!L.length)return '';
     const gd=L.slice().sort((a,b)=>b.v-a.v).filter(x=>x.v>0).slice(0,5),bd=L.slice().sort((a,b)=>a.v-b.v).filter(x=>x.v<0).slice(0,3);
     const li=c=>`<li><b>${esc(c.k)}</b> developed ${c.n} of these players: ${c.d} drafted${c.best?` (best: ${esc(c.best[0])}, pick #${c.best[10]})`:''} · <span class="${c.v>=0?'pos':'neg'}">${f0(c.v)}</span></li>`;
     return `<div class="two"><div class="c"><h3>Coaches who developed players like you</h3><p class="small">Head coaches with 2+ of these players, most draft value above expected</p>${gd.length?`<ol>${gd.map(li).join('')}</ol>`:'<p class="small">None beat expectations yet.</p>'}</div><div class="c bad"><h3>Coaches who didn't</h3><p class="small">Furthest below expected</p>${bd.length?`<ol>${bd.map(li).join('')}</ol>`:'<p class="small">None fell short.</p>'}</div></div>`})()}
-  <h2 style="margin-top:30px">Every program and every player</h2><p class="small" style="font-size:16px">Tap a program to see each player: where he signed, where he ended up and how it turned out.</p>
-  <div class="list" style="margin-top:10px">${(fAll?big:big.slice(0,10)).map(progRow).join('')}${fAll&&small.length?`<details class="row nb"><summary><span class="rk"></span><span class="pn">${small.length} more programs with 1–2 players<small>${small.reduce((s,p)=>s+p.n,0)} players · ${small.reduce((s,p)=>s+p.d,0)} drafted · tap to show</small></span><span class="val">+</span></summary><div style="padding-left:12px">${small.map(progRow).join('')}</div></details>`:''}</div>
-  ${!fAll&&progs.length>10?`<button class="bigbtn" id="fall">Show all ${progs.length} programs</button>`:''}`;
+  <h2 style="margin-top:30px">Every ${U} and every player</h2><p class="small" style="font-size:16px">Tap a ${U} to see each player: where he signed, where he ended up and how it turned out.${isCo?' Each player counts for the head coach our coach-credit rule assigns him to at the last school he played for (see <a href="#methods">How it works</a>).':''}</p>
+  <div class="list" style="margin-top:10px">${(fAll?big:big.slice(0,10)).map(progRow).join('')}${fAll&&small.length?`<details class="row nb"><summary><span class="rk"></span><span class="pn">${small.length} more ${Us} with 1–2 players<small>${small.reduce((s,p)=>s+p.n,0)} players · ${small.reduce((s,p)=>s+p.d,0)} drafted · tap to show</small></span><span class="val">+</span></summary><div style="padding-left:12px">${small.map(progRow).join('')}</div></details>`:''}</div>
+  ${!fAll&&progs.length>10?`<button class="bigbtn" id="fall">Show all ${progs.length} ${Us}</button>`:''}`;
   const fa=document.getElementById('fall');if(fa)fa.onclick=()=>{fAll=true;drawFinder()}}
 
 /* ---------- TRANSFERS ---------- */
@@ -918,7 +933,7 @@ function methods(){
    ['Transfers','A player who transferred counts for his last school, even if he developed at his first one (Jordan Addison: Pitt, then USC). We can\'t split credit by years at each school, so read transfers\' numbers with a grain of salt. A playing-time split is being researched for The Transfer Ledger; it is experimental and not used in any grade.',ok],
    ['Careers cut short','Players who passed away during their college careers (Kyren Lacy, Devin Willock and others), and a few whose careers ended in an off-field legal case, are left out of every grade. A school or coach is never marked down for a tragedy. 50 players so far; <a href="#contact">tell us</a> if we missed one.',ok]])}
   <div class="plain" style="margin:14px 0"><b>Where the recruiting rankings come from.</b> Every star rating and recruiting rating on Vetted CFB is the <b>247Sports Composite</b>: 247Sports' blend of the major recruiting services' ratings (247Sports, Rivals and ESPN, plus On3 for recent classes). We don't use any single service's own rankings, and we don't mix sources.</div>
-  <h4>VETTED CFB DRAFT POINTS</h4><p class="small">Our own scale, not an official NFL draft-value chart. We tested two alternatives (a smooth pick-by-pick curve and a simpler round-based scale) and rebuilt every expectation under each: program rankings barely moved (rank correlation 0.97–0.98; 9–10 of the top 10 unchanged).</p>${tbl(['Outcome','Points'],[['Top-10 pick',100],['Rest of round one',60],['Round two',35],['Round three',20],['Rounds four–five',10],['Rounds six–seven',5],['Undrafted',0]])}
+  <h4>VETTED CFB DRAFT POINTS</h4><p class="small">Our own scale, not an official NFL draft-value chart. Version 2 (Nov. 20, 2026) narrowed the jump between a top-10 pick and the rest of round one and added steps for every round; the top 10 programs stayed the same. Undrafted free agents earn 0 for now: none of our data sources list undrafted signings.</p>${tbl(['Outcome','Points'],[['Top-10 pick',100],['Picks 11–22',90],['Picks 23–32',80],['Round two',50],['Round three',30],['Round four',20],['Round five',12],['Round six',8],['Round seven',5],['Undrafted',0]])}
   <h4>EXPECTED POINTS</h4>${tbl(['Step','Detail'],[
    ['1. Group similar recruits','By recruit type (high school or other), stars and composite rating in thirtieth-point slices. All 5-stars share one group. Built only from complete classes.'],
    ['2. Steady small groups','Small groups are blended with their star level\'s average, as if each group had 150 more typical players in it. A group of 10 players then can\'t swing wildly on one draft pick.'],
@@ -926,8 +941,8 @@ function methods(){
    ['4. Class-adjusted expected draft points','Each signing class\'s expected total is scaled to equal what that whole class actually earned in the draft (example below). Recruits are graded against their own classmates, which corrects for years when more or fewer players were drafted, and for players staying in school longer since COVID. It is not an independent pre-college forecast.'],
    ['Development','Actual points minus class-adjusted expected points. 1.25× (actual ÷ expected) means 25% more draft value than players like them usually earn.']])}
   <h4>WORKED EXAMPLE: CLASS-ADJUSTED EXPECTED POINTS</h4><p class="small">A made-up class of five players, to show the arithmetic. Real classes have thousands.</p>
-  ${tbl(['Player','Unadjusted expected','× class factor','Class-adjusted expected','Actual draft points','Development'],[['A (5-star)','40','× 1.25','50','60 (first round)','<b class="pos">+10</b>'],['B (4-star)','20','× 1.25','25','0 (undrafted)','<b class="neg">−25</b>'],['C (4-star)','10','× 1.25','12.5','35 (round two)','<b class="pos">+22.5</b>'],['D (3-star)','6','× 1.25','7.5','0 (undrafted)','<b class="neg">−7.5</b>'],['E (3-star)','4','× 1.25','5','5 (round six)','<b>0</b>'],['<b>Class total</b>','<b>80</b>','','<b>100</b>','<b>100</b>','<b>0</b>']])}
-  <p class="small" style="margin-top:6px">1. Each player gets an unadjusted expectation from his group (step 1–3). 2. The class actually earned 100 draft points, but the unadjusted expectations add up to 80. 3. Every expectation is multiplied by 100 ÷ 80 = 1.25. 4. Development = actual − class-adjusted expected. Across a whole class, development always adds up to zero: it measures who beat their classmates' typical result, not whether the class was good.</p>
+  ${tbl(['Player','Unadjusted expected','× class factor','Class-adjusted expected','Actual draft points','Development'],[['A (5-star)','48','× 1.25','60','90 (pick 15)','<b class="pos">+30</b>'],['B (4-star)','24','× 1.25','30','0 (undrafted)','<b class="neg">−30</b>'],['C (4-star)','16','× 1.25','20','30 (round three)','<b class="pos">+10</b>'],['D (3-star)','8','× 1.25','10','0 (undrafted)','<b class="neg">−10</b>'],['E (3-star)','4','× 1.25','5','5 (round seven)','<b>0</b>'],['<b>Class total</b>','<b>100</b>','','<b>125</b>','<b>125</b>','<b>0</b>']])}
+  <p class="small" style="margin-top:6px">1. Each player gets an unadjusted expectation from his group (step 1–3). 2. The class actually earned 125 draft points, but the unadjusted expectations add up to 100. 3. Every expectation is multiplied by 125 ÷ 100 = 1.25. 4. Development = actual − class-adjusted expected. Across a whole class, development always adds up to zero: it measures who beat their classmates' typical result, not whether the class was good.</p>
   <h4>LINKING RECORDS</h4>${tbl(['Check','Detail','Cleared'],[
    ['Draft picks: ID first','The draft record\'s college player ID equals the recruit\'s ID.',ok],
    ['Draft picks: then name','Names cleaned of accents and suffixes; class 2–8 years before the draft; same school +3, same home state +2, high school recruit +0.5. Ties left unlinked. Match rate: 77% of 2010–14 picks, 86% of 2015–19, 95% of 2020–26. Picks from the 2000s link less often because many of those players were recruited before 2002.',ok],
@@ -1014,12 +1029,30 @@ function drawPlayers(){
     (!plOut||(plOut==='d'&&r[5])||(plOut==='r1'&&r[9]===1)||(plOut==='t'&&r[8])||(plOut==='u'&&!r[5])));
   if(plSort==='dev'&&!q)rows.sort((a,b)=>(b[10]??-999)-(a[10]??-999)||(a[5]||9999)-(b[5]||9999));else if(plSort==='new')rows.sort((a,b)=>b[1]-a[1]||(a[5]||9999)-(b[5]||9999));else rows.sort((a,b)=>(a[5]||9999)-(b[5]||9999)||b[1]-a[1]||a[0].localeCompare(b[0]));
   const o=document.getElementById('po');if(!o)return;
-  o.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> player${rows.length===1?'':'s'}</p>`+(rows.length?`<div class="list">${rows.slice(0,plN).map(r=>`<button class="prow" data-pl="${esc(r[0])}|${r[1]}|${r[2]}"><span><b>${esc(r[0])}</b><small>${r[1]} · ${GLN[IDX.g[r[2]]]||IDX.g[r[2]]} · <span style="color:var(--gold)">${stars(r[6])}</span> · ${r[7]?esc(ST[r[7]]||r[7])+' · ':''}${esc(IDX.s[r[3]])}${r[4]!==r[3]?' → '+esc(IDX.s[r[4]]):''}</small></span><span class="o ${r[9]===1?'pos':''}">${plOutTxt(r)}${plSort==='dev'&&r[10]!=null?`<small class="${r[10]>=0?'pos':'neg'}">${f0(r[10])} vs exp.</small>`:''}</span></button>`).join('')}</div>${rows.length>plN?`<button class="bigbtn" id="pm">Show ${Math.min(30,rows.length-plN)} more of ${(rows.length-plN).toLocaleString()}</button>`:''}`:`<p class="empty">No players match. Clear a filter or check the spelling.</p>`);
+  o.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> player${rows.length===1?'':'s'}</p>`+(rows.length?`<div class="list">${rows.slice(0,plN).map(r=>`<button class="prow" data-pl="${esc(r[0])}|${r[1]}|${r[2]}"><span><b>${esc(r[0])}</b><small>${r[1]} · ${GLN[IDX.g[r[2]]]||IDX.g[r[2]]} · <span style="color:var(--gold)">${stars(r[6])}</span> · ${r[7]?esc(ST[r[7]]||r[7])+' · ':''}${esc(IDX.s[r[3]])}${r[4]!==r[3]?' → '+esc(IDX.s[r[4]]):''}</small>${tagMini(r[0],r[1])}</span><span class="o ${r[9]===1?'pos':''}">${plOutTxt(r)}${plSort==='dev'&&r[10]!=null?`<small class="${r[10]>=0?'pos':'neg'}">${f0(r[10])} vs exp.</small>`:''}</span></button>`).join('')}</div>${rows.length>plN?`<button class="bigbtn" id="pm">Show ${Math.min(30,rows.length-plN)} more of ${(rows.length-plN).toLocaleString()}</button>`:''}`:`<p class="empty">No players match. Clear a filter or check the spelling.</p>`);
   const pm=document.getElementById('pm');if(pm)pm.onclick=()=>{plN+=30;drawPlayers()};
   o.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{const [n,y,g]=b.dataset.pl.split('|');showPlayer(n,+y,IDX.g[+g])})}
 
+/* ---------- PLAYER TAGS ---------- */
+let TAGS=null;
+const TGI={dia:'◆',t10:'★',r1:'①',hype:'✦',irr:'⌛',pay:'⇄',jour:'✈',home:'⌂',pb:'✪',ap:'♛',vet:'▲',tr:'⇄',juco:'J',hd:'↗',ht:'↻'};
+const TORD=['ap','pb','t10','r1','hype','dia','irr','vet','home','pay','jour','tr','juco','hd','ht'];
+const TKIND={ap:'nfl',pb:'nfl',vet:'nfl',t10:'draft',r1:'draft',hype:'draft',dia:'fun',irr:'fun',home:'fun',pay:'fun',jour:'fun',tr:'route',juco:'route',hd:'hist',ht:'hist'};
+const tagsOf=(n,y)=>{const e=TAGS&&TAGS.p[n+'|'+y];return e?e[0].slice().sort((a,b)=>TORD.indexOf(a)-TORD.indexOf(b)):[]};
+function tagStrip(n,y,skip){const cs=tagsOf(n,y).filter(c=>!(skip||[]).includes(c));if(!cs.length)return '';
+  return `<span class="tgs">${cs.map(c=>`<button type="button" class="tg tk-${TKIND[c]}" data-tg="${c}" data-pk="${esc(n)}|${y}" title="${esc(TAGS.defs[c][0])}: tap for details"><i aria-hidden="true">${TGI[c]}</i>${esc(TAGS.defs[c][0])}</button>`).join('')}</span>`}
+function tagMini(n,y){const cs=tagsOf(n,y);if(!cs.length)return '';return `<span class="tgs mini" aria-label="Tags: ${esc(cs.map(c=>TAGS.defs[c][0]).join(', '))}">${cs.map(c=>`<span class="tg tk-${TKIND[c]}" title="${esc(TAGS.defs[c][0])}"><i aria-hidden="true">${TGI[c]}</i>${esc(TAGS.defs[c][0])}</span>`).join('')}</span>`}
+function grpDesc(gk,yrs){const m=/^([HJ])(\d)(.+)$/.exec(gk||'');if(!m)return null;return `${m[1]==='H'?'high school':'junior college'} ${+m[2]?m[2]+'-star':'unranked'} ${(PLUR[m[3]]||m[3]).toLowerCase()} who signed in the ${yrs[0]}–${yrs[1]} classes`}
+function tagPopup(c,key){if(!TAGS||!TAGS.defs[c])return;const [n,y]=key.split('|');const e=TAGS.p[key];const gk=e&&e[1],g=gk&&TAGS.grp[gk];const d=TAGS.defs[c];
+  const dl=g&&g[1]<20&&g[1]>0?`<p class="small" style="margin:6px 0">Draft: fewer than 20 ${esc(grpDesc(gk,TAGS.dy))}, too few to report.</p>`:g&&g[1]>=20?`<p style="margin:6px 0">Of the <b>${g[1].toLocaleString()}</b> ${esc(grpDesc(gk,TAGS.dy))}, <b>${g[0].toLocaleString()}</b> (${pcf(g[0],g[1])}) were drafted.</p>`:'';
+  const tl=g&&g[3]>=20?`<p style="margin:6px 0">Of the <b>${g[3].toLocaleString()}</b> ${esc(grpDesc(gk,TAGS.ty))}, <b>${g[2].toLocaleString()}</b> (${pcf(g[2],g[3])}) later had a portal entry listing a new school.</p>`:g?`<p class="small" style="margin:6px 0">Transfers: fewer than 20 ${esc(grpDesc(gk,TAGS.ty))}, too few to report.</p>`:'';
+  popup(`<p class="eyebrow" style="margin:0 0 6px">Player tag</p><h2 style="margin:0 0 8px"><span class="tg tk-${TKIND[c]} big"><i aria-hidden="true">${TGI[c]}</i>${esc(d[0])}</span></h2><p>${esc(d[1])}</p>
+   <h3 style="margin-top:16px">${esc(n)} <span class="small">(class of ${y})</span></h3><div style="margin:6px 0 4px">${tagStrip(n,y)}</div>
+   ${dl||tl?`<h3 style="margin-top:16px">What history shows for players like him</h3>${dl}${tl}<p class="small">Group facts about past players with his signing route, star rating and position. They are not a prediction for him.</p>`:''}`,d[0])}
+document.addEventListener('click',e=>{const b=e.target.closest('button[data-tg]');if(!b)return;e.preventDefault();e.stopPropagation();tagPopup(b.dataset.tg,b.dataset.pk)},true);
+
 /* ---------- PREDICTIONS ---------- */
-let PRED=null,prMode='list',prCls='2026',prSch='',prPos='',prQ='',prN=25,prB='',prSub='',cP='WR',cSort='n',cAll=false,cQ='';
+let PRED=null,prMode='list',prCls='2026',prSch='',prPos='',prQ='',prN=25,prB='',prSub='',prStar='',cP='WR',cSort='n',cAll=false,cQ='';
 const yrIn=y=>Math.max(1,2026-y+1);
 const clsName=y=>['Freshman','Sophomore','Junior','Senior','Fifth-year or grad','Sixth-year'][Math.min(5,yrIn(y)-1)];
 const pcf=(a,b)=>{const x=100*a/b;return (x<10?x.toFixed(1):Math.round(x))+'%'};
@@ -1039,9 +1072,9 @@ function predictions(){
     <p><b>Who's listed:</b> players still on a 2026 college roster, plus 2027 commitments. Signees who went undrafted in the 2026 draft or left football drop off the list (${PRED.done.toLocaleString()} players).</p>
     <p><b>Historical School &amp; Position Outcomes</b> compares how many signees at a position each school had drafted with how many players with the same stars, rating and position were drafted nationally (the expected number), ${dy[0]}–${dy[1]} classes. It describes the program's past; coaching staffs change, and it doesn't isolate what caused the results.</p>`);drawPred()}).catch(()=>{document.getElementById('pz').innerHTML='<p class="empty">This page did not load. Refresh to try again.</p>'})}
 function drawPred(){if(!PRED)return;prMode==='list'?predList():predCalc()}
-const BADGES={moved:['Transferred','Has a transfer portal entry listing a new school.'],juco:['JUCO route','Signed out of junior college.']};
-const SUBN={CB:'Corner',S:'Safety',OT:'Tackle',IOL:'Interior OL'};
-const bdgHTML=(r,only)=>(r[13]||[]).filter(b=>!only||b!=='moved').map(b=>`<span class="bdg ${b}" title="${esc(BADGES[b][1])}">${BADGES[b][0]}</span>`).join('');
+const PTF=['tr','juco','hd','ht'];
+const SUBN={CB:'Corner',S:'Safety',OT:'Tackle',IOL:'Guard or center'};const SUBG={DB:['CB','S'],OL:['OT','IOL']};
+
 const rtLab=r=>r[12]==='HighSchool'?'H':r[12]==='JUCO'?'J':null;
 function cohDesc(r,y0,y1){const G=PRED.g[r[2]];return `${r[12]==='JUCO'?'junior college':'high school'} ${r[3]?r[3]+'-star':'unranked'} ${(PLUR[G]||'players').toLowerCase()} who signed in the ${y0}–${y1} classes`}
 function cohFact(r,kind){const t=rtLab(r);if(!t)return `<p class="small" style="margin:6px 0 0">Prep school signees are too few to form a comparison group.</p>`;
@@ -1052,25 +1085,25 @@ function predList(){
   document.getElementById('pz').innerHTML=`${schoolList()}<div class="ctrl"><label>Class<select id="rc">${['2027','2026','2025','2024','2023','2022'].map(y=>`<option value="${y}"${y===prCls?' selected':''}>${y==='2027'?'2027 (committed, not signed yet)':y+' signees: '+clsName(+y).toLowerCase().replace(/man$/,'men').replace(/(e|r|d)$/,'$1s')+' in 2026'}</option>`).join('')}</select></label>
   <label>School<input id="rs" list="schl" placeholder="Type a school" value="${esc(prSch)}"></label>
   <label>Position<select id="rp"><option value="">Any position</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===prPos?' selected':''}>${v}</option>`).join('')}</select></label>
-  <label>Spot<select id="rsub"><option value="">Any</option>${Object.entries(SUBN).map(([k,v])=>`<option value="${k}"${k===prSub?' selected':''}>${v}</option>`).join('')}</select></label>
-  <label>Tag<select id="rb"><option value="">Any tag or none</option>${Object.entries(BADGES).map(([k,v])=>`<option value="${k}"${k===prB?' selected':''}>${v[0]}</option>`).join('')}</select></label>
+  ${SUBG[prPos]?`<label>${prPos==='DB'?'Corner or safety':'Tackle or guard'}<select id="rsub"><option value="">Both</option>${SUBG[prPos].map(k=>`<option value="${k}"${k===prSub?' selected':''}>${SUBN[k]}</option>`).join('')}</select></label>`:''}
+  <label>Stars<select id="rstar"><option value="">Any</option>${[5,4,3,2].map(s=>`<option value="${s}"${String(s)===prStar?' selected':''}>${s}-star</option>`).join('')}<option value="0"${prStar==='0'?' selected':''}>Unranked</option></select></label>
+  <label>Tag<select id="rb"><option value="">Any tag or none</option>${TAGS?PTF.map(k=>`<option value="${k}"${k===prB?' selected':''}>${TAGS.defs[k][0]}</option>`).join(''):''}</select></label>
   <label>Name<input type="search" id="rq" placeholder="Search" value="${esc(prQ)}"></label></div>
-  <details class="tog"><summary>What the tags mean</summary><div style="margin-top:8px">${Object.values(BADGES).map(v=>`<p class="small" style="margin:4px 0"><b>${v[0]}:</b> ${v[1]}</p>`).join('')}<p class="small" style="margin:4px 0"><b>Spot</b> splits defensive backs into corners and safeties and offensive linemen into tackles and interior linemen, by recruiting position. Historical groups use the whole position group.</p></div></details>
+  <details class="tog"><summary>What the tags mean</summary><div style="margin-top:8px">${TAGS?PTF.map(k=>`<p class="small" style="margin:4px 0"><b>${TAGS.defs[k][0]}:</b> ${esc(TAGS.defs[k][1])}</p>`).join(''):''}<p class="small" style="margin:4px 0">Tap any tag to see the rule and what happened to players like him. Pick <b>Defensive backs</b> or <b>Offensive line</b> to narrow to corners or safeties, tackles or guards and centers (by recruiting position). Historical groups use the whole position group.</p></div></details>
   <p class="small">2027 commitments are as of Nov. 19, 2026, including recent flips such as Easton Royal to Florida, and can still change before signing day. Spot a wrong one? <a href="#contact">Let us know</a>. The 2028 and 2029 classes will be added once our data source publishes them.</p><div id="ro" style="margin-top:14px"></div>`;
-  const u=()=>{prCls=document.getElementById('rc').value;prPos=document.getElementById('rp').value;prSub=document.getElementById('rsub').value;prB=document.getElementById('rb').value;prN=25;drawPL()};
-  ['rc','rp','rsub','rb'].forEach(id=>document.getElementById(id).onchange=u);
+  const u=()=>{prCls=document.getElementById('rc').value;const np=document.getElementById('rp').value;const sb=document.getElementById('rsub');prSub=np===prPos&&sb?sb.value:'';prStar=document.getElementById('rstar').value;prB=document.getElementById('rb').value;prN=25;if(np!==prPos){prPos=np;predList();return}drawPL()};
+  ['rc','rp','rsub','rstar','rb'].forEach(id=>{const e=document.getElementById(id);if(e)e.onchange=u});
   document.getElementById('rs').oninput=e=>{const v=e.target.value.trim();if(!v||findSch(v)||v.length>=3){prSch=v;prN=25;drawPL()}};
   document.getElementById('rq').oninput=e=>{prQ=e.target.value;prN=25;drawPL()};drawPL()}
 function drawPL(){
   const G=PRED.g,q=prQ.trim().toLowerCase(),sq2=prSch.trim().toLowerCase();
-  const rows=PRED.rows.filter(r=>r[1]===+prCls&&(!sq2||r[7].toLowerCase().includes(sq2)||r[8].toLowerCase().includes(sq2))&&(!prPos||G[r[2]]===prPos)&&(!prSub||r[11]===prSub)&&(!prB||(r[13]||[]).includes(prB))&&(!q||r[0].toLowerCase().includes(q))).sort((a,b)=>b[4]-a[4]||b[3]-a[3]||a[0].localeCompare(b[0]));
+  const rows=PRED.rows.filter(r=>r[1]===+prCls&&(!sq2||r[7].toLowerCase().includes(sq2)||r[8].toLowerCase().includes(sq2))&&(!prPos||G[r[2]]===prPos)&&(!prSub||r[11]===prSub)&&(prStar===''||(r[3]||0)===+prStar)&&(!prB||tagsOf(r[0],r[1]).includes(prB))&&(!q||r[0].toLowerCase().includes(q))).sort((a,b)=>b[4]-a[4]||b[3]-a[3]||a[0].localeCompare(b[0]));
   const el=document.getElementById('ro');
-  el.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> ${prCls==='2027'?'committed recruits in the 2027 class':'players from the '+prCls+' class still in college'}${prSch?' matching “'+esc(prSch)+'”':''}, by recruiting rating.</p>`+(rows.length?`<div class="list">${rows.slice(0,prN).map((r,i)=>`<details class="row nb" data-i="${PRED.rows.indexOf(r)}"><summary><span class="rk">${i+1}</span><span class="pn">${esc(r[0])}<small>${GLN[G[r[2]]]||G[r[2]]} · <span style="color:var(--gold)">${stars(r[3])}</span> · ${pathTxt(r[7],r[10])}${r[9]?' <span class="pill r">transferred</span>':''}${r[11]?` <span class="bdg sub">${SUBN[r[11]]}</span>`:''}${bdgHTML(r,1)}</small></span><span class="val">${r[4]?r[4].toFixed(4):'—'}<span class="small" style="display:block">rating</span></span></summary><div class="slot"></div></details>`).join('')}</div>${rows.length>prN?`<button class="bigbtn" id="rm">Show ${Math.min(25,rows.length-prN)} more</button>`:''}`:'<p class="empty">No players match. Check the school name or try another class.</p>');
+  el.innerHTML=`<p class="take" style="font-size:18px"><b>${rows.length.toLocaleString()}</b> ${prCls==='2027'?'committed recruits in the 2027 class':'players from the '+prCls+' class still in college'}${prSch?' matching “'+esc(prSch)+'”':''}, by recruiting rating.</p>`+(rows.length?`<div class="list">${rows.slice(0,prN).map((r,i)=>`<details class="row nb" data-i="${PRED.rows.indexOf(r)}"><summary><span class="rk">${i+1}</span><span class="pn">${esc(r[0])}<small>${GLN[G[r[2]]]||G[r[2]]} · <span style="color:var(--gold)">${stars(r[3])}</span> · ${pathTxt(r[7],r[10])}${r[11]?` <span class="bdg sub">${SUBN[r[11]]}</span>`:''}</small>${tagStrip(r[0],r[1])}</span><span class="val">${r[4]?r[4].toFixed(4):'—'}<span class="small" style="display:block">rating</span></span></summary><div class="slot"></div></details>`).join('')}</div>${rows.length>prN?`<button class="bigbtn" id="rm">Show ${Math.min(25,rows.length-prN)} more</button>`:''}`:'<p class="empty">No players match. Check the school name or try another class.</p>');
   el.querySelectorAll('details.row').forEach(d=>d.addEventListener('toggle',()=>{if(d.open&&!d.querySelector('.slot').innerHTML)d.querySelector('.slot').innerHTML=predCard(PRED.rows[+d.dataset.i])}));
   const rm=document.getElementById('rm');if(rm)rm.onclick=()=>{prN+=25;drawPL()}}
 function predCard(r){
-  const bl=(r[13]||[]).filter(b=>b!=='moved');
-  return `<div class="sheet">${bl.length?`<div style="margin-bottom:12px">${bl.map(b=>`<p style="margin:4px 0"><span class="bdg ${b}" style="margin-left:0">${BADGES[b][0]}</span> <span class="small">${BADGES[b][1]}</span></p>`).join('')}</div>`:''}${cellsHTML([['Class in 2026',r[1]>=2027?'Not yet (committed)':clsName(r[1])],['Rating',r[4]?r[4].toFixed(4):'—'],['Signed with',esc(r[7])],['School now',r[9]?esc(r[8]):r[1]>=2027?'Committed':esc(r[7])],['Hometown',esc((r[6]?r[6]+', ':'')+r[5])]])}
+  return `<div class="sheet">${tagsOf(r[0],r[1]).length?`<div style="margin-bottom:12px"><span class="small">Tags (tap for details):</span> ${tagStrip(r[0],r[1])}</div>`:''}${cellsHTML([['Class in 2026',r[1]>=2027?'Not yet (committed)':clsName(r[1])],['Rating',r[4]?r[4].toFixed(4):'—'],['Signed with',esc(r[7])],['School now',r[9]?esc(r[8]):r[1]>=2027?'Committed':esc(r[7])],['Hometown',esc((r[6]?r[6]+', ':'')+r[5])]])}
   ${r[9]?`<p style="margin:14px 0 0"><b>Path:</b> ${pathTxt(r[7],r[10])}</p>`:''}
   <h3 style="margin-top:16px">What happened to players with his profile</h3>${cohFact(r,'d')}${r[9]?'':cohFact(r,'t')}
   <p class="small" style="margin:10px 0 0">These describe groups of past players, not his own chances. They don't reflect his school, development, injuries or depth chart.</p></div>`}
@@ -1191,12 +1224,17 @@ function drawScatter(){
 
 /* ---------- HEAT MAP + PORTAL ADAPTATION ---------- */
 let AN2=null,hmP='',hmK='h',hmR='all',adSel=null;
+let adMode='coach',adSelS=null,adSelC=null,ADS=null;
+function adData(){if(adMode==='coach')return AN2.adapt;if(!ADS){const m={};for(const [,s] of AN2.adapt)for(const v of s){const o=m[v[1]]||(m[v[1]]={});if(!o[v[0]])o[v[0]]=[v[0],v[1],v[2],v[3]]}ADS=Object.entries(m).map(([k,o])=>[k,Object.values(o).sort((a,b)=>a[0]-b[0])]).sort((a,b)=>a[0].localeCompare(b[0]))}return ADS}
 const loadAn2=()=>(AN2?Promise.resolve():fetch('an2.json').then(r=>r.json()).then(j=>{AN2=j})).then(()=>MAP?null:fetch('map.json').then(r=>r.json()).then(j=>{MAP=j}));
 function wireAn2(){loadAn2().then(()=>{if(document.getElementById('adfig'))adaptSetup()}).catch(()=>{})}
 let hmMode='prog',hmC='';
 function recmap(){
-  app.innerHTML=`<div class="page"><section><h1>Recruiting maps</h1><p class="lede">Where a program or a head coach finds his players. The home state is outlined in navy; darker red states sent more players.</p>
-  <div class="bigseg" role="group" aria-label="Map of"><button data-hm="prog" aria-pressed="${hmMode==='prog'}">A program</button><button data-hm="coach" aria-pressed="${hmMode==='coach'}">A head coach</button></div>
+  const segM=`<div class="bigseg" role="group" aria-label="Map of"><button data-hm="prog" aria-pressed="${hmMode==='prog'}">A program</button><button data-hm="coach" aria-pressed="${hmMode==='coach'}">A head coach</button><button data-hm="over" aria-pressed="${hmMode==='over'}">Where overachievers come from</button></div>`;
+  if(hmMode==='over'){app.innerHTML=`<div class="page"><section><h1>Recruiting maps</h1><p class="lede">Where programs and coaches find players, and which states produce the players who most outperform their rankings.</p>${segM}</section>${overHTML()}</div>`;
+    app.querySelectorAll('[data-hm]').forEach(b=>b.onclick=()=>{hmMode=b.dataset.hm;recmap()});wireOver();return}
+  app.innerHTML=`<div class="page"><section><h1>Recruiting maps</h1><p class="lede">Where a program or a head coach finds his players. The home state is outlined in navy; darker red states sent more players. Tap any state to see the players.</p>
+  ${segM}
   <div class="ctrl" style="margin-top:16px"><label id="hql">${hmMode==='prog'?'Program':'Head coach'}<input id="hq" list="hnames" placeholder="${hmMode==='prog'?'Type a school':'Type a coach\'s name'}" value="${esc(hmMode==='prog'?hmP:hmC)}" autocomplete="off"></label><datalist id="hnames"></datalist>
   <div class="seg" role="group" aria-label="Players"><button data-hk="h" aria-pressed="${hmK==='h'}">High school signees</button><button data-hk="t" aria-pressed="${hmK==='t'}">Transfers in</button></div>
   ${hmMode==='prog'?`<div class="seg" role="group" aria-label="Years"><button data-hr="all" aria-pressed="${hmR==='all'}">All years</button><button data-hr="5" aria-pressed="${hmR==='5'}">Recent</button></div>`:''}</div>
@@ -1221,41 +1259,45 @@ function drawHeat(){const el=document.getElementById('hmmap');if(!el)return;cons
   ${H.st&&tot?`<p style="margin:10px 0"><b>${Math.round(100*home/Math.max(1,tot-unk))}%</b> from its home state (${ST[H.st]||H.st})</p>`:''}<ol>${top.map(([k,v])=>`<li><b>${ST[k]||k}</b> · ${v}</li>`).join('')}</ol>${unk?`<p class="small">${unk} came from schools outside our map data (mostly FCS and below).</p>`:''}<div id="hmst" class="small" style="margin-top:10px">Tap any state to see who came from there.</div>`;
   el.querySelectorAll('path[data-s]').forEach(p=>{const go=()=>heatState(p.dataset.s,C,isC,H,nm);p.onclick=go;p.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
 }
-function heatState(k,C,isC,H,nm){const o=document.getElementById('hmst');if(!o)return;const n=C[k]||0;
+function popup(html,label){document.querySelectorAll('.ask.pop').forEach(e=>e.remove());const el=document.createElement('div');el.className='ask pop';el.innerHTML=`<div class="box wide" role="dialog" aria-modal="true" aria-label="${esc(label)}">${html}<p style="margin-top:12px"><button class="morebtn" data-x>Close</button></p></div>`;document.body.appendChild(el);el.querySelector('[data-x]').focus();
+  el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-x]'))el.remove()});el.addEventListener('keydown',e=>{if(e.key==='Escape')el.remove()});return el}
+function heatState(k,C,isC,H,nm){const o=document.getElementById('hmst');const n=C[k]||0;const S=ST[k]||k;
   document.querySelectorAll('#hmmap path').forEach(p=>p.classList.toggle('sel',p.dataset.s===k));
-  if(hmK==='t'){o.innerHTML=`<h3 style="margin-top:8px">${ST[k]||k}</h3><p>${n} transfer${n===1?'':'s'} in from schools in ${ST[k]||k}.</p>`;return}
-  if(!n){o.innerHTML=`<h3 style="margin-top:8px">${ST[k]||k}</h3><p>No high school signees from ${ST[k]||k}.</p>`;return}
-  o.innerHTML=`<h3 style="margin-top:8px">${ST[k]||k}: ${n} signee${n===1?'':'s'}</h3><p class="empty">Loading players…</p>`;
+  const show=html=>{if(o)o.innerHTML=html;popup(`<p class="eyebrow" style="margin:0 0 6px">${esc(nm)}</p>`+html,S)};
+  if(hmK==='t'){show(`<h3 style="margin-top:8px">${S}</h3><p>${n} transfer${n===1?'':'s'} in from schools in ${S}${isC?' while he was head coach':''}.</p><p class="small">Player-by-player transfer lists by state are coming with the reconciled transfer records.</p>`);return}
+  if(!n){show(`<h3 style="margin-top:8px">${S}</h3><p>No high school signees from ${S}.</p>`);return}
   loadIdx().then(X=>{let L;if(isC){const c=D.coaches.find(x=>x.name===nm);const ks=new Set((c&&c.cls||[]).map(q=>q[0]+'|'+q[1]));L=X.p.filter(p=>p[7]===k&&ks.has(p[1]+'|'+X.s[p[3]]))}
     else{const si=X.s.indexOf(nm);L=X.p.filter(p=>p[3]===si&&p[7]===k&&(hmR!=='5'||p[1]>=2022))}
-    L.sort((a,b)=>(a[5]||9999)-(b[5]||9999)||b[1]-a[1]);
-    o.innerHTML=`<h3 style="margin-top:8px">${ST[k]||k}: ${L.length} signee${L.length===1?'':'s'}</h3><ol style="max-height:320px;overflow:auto;margin:6px 0 0;padding-left:22px">${L.slice(0,60).map(p=>`<li><b>${esc(p[0])}</b> <span class="small">${p[1]} · ${X.g[p[2]]||''}${p[6]?' · '+'★'.repeat(p[6]):''}${isC?' · '+esc(X.s[p[3]]):''}</span>${p[9]?` <span class="pos">Rd ${p[9]}</span>`:''}</li>`).join('')}</ol>${L.length>60?`<p class="small">Showing 60 of ${L.length}, drafted players first.</p>`:''}`})}
-function adaptSetup(){const A=AN2.adapt,nat=AN2.nat;document.getElementById('nat0').textContent=Math.round(100*nat[2021])+'%';document.getElementById('nat1').textContent=Math.round(100*nat[2026])+'%';
+    L.sort((a,b)=>(a[5]||9999)-(b[5]||9999)||b[1]-a[1]);const dr=L.filter(p=>p[9]).length;
+    show(`<h3 style="margin-top:8px">${S}: ${L.length} signee${L.length===1?'':'s'}${dr?`, ${dr} drafted`:''}</h3><ol style="max-height:52vh;overflow:auto;margin:6px 0 0;padding-left:22px">${L.slice(0,80).map(p=>`<li><button type="button" class="linkb" data-pl="${esc(p[0])}|${p[1]}|${p[2]}"><b>${esc(p[0])}</b></button> <span class="small">${p[1]} · ${X.g[p[2]]||''}${p[6]?' · '+'★'.repeat(p[6]):''}${isC?' · '+esc(X.s[p[3]]):''}</span>${p[9]?` <span class="pos">Rd ${p[9]}</span>`:''}</li>`).join('')}</ol>${L.length>80?`<p class="small">Showing 80 of ${L.length}, drafted players first.</p>`:''}`);
+    document.querySelectorAll('.ask.pop [data-pl]').forEach(b=>b.onclick=()=>{const [pn,y,g]=b.dataset.pl.split('|');showPlayer(pn,+y,X.g[+g])})})}
+function adaptSetup(){const A=adData(),nat=AN2.nat,isC=adMode==='coach';document.getElementById('nat0').textContent=Math.round(100*nat[2021])+'%';document.getElementById('nat1').textContent=Math.round(100*nat[2026])+'%';
   const sh=v=>v[2]/Math.max(1,v[2]+v[3]);
   const SAc=new Set(['Army','Navy','Air Force']);const ch=A.filter(([,s])=>s.length>=4&&!SAc.has(s[s.length-1][1])).map(([n,s])=>{const f=s.slice(0,2),l=s.slice(-2);const fs=f.reduce((a,v)=>a+v[2],0)/Math.max(1,f.reduce((a,v)=>a+v[2]+v[3],0)),ls=l.reduce((a,v)=>a+v[2],0)/Math.max(1,l.reduce((a,v)=>a+v[2]+v[3],0));return {n,d:ls-fs,ls,fs,sch:s[s.length-1][1]}});
   const up=ch.slice().sort((a,b)=>b.d-a.d).slice(0,8),dn=ch.slice().sort((a,b)=>a.ls-b.ls).slice(0,8);
-  const li=c=>`<li><button class="lk" data-ad="${esc(c.n)}">${esc(c.n)}</button> <span class="small">${esc(c.sch)}</span> · ${Math.round(100*c.fs)}% → <b>${Math.round(100*c.ls)}%</b></li>`;
+  const li=c=>`<li><button class="lk" data-ad="${esc(c.n)}">${esc(c.n)}</button>${isC?` <span class="small">${esc(c.sch)}</span>`:''} · ${Math.round(100*c.fs)}% → <b>${Math.round(100*c.ls)}%</b></li>`;
   document.getElementById('adup').innerHTML=up.map(li).join('');document.getElementById('addn').innerHTML=dn.map(li).join('');
   document.getElementById('adnames').innerHTML=A.map(([n])=>`<option value="${esc(n)}">`).join('');
-  if(!adSel)adSel=[up[0].n,'Dabo Swinney',dn[0].n].filter((x,i,a)=>A.some(([n])=>n===x)&&a.indexOf(x)===i);
+  if(!adSel)adSel=[up[0].n,isC?'Dabo Swinney':'Clemson',dn[0].n].filter((x,i,a)=>A.some(([n])=>n===x)&&a.indexOf(x)===i);
   const q=document.getElementById('adq');q.oninput=()=>{const c=A.find(([n])=>n.toLowerCase()===q.value.trim().toLowerCase());if(c&&!adSel.includes(c[0])){adSel=[...adSel,c[0]].slice(-5);q.value='';drawAdapt()}};
   document.getElementById('adclr').onclick=()=>{adSel=[];drawAdapt()};
   app.querySelectorAll('[data-ad]').forEach(b=>b.onclick=()=>{if(!adSel.includes(b.dataset.ad)){adSel=[...adSel,b.dataset.ad].slice(-5);drawAdapt()}});
   new ResizeObserver(drawAdapt).observe(document.getElementById('adfig'));drawAdapt()}
 function drawAdapt(){const s=document.getElementById('adsvg');if(!s||!AN2)return;const W=s.clientWidth,H=s.clientHeight;if(!W)return;const m={l:46,r:16,t:14,b:34};
   const X=y=>m.l+(y-2021)/5*(W-m.l-m.r),Y=v=>H-m.b-v*(H-m.t-m.b);const cols=['#B83A2E','#1F6B45','#C9A227','#5B6FB0','#8A5A9E'];
-  const A=new Map(AN2.adapt);const line=(pts,c,dash,w)=>`<polyline fill="none" stroke="${c}" stroke-width="${w||3}" ${dash?'stroke-dasharray="6 5"':''} points="${pts.map(([x,y])=>X(x)+','+Y(y)).join(' ')}"/>`+pts.map(([x,y])=>`<circle cx="${X(x)}" cy="${Y(y)}" r="${dash?0:4.5}" fill="${c}"/>`).join('');
+  const A=new Map(adData());const line=(pts,c,dash,w)=>`<polyline fill="none" stroke="${c}" stroke-width="${w||3}" ${dash?'stroke-dasharray="6 5"':''} points="${pts.map(([x,y])=>X(x)+','+Y(y)).join(' ')}"/>`+pts.map(([x,y])=>`<circle cx="${X(x)}" cy="${Y(y)}" r="${dash?0:4.5}" fill="${c}"/>`).join('');
   s.innerHTML=[0,.25,.5,.75,1].map(t=>`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--line)"/><text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end" font-size="12" fill="var(--pen)">${t*100}%</text>`).join('')+
    [2021,2022,2023,2024,2025,2026].map(y=>`<text x="${X(y)}" y="${H-10}" text-anchor="middle" font-size="12" fill="var(--pen)">${y}</text>`).join('')+
    line(Object.entries(AN2.nat).map(([y,v])=>[+y,v]),'var(--pen)',true,2)+
    adSel.map((n,i)=>{const sr=A.get(n)||[];return line(sr.map(v=>[v[0],v[2]/Math.max(1,v[2]+v[3])]),cols[i%5])}).join('');
-  document.getElementById('adkey').innerHTML=`<span style="margin-right:14px">- - FBS average</span>`+adSel.map((n,i)=>{const sr=A.get(n)||[];const l=sr[sr.length-1];return `<span style="margin-right:14px;white-space:nowrap"><b style="color:${cols[i%5]}">●</b> ${esc(n)}${l?` (${esc(l[1])})`:''} <button class="lk" data-rm="${esc(n)}" aria-label="Remove ${esc(n)}">×</button></span>`}).join('')+(adSel.length?'':'Add a coach above or tap a name below.');
+  document.getElementById('adkey').innerHTML=`<span style="margin-right:14px">- - FBS average</span>`+adSel.map((n,i)=>{const sr=A.get(n)||[];const l=sr[sr.length-1];return `<span style="margin-right:14px;white-space:nowrap"><b style="color:${cols[i%5]}">●</b> ${esc(n)}${l&&adMode==='coach'?` (${esc(l[1])})`:''} <button class="lk" data-rm="${esc(n)}" aria-label="Remove ${esc(n)}">×</button></span>`}).join('')+(adSel.length?'':`Add a ${adMode==='coach'?'coach':'school'} above or tap a name below.`);
   document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{adSel=adSel.filter(x=>x!==b.dataset.rm);drawAdapt()})}
 
-function adapt(){app.innerHTML=`<div class="page"><section><h1>How coaches adapted to the transfer portal</h1><p class="lede">Each season's newcomers as a share from the portal (the rest are high school signees). The dashed line is the FBS average, which went from <b id="nat0"></b> in 2021 to <b id="nat1"></b> in 2026.</p>
-  <div class="ctrl"><label>Add a coach to the chart<input id="adq" list="adnames" placeholder="Type a coach's name" autocomplete="off"></label><datalist id="adnames"></datalist><button class="morebtn" id="adclr" type="button">Clear chart</button></div>
+function adapt(){const isC=adMode==='coach',U=isC?'coach':'school';app.innerHTML=`<div class="page"><section><h1>How ${isC?'coaches':'schools'} adapted to the transfer portal</h1><p class="lede">Each season's newcomers as a share from the portal (the rest are high school signees). The dashed line is the FBS average, which went from <b id="nat0"></b> in 2021 to <b id="nat1"></b> in 2026.</p>
+  <div class="bigseg" role="group" aria-label="Show"><button data-adm="coach" aria-pressed="${isC}">Head coaches</button><button data-adm="school" aria-pressed="${!isC}">Schools</button></div>
+  <div class="ctrl" style="margin-top:14px"><label>Add a ${U} to the chart<input id="adq" list="adnames" placeholder="${isC?"Type a coach's name":'Type a school'}" autocomplete="off"></label><datalist id="adnames"></datalist><button class="morebtn" id="adclr" type="button">Clear chart</button></div>
   <div class="fig" id="adfig" style="height:380px;position:relative"><svg id="adsvg" role="img" aria-label="Line chart: share of newcomers from the transfer portal by season, FBS average and selected coaches" style="position:absolute;inset:0;width:100%;height:100%"></svg></div><div id="adkey" class="small" style="margin-top:6px"></div>
-  <div class="two" style="margin-top:18px"><div class="c"><h3>Leaned into the portal most</h3><p class="small">Change in portal share, first two seasons vs last two (2021–2026, at least 4 seasons)</p><ol id="adup"></ol></div><div class="c"><h3>Changed the least</h3><p class="small">Same measure; still built mostly through high school recruiting (service academies left out: they can't use the portal the same way)</p><ol id="addn"></ol></div></div></section>${notes(`<p>Portal share = transfers who arrived that season ÷ (those transfers + that year's high school signees), for the head coach in charge that season. Leaned in most compares his first two seasons since 2021 with his last two (at least 4 seasons). Service academies are left out of the lists.</p>`)}</div>`;loadAn2().then(adaptSetup).catch(()=>{})}
+  <div class="two" style="margin-top:18px"><div class="c"><h3>Leaned into the portal most</h3><p class="small">Change in portal share, first two seasons vs last two (2021–2026, at least 4 seasons)</p><ol id="adup"></ol></div><div class="c"><h3>Changed the least</h3><p class="small">Same measure; still built mostly through high school recruiting (service academies left out: they can't use the portal the same way)</p><ol id="addn"></ol></div></div></section>${notes(`<p>Portal share = transfers who arrived that season ÷ (those transfers + that year's high school signees), for ${isC?'the head coach in charge that season':'the school, whoever its head coach was'}. Leaned in most compares his first two seasons since 2021 with his last two (at least 4 seasons). Service academies are left out of the lists.</p>`)}</div>`;app.querySelectorAll('[data-adm]').forEach(b=>b.onclick=()=>{if(adMode===b.dataset.adm)return;if(adMode==='coach'){adSelC=adSel;adSel=adSelS}else{adSelS=adSel;adSel=adSelC}adMode=b.dataset.adm;adapt()});loadAn2().then(adaptSetup).catch(()=>{})}
 
 /* ---------- TRANSFER FINDER ---------- */
 let TRD=null,tP='',tSt='',tFrom='',tMode='progs',tY=[2021,2025];
@@ -1365,17 +1407,13 @@ const PRODUCTS=[
  {id:'player',d:'data',s:'avail',n:'Player Development',r:'players',t:'Look up any signee since 2002: where he signed, where he finished, his draft result and his grade against expectations.'},
  {id:'nfl',d:'data',s:'avail',n:'NFL Draft Outcomes',r:'nfl',t:'Whose players get drafted, last longest in the NFL and outplay their draft slot.'},
  {id:'portal',d:'data',s:'avail',n:'Transfer Portal Report',r:'transfers',t:'How staying or transferring has worked out school by school, and who gains or loses talent in the portal.'},
- {id:'pathway',d:'data',also:['recruiting'],s:'dev',n:'Player Pathway',t:'Every school, season, transfer and draft outcome for one player, on one page.',
+ {id:'pathway',d:'recruiting',s:'dev',n:'Player Pathway',t:'Every school, season, transfer and draft outcome for one player, on one page.',
   what:'One page per player that follows his whole career: where he signed, each season he was on a roster, every transfer, the games where he recorded a statistic at his position, and his draft outcome.',
   why:'See the real path behind a career instead of just signing day and draft day.',
   now:'The shared player database it depends on is built and in review. Pathway will only show records that meet our evidence standards: uncertain identities and transfers will be labeled, never guessed.',
   try:[['players','Look up any player today']]},
- {id:'tags',d:'data',also:['recruiting'],s:'dev',n:'Player Tags',t:'Short factual labels on player records, each with a plain explanation of its rule.',
-  what:'Factual labels on player records, such as Transferred, JUCO route and Diamond in the Rough (a player rated two or three stars who was later drafted). Tapping a tag explains its rule and the evidence behind it.',
-  why:'Spot the interesting stories in a list at a glance, with the facts one tap away.',
-  now:'Transferred and JUCO route are live on the Predictions page. Diamond in the Rough has an approved definition and will be added after it is checked against the records. Great Fit (a school-and-position tag) is in research and stays off until it has a rule that holds up across coaching staffs. New tags appear only after their rules are approved and checked.',
-  try:[['predictions:list','See tags on current players']]},
- {id:'time',d:'data',also:['recruiting'],s:'soon',n:'Recruiting Class Time Machine',t:'Pick a signing class and see how every signee turned out against his ranking.',
+ {id:'tags',d:'data',s:'avail',n:'Player Tags',r:'players',links:[['players','Look up any player'],['predictions:list','Tags on current players']],t:'Factual labels on player records, from Diamond in the Rough and Mr. Irrelevant to Pro Bowler and Portal Payoff. Tap any tag for its rule and what history shows for players like him.'},
+ {id:'time',d:'data',s:'soon',n:'Recruiting Class Time Machine',t:'Pick a signing class and see how every signee turned out against his ranking.',
   what:'Choose any signing class and see how every signee turned out: who was drafted, who transferred, and who outperformed or fell short of his recruiting ranking.',
   why:'Revisit a class with the benefit of hindsight, for any program or the whole country.',
   now:'Planned for after Player Pathway. Classes from 2019 on are still being drafted, so their results will be marked as in progress.',
@@ -1450,8 +1488,8 @@ const PRODUCTS=[
   now:'Research phase, and last on the roadmap. No reliable public data on player compensation exists, so any version would use clearly labeled hypothetical inputs. We will not invent figures.',
   try:[]}];
 const PBY={};PRODUCTS.forEach(p=>PBY[p.id]=p);
-const ROADMAP=[['Just finished','Live or in review',[['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.'],['p:cur','Predictions cleanup','Individual odds removed; historical group facts instead.']]],
- ['Next','Being built',[['p:tags'],['p:pathway']]],
+const ROADMAP=[['Just finished','Live or in review',[['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.'],['p:cur','Predictions cleanup','Individual odds removed; historical group facts instead.'],['p:tags']]],
+ ['Next','Being built',[['p:pathway']]],
  ['Then','Planned',[['p:time'],['p:dna'],['p:portal2'],['p:advtr'],['p:profiles'],['p:compare']]],
  ['Later','Research and validation come first',[['p:ledger'],['p:hsvt'],['p:acq'],['p:poi'],['p:sim'],['p:cost']]]];
 const stChip=s=>`<span class="st st-${s}"><i aria-hidden="true"></i>${STS[s]}</span>`;
@@ -1483,7 +1521,7 @@ function roadmapHTML(){return `<div class="road">${ROADMAP.map(([t,sub,list],i)=
   return `<li>${p&&p.s==='avail'?(()=>{const [rt,sb]=p.r.split(':');return `<a href="#${rt}" data-sub="${sb||''}">${inner}</a>`})():`<button type="button" data-pv="${p?p.id:id}">${inner}</button>`}</li>`}).join('')}</ul></div>`).join('')}</div>`}
 function destPage(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.also||[]).includes(k));const av=items.filter(p=>p.s==='avail'),up=items.filter(p=>p.s!=='avail');
   const others=Object.keys(DEST).filter(x=>x!==k);
-  const more={data:[['analytics','Does development win?'],['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['recmap','Recruiting maps'],['stayhome','Distance and home'],['moveup','Coaches moving up']],
+  const more={data:[['recmap:over','Where overachievers come from'],['analytics','Does development win?'],['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['recmap','Recruiting maps'],['stayhome','Distance and home'],['moveup','Coaches moving up']],
     recruiting:[['recmap','Recruiting maps'],['stayhome','Distance and home'],['players','Look up any player'],['rankings:programs','Program report cards']],
     plus:[['rankings:coaches','Coach report cards'],['rankings:programs','Program rankings'],['nfl','NFL careers'],['players','Look up any player']]}[k];
   app.innerHTML=`<div class="page vision"><section class="dhero dh-${d.c}"><p class="eyebrow">${d.k}</p><h1>${d.t}</h1><p class="lede">${d.lede}</p><p class="openl">Free and open to everyone. No sign-up, nothing locked.</p></section>
@@ -1499,11 +1537,11 @@ function home(){
   const m=D.meta,sr=m.sr;const ex3=sr[3][3],ex5=sr[5][3];
   const wallNames=['Khalil Mack','Kyle Pitts','DeVonta Smith','Justin Jefferson','Brock Purdy','Aaron Donald','Malik Nabers',"Ja'Marr Chase",'Joe Burrow','Travis Hunter'];
   const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
-  app.innerHTML=`<div class="page home"><section class="hero"><div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
+  app.innerHTML=`<div class="page home"><section class="hero"><div><div class="hbrand"><svg class="hbm" viewBox="0 0 54 54" aria-hidden="true"><use href="#mark"/></svg><div><span class="hbw">${BRAND}</span><span class="hbt">The college football development research platform</span></div></div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. We follow every FBS signee since 2002 to see what happened next, and who really developed him.</p>
   <p class="dline">One open platform, three destinations: <a href="#data">${BRAND} Data</a> · <a href="#recruiting">${BRAND} Recruiting</a> · <a href="#plus">${BRAND} Plus</a></p>
-  <div class="btns"><a class="btn solid" href="#everything">Explore everything</a><button type="button" class="btn" id="tostart">Help me pick a starting point ↓</button></div>
-  <p class="dver">Free and open to everyone · Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1</p></div>
+  <div class="btns"><a class="btn solid" href="#everything">Explore everything</a><button type="button" class="btn" id="tostart">Help me pick a starting point ↓</button><a class="btn" href="#methods">How it works</a></div>
+  <p class="dver">Free and open to everyone · Data refreshed Nov. 19, 2026 · Recruiting classes ${m.classes[0]}–${m.classes[1]} · NFL Drafts through ${m.draft[1]} · Recruiting ratings: 247Sports Composite · Methodology v1.1</p></div>
   <div class="wall" aria-label="Moving board of player cards"><div class="col"><div class="set">${wt}</div><div class="set" aria-hidden="true">${wt}</div></div></div></section>
   <section id="start" class="startsec"><h2>Not sure where to start?</h2><p class="lede">Explore the area that interests you most. Everything is open to everyone, and you're always welcome to explore the entire platform.</p>
   <div class="dcards">${['data','recruiting','plus'].map(destCard).join('')}</div>
@@ -1511,24 +1549,26 @@ function home(){
   <section class="hstats"><h2>By the numbers</h2><div class="stats"><div><div class="d" data-n="${m.n}">${m.n.toLocaleString()}</div><p>signees tracked since ${m.classes[0]}</p></div><div><div class="d" data-n="${m.dr}">${m.dr.toLocaleString()}</div><p>drafted into the NFL</p></div><div><div class="d" data-n="${m.pn}">${m.pn.toLocaleString()}</div><p>transfer portal entries</p></div><div><div class="d" data-n="${D.progs.length}">${D.progs.length}</div><p>programs graded</p></div><div><div class="d" data-n="${D.coaches.length}">${D.coaches.length}</div><p>head coaches graded</p></div></div>
   <div class="ticker" id="tk1"><span class="lbl">DID YOU KNOW</span><span class="tx"></span></div></section>
   <section class="roadsec"><h2>What we're building</h2><p class="lede">${BRAND} is growing. Here's what is being built next and what comes after it. Tap any item to see what it will do and where it stands.</p>${roadmapHTML()}${stKey(PRODUCTS)}</section>
-  <section><h2>Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
-  <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button><button data-mm="cap" aria-pressed="${mapMode==='cap'}">Drafted per million residents</button></div></div>
-  <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>
   <section><h2>How the score works</h2><p class="lede">Every player is judged against what players with his star rating, composite rating and position usually do in the NFL draft. Same draft slot, very different credit:</p>
-  <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted in round one</div><div class="big">60 − ${ex3.toFixed(1)} = <span class="pos">+${(60-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
-  <div class="c"><div class="small">A typical 5-star, drafted in round one</div><div class="big">60 − ${ex5.toFixed(1)} = <span class="pos">+${(60-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
+  <div class="cmp"><div class="c"><div class="small">A typical 3-star, drafted late in round one</div><div class="big">80 − ${ex3.toFixed(1)} = <span class="pos">+${(80-ex3).toFixed(1)}</span></div><p class="small">Only ${(+sr[3][2]).toFixed(1)}% of 3-stars go in round one. Huge credit to his coaches.</p></div>
+  <div class="c"><div class="small">A typical 5-star, drafted late in round one</div><div class="big">80 − ${ex5.toFixed(1)} = <span class="pos">+${(80-ex5).toFixed(1)}</span></div><p class="small">${(+sr[5][2]).toFixed(0)}% of 5-stars go in round one. Good, but expected.</p></div></div>
   <h3 style="margin-top:22px">Then every score gets a letter grade</h3><p class="small" style="font-size:16px;margin:4px 0 0">Grades compare players, programs and coaches with each other. They don't round up: an average result is a C. A player who gets drafted never grades below a D.</p><div class="rc">${[['S','top 1%: elite'],['A+','top 4%'],['A','top 10%'],['B','top 28%'],['C','about average'],['D','bottom 27%'],['F','bottom 10%']].map(([l,t])=>`<div>${gp(l)}<span>${t}</span></div>`).join('')}<div><span class="gp gN">–</span><span>not enough data</span></div></div>
-  <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, rest of round one 60, round two 35, round three 20, rounds 4–5 10, rounds 6–7 5. <a href="#methods">Full method</a> · <a href="#about">About ${BRAND}</a></p></section></div>`;
+  <p class="small" style="margin-top:12px">Draft points: top-10 pick 100, picks 11–22 90, picks 23–32 80, round two 50, round three 30, round four 20, round five 12, round six 8, round seven 5, undrafted 0. <a href="#methods">Full method</a> · <a href="#about">About ${BRAND}</a></p></section></div>`;
   countUp(app);ticker('tk1',facts());wireVision(app);
   document.getElementById('tostart').onclick=()=>document.getElementById('start').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'});
+  }
+function overHTML(){return `<section><h2 style="margin-top:8px">Where overachievers come from</h2><p class="lede">High school signees by home state, graded against what players with their rankings usually do. Tap a state to see which programs got the most out of its players.</p>
+  <div class="ctrl"><div class="seg" role="group" aria-label="Map shows"><button data-mm="ratio" aria-pressed="${mapMode==='ratio'}">Draft value vs expected</button><button data-mm="picks" aria-pressed="${mapMode==='picks'}">Players drafted</button><button data-mm="cap" aria-pressed="${mapMode==='cap'}">Drafted per million residents</button></div></div>
+  <div class="mapwrap"><div><div class="map" id="map"><p class="empty">Drawing the map…</p></div><div class="legend" id="leg"></div></div><div class="panel" id="sp" aria-live="polite"></div></div></section>`}
+function wireOver(){
   app.querySelectorAll('[data-mm]').forEach(b=>b.onclick=()=>{mapMode=b.dataset.mm;app.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
   (MAP?Promise.resolve():fetch('map.json').then(r=>r.json()).then(j=>{MAP=j})).then(drawMap).catch(()=>{const el=document.getElementById('map');if(el)el.innerHTML='<p class="empty">The map did not load. Refresh to try again.</p>'});
   statePanel(null)}
 
 /* ---------- EVERYTHING ---------- */
-function subGo(a){const sb=a.dataset.sub;if(sb==='tr'){fType='tr'}else if(sb==='juco'){fType='juco'}else if(a.getAttribute('href')==='#find'){fType='hs'}
-  if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='rising'){rkMode='rising'}else if(sb==='traffic'){txTab='traffic'}else if(sb==='calc'){prMode='calc'}else if(sb==='list'){prMode='list'}else if(sb==='heat'||sb==='adapt'){const id=sb==='heat'?'hmmap':'adfig';window._after=()=>setTimeout(()=>document.getElementById(id)?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),400)}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(sb==='programs'||a.getAttribute('href')==='#rankings'&&!sb){rkMode='programs'}}
-const DIR=[['Recruits and families','"Where should I go?"',[['find','Find a Program','Players with your position, stars and home state: where they went and how it turned out.'],['find:juco','JUCO players: where to go','Which programs and coaches get the most out of junior college players.'],['find:tr','Transfers: where to go','Which programs and coaches get the most out of transfers like you.'],['predictions:calc','Historical School & Position Outcomes','How many signees at your position each school has had drafted, against expectations.'],['transfers','Stay or go?','How staying or transferring has worked out, school by school.'],['stayhome','Distance and home','How far schools recruit and whether staying close matters.'],['recmap','Recruiting maps','A heat map of where any program or head coach recruits, high school or transfers.']]],
+function subGo(a){const sb=a.dataset.sub;if(a.getAttribute('href')==='#recmap'&&sb!=='over'&&hmMode==='over')hmMode='prog';if(sb==='tr'){fType='tr'}else if(sb==='juco'){fType='juco'}else if(a.getAttribute('href')==='#find'){fType='hs'}
+  if(sb==='coaches'){rkMode='coaches';coView='dev'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='rising'){rkMode='rising'}else if(sb==='traffic'){txTab='traffic'}else if(sb==='calc'){prMode='calc'}else if(sb==='list'){prMode='list'}else if(sb==='heat'||sb==='adapt'){const id=sb==='heat'?'hmmap':'adfig';window._after=()=>setTimeout(()=>document.getElementById(id)?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),400)}else if(sb==='over'){hmMode='over'}else if(sb==='position'){rkMode='position'}else if(sb==='conf'){rkMode='conf'}else if(sb==='programs'||a.getAttribute('href')==='#rankings'&&!sb){rkMode='programs'}}
+const DIR=[['Recruits and families','"Where should I go?"',[['find','Find a Program','Players with your position, stars and home state: where they went and how it turned out.'],['find:juco','JUCO players: where to go','Which programs and coaches get the most out of junior college players.'],['find:tr','Transfers: where to go','Which programs and coaches get the most out of transfers like you.'],['predictions:calc','Historical School & Position Outcomes','How many signees at your position each school has had drafted, against expectations.'],['transfers','Stay or go?','How staying or transferring has worked out, school by school.'],['stayhome','Distance and home','How far schools recruit and whether staying close matters.'],['recmap','Recruiting maps','A heat map of where any program or head coach recruits, high school or transfers.'],['recmap:over','Where overachievers come from','Every state graded on how its high school players outperformed their rankings; tap a state to see its players.']]],
  ['Fans','"How is my team really doing?"',[['rankings','Program rankings and grades','Every program graded A+ to F, plus who is hot and who is sinking.'],['rankings:coaches','Coach report cards','Every head coach graded on development, recruiting and winning, with every signing class and the players in it.'],['rankings:rising','G5 Coaches to Watch','Group of Five coaches who win, recruit and develop: who could land a bigger job.'],['players','Look up any player','Every signee since 2002.'],['nfl','NFL careers','Whose players last longest and outplay their draft slot.'],['transfers:traffic','Portal traffic','Who gains talent in the portal and who loses it.']]],
  ['Coaches and staff','"How do we compare?"',[['rankings:lean','Portal or high school?','How every 2026 coach builds his roster, and how well each approach works.'],['rankings:position','Who develops each position','Leaderboards by position, stars and years.'],['rankings:conf','Conferences','Which leagues get the most out of their players.'],['find:juco','Who develops JUCO players','Programs and head coaches ranked on junior college signees.'],['analytics','Does development win?','How development and recruiting connect to winning.'],['adapt','Adapting to the portal','How each coach has shifted toward transfers since 2021.'],['moveup','Coaches moving up','What happens to the team that hires a Group of Five coach, the team he leaves, and the players who follow.']]],
  ['About Vetted CFB','"How does this work?"',[['about','About','Who we are and what we believe.'],['methods','How it works','How every number and grade is built.'],['contact','Contact','Questions, corrections and ideas.']]]];
@@ -1550,7 +1590,7 @@ const RECS={recruit:['Recruits and families',[['find','','Find a program for pla
  coach:['Coaches and staff',[['rankings','lean','Portal or high school?','How every 2026 head coach builds his roster, and how well each approach develops.'],['rankings','position','Who develops each position best','Leaderboards by position and star rating.'],['analytics','','Does development win?','How development and recruiting connect to winning.']]]};
 function roleBox(r,scroll){const el=document.getElementById('rolebox');if(!el)return;if(!r||!RECS[r]){el.innerHTML='';return}const [t,list]=RECS[r];
   el.innerHTML=`<div class="recs"><h2>Start here: picked for ${t.toLowerCase()}</h2><div class="ways">${list.map(([h,sub,ti,tx])=>`<a class="way" href="#${h}" data-sub="${sub}"><h3>${ti}</h3><p>${tx}</p><span class="go">Go →</span></a>`).join('')}</div></div>`;
-  el.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='programs'){rkMode='programs'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='position'){rkMode='position'}});
+  el.querySelectorAll('[data-sub]').forEach(a=>a.onclick=()=>{const sb=a.dataset.sub;if(sb==='programs'){rkMode='programs'}else if(sb==='lean'){rkMode='coaches';coView='lean'}else if(sb==='over'){hmMode='over'}else if(sb==='position'){rkMode='position'}});
   if(scroll)el.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})}
 function roleHL(r,scroll){const i={recruit:0,fan:1,coach:2}[r];const g=[...document.querySelectorAll('#homeall .grp')];g.forEach((x,j)=>x.classList.toggle('hl',j===i));
   if(scroll&&i!==undefined&&document.getElementById('homeall'))document.getElementById('homeall').scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}
@@ -1576,7 +1616,7 @@ document.getElementById('tbc').onclick=()=>{const o=[...document.querySelectorAl
 function effTheme(){const t=document.documentElement.dataset.vt;return t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
 function paintThm(){const d=effTheme()==='dark';document.getElementById('thmi').textContent=d?'☀':'☾';document.getElementById('thml').textContent=d?'Light':'Dark'}
 {const t=LS2.get('vc_theme');if(t)document.documentElement.dataset.vt=t;paintThm()}
-document.getElementById('thm').onclick=()=>{const n=effTheme()==='dark'?'light':'dark';document.documentElement.dataset.vt=n;LS2.set('vc_theme',n);paintThm();if(location.hash==='#home'||!location.hash)drawMap&&drawMap()};
+document.getElementById('thm').onclick=()=>{const n=effTheme()==='dark'?'light':'dark';document.documentElement.dataset.vt=n;LS2.set('vc_theme',n);paintThm();if(document.getElementById('map'))drawMap&&drawMap()};
 /* ---------- WELCOME QUESTION ---------- */
 
 const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
@@ -1593,6 +1633,6 @@ async function saveRole(role,preview,src){if(!preview){try{fetch('/api/role',{me
 document.getElementById('prev').onclick=()=>showAsk(true);
 
 addEventListener('hashchange',go);
-fetch('data.json').then(r=>r.json()).then(j=>{D=j;go()}).catch(()=>{app.innerHTML='<p class="empty">The data file did not load. Refresh to try again.</p>'});
+Promise.all([fetch('data.json').then(r=>r.json()),fetch('tags.json').then(r=>r.ok?r.json():null).catch(()=>null)]).then(([j,t])=>{D=j;TAGS=t;go()}).catch(()=>{app.innerHTML='<p class="empty">The data file did not load. Refresh to try again.</p>'});
 }
 </script></body></html>
