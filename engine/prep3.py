@@ -320,7 +320,7 @@ def pctile(vals,v,hi=True):
     if v is None or not vals: return None
     below=sum(1 for x in vals if (x<v if hi else x>v)); eq=sum(1 for x in vals if x==v)
     return 100*(below+0.5*eq)/len(vals)
-CUT=[(97,'A+'),(90,'A'),(85,'A-'),(77,'B+'),(67,'B'),(60,'B-'),(50,'C+'),(40,'C'),(33,'C-'),(25,'D+'),(15,'D'),(8,'D-'),(0,'F')]
+CUT=[(99,'S'),(96,'A+'),(90,'A'),(85,'A-'),(80,'B+'),(72,'B'),(65,'B-'),(58,'C+'),(45,'C'),(35,'C-'),(27,'D+'),(18,'D'),(10,'D-'),(0,'F')]
 def letter(p): return None if p is None else next(l for c,l in CUT if p>=c)
 # class talent: sum of full expected points of each school's signing class, ranked nationally per year
 ct=collections.defaultdict(float); cn=collections.defaultdict(int)
@@ -383,7 +383,28 @@ for c in coaches:
 pv=[(p['a'][3]-p['a'][4])/NCL for p in progs]
 for p in progs:
     v=(p['a'][3]-p['a'][4])/NCL; p['g']=letter(pctile(pv,v)); p['g5']=letter(pctile([q['r5'] for q in progs],p['r5']))
-open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS,dist=dist,catn=[[k,l] for k,l,_,_ in CATS]),separators=(',',':')))
+# ---- player grade cutoffs (development = actual - expected draft points, all graded players)
+pv_=sorted(r['pae'] for r in SC)
+meta['pcut']=[[c_,round(pv_[min(len(pv_)-1,int(len(pv_)*c_/100))],2)] for c_,_ in CUT if c_>0]
+# ---- JUCO development
+JU=[r for r in SC if r['recruitType']=='JUCO']
+jp=collections.defaultdict(list); jc=collections.defaultdict(list); jpg=collections.defaultdict(list)
+for r in JU:
+    k=cred(r)
+    if k in FBS: jp[k].append(r); jpg[(k,r['pg'])].append(r)
+    c_=coach(r)
+    if c_: jc[c_].append(r)
+cnow={c['name']:c['now'] for c in coaches}
+juco=dict(n=len(JU),dr=sum(1 for r in JU if r['draftYear']),
+  progs=[[k]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]]] for k,v in jp.items() if len(v)>=8],
+  pos=[[k[0],k[1]]+agg(v) for k,v in jpg.items() if len(v)>=3],
+  coaches=[[c_,cnow.get(c_)]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:2]]] for c_,v in jc.items() if len(v)>=6],
+  best=[addtag(r) for r in sorted([r for r in JU if r['draftYear']],key=lambda r:-r['pae'])[:8]])
+print('JUCO',juco['n'],'signees',juco['dr'],'drafted',len(juco['progs']),'programs',len(juco['coaches']),'coaches')
+print('JUCO top progs',[(p[0],p[1],p[2],round(p[4]-p[5])) for p in sorted(juco['progs'],key=lambda p:-(p[4]-p[5]))[:6]])
+print('JUCO top coaches',[(c[0],c[2],c[3],round(c[5]-c[6])) for c in sorted(juco['coaches'],key=lambda c:-(c[5]-c[6]))[:6]])
+print('pcut',meta['pcut'])
+open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS,dist=dist,catn=[[k,l] for k,l,_,_ in CATS],juco=juco),separators=(',',':')))
 print('DIST',dist['bandDraft'],dist['bandMove'],dist['med'])
 print('RAD',sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:x[1])[:4],sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:-x[1])[:4])
 cc=[c for c in coaches if c['g'].get('all')]
