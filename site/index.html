@@ -69,6 +69,16 @@ header{border-bottom:2px solid var(--ink);padding-top:14px;position:relative;z-i
 nav{display:flex;gap:4px;margin-top:14px;overflow-x:auto;scrollbar-width:none}
 nav a{flex:none;font-family:Oswald;font-size:17px;text-decoration:none;padding:10px 16px 8px;background:var(--tab);color:var(--pen);border-radius:8px 8px 0 0;min-height:44px;display:flex;align-items:center;transition:background .2s,color .2s}
 nav a[aria-current]{background:var(--ink);color:var(--bg)}
+.cmpgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:6px}
+.cmpc{background:var(--card);border:2px solid var(--line);border-top:6px solid var(--ink);border-radius:8px;padding:14px}.cmpc.top{border-color:#E0B12A;border-top-color:#E0B12A}
+.cmpn{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.cmpn div{background:var(--cell);border-radius:6px;padding:8px}.cmpn b{display:block;font-family:Oswald;font-size:30px;line-height:1.1}.cmpn span{font-size:13px;color:var(--pen)}
+.subbar{position:sticky;top:0;z-index:25;background:var(--ink);color:var(--bg);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.subbar .sb{display:flex;align-items:center;gap:10px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.subbar .sbl{font-family:Oswald;font-size:15px;color:#F2B8AE;letter-spacing:.04em}
+.subbar nav{display:flex;gap:6px;margin:0;flex:1;overflow-x:auto;scrollbar-width:none}
+.subbar nav a{flex:1 0 auto;background:transparent;color:var(--bg);border:2px solid color-mix(in srgb,var(--bg) 45%,transparent);border-color:rgba(246,243,236,.45);border-radius:22px;min-height:44px;padding:0 18px;font-size:17px;justify-content:center}
+@media(max-width:600px){.subbar .sbl{display:none}.subbar .sb{padding-left:10px;padding-right:10px}.subbar nav{gap:5px}.subbar nav a{padding:0 10px;font-size:15px;flex:1 1 auto}}
+.subbar nav a:hover{border-color:var(--bg)}.subbar nav a[aria-current]{background:var(--red);border-color:var(--red);color:#fff}
 .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:8px;background:var(--cell);border-radius:10px}.subnav a{flex:1 1 140px;text-align:center;text-decoration:none;font-family:Oswald;font-size:18px;min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:7px;color:var(--pen);border:2px solid transparent}.subnav a:hover{border-color:var(--ink);color:var(--ink)}.subnav a[aria-current]{background:var(--ink);color:var(--bg)}
 main{padding:28px 0 40px;min-height:60vh}
 .lede{font-size:19px;color:var(--pen);max-width:62ch;margin:10px 0 0}
@@ -215,6 +225,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 <input type="search" id="sq" placeholder="Search any player, school or coach" aria-label="Search any player, school or coach" autocomplete="off"><div class="res" id="sr" role="listbox"></div></div></div>
 <nav aria-label="Sections"><a href="#home">Home</a><a href="#find">Find a Program</a><a href="#rankings">Rankings</a><a href="#players">Players</a><a href="#analytics">Analytics</a><a href="#about">About</a></nav>
 </div></header>
+<div id="subbar" class="subbar" hidden></div>
 <div id="teambar" hidden><div class="wrap tb"><span>You're viewing</span><b id="tbn"></b><span class="tbk" id="tbk">report card</span><button id="tbc" type="button">Close ✕</button></div></div>
 <main class="wrap" id="app"><p class="empty">Loading the board…</p></main>
 <footer><div class="wrap"><div class="links"><a href="#about">About</a><a href="#contact">Contact</a><a href="#methods">Methods</a><button type="button" id="prev">Preview the welcome question</button></div>
@@ -224,6 +235,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}footer
 const app=document.getElementById('app');
 const LS2={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 let D=null,MAP=null,IDX=null;const FIN={};
+const PLUR={QB:'quarterbacks',RB:'running backs',WR:'wide receivers',TE:'tight ends',OL:'offensive linemen',DL:'defensive tackles',EDGE:'edge rushers',LB:'linebackers',DB:'defensive backs'};
 const POS={QB:'Quarterback',RB:'Running back',WR:'Wide receiver',TE:'Tight end',OL:'Offensive line',DL:'Defensive tackle',EDGE:'Edge rusher',LB:'Linebacker',DB:'Defensive back'};
 const ST={AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'Washington, D.C.',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -262,7 +274,8 @@ const posTable=pos=>`<div class="scroll"><table><tr><th>Position</th><th>Players
 const GROUPS={players:[['players','Search players'],['predictions','Predictions'],['transfers','Transfers']],analytics:[['analytics','Does it win?'],['stayhome','Stay home or leave'],['nfl','NFL careers']],about:[['about','About'],['contact','Contact'],['methods','How it works']]};
 const GOF={};for(const g in GROUPS)for(const [r] of GROUPS[g])GOF[r]=g;
 function setNav(r){const g=GOF[r]||r;document.querySelectorAll('nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+g))}
-function subnav(r){const g=GOF[r];if(!g)return;app.insertAdjacentHTML('afterbegin',`<nav class="subnav" aria-label="${g} sections">${GROUPS[g].map(([k,l])=>`<a href="#${k}"${k===r?' aria-current="page"':''}>${l}</a>`).join('')}</nav>`)}
+const GNAME={players:'Players',analytics:'Analytics',about:'About'};
+function subnav(r){const g=GOF[r],el=document.getElementById('subbar');if(!g){el.hidden=true;el.innerHTML='';return}el.hidden=false;el.innerHTML=`<div class="wrap sb"><span class="sbl">In ${GNAME[g]}:</span><nav aria-label="${GNAME[g]} sections">${GROUPS[g].map(([k,l])=>`<a href="#${k}"${k===r?' aria-current="page"':''}>${l}</a>`).join('')}</nav></div>`}
 function rowsList(el,items,fmtVal,base,open){
   const vs=items.map(r=>r.v);const lo=Math.min(base,...vs),hi=Math.max(base,...vs),sp=(hi-lo)||1,z=(base-lo)/sp*100;
   el.innerHTML=items.length?items.map((it,n)=>{const x=(it.v-lo)/sp*100;return `<details class="row" data-k="${esc(it.key)}"><summary><span class="rk">${it.rk}</span><span class="pn">${esc(it.key)}${it.sub?`<small>${it.sub}</small>`:''}</span><span class="bar" style="--z:${z}%" aria-hidden="true"><i class="${it.v>=base?'up':'dn'}" style="left:${Math.min(x,z)}%;width:${Math.max(Math.abs(x-z),.4)}%;animation-delay:${Math.min(n,25)*25}ms"></i></span><span class="val">${fmtVal(it.v)}</span></summary><div class="slot"></div></details>`}).join(''):'<p class="empty">Nothing matches that search. Try a shorter name.</p>';
@@ -499,7 +512,7 @@ function drawConf(){const ny=lY[1]-lY[0]+1;
     return `<div class="sheet">${cellsHTML([['Programs',x.per.length],['Per program, per year',f0(x.v)],['Actual ÷ exp.',x.r.toFixed(2)+'×'],['Win % 2012–25',(100*x.c[6]).toFixed(1)+'%']])}
     <div class="scroll" style="margin-top:12px"><table><tr><th>Program</th><th>Per year</th><th>Players</th><th>Drafted</th><th>Ratio</th></tr>${x.per.slice().sort((a,b)=>b[2]-a[2]).map(([p,a,v])=>`<tr><td>${esc(p.name)}</td><td class="${v>=0?'pos':'neg'}">${f0(v)}</td><td>${a[0]}</td><td>${a[1]}</td><td>${rat(a[3],a[4])}</td></tr>`).join('')}</table></div></div>`})}
 const STAROPT=(v,any)=>`<option value="">${any}</option>${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===v?' selected':''}>${l}</option>`).join('')}`;
-function lbLabel(){const p=lbP?POS[lbP].toLowerCase()+'s':'players';return (lbS==='0'?'unranked ':lbS?lbS+'-star ':'')+p}
+function lbLabel(){const p=lbP?PLUR[lbP]:'players';return (lbS==='0'?'unranked ':lbS?lbS+'-star ':'')+p}
 function rkPosition(){
   document.getElementById('rz').innerHTML=`<div class="ctrl"><label>Position<select id="lp"><option value="">All positions</option>${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===lbP?' selected':''}>${v}</option>`).join('')}</select></label>
   <label>Stars<select id="ls">${STAROPT(lbS,'All stars')}</select></label>
@@ -548,7 +561,7 @@ function drawFinder(){
   const rows=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1);
   const g={};for(const r of rows){const k=r[7];const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
   const progs=Object.entries(g).map(([k,a])=>({k,...a,v:a.p-a.e}));
-  const desc=`${fS==='0'?'unranked ':fS?fS+'-star ':''}${POS[fP].toLowerCase()}s${fSt?' from '+ST[fSt]:''}`;
+  const desc=`${fS==='0'?'unranked ':fS?fS+'-star ':''}${PLUR[fP]}${fSt?' from '+ST[fSt]:''}`;
   const dn=rows.filter(r=>r[11]).length,mv=rows.filter(r=>r[13].length).length;
   if(!rows.length){document.getElementById('fo').innerHTML=`<p class="empty">No ${esc(desc)} signed with a college program in ${lab.toLowerCase()}. Try "Any state" or another star rating.</p>`;return}
   const gp=progs.filter(p=>p.ge>0);const ok=gp.filter(p=>p.n>=3);
@@ -595,7 +608,7 @@ function drawTx(){
   z.innerHTML=`<h2>Portal traffic by program</h2><div class="ctrl"><label>Find a program<input type="search" id="tq" placeholder="Colorado" value="${esc(txQ)}"></label></div><div class="scroll" id="tt"></div>`;
   const tq=document.getElementById('tq');tq.oninput=()=>{txQ=tq.value;drawTraffic()};drawTraffic()}
 function drawStay(){
-  const a=stay(txSch,txPos),p=stay('P4',txPos);const lab=txPos==='ALL'?'Players':POS[txPos]+'s';
+  const a=stay(txSch,txPos),p=stay('P4',txPos);const lab=txPos==='ALL'?'Players':PLUR[txPos][0].toUpperCase()+PLUR[txPos].slice(1);
   const rs=a[0]?a[1]/a[0]:null,rp=p[0]?p[1]/p[0]:null;
   const line=a[0]?`${lab} who signed with ${esc(txSch)} and stayed were drafted <b>${pct(a[1],a[0])}</b> of the time${rp&&rs!=null?`, <b>${(rs/rp).toFixed(1)}×</b> the power-conference rate for players who stayed (${pct(p[1],p[0])})`:''}.${a[0]<10?' <span class="pill">small sample</span>':''}`:`No ${esc(lab.toLowerCase())} who signed with ${esc(txSch)} in 2020–2022 stayed there.`;
   document.getElementById('to').innerHTML=`<p class="take" style="font-size:19px">${line}</p><div class="cmp">
@@ -780,14 +793,14 @@ function drawPL(){
   const rm=document.getElementById('rm');if(rm)rm.onclick=()=>{prN+=25;drawPL()}}
 function scen(r,dest){
   const hi=r[3]>=4?'hi':'lo',te=PRED.te,f=PRED.fac,k=r[14];
-  const fc=(f[r[8]]||[1])[0],fd=(f[dest]||[1])[0];
+  const g=PRED.g[r[2]],pf=x=>x?((x[6]&&x[6][g])?x[6][g][0]:x[0]):1;const fc=pf(f[r[8]]),fd=pf(f[dest]);
   return {stay:remO(r[10]*fc,k),go:remO(r[10]*fd,k),hi}}
 function predCard(r){
-  const G=PRED.g,f=PRED.fac[r[8]],fs=PRED.fac[r[7]],pos=(POS[G[r[2]]]||G[r[2]]).toLowerCase(),prof=`${r[3]?r[3]+'-star':'unranked'} ${pos}`;
+  const G=PRED.g,f=PRED.fac[r[8]],fs=PRED.fac[r[7]],fpos=f&&f[6]&&f[6][G[r[2]]],pos=(POS[G[r[2]]]||G[r[2]]).toLowerCase(),prof=`${r[3]?r[3]+'-star':'unranked'} ${pos}`;
   const dests=Object.keys(PRED.fac).sort();const def=dests.includes('Texas')&&r[8]!=='Texas'?'Texas':dests[0];
   return `<div class="sheet">${cellsHTML([['Draft odds',pc(r[9])],['Transfer odds',r[12]?'Transferred':pc(r[11])],['Year in college',yrIn(r[1])],['Rating',r[4]?r[4].toFixed(4):'—'],['Hometown',esc((r[6]?r[6]+', ':'')+r[5])]])}
-  <h3 style="margin-top:16px">Why ${pc(r[9])} to be drafted</h3><p style="margin:6px 0 0">Players like him (${esc(prof)}, rating ${r[4]?r[4].toFixed(4):'n/a'}) were drafted about <b>${pc(r[10])}</b> of the time.${f?` Players who signed with ${esc(r[8])} were drafted <b>${f[0].toFixed(2)}×</b> as often as expected.`:''}${r[14]>0?` He has gone ${r[14]} draft${r[14]>1?'s':''} without being picked, which is built in.`:''} Chance he's picked in the 2027 draft: <b>${pc(r[15])}</b>.</p>
-  <h3 style="margin-top:16px">Why ${r[12]?'he already transferred':pc(r[11])+' to transfer'}</h3><p style="margin:6px 0 0">${r[12]?`He has already moved: ${pathTxt(r[7],r[13])}.`:`<b>${pc(r[16])}</b> of ${esc(prof)}s in the 2020–2022 classes moved to a new school.${fs?` Signees at ${esc(r[7])} moved <b>${r[17].toFixed(2)}×</b> as often as similar players elsewhere`+(fs[5]?` (${fs[4]} moved vs ${Math.round(fs[5])} expected)`:'')+'.':''}`}</p>
+  <h3 style="margin-top:16px">Why ${pc(r[9])} to be drafted</h3><p style="margin:6px 0 0">Players like him (${esc(prof)}, rating ${r[4]?r[4].toFixed(4):'n/a'}) were drafted about <b>${pc(r[10])}</b> of the time.${f?` ${esc(r[8])} signees at his position were drafted <b>${(fpos?fpos[0]:f[0]).toFixed(2)}×</b> as often as expected${fpos?` (${fpos[1]} drafted vs ${Math.round(fpos[2])} expected, 2008–2018)`:''}.`:''}${r[14]>0?` He has gone ${r[14]} draft${r[14]>1?'s':''} without being picked, which is built in.`:''} Chance he's picked in the 2027 draft: <b>${pc(r[15])}</b>.</p>
+  <h3 style="margin-top:16px">Why ${r[12]?'he already transferred':pc(r[11])+' to transfer'}</h3><p style="margin:6px 0 0">${r[12]?`He has already moved: ${pathTxt(r[7],r[13])}.`:`<b>${pc(r[16])}</b> of ${esc((r[3]?r[3]+'-star':'unranked')+' '+(PLUR[G[r[2]]]||'players'))} who signed in 2020–2022 moved to a new school.${fs?` ${r[3]>=4?'4- and 5-star':'Lower-rated'} signees at ${esc(r[7])} moved <b>${r[17].toFixed(2)}×</b> as often as similar players elsewhere`+(fs[5]?` (${fs[4]} moved vs ${Math.round(fs[5])} expected)`:'')+'.':''}`}</p>
   <h3 style="margin-top:16px">Stay or transfer?</h3>
   <div class="ctrl"><label>Transfer to<input class="dest" list="schl" value="${esc(def)}"></label></div>
   <div class="cmp scen"></div><p class="small scenote"></p></div>`}
@@ -799,24 +812,42 @@ function wireScen(d,r){
     const te=PRED.te;d.querySelector('.scenote').innerHTML=`This compares the two schools' track records for players like him. History adds a caution: ${s.hi==='hi'?'4- and 5-stars':'2- and 3-stars'} who transferred (2019–2022 classes) were drafted ${te['moved_'+s.hi]}× as often as expected, against ${te['stayed_'+s.hi]}× for those who stayed. Part of that gap is who transfers, often players not winning a job, so it isn't counted in the numbers above.`;
     out.innerHTML=`<div class="c"><div class="small">Stays at ${esc(r[8])}</div><div class="big">${pc(s.stay)}</div><p class="small">eventual draft odds</p></div><div class="c"><div class="small">Transfers to ${esc(key)}</div><div class="big ${diff>=0?'':'pos'}">${pc(s.go)}</div><p class="small">${diff>=0?'up':'down'} ${(Math.abs(diff)*100).toFixed(1)} points vs staying</p></div>`};
   inp.addEventListener('input',draw);draw()}
+const ACAD=new Set(['Air Force','Army','Navy']);
+let cmp=['Alabama','LSU','Iowa','Oregon'];
 function predCalc(){
-  document.getElementById('pz').innerHTML=`<p class="take" style="font-size:18px">Pick a position and star rating. See how players like you have done at every school.</p>
+  document.getElementById('pz').innerHTML=`${schoolList()}<p class="take" style="font-size:18px">Pick your position and star rating. See how players like you have done at every school, or compare a few side by side.</p>
   <div class="ctrl"><label>Position<select id="cp">${Object.entries(POS).map(([k,v])=>`<option value="${k}"${k===cP?' selected':''}>${v}</option>`).join('')}</select></label>
-  <label>Stars<select id="cs">${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===cS?' selected':''}>${l}</option>`).join('')}</select></label>
-  <label>Find a school<input type="search" id="cq" placeholder="Type a school" value="${esc(cQ)}"></label></div><div id="co"></div>`;
+  <label>Stars<select id="cs">${[['5','5-star'],['4','4-star'],['3','3-star'],['2','2-star'],['0','Unranked']].map(([k,l])=>`<option value="${k}"${k===cS?' selected':''}>${l}</option>`).join('')}</select></label></div>
+  <h2 style="margin-top:18px">Compare schools</h2><p class="small" style="font-size:15px">Type up to four schools.</p>
+  <div class="ctrl">${cmp.map((c,i)=>`<label>School ${i+1}<input class="cmpi" data-i="${i}" list="schl" value="${esc(c)}" placeholder="Type a school"></label>`).join('')}</div>
+  <div id="cmpo" class="cmpgrid"></div>
+  <h2 style="margin-top:28px">Every school</h2>
+  <div class="ctrl"><label>Find a school<input type="search" id="cq" placeholder="Type a school" value="${esc(cQ)}"></label></div><div id="co"></div>`;
   const u=()=>{cP=document.getElementById('cp').value;cS=document.getElementById('cs').value;cAll=false;drawCalc()};document.getElementById('cp').onchange=u;document.getElementById('cs').onchange=u;
+  app.querySelectorAll('.cmpi').forEach(inp=>inp.oninput=()=>{const v=inp.value.trim();const k=Object.keys(PRED.fac).find(x=>x.toLowerCase()===v.toLowerCase());if(k||!v){cmp[+inp.dataset.i]=k||'';drawCmp()}});
   document.getElementById('cq').oninput=e=>{cQ=e.target.value;drawCalc()};drawCalc()}
+function calcRow(k,f,b){const pf=f[6]&&f[6][cP]?f[6][cP]:[f[0],0,0];const tf=+cS>=4?f[7]:f[8];return {k,f,pf,d:Math.min(.9,b[0]*pf[0]),t:Math.min(.97,b[2]*(tf||f[1]))}}
+function drawCmp(){const b=PRED.calc[cS+cP],o=document.getElementById('cmpo');if(!o)return;if(!b){o.innerHTML='';return}
+  const lab=`${cS==='0'?'unranked':cS+'-star'} ${PLUR[cP]}`;
+  getFin(cP).then(rows=>{const list=cmp.filter(Boolean).map(k=>calcRow(k,PRED.fac[k],b));const best=list.length?Math.max(...list.map(x=>x.d)):0;
+    o.innerHTML=list.length?list.map(x=>{const like=rows.filter(r=>r[6]===x.k&&r[2]===+cS&&r[1]<=2020);const dr=like.filter(r=>r[11]);
+      return `<div class="cmpc${x.d===best?' top':''}"><div class="ln">${esc(x.k)}</div>${ACAD.has(x.k)?'<span class="pill">service academy</span>':''}
+      <div class="cmpn"><div><b>${pc(x.d)}</b><span>draft odds</span></div><div><b>${pc(x.t)}</b><span>transfer odds</span></div></div>
+      <p class="small" style="margin:8px 0 0">${like.length?`<b>${like.length}</b> ${esc(lab)} signed here (2008–2020); <b>${dr.length}</b> drafted${dr.length?`, best: ${esc(dr.sort((a,b)=>a[10]-b[10])[0][0])} (pick #${dr[0][10]})`:''}.`:`No ${esc(lab)} signed here 2008–2020, so this leans on the school's overall record.`}</p>
+      <p class="small" style="margin:4px 0 0">Track record with ${esc(PLUR[cP])}: ${x.pf[1]} drafted vs ${Math.round(x.pf[2])} expected${x.pf[2]<3?' <span class="pill">small sample</span>':''}</p></div>`}).join(''):'<p class="empty">Type a school above to compare.</p>'}).catch(()=>{})}
 function drawCalc(){
-  const b=PRED.calc[cS+cP],o=document.getElementById('co');const lab=`${cS==='0'?'unranked':cS+'-star'} ${POS[cP].toLowerCase()}`;
-  if(!b){o.innerHTML=`<p class="empty">Too few ${esc(lab)}s since 2008 to estimate. Try another star rating.</p>`;return}
-  const all=Object.entries(PRED.fac).map(([k,f])=>({k,d:Math.min(.9,b[0]*f[0]),t:Math.min(.97,b[2]*f[1]),f})).sort((x,y)=>cSort==='t'?x.t-y.t:y.d-x.d);all.forEach((r,i)=>r.rank=i+1);
-  const q=cQ.trim().toLowerCase();const rows=q?all.filter(r=>r.k.toLowerCase().includes(q)):(cAll?all:all.slice(0,15));const top=all[0];
+  const b=PRED.calc[cS+cP],o=document.getElementById('co');const lab=`${cS==='0'?'unranked':cS+'-star'} ${PLUR[cP].replace(/men$/,'man').replace(/s$/,'')}`;
+  if(!b){o.innerHTML=`<p class="empty">Too few players like that since 2008 to estimate. Try another star rating.</p>`;document.getElementById('cmpo').innerHTML='';return}
+  drawCmp();
+  const all=Object.entries(PRED.fac).map(([k,f])=>calcRow(k,f,b)).sort((x,y)=>cSort==='t'?(ACAD.has(x.k)-ACAD.has(y.k))||x.t-y.t:y.d-x.d);all.forEach((r,i)=>r.rank=i+1);
+  const q=cQ.trim().toLowerCase();const rows=q?all.filter(r=>r.k.toLowerCase().includes(q)):(cAll?all:all.slice(0,15));const top=all.find(r=>cSort==='t'?!ACAD.has(r.k):r.pf[2]>=3)||all[0];
   o.innerHTML=`<div class="cmp"><div class="c"><div class="small">A typical ${esc(lab)}, nationally</div><div class="big2">${pc(b[0])}</div><p class="small">drafted · ${pc(b[2])} transfer · ${b[3].toLocaleString()} players since 2008</p></div>
-  <div class="c"><div class="small">${cSort==='t'?'Least likely to transfer':'Best odds to be drafted'}</div><div class="big2">${pc(cSort==='t'?top.t:top.d)}</div><p class="small">at <b>${esc(top.k)}</b></p></div></div>
-  <div class="bigseg" role="group" aria-label="Sort schools by" style="margin-top:18px">${[['d','Draft odds'],['t','Least likely to transfer']].map(([k,l])=>`<button data-cs="${k}" aria-pressed="${cSort===k}">${l}</button>`).join('')}</div>
-  <div class="scroll" style="margin-top:14px">${rows.length?`<table><tr><th>Rank</th><th class="l">School</th><th>Draft odds</th><th>Transfer odds</th><th>Signees drafted vs expected</th></tr>${rows.map(r=>`<tr><td>${r.rank}</td><td class="l"><b>${esc(r.k)}</b></td><td>${pc(r.d)}</td><td>${pc(r.t)}</td><td>${r.f[2]} vs ${Math.round(r.f[3])}</td></tr>`).join('')}</table>`:`<p class="empty">No school matches "${esc(cQ)}".</p>`}</div>
-  ${!cAll&&!q?`<button class="bigbtn" id="call">Show all ${all.length} schools</button>`:''}<p class="small" style="margin-top:12px">Schools with few signees are pulled toward average, so small programs don't swing to the top on a handful of picks.</p>`;
-  app.querySelectorAll('[data-cs]').forEach(x=>x.onclick=()=>{cSort=x.dataset.cs;drawCalc()});const ca=document.getElementById('call');if(ca)ca.onclick=()=>{cAll=true;drawCalc()}}
+  <div class="c"><div class="small">${cSort==='t'?'Least likely to transfer (not counting service academies)':'Best odds to be drafted (schools with a real track record at this position)'}</div><div class="big2">${pc(cSort==='t'?top.t:top.d)}</div><p class="small">at <b>${esc(top.k)}</b></p></div></div>
+  <div class="bigseg" role="group" aria-label="Sort schools by" style="margin-top:18px">${[['d','Best draft odds'],['t','Least likely to transfer']].map(([k,l])=>`<button data-cs="${k}" aria-pressed="${cSort===k}">${l}</button>`).join('')}</div>
+  <div class="scroll" style="margin-top:14px">${rows.length?`<table><tr><th>Rank</th><th class="l">School</th><th>Draft odds</th><th>Transfer odds</th><th>At this position: drafted vs expected</th><th></th></tr>${rows.map(r=>`<tr><td>${r.rank}</td><td class="l"><b>${esc(r.k)}</b>${ACAD.has(r.k)?' <span class="pill">service academy</span>':''}</td><td>${pc(r.d)}</td><td>${pc(r.t)}</td><td>${r.pf[1]} vs ${Math.round(r.pf[2])}${r.pf[2]<3?' <span class="pill">small sample</span>':''}</td><td><button class="morebtn" data-add="${esc(r.k)}" style="margin:0;min-height:36px">Compare</button></td></tr>`).join('')}</table>`:`<p class="empty">No school matches "${esc(cQ)}".</p>`}</div>
+  ${!cAll&&!q?`<button class="bigbtn" id="call">Show all ${all.length} schools</button>`:''}<p class="small" style="margin-top:12px">Each school's odds use its record at this position (draft) and with players of this star level (transfers), pulled toward its overall record when the sample is small. Service academies are listed last for transfers because their players owe military service.</p>`;
+  app.querySelectorAll('[data-cs]').forEach(x=>x.onclick=()=>{cSort=x.dataset.cs;drawCalc()});const ca=document.getElementById('call');if(ca)ca.onclick=()=>{cAll=true;drawCalc()};
+  o.querySelectorAll('[data-add]').forEach(btn=>btn.onclick=()=>{const k=btn.dataset.add;if(cmp.includes(k))return;const i=cmp.findIndex(x=>!x);const j=i>=0?i:3;cmp[j]=k;const inp=app.querySelector(`.cmpi[data-i="${j}"]`);if(inp)inp.value=k;drawCmp();document.getElementById('cmpo').scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})})}
 
 /* ---------- ANALYTICS ---------- */
 let anX='dev';

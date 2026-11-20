@@ -36,6 +36,10 @@ def pr(r): return pr0(r)*PFr.get((r['pg'],r['stars'] or 0),1)
 sf=collections.defaultdict(lambda:[0,0])
 for r in mat: x=sf[r['committedTo']]; x[0]+=isd(r); x[1]+=pd(r)
 SFd={k:(a+8)/(b+8) for k,(a,b) in sf.items()}
+# school x position draft factor, shrunk toward the school's overall factor (weight = 4 expected picks)
+sfp=collections.defaultdict(lambda:[0,0])
+for r in mat: x=sfp[(r['committedTo'],r['pg'])]; x[0]+=isd(r); x[1]+=pd(r)
+def fdp(s_,g): a,b=sfp.get((s_,g),(0,0)); return (a+8*SFd.get(s_,1))/(b+8)
 # --- transfer: moved schools at least once, classes 2020-2022 (portal era), by stars and position, then school factor
 T=[r for r in P if 2020<=r['year']<=2022]
 tb=collections.defaultdict(lambda:[0,0]); ts=collections.defaultdict(lambda:[0,0])
@@ -46,6 +50,9 @@ def pt0(s,g):
 tf=collections.defaultdict(lambda:[0,0])
 for r in T: x=tf[r['committedTo']]; x[0]+=moved(r); x[1]+=pt0(r['stars'] or 0,r['pg'])
 SFt={k:(a+10)/(b+10) for k,(a,b) in tf.items()}
+tft=collections.defaultdict(lambda:[0,0])
+for r in T: x=tft[(r['committedTo'],'hi' if (r['stars'] or 0)>=4 else 'lo')]; x[0]+=moved(r); x[1]+=pt0(r['stars'] or 0,r['pg'])
+def ftt(s_,t): a,b=tft.get((s_,t),(0,0)); return (a+8*SFt.get(s_,1))/(b+8)
 cap=lambda x:max(0.001,min(0.9,x))
 # --- backtest on 2016-2018 classes (known outcomes): calibration by predicted decile
 bt=[r for r in P if 2016<=r['year']<=2018]
@@ -69,9 +76,9 @@ GL=['QB','RB','WR','TE','OL','DL','EDGE','LB','DB','ATH','ST']
 rows=[]
 def rem(p,k): return p*(1-M[k])/(1-p*M[k])
 for r in cur:
-    k=r['k']; f=SFd.get(last(r),1); full=cap(pd(r)*f); d=rem(full,k)
+    k=r['k']; f=fdp(last(r),r['pg']); full=cap(pd(r)*f); d=rem(full,k)
     nxt=full*(M[min(8,k+1)]-M[k])/(1-full*M[k])
-    mv=moved(r); t0=pt0(r['stars'] or 0,r['pg']); ft=SFt.get(r['committedTo'],1)
+    mv=moved(r); t0=pt0(r['stars'] or 0,r['pg']); ft=ftt(r['committedTo'],'hi' if (r['stars'] or 0)>=4 else 'lo')
     t=1.0 if mv else cap(t0*ft)
     rows.append([r['name'],r['year'],GL.index(r['pg']),r['stars'] or 0,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],last(r),round(d,4),round(pd(r),4),round(t,3),1 if mv else 0,[[m[0],m[1]] for m in r['mv']],k,round(nxt,4),round(t0,3),round(ft,3)])
 # calculator tables: by stars x position, average base rates for HS signees in mature classes (rating varies within stars)
@@ -81,11 +88,15 @@ for s in (0,2,3,4,5):
         grp=[r for r in mat if (r['stars'] or 0)==s and r['pg']==g and r['recruitType']=='HighSchool']
         if len(grp)<20: continue
         calc[f'{s}{g}']=[round(sum(pd(r) for r in grp)/len(grp),4),round(sum(pr(r) for r in grp)/len(grp),5),round(pt0(s,g),3),len(grp)]
-fac={k:[round(SFd.get(k,1),3),round(SFt.get(k,1),3),sf[k][0],round(sf[k][1],1),tf[k][0] if k in tf else 0,round(tf[k][1],1) if k in tf else 0] for k in FBS if k in sf and sf[k][1]>=3}
+GP=['QB','RB','WR','TE','OL','DL','EDGE','LB','DB']
+fac={k:[round(SFd.get(k,1),3),round(SFt.get(k,1),3),sf[k][0],round(sf[k][1],1),tf[k][0] if k in tf else 0,round(tf[k][1],1) if k in tf else 0,
+   {g:[round(fdp(k,g),3),sfp[(k,g)][0],round(sfp[(k,g)][1],1)] for g in GP},round(ftt(k,'hi'),3),round(ftt(k,'lo'),3)] for k in FBS if k in sf and sf[k][1]>=3}
 BT=json.load(open(O+'bt.json')) if os.path.exists(O+'bt.json') else dec
 if HOLD: json.dump(dec,open(O+'bt.json','w'))
 out=dict(rows=rows,g=GL,calc=calc,fac=fac,bt=BT,M=M,te=TE)
 s=json.dumps(out,separators=(',',':')); open(O+'pred.json','w').write(s)
 print(len(rows),len(s)//1024,'KB'); print('LSU',fac.get('LSU'),'Alabama',fac.get('Alabama'),'Texas',fac.get('Texas'),'Iowa',fac.get('Iowa'))
 print('4WR',calc.get('4WR'),'3WR',calc.get('3WR'),'5QB',calc.get('5QB'))
-print(sorted(rows,key=lambda r:-r[9])[:3]); print([r for r in rows if r[0] in ('Jabari Mack','Kylan Billiot')])
+for g,st in (('WR',4),('OL',3),('QB',4)):
+    t='hi' if st>=4 else 'lo'
+    print(g,st,'draft top',[k for k,_ in sorted(fac.items(),key=lambda kv:-kv[1][6][g][0])[:4]],'stay top',[k for k,_ in sorted(fac.items(),key=lambda kv:kv[1][7 if t=='hi' else 8])[:4]]); print([r for r in rows if r[0] in ('Jabari Mack','Kylan Billiot')])
