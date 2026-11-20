@@ -1,0 +1,260 @@
+## Joe Burrow [P048716] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2015 HighSchool 4* 0.9003 DUAL The Plains, OH -> Ohio State
+  stint: Ohio State 2014-2017 (2014,2015,2016,2017) [verified]
+  stint: LSU 2018-2019 (2018,2019) [verified]
+  event: Inferred school movement | pre-2021 (before portal data) | Ohio State -> LSU (2017->2018)
+  season 2014 Ohio State QB: any 0, position 0, ST-only 0
+  season 2015 Ohio State QB: any 0, position 0, ST-only 0
+  season 2016 Ohio State QB: any 5, position 4, ST-only 0
+  season 2017 Ohio State QB: any 5, position 4, ST-only 0
+  season 2018 LSU QB: any 13, position 13, ST-only 0
+  season 2019 LSU QB: any 15, position 15, ST-only 0
+  outcome: drafted 2020 R1 #1 LSU [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Partly correct. Ohio State to LSU, draft #1 correct. Roster adds a 2014 Ohio State season before he enrolled (2015): roster padding.
+## Jordan Addison [P069268] identity: linked ['roster_recruit_id'] []
+  recruit: 2020 HighSchool 4* 0.9085 ATH Frederick, MD -> Pittsburgh
+  stint: Pittsburgh 2020-2021 (2020,2021) [verified]
+  stint: USC 2022-2022 (2022) [verified]
+  event: Confirmed | portal entry and destination roster agree | Pittsburgh -> USC (2021->2022)
+  season 2020 Pittsburgh WR: any 10, position 10, ST-only 0
+  season 2021 Pittsburgh WR: any 14, position 14, ST-only 0
+  season 2022 USC WR: any 11, position 11, ST-only 0
+  outcome: drafted 2023 R1 #23 USC [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Pitt 2020-21, USC 2022, Confirmed transfer, 2023 #23.
+## Jalen Hurts [P054141] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2016 HighSchool 4* 0.9262 DUAL Channelview, TX -> Alabama
+  stint: Alabama 2015-2018 (2015,2016,2017,2018) [verified]
+  stint: Oklahoma 2019-2019 (2019) [verified]
+  event: Inferred school movement | pre-2021 (before portal data) | Alabama -> Oklahoma (2018->2019)
+  season 2015 Alabama QB: any 0, position 0, ST-only 0
+  season 2016 Alabama QB: any 15, position 15, ST-only 0
+  season 2017 Alabama QB: any 14, position 14, ST-only 0
+  season 2018 Alabama QB: any 13, position 13, ST-only 0
+  season 2019 Oklahoma QB: any 14, position 14, ST-only 0
+  outcome: drafted 2020 R2 #53 Oklahoma [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Partly correct. Alabama to Oklahoma and 2020 #53 correct. Roster adds a 2015 Alabama season before he enrolled.
+## Justin Fields [P160593] identity: recruitment_only [] []
+  recruit: 2018 HighSchool 5* 0.9998 DUAL Kennesaw, GA -> Georgia
+  outcome: drafted 2021 R1 #11 Ohio State [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Unresolved (correctly not guessed). Two athlete ids named Justin Fields on Georgia's 2017-18 rosters, so the name match is ambiguous; Georgia and Ohio State seasons are missing from his record. Needs a manual identity decision.
+## Baker Mayfield [P147560] identity: roster_only [] []
+  stint: Texas Tech 2013-2013 (2013) [verified]
+  stint: Oklahoma 2014-2017 (2014,2015,2016,2017) [verified]
+  event: Inferred school movement | pre-2021 (before portal data) | Texas Tech -> Oklahoma (2013->2014)
+  season 2013 Texas Tech QB: any 8, position 8, ST-only 0
+  season 2014 Oklahoma QB: any 0, position 0, ST-only 0
+  season 2015 Oklahoma QB: any 13, position 13, ST-only 0
+  season 2016 Oklahoma QB: any 13, position 13, ST-only 0
+  season 2017 Oklahoma QB: any 14, position 14, ST-only 0
+  outcome: drafted 2018 R1 #1 Oklahoma [cfbd draft collegeAthleteId = roster id, last name checked]
+
+## Baker Mayfield [P150591] identity: recruitment_only [] []
+  recruit: 2013 HighSchool 3* 0.8406 PRO Austin, TX -> None
+  outcome: unknown  R #  []
+  >> HAND CHECK: Partly correct. Roster record is right (Texas Tech 2013, Oklahoma 2014-17, 2018 #1). His recruiting record lists no school (walk-on), so it stays a separate, unlinked record.
+## Cam Ward [P079947] identity: roster_only [] []
+  stint: Incarnate Word 2021-2021 (2021) [verified]
+  stint: Washington State 2022-2023 (2022,2023) [verified]
+  stint: Miami 2024-2024 (2024) [verified]
+  event: Inferred school movement | 2021+ (portal entry from origin with same last name, different first name: possible name variant) | Incarnate Word -> Washington State (2021->2022)
+  event: Confirmed | portal entry and destination roster agree | Washington State -> Miami (2023->2024)
+  season 2021 Incarnate Word QB: any 6, position 1, ST-only 0
+  season 2022 Washington State QB: any 13, position 13, ST-only 0
+  season 2023 Washington State QB: any 12, position 12, ST-only 0
+  season 2024 Miami QB: any 13, position 13, ST-only 0
+  outcome: drafted 2025 R1 #1 Miami [cfbd draft collegeAthleteId = roster id, last name checked]
+  >> HAND CHECK: Partly correct. Incarnate Word to Washington State to Miami and 2025 #1 correct. UIW 2020 missing (no roster file for that FCS season). First move is Inferred, flagged as a possible portal name variant (Cameron vs Cam).
+## Caleb Williams [P070747] identity: linked ['roster_recruit_id'] []
+  recruit: 2021 HighSchool 5* 0.9969 QB Washington, DC -> Oklahoma
+  stint: Oklahoma 2021-2021 (2021) [verified]
+  stint: USC 2022-2023 (2022,2023) [verified]
+  event: Confirmed | portal entry and destination roster agree | Oklahoma -> USC (2021->2022)
+  season 2021 Oklahoma QB: any 11, position 10, ST-only 0
+  season 2022 USC QB: any 14, position 14, ST-only 0
+  season 2023 USC QB: any 12, position 12, ST-only 0
+  outcome: drafted 2024 R1 #1 USC [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Oklahoma 2021, USC 2022-23, Confirmed, 2024 #1.
+## Bo Nix [P067487] identity: linked ['roster_recruit_id'] ['multiple roster athlete ids']
+  recruit: 2019 HighSchool 5* 0.9856 DUAL Pinson, AL -> Auburn
+  stint: Auburn 2019-2021 (2019,2020,2021) [verified]
+  stint: Oregon 2022-2023 (2022,2023) [verified]
+  event: Confirmed | portal entry and destination roster agree (new athlete id at destination, joined by name) | Auburn -> Oregon (2021->2022)
+  season 2019 Auburn QB: any 13, position 13, ST-only 0
+  season 2020 Auburn QB: any 11, position 11, ST-only 0
+  season 2021 Auburn QB: any 10, position 10, ST-only 0
+  season 2022 Oregon QB: any 13, position 13, ST-only 0
+  season 2023 Oregon QB: any 14, position 14, ST-only 0
+  outcome: drafted 2024 R1 #12 Oregon [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Auburn 2019-21, Oregon 2022-23; CFBD gave him a new id at Oregon, joined by the portal bridge. 2024 #12.
+## Michael Penix Jr. [P061594] identity: linked ['roster_recruit_id'] []
+  recruit: 2018 HighSchool 3* 0.8749 PRO Tampa, FL -> Indiana
+  stint: Indiana 2018-2021 (2018,2019,2020,2021) [verified]
+  stint: Washington 2022-2023 (2022,2023) [verified]
+  event: Confirmed | portal entry and destination roster agree | Indiana -> Washington (2021->2022)
+  season 2018 Indiana QB: any 2, position 2, ST-only 0
+  season 2019 Indiana QB: any 6, position 6, ST-only 0
+  season 2020 Indiana QB: any 6, position 6, ST-only 0
+  season 2021 Indiana QB: any 5, position 5, ST-only 0
+  season 2022 Washington QB: any 13, position 13, ST-only 0
+  season 2023 Washington QB: any 15, position 15, ST-only 0
+  outcome: drafted 2024 R1 #8 Washington [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Indiana 2018-21, Washington 2022-23, Confirmed, 2024 #8.
+## Jayden Daniels [P067496] identity: linked ['roster_recruit_id'] []
+  recruit: 2019 HighSchool 4* 0.9832 DUAL San Bernardino, CA -> Arizona State
+  stint: Arizona State 2019-2021 (2019,2020,2021) [verified]
+  stint: LSU 2022-2023 (2022,2023) [verified]
+  event: Confirmed | portal entry and destination roster agree | Arizona State -> LSU (2021->2022)
+  season 2019 Arizona State QB: any 12, position 12, ST-only 0
+  season 2020 Arizona State QB: any 4, position 4, ST-only 0
+  season 2021 Arizona State QB: any 13, position 13, ST-only 0
+  season 2022 LSU QB: any 14, position 14, ST-only 0
+  season 2023 LSU QB: any 12, position 12, ST-only 0
+  outcome: drafted 2024 R1 #2 LSU [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Arizona State 2019-21, LSU 2022-23, Confirmed, 2024 #2.
+## Nolan Smith [P162449] identity: recruitment_only [] []
+  recruit: 2019 HighSchool 5* 0.9994 WDE Bradenton, FL -> Georgia
+  outcome: drafted 2023 R1 #30 Georgia [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Unresolved (correctly not guessed). The Georgia roster id also matches a second same-name recruit and runs past his 2023 draft, and a 2025 pick carries the same id. Draft outcome (2023 #30) kept from the official link; roster seasons held back.
+## Khalil Herbert [P052623] identity: linked ['roster_recruit_id'] []
+  recruit: 2016 HighSchool 3* 0.8008 RB Fort Lauderdale, FL -> Kansas
+  stint: Kansas 2016-2019 (2016,2017,2018,2019) [verified]
+  stint: Virginia Tech 2020-2020 (2020) [verified]
+  stint: Kansas 2021-2021 (2021) [verified]
+  event: Inferred school movement | pre-2021 (before portal data) | Kansas -> Virginia Tech (2019->2020)
+  event: Unknown/unresolved | roster lists the player after he was drafted (roster error) | Virginia Tech -> Kansas (2020->2021)
+  season 2016 Kansas RB: any 8, position 8, ST-only 0
+  season 2017 Kansas RB: any 11, position 11, ST-only 0
+  season 2018 Kansas RB: any 12, position 12, ST-only 0
+  season 2019 Kansas RB: any 4, position 4, ST-only 0
+  season 2020 Virginia Tech RB: any 11, position 10, ST-only 1
+  season 2021 Kansas RB: any 0, position 0, ST-only 0
+  outcome: drafted 2021 R6 #217 Virginia Tech [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct, with roster error caught. Kansas 2016-19, Virginia Tech 2020, 2021 #217. The roster also lists him back at Kansas in 2021 (after the draft); that move is set to Unknown/unresolved as a roster error.
+## Jameson Williams [P162459] identity: recruitment_only [] []
+  recruit: 2019 HighSchool 4* 0.9621 WR St. Louis, MO -> Ohio State
+  outcome: drafted 2022 R1 #12 Alabama [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Unresolved (correctly not guessed). Two Ohio State recruits share the name (2019 WR, 2020 RB). The Ohio State roster id runs 2020-23 and doesn't match his real path (Ohio State 2019-20, Alabama 2021). Draft outcome kept; roster seasons held back.
+## Zavion Thomas [P088096] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2022 HighSchool 4* 0.8926 WR Marrero, LA -> Mississippi State
+  stint: Mississippi State 2022-2023 (2022,2023) [verified]
+  stint: LSU 2024-2025 (2024,2025) [verified]
+  event: Confirmed | portal entry and destination roster agree | Mississippi State -> LSU (2023->2024)
+  season 2022 Mississippi State WR: any 9, position 1, ST-only 6
+  season 2023 Mississippi State WR: any 11, position 10, ST-only 1
+  season 2024 LSU WR: any 13, position 11, ST-only 0
+  season 2025 LSU WR: any 13, position 13, ST-only 0
+  outcome: drafted 2026 R3 #89 LSU [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Mississippi State 2022-23, LSU 2024-25, Confirmed, 2026 #89. CFBD's wrong recruit-id link to Rara Thomas is now held back.
+## Chris Hilton Jr. [P070538] identity: linked ['roster_recruit_id'] []
+  recruit: 2021 HighSchool 4* 0.9646 WR Zachary, LA -> LSU
+  stint: LSU 2021-2025 (2021,2022,2023,2024,2025) [verified]
+  season 2021 LSU WR: any 2, position 2, ST-only 0
+  season 2022 LSU WR: any 2, position 2, ST-only 0
+  season 2023 LSU WR: any 7, position 7, ST-only 0
+  season 2024 LSU WR: any 4, position 4, ST-only 0
+  season 2025 LSU WR: any 9, position 7, ST-only 0
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Correct. LSU 2021-25; no draft record through 2026 (undrafted).
+## Eric Goins [P136349] identity: identity_unresolved [] ['roster id check: unresolved']
+  stint: The Citadel 2013-2015 (2013,2014,2015) [unknown]
+  stint: Notre Dame 2024-2024 (2024) [unknown]
+  event: Unknown/unresolved | roster id fails the identity check (unresolved) | The Citadel -> Notre Dame (2015->2024)
+  season 2013 The Citadel PK: any 1, position 0, ST-only 1
+  season 2014 The Citadel PK: any 0, position 0, ST-only 0
+  season 2015 The Citadel PK: any 2, position 2, ST-only 2
+  season 2024 Notre Dame PK: any 2, position 1, ST-only 1
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Unresolved (correctly flagged). One id: The Citadel 2013-15, then Notre Dame 2024 (nine-season gap). Identity check fails; the move is Unknown/unresolved, not a transfer.
+## Keisean Nixon [P060457] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2017 JUCO 4* 0.8903 CB Paramount, CA -> South Carolina
+  stint: South Carolina 2015-2018 (2015,2016,2017,2018) [verified]
+  season 2015 South Carolina DB: any 0, position not_available, ST-only 0
+  season 2016 South Carolina DB: any 0, position not_available, ST-only 0
+  season 2017 South Carolina DB: any 4, position not_available, ST-only 0
+  season 2018 South Carolina DB: any 11, position not_available, ST-only 0
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Partly correct. JUCO signee, South Carolina; not drafted (correct). Roster adds 2015-16 South Carolina seasons when he was at junior college: roster padding.
+## Nathan Rourke [P058118] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2017 JUCO 2* 0.7893 PRO Elmore, AL -> Ohio
+  stint: Ohio 2016-2019 (2016,2017,2018,2019) [verified]
+  season 2016 Ohio QB: any 0, position 0, ST-only 0
+  season 2017 Ohio QB: any 13, position 13, ST-only 0
+  season 2018 Ohio QB: any 13, position 13, ST-only 0
+  season 2019 Ohio QB: any 13, position 13, ST-only 0
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Partly correct. JUCO signee, Ohio QB; not drafted (correct). Roster adds a 2016 Ohio season when he was at junior college.
+## Quinn Ewers [P093245] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2021 HighSchool 5* 1 QB Southlake, TX -> Ohio State
+  stint: Texas 2022-2024 (2022,2023,2024) [verified]
+  event: Confirmed | portal entry + destination roster (same name); no origin-roster movement on file | Ohio State -> Texas (->2022)
+  season 2022 Texas QB: any 10, position 10, ST-only 0
+  season 2023 Texas QB: any 12, position 12, ST-only 0
+  season 2024 Texas QB: any 14, position 14, ST-only 0
+  outcome: drafted 2025 R7 #231 Texas [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Partly correct. Ohio State signee, Confirmed move to Texas (2022-24), 2025 #231. Ohio State 2021 season missing (not on that roster file).
+## Dillon Gabriel [P068075] identity: linked ['roster_recruit_id'] []
+  recruit: 2019 HighSchool 3* 0.8704 PRO Mililani, HI -> UCF
+  stint: UCF 2019-2021 (2019,2020,2021) [verified]
+  stint: Oklahoma 2022-2023 (2022,2023) [verified]
+  stint: Oregon 2024-2024 (2024) [verified]
+  event: Confirmed | portal entry and destination roster agree | UCF -> Oklahoma (2021->2022)
+  event: Confirmed | portal entry and destination roster agree | Oklahoma -> Oregon (2023->2024)
+  season 2019 UCF QB: any 13, position 13, ST-only 0
+  season 2020 UCF QB: any 10, position 10, ST-only 0
+  season 2021 UCF QB: any 3, position 3, ST-only 0
+  season 2022 Oklahoma QB: any 12, position 12, ST-only 0
+  season 2023 Oklahoma QB: any 12, position 12, ST-only 0
+  season 2024 Oregon QB: any 14, position 14, ST-only 0
+  outcome: drafted 2025 R3 #94 Oregon [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. UCF 2019-21, Oklahoma 2022-23, Oregon 2024, two Confirmed transfers, 2025 #94.
+## Jaxson Dart [P080116] identity: linked ['roster_recruit_id'] []
+  recruit: 2021 HighSchool 4* 0.9693 QB Draper, UT -> USC
+  stint: USC 2021-2021 (2021) [verified]
+  stint: Ole Miss 2022-2024 (2022,2023,2024) [verified]
+  event: Confirmed | portal entry and destination roster agree | USC -> Ole Miss (2021->2022)
+  season 2021 USC QB: any 6, position 6, ST-only 0
+  season 2022 Ole Miss QB: any 13, position 13, ST-only 0
+  season 2023 Ole Miss QB: any 13, position 13, ST-only 0
+  season 2024 Ole Miss QB: any 13, position 13, ST-only 0
+  outcome: drafted 2025 R1 #25 Ole Miss [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. USC 2021, Ole Miss 2022-24, Confirmed, 2025 #25.
+## Shedeur Sanders [P071094] identity: linked ['roster_recruit_id'] []
+  recruit: 2021 HighSchool 4* 0.9126 QB Cedar Hill, TX -> Jackson State
+  stint: Jackson State 2021-2022 (2021,2022) [verified]
+  stint: Colorado 2023-2024 (2023,2024) [verified]
+  event: Confirmed | portal entry and destination roster agree | Jackson State -> Colorado (2022->2023)
+  season 2021 Jackson State QB: any 6, position 1, ST-only 0
+  season 2022 Jackson State QB: any 12, position 12, ST-only 0
+  season 2023 Colorado QB: any 11, position 11, ST-only 0
+  season 2024 Colorado QB: any 13, position 13, ST-only 0
+  outcome: drafted 2025 R5 #144 Colorado [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Jackson State 2021-22, Colorado 2023-24, Confirmed, 2025 #144.
+## Travis Hunter [P078852] identity: linked ['roster_recruit_id'] []
+  recruit: 2022 HighSchool 5* 0.9999 CB Suwanee, GA -> Jackson State
+  stint: Jackson State 2022-2022 (2022) [verified]
+  stint: Colorado 2023-2024 (2023,2024) [verified]
+  event: Confirmed | portal entry and destination roster agree | Jackson State -> Colorado (2022->2023)
+  season 2022 Jackson State WR: any 7, position 7, ST-only 0
+  season 2023 Colorado WR: any 9, position 9, ST-only 0
+  season 2024 Colorado WR: any 13, position 13, ST-only 0
+  outcome: drafted 2025 R1 #2 Colorado [official draft linkage v1.28 (link.py + linkfix.json)]
+  >> HAND CHECK: Correct. Jackson State 2022, Colorado 2023-24, Confirmed, 2025 #2.
+## Avery Peterson [P010804] identity: linked_by_name_school ['name_school_window', 'roster_recruit_id'] ['multiple recruitment records (e.g. high school and JUCO) merged']
+  recruit: 2012 HighSchool 4* 0.9159 WR Chatham, VA -> LSU
+  recruit: 2013 PrepSchool 4* 0.92 WR Chatham, VA -> LSU
+  stint: LSU 2013-2014 (2013,2014) [verified]
+  season 2013 LSU WR: any 0, position 0, ST-only 0
+  season 2014 LSU WR: any 0, position 0, ST-only 0
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Partly correct. High school and prep (Hargrave) records correctly merged; LSU 2013-14 correct. Later Cincinnati season (2015) missing from his record.
+## Joshua Singh [P091840] identity: linked_by_name_school ['name_school_window'] []
+  recruit: 2021 HighSchool None* None DL Orem, UT -> BYU
+  stint: BYU 2022-2024 (2022,2023,2024) [verified]
+  stint: Vanderbilt 2025-2025 (2025) [verified]
+  event: Confirmed | portal entry and destination roster agree | BYU -> Vanderbilt (2024->2025)
+  season 2022 BYU DL: any 0, position 0, ST-only 0
+  season 2023 BYU DL: any 2, position 2, ST-only 0
+  season 2024 BYU DL: any 5, position 5, ST-only 0
+  season 2025 Vanderbilt DL: any 11, position 11, ST-only 0
+  outcome: no_linked_draft_record_through_2026  R #  [rosters + draft 2003-2026]
+  >> HAND CHECK: Correct. Orem HS, BYU 2022-24 (2021 season missing from roster file), Vanderbilt 2025, Confirmed. Web-checked.

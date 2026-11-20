@@ -1,0 +1,1908 @@
+{
+ "rule": "shrunk school-position factor >= 1.35 AND expected picks >= 3; classes 2002-2018 (all eight draft years observed); current FBS schools",
+ "qualifying": [
+  {
+   "school": "Utah",
+   "pos": "DB",
+   "signees": 54,
+   "drafted": 9,
+   "expected": 3.6,
+   "ratio": 2.48,
+   "shrunk": 1.98,
+   "ci90": [
+    1.3,
+    4.33
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     1.4
+    ],
+    "2010-18": [
+     4,
+     2.2
+    ]
+   },
+   "top_coach": "Kyle Whittingham",
+   "top_coach_share": 0.78,
+   "current_coach": "Morgan Scalley",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.57,
+    1.82
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Iowa",
+   "pos": "OL",
+   "signees": 38,
+   "drafted": 7,
+   "expected": 4.4,
+   "ratio": 1.6,
+   "shrunk": 1.71,
+   "ci90": [
+    0.75,
+    3.0
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     2.1
+    ],
+    "2010-18": [
+     5,
+     2.3
+    ]
+   },
+   "top_coach": "Kirk Ferentz",
+   "top_coach_share": 1.0,
+   "current_coach": "Kirk Ferentz",
+   "current_coach_picks": 7,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    0.95,
+    2.17
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Penn State",
+   "pos": "DB",
+   "signees": 34,
+   "drafted": 9,
+   "expected": 4.7,
+   "ratio": 1.93,
+   "shrunk": 1.65,
+   "ci90": [
+    1.0,
+    3.36
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.6
+    ],
+    "2010-18": [
+     8,
+     3.1
+    ]
+   },
+   "top_coach": "James Franklin",
+   "top_coach_share": 0.67,
+   "current_coach": "Matt Campbell",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    0.62,
+    2.58
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "TCU",
+   "pos": "DB",
+   "signees": 48,
+   "drafted": 9,
+   "expected": 3.9,
+   "ratio": 2.31,
+   "shrunk": 1.65,
+   "ci90": [
+    1.21,
+    4.04
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     1.4
+    ],
+    "2010-18": [
+     6,
+     2.4
+    ]
+   },
+   "top_coach": "Gary Patterson",
+   "top_coach_share": 1.0,
+   "current_coach": "Sonny Dykes",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.14,
+    2.5
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Clemson",
+   "pos": "DB",
+   "signees": 39,
+   "drafted": 12,
+   "expected": 6.4,
+   "ratio": 1.88,
+   "shrunk": 1.62,
+   "ci90": [
+    1.08,
+    3.05
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     2.0
+    ],
+    "2010-18": [
+     8,
+     4.4
+    ]
+   },
+   "top_coach": "Dabo Swinney",
+   "top_coach_share": 0.67,
+   "current_coach": "Dabo Swinney",
+   "current_coach_picks": 8,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    2.0,
+    1.82
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Alabama",
+   "pos": "DL",
+   "signees": 28,
+   "drafted": 11,
+   "expected": 5.5,
+   "ratio": 2.01,
+   "shrunk": 1.62,
+   "ci90": [
+    1.13,
+    3.33
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.2
+    ],
+    "2010-18": [
+     10,
+     4.3
+    ]
+   },
+   "top_coach": "Nick Saban",
+   "top_coach_share": 1.0,
+   "current_coach": "Kalen DeBoer",
+   "current_coach_picks": 0,
+   "classes": [
+    2007,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    0.83,
+    2.33
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Penn State",
+   "pos": "LB",
+   "signees": 21,
+   "drafted": 7,
+   "expected": 3.8,
+   "ratio": 1.84,
+   "shrunk": 1.6,
+   "ci90": [
+    0.86,
+    3.45
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     2.1
+    ],
+    "2010-18": [
+     3,
+     1.7
+    ]
+   },
+   "top_coach": "Joe Paterno",
+   "top_coach_share": 0.71,
+   "current_coach": "Matt Campbell",
+   "current_coach_picks": 0,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    1.9,
+    1.76
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Florida",
+   "pos": "LB",
+   "signees": 31,
+   "drafted": 11,
+   "expected": 5.5,
+   "ratio": 2.01,
+   "shrunk": 1.59,
+   "ci90": [
+    1.13,
+    3.32
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     2.7
+    ],
+    "2010-18": [
+     7,
+     2.8
+    ]
+   },
+   "top_coach": "Will Muschamp",
+   "top_coach_share": 0.36,
+   "current_coach": "Jon Sumrall",
+   "current_coach_picks": 0,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.48,
+    2.5
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Clemson",
+   "pos": "RB",
+   "signees": 15,
+   "drafted": 6,
+   "expected": 3.0,
+   "ratio": 1.97,
+   "shrunk": 1.57,
+   "ci90": [
+    0.86,
+    3.89
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     1.6
+    ],
+    "2010-18": [
+     1,
+     1.4
+    ]
+   },
+   "top_coach": "Tommy Bowden",
+   "top_coach_share": 0.83,
+   "current_coach": "Dabo Swinney",
+   "current_coach_picks": 1,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.12,
+    0.71
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Washington",
+   "pos": "DB",
+   "signees": 45,
+   "drafted": 11,
+   "expected": 5.2,
+   "ratio": 2.1,
+   "shrunk": 1.57,
+   "ci90": [
+    1.18,
+    3.48
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.0
+    ],
+    "2010-18": [
+     10,
+     4.2
+    ]
+   },
+   "top_coach": "Chris Petersen",
+   "top_coach_share": 0.55,
+   "current_coach": "Jedd Fisch",
+   "current_coach_picks": 0,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.0,
+    2.38
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Penn State",
+   "pos": "EDGE",
+   "signees": 25,
+   "drafted": 9,
+   "expected": 5.3,
+   "ratio": 1.68,
+   "shrunk": 1.56,
+   "ci90": [
+    0.88,
+    2.94
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     1.5
+    ],
+    "2010-18": [
+     5,
+     3.9
+    ]
+   },
+   "top_coach": "Joe Paterno",
+   "top_coach_share": 0.56,
+   "current_coach": "Matt Campbell",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    2.67,
+    1.28
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "NC State",
+   "pos": "DB",
+   "signees": 40,
+   "drafted": 6,
+   "expected": 3.5,
+   "ratio": 1.73,
+   "shrunk": 1.55,
+   "ci90": [
+    0.75,
+    3.42
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     0.8
+    ],
+    "2010-18": [
+     5,
+     2.6
+    ]
+   },
+   "top_coach": "Dave Doeren",
+   "top_coach_share": 0.5,
+   "current_coach": "Dave Doeren",
+   "current_coach_picks": 3,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    1.25,
+    1.92
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Penn State",
+   "pos": "WR",
+   "signees": 29,
+   "drafted": 8,
+   "expected": 4.8,
+   "ratio": 1.66,
+   "shrunk": 1.55,
+   "ci90": [
+    0.83,
+    3.0
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     1.5
+    ],
+    "2010-18": [
+     6,
+     3.3
+    ]
+   },
+   "top_coach": "James Franklin",
+   "top_coach_share": 0.5,
+   "current_coach": "Matt Campbell",
+   "current_coach_picks": 0,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    1.33,
+    1.82
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "West Virginia",
+   "pos": "DB",
+   "signees": 62,
+   "drafted": 10,
+   "expected": 4.5,
+   "ratio": 2.21,
+   "shrunk": 1.53,
+   "ci90": [
+    1.2,
+    3.75
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     1.5
+    ],
+    "2010-18": [
+     6,
+     3.0
+    ]
+   },
+   "top_coach": "Dana Holgorsen",
+   "top_coach_share": 0.6,
+   "current_coach": "Rich Rodriguez",
+   "current_coach_picks": 3,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.67,
+    2.0
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Louisville",
+   "pos": "EDGE",
+   "signees": 32,
+   "drafted": 7,
+   "expected": 3.1,
+   "ratio": 2.25,
+   "shrunk": 1.53,
+   "ci90": [
+    1.06,
+    4.23
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     1.3
+    ],
+    "2010-18": [
+     5,
+     1.8
+    ]
+   },
+   "top_coach": "Charlie Strong",
+   "top_coach_share": 0.57,
+   "current_coach": "Jeff Brohm",
+   "current_coach_picks": 0,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    1.54,
+    2.78
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Clemson",
+   "pos": "DL",
+   "signees": 21,
+   "drafted": 6,
+   "expected": 3.4,
+   "ratio": 1.76,
+   "shrunk": 1.52,
+   "ci90": [
+    0.77,
+    3.47
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     0.5
+    ],
+    "2010-18": [
+     5,
+     2.9
+    ]
+   },
+   "top_coach": "Dabo Swinney",
+   "top_coach_share": 0.83,
+   "current_coach": "Dabo Swinney",
+   "current_coach_picks": 5,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.0,
+    1.72
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Alabama",
+   "pos": "RB",
+   "signees": 26,
+   "drafted": 11,
+   "expected": 6.4,
+   "ratio": 1.71,
+   "shrunk": 1.51,
+   "ci90": [
+    0.96,
+    2.83
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     2.0
+    ],
+    "2010-18": [
+     8,
+     4.4
+    ]
+   },
+   "top_coach": "Nick Saban",
+   "top_coach_share": 1.0,
+   "current_coach": "Kalen DeBoer",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": true,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.5,
+    1.82
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Boise State",
+   "pos": "DB",
+   "signees": 56,
+   "drafted": 4,
+   "expected": 3.2,
+   "ratio": 1.25,
+   "shrunk": 1.49,
+   "ci90": [
+    0.43,
+    2.85
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     0.7
+    ],
+    "2010-18": [
+     1,
+     2.5
+    ]
+   },
+   "top_coach": "Chris Petersen",
+   "top_coach_share": 0.5,
+   "current_coach": "Spencer Danielson",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": false
+   },
+   "era_ratio": [
+    4.29,
+    0.4
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Georgia",
+   "pos": "WR",
+   "signees": 40,
+   "drafted": 12,
+   "expected": 7.0,
+   "ratio": 1.71,
+   "shrunk": 1.47,
+   "ci90": [
+    0.99,
+    2.77
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     3.1
+    ],
+    "2010-18": [
+     7,
+     4.0
+    ]
+   },
+   "top_coach": "Mark Richt",
+   "top_coach_share": 0.67,
+   "current_coach": "Kirby Smart",
+   "current_coach_picks": 4,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.61,
+    1.75
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Stanford",
+   "pos": "DB",
+   "signees": 37,
+   "drafted": 7,
+   "expected": 3.8,
+   "ratio": 1.82,
+   "shrunk": 1.47,
+   "ci90": [
+    0.85,
+    3.42
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     0.6
+    ],
+    "2010-18": [
+     5,
+     3.2
+    ]
+   },
+   "top_coach": "David Shaw",
+   "top_coach_share": 0.57,
+   "current_coach": "Tavita Pritchard",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.33,
+    1.56
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Florida",
+   "pos": "DB",
+   "signees": 53,
+   "drafted": 20,
+   "expected": 12.9,
+   "ratio": 1.55,
+   "shrunk": 1.46,
+   "ci90": [
+    1.03,
+    2.25
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     4.5
+    ],
+    "2010-18": [
+     15,
+     8.5
+    ]
+   },
+   "top_coach": "Urban Meyer",
+   "top_coach_share": 0.3,
+   "current_coach": "Jon Sumrall",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.11,
+    1.76
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Baylor",
+   "pos": "WR",
+   "signees": 40,
+   "drafted": 7,
+   "expected": 3.8,
+   "ratio": 1.84,
+   "shrunk": 1.46,
+   "ci90": [
+    0.86,
+    3.46
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     1.0
+    ],
+    "2010-18": [
+     4,
+     2.8
+    ]
+   },
+   "top_coach": "Art Briles",
+   "top_coach_share": 0.29,
+   "current_coach": "Dave Aranda",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.0,
+    1.43
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Alabama",
+   "pos": "LB",
+   "signees": 41,
+   "drafted": 15,
+   "expected": 9.7,
+   "ratio": 1.54,
+   "shrunk": 1.45,
+   "ci90": [
+    0.95,
+    2.37
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     2.4
+    ],
+    "2010-18": [
+     10,
+     7.3
+    ]
+   },
+   "top_coach": "Nick Saban",
+   "top_coach_share": 0.93,
+   "current_coach": "Kalen DeBoer",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    2.08,
+    1.37
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Clemson",
+   "pos": "WR",
+   "signees": 30,
+   "drafted": 10,
+   "expected": 6.7,
+   "ratio": 1.5,
+   "shrunk": 1.45,
+   "ci90": [
+    0.81,
+    2.55
+   ],
+   "era": {
+    "2002-09": [
+     0,
+     0.7
+    ],
+    "2010-18": [
+     10,
+     6.0
+    ]
+   },
+   "top_coach": "Dabo Swinney",
+   "top_coach_share": 1.0,
+   "current_coach": "Dabo Swinney",
+   "current_coach_picks": 10,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    0.0,
+    1.67
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Notre Dame",
+   "pos": "EDGE",
+   "signees": 24,
+   "drafted": 10,
+   "expected": 5.1,
+   "ratio": 1.98,
+   "shrunk": 1.44,
+   "ci90": [
+    1.07,
+    3.36
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     1.8
+    ],
+    "2010-18": [
+     7,
+     3.3
+    ]
+   },
+   "top_coach": "Brian Kelly",
+   "top_coach_share": 0.7,
+   "current_coach": "Marcus Freeman",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.67,
+    2.12
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Wisconsin",
+   "pos": "OL",
+   "signees": 39,
+   "drafted": 6,
+   "expected": 3.3,
+   "ratio": 1.79,
+   "shrunk": 1.44,
+   "ci90": [
+    0.78,
+    3.54
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     1.0
+    ],
+    "2010-18": [
+     4,
+     2.4
+    ]
+   },
+   "top_coach": "Paul Chryst",
+   "top_coach_share": 0.5,
+   "current_coach": "Luke Fickell",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.0,
+    1.67
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "LSU",
+   "pos": "RB",
+   "signees": 17,
+   "drafted": 7,
+   "expected": 3.9,
+   "ratio": 1.77,
+   "shrunk": 1.43,
+   "ci90": [
+    0.83,
+    3.33
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.4
+    ],
+    "2010-18": [
+     6,
+     2.5
+    ]
+   },
+   "top_coach": "Les Miles",
+   "top_coach_share": 0.86,
+   "current_coach": "Lane Kiffin",
+   "current_coach_picks": 0,
+   "classes": [
+    2005,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    0.71,
+    2.4
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Arkansas",
+   "pos": "WR",
+   "signees": 37,
+   "drafted": 7,
+   "expected": 4.1,
+   "ratio": 1.7,
+   "shrunk": 1.42,
+   "ci90": [
+    0.8,
+    3.18
+   ],
+   "era": {
+    "2002-09": [
+     6,
+     1.8
+    ],
+    "2010-18": [
+     1,
+     2.3
+    ]
+   },
+   "top_coach": "Bobby Petrino",
+   "top_coach_share": 0.43,
+   "current_coach": "Ryan Silverfield",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.33,
+    0.43
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Florida",
+   "pos": "RB",
+   "signees": 23,
+   "drafted": 8,
+   "expected": 5.0,
+   "ratio": 1.61,
+   "shrunk": 1.42,
+   "ci90": [
+    0.8,
+    2.91
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     2.3
+    ],
+    "2010-18": [
+     4,
+     2.7
+    ]
+   },
+   "top_coach": "Urban Meyer",
+   "top_coach_share": 0.25,
+   "current_coach": "Jon Sumrall",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.74,
+    1.48
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Miami",
+   "pos": "TE",
+   "signees": 23,
+   "drafted": 9,
+   "expected": 4.5,
+   "ratio": 1.98,
+   "shrunk": 1.42,
+   "ci90": [
+    1.04,
+    3.46
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     2.5
+    ],
+    "2010-18": [
+     4,
+     2.0
+    ]
+   },
+   "top_coach": "Larry Coker",
+   "top_coach_share": 0.56,
+   "current_coach": "Mario Cristobal",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.0,
+    2.0
+   ],
+   "ci_excludes_1": true
+  },
+  {
+   "school": "Oregon State",
+   "pos": "DB",
+   "signees": 52,
+   "drafted": 6,
+   "expected": 3.0,
+   "ratio": 2.0,
+   "shrunk": 1.4,
+   "ci90": [
+    0.87,
+    3.94
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     1.1
+    ],
+    "2010-18": [
+     2,
+     1.9
+    ]
+   },
+   "top_coach": "Mike Riley",
+   "top_coach_share": 0.83,
+   "current_coach": "JaMarcus Shephard",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.64,
+    1.05
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Clemson",
+   "pos": "EDGE",
+   "signees": 26,
+   "drafted": 9,
+   "expected": 6.6,
+   "ratio": 1.36,
+   "shrunk": 1.39,
+   "ci90": [
+    0.71,
+    2.37
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     2.2
+    ],
+    "2010-18": [
+     5,
+     4.4
+    ]
+   },
+   "top_coach": "Dabo Swinney",
+   "top_coach_share": 0.67,
+   "current_coach": "Dabo Swinney",
+   "current_coach_picks": 6,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.82,
+    1.14
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "LSU",
+   "pos": "DB",
+   "signees": 43,
+   "drafted": 17,
+   "expected": 11.6,
+   "ratio": 1.47,
+   "shrunk": 1.39,
+   "ci90": [
+    0.94,
+    2.21
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     3.9
+    ],
+    "2010-18": [
+     13,
+     7.7
+    ]
+   },
+   "top_coach": "Les Miles",
+   "top_coach_share": 0.71,
+   "current_coach": "Lane Kiffin",
+   "current_coach_picks": 0,
+   "classes": [
+    2003,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.03,
+    1.69
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Michigan",
+   "pos": "WR",
+   "signees": 33,
+   "drafted": 10,
+   "expected": 6.3,
+   "ratio": 1.59,
+   "shrunk": 1.39,
+   "ci90": [
+    0.86,
+    2.7
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     3.0
+    ],
+    "2010-18": [
+     5,
+     3.3
+    ]
+   },
+   "top_coach": "Lloyd Carr",
+   "top_coach_share": 0.5,
+   "current_coach": "Kyle Whittingham",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.67,
+    1.52
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "LSU",
+   "pos": "LB",
+   "signees": 28,
+   "drafted": 8,
+   "expected": 5.1,
+   "ratio": 1.58,
+   "shrunk": 1.39,
+   "ci90": [
+    0.79,
+    2.86
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     1.8
+    ],
+    "2010-18": [
+     5,
+     3.3
+    ]
+   },
+   "top_coach": "Les Miles",
+   "top_coach_share": 0.75,
+   "current_coach": "Lane Kiffin",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.67,
+    1.52
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Stanford",
+   "pos": "QB",
+   "signees": 15,
+   "drafted": 5,
+   "expected": 3.1,
+   "ratio": 1.59,
+   "shrunk": 1.38,
+   "ci90": [
+    0.63,
+    3.35
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     1.0
+    ],
+    "2010-18": [
+     3,
+     2.1
+    ]
+   },
+   "top_coach": "David Shaw",
+   "top_coach_share": 0.6,
+   "current_coach": "Tavita Pritchard",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    2.0,
+    1.43
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Florida",
+   "pos": "EDGE",
+   "signees": 38,
+   "drafted": 15,
+   "expected": 10.4,
+   "ratio": 1.44,
+   "shrunk": 1.38,
+   "ci90": [
+    0.89,
+    2.22
+   ],
+   "era": {
+    "2002-09": [
+     6,
+     3.8
+    ],
+    "2010-18": [
+     9,
+     6.6
+    ]
+   },
+   "top_coach": "Urban Meyer",
+   "top_coach_share": 0.33,
+   "current_coach": "Jon Sumrall",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.58,
+    1.36
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Arkansas",
+   "pos": "OL",
+   "signees": 42,
+   "drafted": 6,
+   "expected": 3.7,
+   "ratio": 1.62,
+   "shrunk": 1.38,
+   "ci90": [
+    0.7,
+    3.19
+   ],
+   "era": {
+    "2002-09": [
+     4,
+     0.8
+    ],
+    "2010-18": [
+     2,
+     2.9
+    ]
+   },
+   "top_coach": "Houston Nutt",
+   "top_coach_share": 0.67,
+   "current_coach": "Ryan Silverfield",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    5.0,
+    0.69
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Georgia",
+   "pos": "OL",
+   "signees": 54,
+   "drafted": 14,
+   "expected": 9.6,
+   "ratio": 1.46,
+   "shrunk": 1.37,
+   "ci90": [
+    0.88,
+    2.28
+   ],
+   "era": {
+    "2002-09": [
+     5,
+     3.2
+    ],
+    "2010-18": [
+     9,
+     6.4
+    ]
+   },
+   "top_coach": "Mark Richt",
+   "top_coach_share": 0.5,
+   "current_coach": "Kirby Smart",
+   "current_coach_picks": 7,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.56,
+    1.41
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Penn State",
+   "pos": "OL",
+   "signees": 46,
+   "drafted": 8,
+   "expected": 6.5,
+   "ratio": 1.24,
+   "shrunk": 1.37,
+   "ci90": [
+    0.61,
+    2.23
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     2.4
+    ],
+    "2010-18": [
+     6,
+     4.1
+    ]
+   },
+   "top_coach": "James Franklin",
+   "top_coach_share": 0.62,
+   "current_coach": "Matt Campbell",
+   "current_coach_picks": 0,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": false
+   },
+   "era_ratio": [
+    0.83,
+    1.46
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Baylor",
+   "pos": "OL",
+   "signees": 56,
+   "drafted": 5,
+   "expected": 3.1,
+   "ratio": 1.61,
+   "shrunk": 1.37,
+   "ci90": [
+    0.63,
+    3.39
+   ],
+   "era": {
+    "2002-09": [
+     3,
+     1.0
+    ],
+    "2010-18": [
+     2,
+     2.1
+    ]
+   },
+   "top_coach": "Art Briles",
+   "top_coach_share": 0.8,
+   "current_coach": "Dave Aranda",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    3.0,
+    0.95
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Pittsburgh",
+   "pos": "OL",
+   "signees": 43,
+   "drafted": 5,
+   "expected": 3.2,
+   "ratio": 1.58,
+   "shrunk": 1.36,
+   "ci90": [
+    0.62,
+    3.33
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.3
+    ],
+    "2010-18": [
+     4,
+     1.9
+    ]
+   },
+   "top_coach": "Paul Chryst",
+   "top_coach_share": 0.4,
+   "current_coach": "Pat Narduzzi",
+   "current_coach_picks": 2,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    0.77,
+    2.11
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Ohio State",
+   "pos": "EDGE",
+   "signees": 27,
+   "drafted": 13,
+   "expected": 8.8,
+   "ratio": 1.47,
+   "shrunk": 1.36,
+   "ci90": [
+    0.87,
+    2.34
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     2.0
+    ],
+    "2010-18": [
+     11,
+     6.8
+    ]
+   },
+   "top_coach": "Urban Meyer",
+   "top_coach_share": 0.77,
+   "current_coach": "Ryan Day",
+   "current_coach_picks": 1,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.0,
+    1.62
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Ohio State",
+   "pos": "WR",
+   "signees": 31,
+   "drafted": 9,
+   "expected": 6.0,
+   "ratio": 1.51,
+   "shrunk": 1.35,
+   "ci90": [
+    0.79,
+    2.63
+   ],
+   "era": {
+    "2002-09": [
+     2,
+     1.3
+    ],
+    "2010-18": [
+     7,
+     4.7
+    ]
+   },
+   "top_coach": "Urban Meyer",
+   "top_coach_share": 0.44,
+   "current_coach": "Ryan Day",
+   "current_coach_picks": 1,
+   "classes": [
+    2004,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": true,
+    "raw": true
+   },
+   "era_ratio": [
+    1.54,
+    1.49
+   ],
+   "ci_excludes_1": false
+  },
+  {
+   "school": "Missouri",
+   "pos": "OL",
+   "signees": 51,
+   "drafted": 6,
+   "expected": 3.9,
+   "ratio": 1.54,
+   "shrunk": 1.35,
+   "ci90": [
+    0.67,
+    3.04
+   ],
+   "era": {
+    "2002-09": [
+     1,
+     1.5
+    ],
+    "2010-18": [
+     5,
+     2.4
+    ]
+   },
+   "top_coach": "Gary Pinkel",
+   "top_coach_share": 0.67,
+   "current_coach": "Eli Drinkwitz",
+   "current_coach_picks": 0,
+   "classes": [
+    2002,
+    2018
+   ],
+   "stable": {
+    "at_1_25": true,
+    "at_1_50": false,
+    "exp5": false,
+    "raw": true
+   },
+   "era_ratio": [
+    0.67,
+    2.08
+   ],
+   "ci_excludes_1": false
+  }
+ ],
+ "sensitivity": {
+  "base": 45,
+  "t125": 75,
+  "t150": 17,
+  "m2": 77,
+  "m5": 21,
+  "raw135": 72
+ },
+ "era_correlation": {
+  "r": 0.21,
+  "n": 86
+ },
+ "total_combos": 1239
+}

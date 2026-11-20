@@ -1,0 +1,1602 @@
+[
+ {
+  "n": 1,
+  "pid": "P063362",
+  "group": "2015-18",
+  "recruit": "Bobby Lawrence \u00b7 2018 HighSchool \u00b7 OT \u00b7 St. Joseph, MO \u00b7 80in \u00b7 signed Missouri",
+  "roster": "Bobby Lawrence \u00b7 OL \u00b7 Saint Joseph, MO \u00b7 81in \u00b7 Colorado State 2023, Missouri 2019, Missouri 2020, Missouri 2021, Missouri 2022",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 2,
+  "pid": "P060988",
+  "group": "2015-18",
+  "recruit": "Reese Leitao \u00b7 2017 HighSchool \u00b7 TE \u00b7 Jenks, OK \u00b7 76in \u00b7 signed Texas",
+  "roster": "Reese Leitao \u00b7 DL \u00b7 Jenks, OK \u00b7 76in \u00b7 Texas 2018, Texas 2019, Texas 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 3,
+  "pid": "P057653",
+  "group": "2015-18",
+  "recruit": "Kyle Soelle \u00b7 2017 HighSchool \u00b7 TE \u00b7 Scottsdale, AZ \u00b7 76in \u00b7 signed Arizona State",
+  "roster": "Kyle Soelle \u00b7 LB \u00b7 Scottsdale, AZ \u00b7 76in \u00b7 Arizona State 2018, Arizona State 2019, Arizona State 2020, Arizona State 2021, Arizona State 2022",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 4,
+  "pid": "P055833",
+  "group": "2015-18",
+  "recruit": "Jamal Holloway \u00b7 2016 HighSchool \u00b7 WDE \u00b7 Camden, NJ \u00b7 75in \u00b7 signed UNLV",
+  "roster": "Jamal Holloway \u00b7 DL \u00b7 Camden, NJ \u00b7 75in \u00b7 UNLV 2017, UNLV 2018, UNLV 2019, UNLV 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 5,
+  "pid": "P052991",
+  "group": "2015-18",
+  "recruit": "Jaquan Blackwell \u00b7 2016 HighSchool \u00b7 WR \u00b7 Perris, CA \u00b7 72in \u00b7 signed San Jos\u00e9 State",
+  "roster": "JaQuan Blackwell \u00b7 WR \u00b7 Perris, CA \u00b7 72in \u00b7 San Jos\u00e9 State 2017, San Jos\u00e9 State 2018, San Jos\u00e9 State 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 6,
+  "pid": "P062468",
+  "group": "2015-18",
+  "recruit": "Myles Plummer \u00b7 2018 JUCO \u00b7 S \u00b7 Chester, VA \u00b7 73in \u00b7 signed UNLV",
+  "roster": "Myles Plummer \u00b7 DB \u00b7 Prince Georges Metro C, MD \u00b7 73in \u00b7 UNLV 2016, UNLV 2017, UNLV 2018, UNLV 2019, UNLV 2020",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "incorrect",
+  "verdict": "ambiguous",
+  "reason": "JUCO recruit; roster shows UNLV seasons before the signing year and a hometown that is a college name; cannot confirm",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 7,
+  "pid": "P052216",
+  "group": "2015-18",
+  "recruit": "Cameron Tidd \u00b7 2016 HighSchool \u00b7 DT \u00b7 Greenwood, IN \u00b7 75in \u00b7 signed Vanderbilt",
+  "roster": "Cameron Tidd \u00b7 DL \u00b7 Greenwood, IN \u00b7 75in \u00b7 Vanderbilt 2017, Vanderbilt 2018, Vanderbilt 2019, Vanderbilt 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 8,
+  "pid": "P062717",
+  "group": "2015-18",
+  "recruit": "Travis Glover \u00b7 2018 HighSchool \u00b7 OT \u00b7 Vienna, GA \u00b7 77in \u00b7 signed Georgia State",
+  "roster": "Travis Glover \u00b7 OT \u00b7 Vienna, GA \u00b7 78in \u00b7 Georgia State 2019, Georgia State 2020, Georgia State 2021, Georgia State 2022, Georgia State 2023",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 9,
+  "pid": "P052873",
+  "group": "2015-18",
+  "recruit": "Justin McInnis \u00b7 2016 JUCO \u00b7 WR \u00b7 Dodge City, KS \u00b7 78in \u00b7 signed Arkansas State",
+  "roster": "Justin McInnis \u00b7 WR \u00b7 Pierrefonds, QC \u00b7 78in \u00b7 Arkansas State 2015, Arkansas State 2016, Arkansas State 2017, Arkansas State 2018",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "JUCO recruit lists the JUCO city (Dodge City CC); Quebec hometown matches public record",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 10,
+  "pid": "P052666",
+  "group": "2015-18",
+  "recruit": "Myles Hudzick \u00b7 2016 HighSchool \u00b7 S \u00b7 Arlington, VA \u00b7 71in \u00b7 signed Duke",
+  "roster": "Myles Hudzick \u00b7 RB \u00b7 Reston, VA \u00b7 70in \u00b7 Duke 2017, Duke 2018, Duke 2019, Duke 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "ambiguous",
+  "verdict": "correct",
+  "reason": "neighboring towns, height within 1 inch; safety listed as RB on roster",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 11,
+  "pid": "P057978",
+  "group": "2015-18",
+  "recruit": "Kevin LeDee \u00b7 2017 HighSchool \u00b7 WR \u00b7 Houston, TX \u00b7 77in \u00b7 signed Tulane",
+  "roster": "Kevin LeDee \u00b7 WR \u00b7 Houston, TX \u00b7 76in \u00b7 East Texas A&M 2022, Tulane 2018, Tulane 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 12,
+  "pid": "P056082",
+  "group": "2015-18",
+  "recruit": "Dqmarcus Shaw \u00b7 2017 JUCO \u00b7 OT \u00b7 Fulton, MS \u00b7 76in \u00b7 signed East Carolina",
+  "roster": "Dqmarcus Shaw \u00b7 OL \u00b7 Batesville, MS \u00b7 76in \u00b7 East Carolina 2015, East Carolina 2016, East Carolina 2017, East Carolina 2018",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 13,
+  "pid": "P064937",
+  "group": "2015-18",
+  "recruit": "Corey Prince \u00b7 2018 HighSchool \u00b7 DT \u00b7 Hollywood, FL \u00b7 72in \u00b7 signed Wofford",
+  "roster": "Corey Prince \u00b7 None \u00b7 None, None \u00b7 Nonein \u00b7 Wofford 2019",
+  "evidence": {
+   "home": "missing",
+   "pos": "na",
+   "ht": null
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "roster record has no position, hometown or height to compare",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 14,
+  "pid": "P060392",
+  "group": "2015-18",
+  "recruit": "Travis Vokolek \u00b7 2017 HighSchool \u00b7 TE \u00b7 Springfield, MO \u00b7 78in \u00b7 signed Rutgers",
+  "roster": "Travis Vokolek \u00b7 TE \u00b7 Springfield, MO \u00b7 79in \u00b7 Nebraska 2019, Nebraska 2020, Nebraska 2021, Nebraska 2022, Rutgers 2016, Rutgers 2017, Rutgers 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 15,
+  "pid": "P058852",
+  "group": "2015-18",
+  "recruit": "Chris Kolarevic \u00b7 2017 HighSchool \u00b7 OLB \u00b7 Traverse City, MI \u00b7 73in \u00b7 signed Northern Iowa",
+  "roster": "Chris Kolarevic \u00b7 RB \u00b7 Traverse City, MI \u00b7 73in \u00b7 Nebraska 2021, Nebraska 2022, Northern Iowa 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 16,
+  "pid": "P053487",
+  "group": "2015-18",
+  "recruit": "Jonathan Neeley \u00b7 2016 HighSchool \u00b7 OT \u00b7 Youngstown, OH \u00b7 77in \u00b7 signed Akron",
+  "roster": "Jonathan Neeley \u00b7 OL \u00b7 Youngstown, OH \u00b7 77in \u00b7 Akron 2017, Akron 2018, Akron 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 17,
+  "pid": "P057742",
+  "group": "2015-18",
+  "recruit": "Jason Shelley \u00b7 2017 HighSchool \u00b7 DUAL \u00b7 Frisco, TX \u00b7 72in \u00b7 signed Utah",
+  "roster": "Jason Shelley \u00b7 QB \u00b7 Little Elm, TX \u00b7 71in \u00b7 Missouri State 2021, Missouri State 2022, Utah 2018, Utah 2019, Utah State 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 18,
+  "pid": "P051468",
+  "group": "2015-18",
+  "recruit": "Antonio Clifton \u00b7 2016 HighSchool \u00b7 CB \u00b7 Tupelo, MS \u00b7 69in \u00b7 signed UT Martin",
+  "roster": "Antonio Clifton \u00b7 S \u00b7 Krum, TX \u00b7 69in \u00b7 UT Martin 2017, UT Martin 2018",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "incorrect",
+  "verdict": "ambiguous",
+  "reason": "roster hometown (Krum, TX) conflicts with recruit (Tupelo, MS); FCS roster; cannot confirm",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 19,
+  "pid": "P057747",
+  "group": "2015-18",
+  "recruit": "Derrick Vickers \u00b7 2017 JUCO \u00b7 WR \u00b7 Bakersfield, CA \u00b7 71in \u00b7 signed Utah",
+  "roster": "Derrick Vickers \u00b7 WR \u00b7 Bakersfield, CA \u00b7 71in \u00b7 Utah 2016, Utah 2017, Utah 2018, Utah 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 20,
+  "pid": "P049233",
+  "group": "2015-18",
+  "recruit": "Kirk Louis Jr \u00b7 2015 HighSchool \u00b7 ILB \u00b7 Baton Rouge, LA \u00b7 74in \u00b7 signed Arkansas State",
+  "roster": "Kirk Louis \u00b7 LB \u00b7 Baton Rouge, LA \u00b7 74in \u00b7 Arkansas State 2016, Arkansas State 2017, Arkansas State 2018, Arkansas State 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 21,
+  "pid": "P052460",
+  "group": "2015-18",
+  "recruit": "Ramaud Chiaokhiao-Bowman \u00b7 2016 HighSchool \u00b7 WR \u00b7 Minneapolis, MN \u00b7 74.5in \u00b7 signed Northwestern",
+  "roster": "Ramaud Chiaokhiao-Bowman \u00b7 WR \u00b7 Minneapolis, MN \u00b7 74in \u00b7 Northwestern 2017, Northwestern 2018, Northwestern 2019, Northwestern 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0.5
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 22,
+  "pid": "P059793",
+  "group": "2015-18",
+  "recruit": "Justin Smith \u00b7 2016 HighSchool \u00b7 RB \u00b7 Virginia Beach, VA \u00b7 71in \u00b7 signed Navy",
+  "roster": "Justin Smith \u00b7 RB \u00b7 Virginia Beach, VA \u00b7 71in \u00b7 Navy 2017, Navy 2018, Navy 2019, Navy 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 23,
+  "pid": "P061877",
+  "group": "2015-18",
+  "recruit": "Richard Tucker \u00b7 2018 HighSchool \u00b7 WR \u00b7 Inman, SC \u00b7 72in \u00b7 signed App State",
+  "roster": "Richard Tucker \u00b7 WR \u00b7 Campobello, SC \u00b7 72in \u00b7 App State 2019, App State 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 24,
+  "pid": "P060455",
+  "group": "2015-18",
+  "recruit": "Sherrod Greene \u00b7 2017 HighSchool \u00b7 OLB \u00b7 Rocky Mount, NC \u00b7 73in \u00b7 signed South Carolina",
+  "roster": "Sherrod Greene \u00b7 LB \u00b7 Rocky Mount, NC \u00b7 73in \u00b7 Clemson 2021, South Carolina 2017, South Carolina 2018, South Carolina 2019, South Carolina 2020, South Carolina 2021, South Carolina 2022",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 25,
+  "pid": "P058092",
+  "group": "2015-18",
+  "recruit": "Malik Jackson \u00b7 2017 HighSchool \u00b7 WR \u00b7 Taylor, TX \u00b7 74in \u00b7 signed Tulsa",
+  "roster": "Malik Jackson \u00b7 WR \u00b7 Taylor, TX \u00b7 74in \u00b7 Tulsa 2018, Tulsa 2019, Tulsa 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 26,
+  "pid": "P060743",
+  "group": "2015-18",
+  "recruit": "Kenneth Major \u00b7 2017 HighSchool \u00b7 ATH \u00b7 Hopkinsville, KY \u00b7 72in \u00b7 signed Purdue",
+  "roster": "Kenneth Major \u00b7 CB \u00b7 Hopkinsville, KY \u00b7 72in \u00b7 Middle Tennessee 2020, Purdue 2018, Purdue 2019, Purdue 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 27,
+  "pid": "P060387",
+  "group": "2015-18",
+  "recruit": "Owen Bowles \u00b7 2017 HighSchool \u00b7 OG \u00b7 Egg Harbor City, NJ \u00b7 76in \u00b7 signed Rutgers",
+  "roster": "Owen Bowles \u00b7 OL \u00b7 Galloway, NJ \u00b7 76in \u00b7 Rutgers 2018, Rutgers 2019, Rutgers 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 28,
+  "pid": "P060461",
+  "group": "2015-18",
+  "recruit": "Keisean Nixon \u00b7 2017 JUCO \u00b7 CB \u00b7 Paramount, CA \u00b7 70in \u00b7 signed South Carolina",
+  "roster": "Keisean Nixon \u00b7 DB \u00b7 Compton, CA \u00b7 70in \u00b7 South Carolina 2015, South Carolina 2016, South Carolina 2017, South Carolina 2018",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "JUCO city vs home; known South Carolina DB (Keisean Nixon)",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 29,
+  "pid": "P045089",
+  "group": "2015-18",
+  "recruit": "Jeff Gladney \u00b7 2015 HighSchool \u00b7 ATH \u00b7 New Boston, TX \u00b7 72in \u00b7 signed TCU",
+  "roster": "Jeff Gladney \u00b7 CB \u00b7 New Boston, TX \u00b7 72in \u00b7 TCU 2016, TCU 2017, TCU 2018, TCU 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 30,
+  "pid": "P056566",
+  "group": "2015-18",
+  "recruit": "Zachary Carter \u00b7 2017 HighSchool \u00b7 SDE \u00b7 Tampa, FL \u00b7 76.5in \u00b7 signed Florida",
+  "roster": "Zachary Carter \u00b7 DL \u00b7 Tampa, FL \u00b7 76in \u00b7 Florida 2018, Florida 2019, Florida 2020, Florida 2021",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0.5
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 31,
+  "pid": "P060029",
+  "group": "2015-18",
+  "recruit": "Aapri Washington \u00b7 2017 HighSchool \u00b7 CB \u00b7 Mount Holly, NC \u00b7 69.5in \u00b7 signed Buffalo",
+  "roster": "Aapri Washington \u00b7 CB \u00b7 Charlotte, NC \u00b7 69in \u00b7 Buffalo 2018, Buffalo 2019, Buffalo 2020, Buffalo 2021, East Carolina 2022",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0.5
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 32,
+  "pid": "P056370",
+  "group": "2015-18",
+  "recruit": "Parker Eichenberger \u00b7 2017 HighSchool \u00b7 TE \u00b7 Katy, TX \u00b7 76in \u00b7 signed Houston",
+  "roster": "Parker Eichenberger \u00b7 TE \u00b7 Katy, TX \u00b7 75in \u00b7 Houston 2018, Houston 2019, Houston 2020, Houston 2021",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 33,
+  "pid": "P063042",
+  "group": "2015-18",
+  "recruit": "Cole Baker \u00b7 2018 JUCO \u00b7 DT \u00b7 Scooba, MS \u00b7 75in \u00b7 signed Ohio",
+  "roster": "Cole Baker \u00b7 DL \u00b7 Pinson, AL \u00b7 74in \u00b7 Ohio 2016, Ohio 2017, Ohio 2018, Ohio 2019",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "JUCO city (Scooba = East Mississippi CC) vs home; same position group, height within 1 inch",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 34,
+  "pid": "P066151",
+  "group": "2015-18",
+  "recruit": "Colston Chacon \u00b7 2018 HighSchool \u00b7 OG \u00b7 Newport Beach, CA \u00b7 75in \u00b7 signed New Mexico",
+  "roster": "Colston Chacon \u00b7 OL \u00b7 La Habra, CA \u00b7 76in \u00b7 New Mexico 2019, New Mexico 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 35,
+  "pid": "P049276",
+  "group": "2015-18",
+  "recruit": "Tim Washington \u00b7 2015 HighSchool \u00b7 OLB \u00b7 Yazoo City, MS \u00b7 75in \u00b7 signed Mississippi State",
+  "roster": "Tim Washington \u00b7 LB \u00b7 Yazoo City, MS \u00b7 75in \u00b7 Mississippi State 2016, Mississippi State 2017, Mississippi State 2018, Mississippi State 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 36,
+  "pid": "P062595",
+  "group": "2015-18",
+  "recruit": "Da'Shon Ross \u00b7 2018 HighSchool \u00b7 ILB \u00b7 Moore Haven, FL \u00b7 71in \u00b7 signed Massachusetts",
+  "roster": "Da'Shon Ross \u00b7 LB \u00b7 Moore Haven, FL \u00b7 73in \u00b7 Massachusetts 2019, Massachusetts 2020, Massachusetts 2021, Massachusetts 2022",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 37,
+  "pid": "P060390",
+  "group": "2015-18",
+  "recruit": "Tyler Hayek \u00b7 2017 HighSchool \u00b7 S \u00b7 Wayne, NJ \u00b7 76in \u00b7 signed Rutgers",
+  "roster": "Tyler Hayek \u00b7 WR \u00b7 Wayne, NJ \u00b7 75in \u00b7 Rutgers 2018, Rutgers 2019, Rutgers 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 38,
+  "pid": "P048814",
+  "group": "2015-18",
+  "recruit": "Jayson VanHook \u00b7 2015 HighSchool \u00b7 OLB \u00b7 Perris, CA \u00b7 74.5in \u00b7 signed UTEP",
+  "roster": "Jayson VanHook \u00b7 LB \u00b7 Moreno Valley, CA \u00b7 75in \u00b7 UTEP 2016, UTEP 2017, UTEP 2018, UTEP 2019, UTEP 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0.5
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 39,
+  "pid": "P058120",
+  "group": "2015-18",
+  "recruit": "Nathan Rourke \u00b7 2017 JUCO \u00b7 PRO \u00b7 Elmore, AL \u00b7 74in \u00b7 signed Ohio",
+  "roster": "Nathan Rourke \u00b7 QB \u00b7 Oakville, ON \u00b7 73in \u00b7 Ohio 2016, Ohio 2017, Ohio 2018, Ohio 2019",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "JUCO city vs Ontario hometown; known Ohio QB",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 40,
+  "pid": "P065510",
+  "group": "2015-18",
+  "recruit": "Byron Perkins \u00b7 2018 HighSchool \u00b7 CB \u00b7 Chicago, IL \u00b7 74in \u00b7 signed Purdue",
+  "roster": "Byron Perkins \u00b7 DB \u00b7 Chicago, IL \u00b7 75in \u00b7 Hampton 2021, Hampton 2022, Hampton 2023, Purdue 2019, Purdue 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 41,
+  "pid": "P043329",
+  "group": "2009-14",
+  "recruit": "Seth Calloway \u00b7 2014 HighSchool \u00b7 SDE \u00b7 Ariton, AL \u00b7 77in \u00b7 signed Troy",
+  "roster": "Seth Calloway \u00b7 DE \u00b7 Ariton, AL \u00b7 75in \u00b7 Troy 2014, Troy 2015, Troy 2016, Troy 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 42,
+  "pid": "P043633",
+  "group": "2009-14",
+  "recruit": "Ramadi Warren \u00b7 2014 HighSchool \u00b7 RB \u00b7 Memphis, TN \u00b7 69in \u00b7 signed Tulsa",
+  "roster": "Ramadi Warren \u00b7 RB \u00b7 Memphis, TN \u00b7 69in \u00b7 Tulsa 2012, Tulsa 2013, Tulsa 2014, Tulsa 2015, Tulsa 2016, Tulsa 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 43,
+  "pid": "P042082",
+  "group": "2009-14",
+  "recruit": "Workpeh Kofa \u00b7 2014 HighSchool \u00b7 WR \u00b7 Charlotte, NC \u00b7 73in \u00b7 signed Charlotte",
+  "roster": "Workpeh Kofa \u00b7 WR \u00b7 Charlotte, NC \u00b7 72in \u00b7 Charlotte 2015, Charlotte 2016, Charlotte 2017, Charlotte 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 44,
+  "pid": "P023844",
+  "group": "2009-14",
+  "recruit": "Aaron Williams \u00b7 2009 HighSchool \u00b7 OT \u00b7 Leroy, AL \u00b7 77in \u00b7 signed Troy",
+  "roster": "Aaron Williams \u00b7 DT \u00b7 McIntosh, AL \u00b7 76in \u00b7 Troy 2009, Troy 2010, Troy 2011, Troy 2012, Troy 2013",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "common name; recruit OT vs roster DT; nearby towns",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 45,
+  "pid": "P042476",
+  "group": "2009-14",
+  "recruit": "Roderick Winters \u00b7 2014 HighSchool \u00b7 OLB \u00b7 Arlington, TX \u00b7 72in \u00b7 signed Missouri",
+  "roster": "Roderick Winters \u00b7 LB \u00b7 Arlington, TX \u00b7 71in \u00b7 Missouri 2013, Missouri 2014, Missouri 2015, Missouri 2016, Missouri 2017, Missouri 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 46,
+  "pid": "P107517",
+  "group": "2009-14",
+  "recruit": "John Timu \u00b7 2010 HighSchool \u00b7 ATH \u00b7 Long Beach, CA \u00b7 72in \u00b7 signed Washington",
+  "roster": "John Timu \u00b7 LB \u00b7 Long Beach, CA \u00b7 73in \u00b7 Washington 2011, Washington 2012, Washington 2013, Washington 2014",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 47,
+  "pid": "P041885",
+  "group": "2009-14",
+  "recruit": "George Moreira \u00b7 2014 HighSchool \u00b7 RB \u00b7 New Orleans, LA \u00b7 70in \u00b7 signed Illinois State",
+  "roster": "George Moreira \u00b7 RB \u00b7 None, None \u00b7 Nonein \u00b7 Illinois State 2015, Illinois State 2016",
+  "evidence": {
+   "home": "missing",
+   "pos": "match",
+   "ht": null
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "roster record has no hometown or height",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 48,
+  "pid": "P000134",
+  "group": "2009-14",
+  "recruit": "John Wiernicki \u00b7 2012 HighSchool \u00b7 RB \u00b7 Galt, CA \u00b7 73in \u00b7 signed Air Force",
+  "roster": "John Wiernicki \u00b7 ? \u00b7 ,  \u00b7 Nonein \u00b7 Air Force 2013",
+  "evidence": {
+   "home": "missing",
+   "pos": "na",
+   "ht": null
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "roster record has no position, hometown or height",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 49,
+  "pid": "P137372",
+  "group": "2009-14",
+  "recruit": "Jesse Milleson \u00b7 2011 JUCO \u00b7 TE \u00b7 Scottsdale, AZ \u00b7 76in \u00b7 signed Memphis",
+  "roster": "Jesse Milleson \u00b7 TE \u00b7 Phoenix, AZ \u00b7 75in \u00b7 Memphis 2012, Memphis 2013",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 50,
+  "pid": "P087053",
+  "group": "2009-14",
+  "recruit": "Mike Loftus \u00b7 2009 HighSchool \u00b7 K \u00b7 Anaheim, CA \u00b7 74in \u00b7 signed SMU",
+  "roster": "Mike Loftus \u00b7 P \u00b7 Anaheim, CA \u00b7 73in \u00b7 SMU 2010, SMU 2011, SMU 2012, SMU 2013",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 51,
+  "pid": "P137152",
+  "group": "2009-14",
+  "recruit": "Cardale Jones \u00b7 2011 HighSchool \u00b7 PRO \u00b7 Cleveland, OH \u00b7 77in \u00b7 signed Ohio State",
+  "roster": "Cardale Jones \u00b7 QB \u00b7 Cleveland, OH \u00b7 77in \u00b7 Ohio State 2012, Ohio State 2013, Ohio State 2014, Ohio State 2015",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 52,
+  "pid": "P002170",
+  "group": "2009-14",
+  "recruit": "Ryan Powis \u00b7 2010 HighSchool \u00b7 OG \u00b7 Midlothian, VA \u00b7 73in \u00b7 signed Army",
+  "roster": "Ryan Powis \u00b7 OL \u00b7 Midlothian, VA \u00b7 72in \u00b7 Army 2011, Army 2012, Army 2013",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 53,
+  "pid": "P045106",
+  "group": "2009-14",
+  "recruit": "Kyle Bambard \u00b7 2014 HighSchool \u00b7 K \u00b7 Walled Lake, MI \u00b7 69in \u00b7 signed NC State",
+  "roster": "Kyle Bambard \u00b7 PK \u00b7 Walled Lake, MI \u00b7 68in \u00b7 NC State 2015, NC State 2016, NC State 2017, NC State 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 54,
+  "pid": "P025184",
+  "group": "2009-14",
+  "recruit": "Trent Riley \u00b7 2013 HighSchool \u00b7 WR \u00b7 Snoqualmie, WA \u00b7 74in \u00b7 signed UNLV",
+  "roster": "Trent Riley \u00b7 WR \u00b7 North Bend, WA \u00b7 73in \u00b7 UNLV 2014",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 55,
+  "pid": "P116531",
+  "group": "2009-14",
+  "recruit": "Trevor Romaine \u00b7 2010 HighSchool \u00b7 K \u00b7 Corona, CA \u00b7 72in \u00b7 signed Oregon State",
+  "roster": "Trevor Romaine \u00b7 PK \u00b7 Corona, CA \u00b7 72in \u00b7 Oregon State 2011, Oregon State 2012, Oregon State 2013, Oregon State 2014",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 56,
+  "pid": "P010804",
+  "group": "2009-14",
+  "recruit": "Avery Peterson \u00b7 2012 HighSchool \u00b7 WR \u00b7 Chatham, VA \u00b7 74in \u00b7 signed LSU",
+  "roster": "Avery Peterson \u00b7 WR \u00b7 Pompano Beach, FL \u00b7 74in \u00b7 LSU 2013, LSU 2014",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "web-checked: Hargrave Military Academy (Chatham, VA) prep year, hometown Pompano Beach; LSU 2013-14",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 57,
+  "pid": "P020335",
+  "group": "2009-14",
+  "recruit": "Jeremiah Kolone \u00b7 2012 HighSchool \u00b7 OG \u00b7 Fallbrook, CA \u00b7 75in \u00b7 signed San Jos\u00e9 State",
+  "roster": "Jeremiah Kolone \u00b7 G \u00b7 Fallbrook, CA \u00b7 75in \u00b7 San Jos\u00e9 State 2013, San Jos\u00e9 State 2014, San Jos\u00e9 State 2015, San Jos\u00e9 State 2016, San Jos\u00e9 State 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 58,
+  "pid": "P090686",
+  "group": "2009-14",
+  "recruit": "Trey Williams \u00b7 2009 HighSchool \u00b7 CB \u00b7 Itta Bena, MS \u00b7 74in \u00b7 signed Idaho",
+  "roster": "Trey Williams \u00b7 None \u00b7 None, None \u00b7 Nonein \u00b7 Idaho 2010, Idaho 2011, Idaho 2012, Idaho 2013",
+  "evidence": {
+   "home": "missing",
+   "pos": "na",
+   "ht": null
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "common name; roster record has no position, hometown or height",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 59,
+  "pid": "P018351",
+  "group": "2009-14",
+  "recruit": "Jaylin Jeffries \u00b7 2014 HighSchool \u00b7 ILB \u00b7 Burlington, NC \u00b7 72in \u00b7 signed Old Dominion",
+  "roster": "Jaylin Jeffries \u00b7 LB \u00b7 Burlington, NC \u00b7 72in \u00b7 Old Dominion 2015",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 60,
+  "pid": "P138118",
+  "group": "2009-14",
+  "recruit": "Montres Kitchens \u00b7 2012 HighSchool \u00b7 ATH \u00b7 Waynesboro, GA \u00b7 70in \u00b7 signed Troy",
+  "roster": "Montres Kitchens \u00b7 S \u00b7 Waynesboro, GA \u00b7 72in \u00b7 Troy 2012, Troy 2013, Troy 2014, Troy 2015",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 61,
+  "pid": "P147714",
+  "group": "2009-14",
+  "recruit": "Dontel James \u00b7 2013 HighSchool \u00b7 RB \u00b7 Ontario, CA \u00b7 72in \u00b7 signed Fresno State",
+  "roster": "Dontel James \u00b7 RB \u00b7 Fontana, CA \u00b7 72in \u00b7 Fresno State 2013, Fresno State 2014, Fresno State 2015, Fresno State 2016",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 62,
+  "pid": "P004965",
+  "group": "2009-14",
+  "recruit": "Isaac Miller \u00b7 2014 HighSchool \u00b7 OT \u00b7 Longmont, CO \u00b7 79in \u00b7 signed Colorado",
+  "roster": "Isaac Miller \u00b7 OL \u00b7 Longmont, CO \u00b7 79in \u00b7 Colorado 2015, Colorado 2016, Colorado 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 63,
+  "pid": "P015863",
+  "group": "2009-14",
+  "recruit": "Travis Parnell \u00b7 2014 HighSchool \u00b7 OLB \u00b7 Rio Rancho, NM \u00b7 75in \u00b7 signed New Mexico State",
+  "roster": "Travis Parnell \u00b7 LB \u00b7 Rio Rancho, NM \u00b7 75in \u00b7 New Mexico State 2015, New Mexico State 2016, New Mexico State 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 64,
+  "pid": "P146367",
+  "group": "2009-14",
+  "recruit": "Robert Lewis \u00b7 2012 HighSchool \u00b7 APB \u00b7 South Gate, CA \u00b7 70in \u00b7 signed Washington State",
+  "roster": "Robert Lewis \u00b7 WR \u00b7 South Gate, CA \u00b7 69in \u00b7 Washington State 2013, Washington State 2014, Washington State 2015, Washington State 2016, Washington State 2017, Washington State 2018",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 65,
+  "pid": "P026411",
+  "group": "2009-14",
+  "recruit": "Paul Piukala \u00b7 2011 JUCO \u00b7 WDE \u00b7 Oakland, CA \u00b7 76in \u00b7 signed Utah State",
+  "roster": "Paul Piukala \u00b7 DE \u00b7 Oakland, CA \u00b7 77in \u00b7 Utah State 2012, Utah State 2013",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 66,
+  "pid": "P099763",
+  "group": "2019-26",
+  "recruit": "Vance van Every \u00b7 2022 JUCO \u00b7 IOL \u00b7 Senatobia, MS \u00b7 74in \u00b7 signed Ohio",
+  "roster": "Vance Van Every \u00b7 OL \u00b7 Hernando, MS \u00b7 74in \u00b7 Ohio 2022, UT Martin 2024",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 67,
+  "pid": "P111859",
+  "group": "2019-26",
+  "recruit": "Elijah Gunn \u00b7 2023 HighSchool \u00b7 DL \u00b7 Hogansville, GA \u00b7 74in \u00b7 signed Southern Illinois",
+  "roster": "Elijah Gunn \u00b7 DL \u00b7 LaGrange, GA \u00b7 72in \u00b7 Cincinnati 2025, Cincinnati 2026, Southern Illinois 2024",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 68,
+  "pid": "P122796",
+  "group": "2019-26",
+  "recruit": "Juan Rodriguez \u00b7 2024 HighSchool \u00b7 IOL \u00b7 Los Angeles, CA \u00b7 75in \u00b7 signed Georgetown",
+  "roster": "Juan Rodriguez \u00b7 OL \u00b7 Los Angeles, CA \u00b7 75in \u00b7 Georgetown 2025, Georgetown 2026",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 69,
+  "pid": "P079799",
+  "group": "2019-26",
+  "recruit": "Kaylin Moore \u00b7 2021 HighSchool \u00b7 ATH \u00b7 Westlake Village, CA \u00b7 72in \u00b7 signed Colorado",
+  "roster": "Kaylin Moore \u00b7 DB \u00b7 Westlake Village, CA \u00b7 71in \u00b7 California 2023, Colorado 2021, Colorado 2022, UCLA 2024",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 70,
+  "pid": "P070523",
+  "group": "2019-26",
+  "recruit": "Westley Neal \u00b7 2020 HighSchool \u00b7 DT \u00b7 Miami, FL \u00b7 72.5in \u00b7 signed Rhode Island",
+  "roster": "Westley Neal Jr. \u00b7 DL \u00b7 Miami, FL \u00b7 73in \u00b7 Rhode Island 2021, Rhode Island 2022, Rhode Island 2023, Rhode Island 2024",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0.5
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 71,
+  "pid": "P072392",
+  "group": "2019-26",
+  "recruit": "Logan Gunderson \u00b7 2019 JUCO \u00b7 OG \u00b7 Jacksonville, FL \u00b7 77in \u00b7 signed Florida International",
+  "roster": "Logan Gunderson \u00b7 OL \u00b7 Jacksonville, FL \u00b7 77in \u00b7 Florida International 2018, Florida International 2019, Florida International 2020, Florida International 2021",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 72,
+  "pid": "P127543",
+  "group": "2019-26",
+  "recruit": "Gyan King \u00b7 2026 HighSchool \u00b7 CB \u00b7 Egg Harbor City, NJ \u00b7 72in \u00b7 signed Bryant",
+  "roster": "Gyan King \u00b7 DB \u00b7 Mays Landing, NJ \u00b7 72in \u00b7 Bryant 2026",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 73,
+  "pid": "P093697",
+  "group": "2019-26",
+  "recruit": "Jalen Newman \u00b7 2021 HighSchool \u00b7 CB \u00b7 Matthews, NC \u00b7 71in \u00b7 signed Princeton",
+  "roster": "Jalen Newman \u00b7 DB \u00b7 Weddington, NC \u00b7 72in \u00b7 Monmouth 2025, Princeton 2022, Princeton 2023, Princeton 2024",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 74,
+  "pid": "P069689",
+  "group": "2019-26",
+  "recruit": "Jaden Johnson \u00b7 2019 HighSchool \u00b7 PRO \u00b7 Memphis, TN \u00b7 74in \u00b7 signed Southern Miss",
+  "roster": "Jaden Johnson \u00b7 QB \u00b7 Memphis, TN \u00b7 74in \u00b7 Missouri State 2020, Missouri State 2021, Prairie View A&M 2023, Prairie View A&M 2024, Southern Miss 2019",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 75,
+  "pid": "P098254",
+  "group": "2019-26",
+  "recruit": "Edwin Spillman \u00b7 2024 HighSchool \u00b7 LB \u00b7 Nashville, TN \u00b7 74in \u00b7 signed Tennessee",
+  "roster": "Edwin Spillman \u00b7 LB \u00b7 Nashville, TN \u00b7 73in \u00b7 Tennessee 2024, Tennessee 2025, Tennessee 2026",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 76,
+  "pid": "P073145",
+  "group": "2019-26",
+  "recruit": "Ayden Noriega \u00b7 2019 HighSchool \u00b7 RB \u00b7 Amarillo, TX \u00b7 69in \u00b7 signed Rice",
+  "roster": "Ayden Noriega \u00b7 RB \u00b7 Amarillo, TX \u00b7 69in \u00b7 Rice 2019, Rice 2020, Rice 2021",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 77,
+  "pid": "P086759",
+  "group": "2019-26",
+  "recruit": "Jordan Anderson \u00b7 2022 HighSchool \u00b7 RB \u00b7 Joliet, IL \u00b7 75in \u00b7 signed Illinois",
+  "roster": "Jordan Anderson \u00b7 RB \u00b7 Naperville, IL \u00b7 76in \u00b7 Illinois 2022, Illinois 2023, Illinois 2024, Illinois 2025, Illinois 2026",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 78,
+  "pid": "P068894",
+  "group": "2019-26",
+  "recruit": "Broc Thompson \u00b7 2019 HighSchool \u00b7 WR \u00b7 Fork Union, VA \u00b7 75in \u00b7 signed Marshall",
+  "roster": "Broc Thompson \u00b7 WR \u00b7 Indianapolis, IN \u00b7 75in \u00b7 Marshall 2019, Marshall 2020, Purdue 2021, Purdue 2022",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "Fork Union is a prep school; same height and position; Marshall to Purdue",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 79,
+  "pid": "P073256",
+  "group": "2019-26",
+  "recruit": "Kendall Major \u00b7 2019 JUCO \u00b7 OG \u00b7 Kilgore, TX \u00b7 75in \u00b7 signed Toledo",
+  "roster": "Kendall Major \u00b7 OL \u00b7 Beaumont, TX \u00b7 75in \u00b7 Toledo 2018, Toledo 2019, Toledo 2020, Toledo 2021, Toledo 2022, Toledo 2023",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 80,
+  "pid": "P072775",
+  "group": "2019-26",
+  "recruit": "Ryan Graham \u00b7 2019 JUCO \u00b7 RB \u00b7 Rocklin, CA \u00b7 71in \u00b7 signed Arkansas State",
+  "roster": "Ryan Graham \u00b7 RB \u00b7 Lincoln, CA \u00b7 71in \u00b7 Arkansas State 2017, Arkansas State 2018, Arkansas State 2019, Arkansas State 2020",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 81,
+  "pid": "P098158",
+  "group": "2019-26",
+  "recruit": "Willie Nelson \u00b7 2024 HighSchool \u00b7 S \u00b7 Longview, TX \u00b7 69in \u00b7 signed Oklahoma State",
+  "roster": "Willie Nelson III \u00b7 LB \u00b7 Longview, TX \u00b7 70in \u00b7 Oklahoma State 2024, UTSA 2026",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 82,
+  "pid": "P118578",
+  "group": "2019-26",
+  "recruit": "Giulio Banchero \u00b7 2026 HighSchool \u00b7 ATH \u00b7 Seattle, WA \u00b7 74in \u00b7 signed Eastern Washington",
+  "roster": "Giulio Banchero \u00b7 WR \u00b7 Seattle, WA \u00b7 73in \u00b7 Eastern Washington 2026",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 83,
+  "pid": "P091881",
+  "group": "2019-26",
+  "recruit": "Joshua Singh \u00b7 2021 HighSchool \u00b7 DL \u00b7 Orem, UT \u00b7 71in \u00b7 signed BYU",
+  "roster": "Joshua Singh \u00b7 DL \u00b7 Laie, HI \u00b7 72in \u00b7 BYU 2022, BYU 2023, BYU 2024, Vanderbilt 2025",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "web-checked: Orem (UT) High School, hometown Laie, HI; BYU 2021-24, Vanderbilt 2025",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 84,
+  "pid": "P143290",
+  "group": "2019-26",
+  "recruit": "Jovan Green \u00b7 2026 HighSchool \u00b7 WR \u00b7 Oak Lawn, IL \u00b7 73in \u00b7 signed South Dakota State",
+  "roster": "Jovan Green Jr. \u00b7 WR \u00b7 Dolton, IL \u00b7 74in \u00b7 South Dakota State 2026",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 85,
+  "pid": "P109482",
+  "group": "2019-26",
+  "recruit": "Holden Sapp \u00b7 2022 HighSchool \u00b7 LB \u00b7 Savannah, GA \u00b7 74in \u00b7 signed Army",
+  "roster": "Holden Sapp \u00b7 LB \u00b7 Rincon, GA \u00b7 73in \u00b7 Army 2023, Army 2024",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 86,
+  "pid": "P021998",
+  "group": "risky (2009-14)",
+  "recruit": "Nate L Smith \u00b7 2012 HighSchool \u00b7 S \u00b7 Warminster, PA \u00b7 73in \u00b7 signed Temple",
+  "roster": "Nate L. Smith \u00b7 DB \u00b7 Philadelphia, PA \u00b7 72in \u00b7 Temple 2012, Temple 2013, Temple 2014, Temple 2015, Temple 2016",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 87,
+  "pid": "P060337",
+  "group": "risky (2015-18)",
+  "recruit": "Devon Anderson \u00b7 2017 JUCO \u00b7 SDE \u00b7 Dodge City, KS \u00b7 74in \u00b7 signed Utah State",
+  "roster": "Devon Anderson \u00b7 DT \u00b7 Baltimore, MD \u00b7 73in \u00b7 Utah State 2016, Utah State 2017, Utah State 2018, Utah State 2019",
+  "evidence": {
+   "home": "state differs",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "incorrect",
+  "verdict": "correct",
+  "reason": "JUCO city (Dodge City) vs home; same position group and height within 1 inch",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 88,
+  "pid": "P123496",
+  "group": "risky (2019-26)",
+  "recruit": "Lamont Lester Jr. \u00b7 2024 HighSchool \u00b7 EDGE \u00b7 Ramsey, NJ \u00b7 75in \u00b7 signed Monmouth",
+  "roster": "Lamont Lester Jr. \u00b7 DL \u00b7 Ramsey, NJ \u00b7 74in \u00b7 Colorado 2026, Monmouth 2025",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 89,
+  "pid": "P021660",
+  "group": "risky (other)",
+  "recruit": "Jarel Lowery \u00b7 2008 HighSchool \u00b7 DT \u00b7 Paterson, NJ \u00b7 77in \u00b7 signed Syracuse",
+  "roster": "Jarel Lowery \u00b7 G \u00b7 Paterson, NJ \u00b7 75in \u00b7 Syracuse 2009, Syracuse 2010, Syracuse 2011",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 90,
+  "pid": "P043336",
+  "group": "risky (2009-14)",
+  "recruit": "Anthony Lauro \u00b7 2013 HighSchool \u00b7 APB \u00b7 Bradenton, FL \u00b7 70in \u00b7 signed Akron",
+  "roster": "Anthony Lauro \u00b7 WR \u00b7 Bradenton, FL \u00b7 70in \u00b7 Akron 2014, Akron 2015, Akron 2016",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 91,
+  "pid": "P040361",
+  "group": "risky (other)",
+  "recruit": "Justin Johnson \u00b7 2007 HighSchool \u00b7 ATH \u00b7 Richardson, TX \u00b7 73in \u00b7 signed Houston",
+  "roster": "Justin Johnson \u00b7 WR \u00b7 Richardson, TX \u00b7 73in \u00b7 Houston 2008, Houston 2009, Houston 2010, Houston 2011",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 92,
+  "pid": "P012990",
+  "group": "risky (other)",
+  "recruit": "Arthur Brown \u00b7 2008 HighSchool \u00b7 ILB \u00b7 Wichita, KS \u00b7 73in \u00b7 signed Miami",
+  "roster": "Arthur Brown \u00b7 LB \u00b7 Wichita, KS \u00b7 74in \u00b7 Miami 2009",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "match",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 93,
+  "pid": "P060811",
+  "group": "risky (2015-18)",
+  "recruit": "TJ Robinson \u00b7 2017 HighSchool \u00b7 ATH \u00b7 Jacksonville, FL \u00b7 72in \u00b7 signed Ohio",
+  "roster": "T.J. Robinson \u00b7 LB \u00b7 Jacksonville, FL \u00b7 71in \u00b7 Ohio 2018, Ohio 2019, Ohio 2020",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "na",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 94,
+  "pid": "P002615",
+  "group": "risky (other)",
+  "recruit": "Vance Smith \u00b7 2008 HighSchool \u00b7 TE \u00b7 Milton, FL \u00b7 76in \u00b7 signed Auburn",
+  "roster": "Vance Smith \u00b7 OL \u00b7 Pace, FL \u00b7 74in \u00b7 Auburn 2009",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "differs",
+   "ht": 2
+  },
+  "auto": "ambiguous",
+  "verdict": "ambiguous",
+  "reason": "recruit TE vs roster OL, 2-inch height difference; neighboring towns",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 95,
+  "pid": "P051655",
+  "group": "risky (2015-18)",
+  "recruit": "Aubry Payne \u00b7 2016 HighSchool \u00b7 OLB \u00b7 Locust Grove, GA \u00b7 75in \u00b7 signed Western Carolina",
+  "roster": "Aubry Payne \u00b7 TE \u00b7 Locust Grove, GA \u00b7 76in \u00b7 Georgia State 2019, Georgia State 2020, Georgia State 2021, Georgia State 2022, Western Carolina 2015, Western Carolina 2016, Western Carolina 2017",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": true
+ },
+ {
+  "n": 96,
+  "pid": "P046644",
+  "group": "risky (other)",
+  "recruit": "Jahleel Addae \u00b7 2008 HighSchool \u00b7 APB \u00b7 Riverview, FL \u00b7 71in \u00b7 signed Central Michigan",
+  "roster": "Jahleel Addae \u00b7 DB \u00b7 Valrico, FL \u00b7 71in \u00b7 Central Michigan 2009, Central Michigan 2010, Central Michigan 2011, Central Michigan 2012",
+  "evidence": {
+   "home": "state match, city differs",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "ambiguous",
+  "verdict": "correct",
+  "reason": "neighboring towns (Riverview/Valrico, FL), same height; RB-to-DB move",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 97,
+  "pid": "P121534",
+  "group": "risky (2019-26)",
+  "recruit": "Griffin Stalfort \u00b7 2023 HighSchool \u00b7 IOL \u00b7 Chandler, AZ \u00b7 74in \u00b7 signed Air Force",
+  "roster": "Griffin Stalfort \u00b7 TE \u00b7 Chandler, AZ \u00b7 74in \u00b7 Air Force 2024, Air Force 2025, Air Force 2026",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 98,
+  "pid": "P004692",
+  "group": "risky (other)",
+  "recruit": "Jared Rains \u00b7 2008 HighSchool \u00b7 RB \u00b7 Aliquippa, PA \u00b7 71in \u00b7 signed Cincinnati",
+  "roster": "Jared Rains \u00b7 DB \u00b7 Aliquippa, PA \u00b7 70in \u00b7 Cincinnati 2009, Cincinnati 2010",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 1
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 99,
+  "pid": "P086225",
+  "group": "risky (other)",
+  "recruit": "Braden Wilson \u00b7 2008 HighSchool \u00b7 ILB \u00b7 Smith Center, KS \u00b7 76in \u00b7 signed Kansas State",
+  "roster": "Braden Wilson \u00b7 FB \u00b7 Smith Center, KS \u00b7 76in \u00b7 Kansas State 2009, Kansas State 2010, Kansas State 2011, Kansas State 2012",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 0
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ },
+ {
+  "n": 100,
+  "pid": "P120006",
+  "group": "risky (2019-26)",
+  "recruit": "Peyton Ledford \u00b7 2023 HighSchool \u00b7 LB \u00b7 Frankfort, KY \u00b7 75in \u00b7 signed Army",
+  "roster": "Peyton Ledford \u00b7 DL \u00b7 Frankfort, KY \u00b7 73in \u00b7 Army 2024",
+  "evidence": {
+   "home": "city+state match",
+   "pos": "differs",
+   "ht": 2
+  },
+  "auto": "correct",
+  "verdict": "correct",
+  "reason": "hometown and/or position and height agree",
+  "roster_seasons_before_signing": false
+ }
+]
