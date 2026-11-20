@@ -22,7 +22,10 @@ def coach(r):
     if arr: y=max(y,arr[-1])
     y=min(y,2026)
     return HC.get((s,y)) or HC.get((s,y-1))
-SC=[r for r in P if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv']))]
+SA_SCH={'Army','Navy','Air Force'}   # service academies: military commitment, so draft results don't measure development
+SC=[r for r in P if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])) and cred(r) not in SA_SCH]
+_cnt=collections.Counter(r['year'] for r in P if r['recruitType'] in ('HighSchool','JUCO','PrepSchool') and r['committedTo'] in FBS)
+COV={y:min(1.0,round(_cnt[y]/len(FBS)/24,2)) for y in _cnt}   # share of a typical class our data source lists
 def agg(rs):
     return [len(rs),sum(1 for r in rs if r['draftYear']),sum(1 for r in rs if r['tier'] in('First round','Top 10 pick')),round(sum(r['pts'] for r in rs),1),round(sum(r['exp'] for r in rs),1)]
 def path(r):
@@ -77,6 +80,10 @@ for c,rs in byc.items():
       pos={g:agg([r for r in rs if r['pg']==g]) for g in G},best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:6]],miss=[addtag(r) for r in sorted([r for r in rs if r['k']==8 and not r['draftYear']],key=lambda r:r['pae'])[:4]],
       w=sum(v[2] for v in stints.values()),l=sum(v[3] for v in stints.values()),cur=car[-1]['school'] if car else '',active=any(s['year']==2026 for s in car)))
 coaches.sort(key=lambda c:-(c['a'][3]-c['a'][4]))
+for c in coaches:
+    _r=byc[c['name']]; c['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
+for p in progs:
+    _r=byp[p['name']]; p['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
 for c in coaches: c['now']=next((s['school'] for s in CAREER.get(c['name'],[]) if s['year']==2026),None)
 # leaderboards: program x position x stars (graded classes)
 LB=collections.defaultdict(lambda:collections.defaultdict(list))
@@ -334,7 +341,7 @@ cd=collections.defaultdict(lambda:[0,0,0,0,0])
 for r in P:
     if r['committedTo'] in FBS:
         x=cd[(r['committedTo'],r['year'])]; x[0]+=1; x[1]+=bool(r['draftYear']); x[2]+=mvd_(r)
-        if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])): x[3]+=r['pts']; x[4]+=r['exp']
+        if r['exp'] is not None and cred(r) not in SA_SCH and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])): x[3]+=r['pts']; x[4]+=r['exp']
 devy=collections.defaultdict(list)
 for (s_,y),x in cd.items():
     if y<=2023 and x[4]>0: devy[y].append(x[3]-x[4])
@@ -386,6 +393,7 @@ for p in progs:
 # ---- player grade cutoffs (development = actual - expected draft points, all graded players)
 pv_=sorted(r['pae'] for r in SC)
 meta['pcut']=[[c_,round(pv_[min(len(pv_)-1,int(len(pv_)*c_/100))],2)] for c_,_ in CUT if c_>0]
+meta['cov']=COV
 # ---- JUCO development
 JU=[r for r in SC if r['recruitType']=='JUCO']
 jp=collections.defaultdict(list); jc=collections.defaultdict(list); jpg=collections.defaultdict(list)
@@ -453,3 +461,4 @@ for c in coaches:
     if sum(h.values())>=20: cheat[c['name']]=dict(st=SS.get(c['now'] or c['st'][-1][0]),sch=c['now'] or c['st'][-1][0],h=dict(h),t=dict(t),n=[x[0] for x in c['st']])
 open(O+'an2.json','w').write(json.dumps(dict(heat=heat,adapt=adapt,nat=nat,cheat=cheat),separators=(',',':')))
 print('AN2',len(heat),len(adapt),nat)
+
