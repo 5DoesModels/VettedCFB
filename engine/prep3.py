@@ -443,7 +443,7 @@ for r in JU:
     if c_: jc[c_].append(r)
 cnow={c['name']:c['now'] for c in coaches}
 JS=sorted({cred(r) for r in JU}); JCn=sorted({coach(r) or '' for r in JU})
-jrows=[[r['year'],JS.index(cred(r)),JCn.index(coach(r) or ''),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,1 if cred(r) in FBS else 0] for r in JU]
+jrows=[[r['year'],JS.index(cred(r)),JCn.index(coach(r) or ''),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,1 if cred(r) in FBS else 0,1 if cred(r)==r['committedTo'] else 0] for r in JU]
 jcs={}  # schools each coach led (FBS seasons)
 for c in coaches: jcs[c['name']]=[[x[0],x[1],x[2]] for x in c['st']]
 open(O+'juco.json','w').write(json.dumps(dict(S=JS,C=JCn,rows=jrows,cnow={k:cnow.get(k) for k in JCn if cnow.get(k)},cst={k:jcs.get(k,[]) for k in JCn},fbs=sorted(FBS)),separators=(',',':')))

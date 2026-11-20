@@ -779,7 +779,7 @@ function jucoView(){const J=D.juco;
 function coachWhere(k){const now=JUC.cnow[k],st=JUC.cst[k]||[];if(now)return `Now: <b>${esc(now)}</b>${st.length>1?' · also '+st.filter(x=>x[0]!==now).map(x=>esc(x[0])).join(', '):''}`;
   if(!st.length)return 'Not a head coach in 2026';const l=st[st.length-1];return `Last head coach job: <b>${esc(l[0])}</b> (${l[1]}–${l[2]})${st.length>1?' · also '+st.slice(0,-1).map(x=>esc(x[0])).join(', '):''}`}
 function drawJ(){const el=document.getElementById('jl');if(!el||!JUC)return;const [lo,hi]=jY,span=hi-lo+1,sc=Math.min(1,span/22);
-  const rows=JUC.rows.filter(r=>r[0]>=lo&&r[0]<=hi&&(!jP||r[3]===jP));
+  const rows=JUC.rows.filter(r=>r[0]>=lo&&r[0]<=hi&&(!jP||r[3]===jP)&&r[10]!==0);
   const by=jMode==='coaches'?1:0,keyOf=r=>by?JUC.C[r[2]]:JUC.S[r[1]];
   const g=new Map();rows.forEach(r=>{if(!by&&!r[9])return;const k=keyOf(r);if(!k)return;let a=g.get(k);if(!a){a=[0,0,0,0,0,[]];g.set(k,a)}a[0]++;a[1]+=r[6];a[2]+=r[7];a[3]+=r[4];a[4]+=r[5];if(r[8]>=0)a[5].push(r)});
   const min=Math.max(3,Math.round((jP?3:by?6:8)*sc));
@@ -787,8 +787,8 @@ function drawJ(){const el=document.getElementById('jl');if(!el||!JUC)return;cons
   const lab=jP?'JUCO '+PLUR[jP]:'JUCO players';
   const items=L.map(([k,a],i)=>({key:k,v:a[3]-a[4],rk:i+1,sub:`${by?coachWhere(k)+' · ':''}${a[0]} ${esc(lab)} · ${a[1]} drafted`}));
   const open=k=>{const a=g.get(k);const best=a[5].sort((x,y)=>(y[4]-y[5])-(x[4]-x[5])).slice(0,3);return `<div class="sheet">${by?`<p style="margin:0 0 10px">${coachWhere(k)}</p>`:''}${cellsHTML([[lab,a[0]],['Drafted',a[1]],['Draft rate',pct(a[1],a[0])],['First round',a[2]],['Actual ÷ exp.',rat(a[3],a[4])]])}${best.length?`<div class="tags2 mini">${best.map(r=>tag(T(r[8]))).join('')}</div>`:''}</div>`};
-  const t=document.getElementById('jt');
-  t.innerHTML=L.length?`${jP?'For '+esc(lab)+', ':''}<b>${esc(L[0][0])}</b> got the most out of JUCO players signed ${lo===hi?'in '+lo:lo+'–'+hi}: ${L[0][1][1]} of ${L[0][1][0]} drafted, ${f0(L[0][1][3]-L[0][1][4])} draft points above expected.`:'';
+  const nJx=JUC.rows.filter(r=>r[0]>=lo&&r[0]<=hi&&(!jP||r[3]===jP)&&r[10]===0).length;const t=document.getElementById('jt');
+  t.innerHTML=(L.length?`${jP?'For '+esc(lab)+', ':''}<b>${esc(L[0][0])}</b> got the most out of JUCO players signed ${lo===hi?'in '+lo:lo+'–'+hi}: ${L[0][1][1]} of ${L[0][1][0]} drafted, ${f0(L[0][1][3]-L[0][1][4])} draft points above expected.`:'')+`<span class="small" style="display:block;margin-top:6px">Counts JUCO signees who finished at the school that signed them${nJx?`. ${nJx} who transferred again count for their new school under <a href="#find" data-ty="tr">I'm a transfer</a>`:''}.</span>`;
   rowsList(el,items,f0,0,open,items.length);if(!items.length)el.innerHTML=`<p class="empty">Too few ${esc(lab)} in these years to rank. Widen the years or try "Any position".</p>`;
   const jq=document.getElementById('jq');if(jq&&jq.value)jq.oninput()}
 function loadFin(){
@@ -799,7 +799,7 @@ function getFin(g){return FIN[g]?Promise.resolve(FIN[g]):fetch('f/'+g+'.json').t
 const outcome=r=>r[11]?`Rd ${r[12]} · #${r[10]} · ${r[11]}`:(r[15]?(r[1]>=2025?'Too early':'Still in college'):r[1]>=2025?'Too early':'Undrafted');
 function drawFinder(){
   const [y0,y1]=fY;const lab=`signed ${y0===y1?y0:y0+'–'+y1}`;
-  const rows=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1);
+  const rows0=FIN[fP].filter(r=>(!fS||r[2]===+fS)&&(!fSt||r[4]===fSt)&&r[1]>=y0&&r[1]<=y1),rows=rows0.filter(r=>r[7]===r[6]),nTr=rows0.length-rows.length;
   const isCo=fRk==='coach',U=isCo?'head coach':'program',Us=isCo?'head coaches':'programs';
   const g={};for(const r of rows){const k=isCo?(r[14]!=null&&r[14]>=0?D.cn[r[14]]:null):r[7];if(!k)continue;const a=g[k]||(g[k]={n:0,d:0,p:0,e:0,ge:0,rows:[]});a.n++;if(r[11])a.d++;if(r[9]!=null&&!fIP(r)){a.p+=r[8];a.e+=r[9];a.ge++}a.rows.push(r)}
   const progs=Object.entries(g).map(([k,a])=>({k,...a,v:a.p-a.e}));
@@ -813,8 +813,9 @@ function drawFinder(){
   progs.sort((a,b)=>(b.ge?b.v:-1e9)-(a.ge?a.v:-1e9)||b.n-a.n);
   const big=progs.filter(p=>p.n>=3),small=progs.filter(p=>p.n<3);big.forEach((p,i)=>p.rank=i+1);small.forEach(p=>p.rank='');
   const progRow=p=>`<details class="row nb"><summary><span class="rk">${p.rank}</span><span class="pn">${p.rank?rankG(p.rank,big.length):''}${esc(p.k)}<small>${p.n} player${p.n>1?'s':''} · ${p.d} drafted ${p.n<5?'<span class="pill">small sample</span>':''} ${p.ge&&p.n>=3?(p.v>0?'<span class="pill w">worked</span>':'<span class="pill r">didn’t work</span>'):''}</small></span><span class="val ${p.v>=0?'pos':'neg'}">${p.ge?f0(p.v):'—'}</span></summary>
-  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">${isCo?'Path (coach credited at last school)':'Path'}</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}${tagStrip(r[0],r[1])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null||fIP(r)?'':(r[8]-r[9]>=0?'pos':'neg')}">${fIP(r)?'<span class="ip" title="Graded once his draft window has passed">in progress</span>':r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
+  <div class="sheet scroll"><table class="pl"><tr><th class="l">Player</th><th>Class</th><th class="l">Hometown</th><th class="l">Path</th><th class="l">Outcome</th><th>vs exp.</th></tr>${p.rows.sort((a,b)=>(a[10]||999)-(b[10]||999)||b[1]-a[1]).map(r=>`<tr><td>${esc(r[0])}${tagStrip(r[0],r[1])}</td><td>${r[1]}</td><td class="l">${esc(r[5])}</td><td class="l">${pathTxt(r[6],r[13])}</td><td class="l">${outcome(r)}</td><td class="${r[9]==null||fIP(r)?'':(r[8]-r[9]>=0?'pos':'neg')}">${fIP(r)?'<span class="ip" title="Graded once his draft window has passed">in progress</span>':r[9]==null?'—':gpP(r[8]-r[9],!!r[10])+f1(r[8]-r[9])}</td></tr>`).join('')}</table></div></details>`;
   document.getElementById('fo').innerHTML=`<p class="take" style="font-size:20px"><b>${rows.length.toLocaleString()}</b> ${esc(desc)} signed with college programs (${lab.toLowerCase()}). <b>${dn}</b> were drafted (${pct(dn,rows.length)}), and <b>${mv}</b> entered the transfer portal.</p>
+  <p class="small" style="margin-top:-4px">Counts players who finished at the school that signed them out of high school${nTr?`. ${nTr.toLocaleString()} who transferred and finished somewhere else count for their new school under <a href="#find" data-ty="tr">I'm a transfer</a>`:''}.</p>
   ${gp.length?`<div class="two"><div class="c"><h3>Worked</h3><p class="small">Most draft points above expected, 3+ graded players</p>${good.length?`<ol>${good.map(li).join('')}</ol>`:`<p class="small">No ${U} with 3+ players beat expectations.</p>`}</div>
   <div class="c bad"><h3>Didn't work</h3><p class="small">Furthest below expected, 3+ players</p>${bad.length?`<ol>${bad.map(li).join('')}</ol>`:`<p class="small">No ${U} with 3+ players fell short.</p>`}</div></div>`:''}
   ${(()=>{if(isCo)return '';const cg={};for(const r of rows){if(r[9]==null||fIP(r)||r[14]==null||r[14]<0)continue;const a=cg[r[14]]||(cg[r[14]]={n:0,d:0,p:0,e:0,best:null});a.n++;if(r[11])a.d++;a.p+=r[8];a.e+=r[9];if(r[11]&&(!a.best||r[10]<a.best[10]))a.best=r}
