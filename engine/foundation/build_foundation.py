@@ -12,7 +12,7 @@ Usage: python3 build_foundation.py OUT_DIR
 """
 import json, re, os, sys, glob, hashlib, collections, time
 
-BV = 'FND-0.2'
+BV = 'FND-0.3'
 ENG = '/home/claude/vetted-cfb/engine/data/'
 RAW = '/root/cfbd_pull/'
 GAMES = '/home/claude/foundation/raw_box/'

@@ -25,8 +25,8 @@
    "decision": "link",
    "athlete_id": "4362887",
    "recommendation_reason": "Hometown (Kennesaw, GA) and position match; this id was drafted 2021 #11 from Ohio State. The other id is a Georgia fullback from Savannah listed 2009-2018.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "named-jwilliams",
@@ -45,8 +45,8 @@
    "decision": "link",
    "athlete_id": "4426388",
    "recommendation_reason": "Hometown (St. Louis) and position match; Ohio State 2019-20, Alabama 2021; this id was drafted 2022 #12. CFBD's recruit record points to a different athlete id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "named-nsmith",
@@ -65,8 +65,8 @@
    "decision": "link",
    "athlete_id": "4426331",
    "recommendation_reason": "This id was drafted 2023 #30 from Georgia; position group and seasons fit. Hometown differs (Savannah vs Bradenton) because he played at IMG Academy in Bradenton.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "named-rthomas",
@@ -85,8 +85,8 @@
    "decision": "link",
    "athlete_id": "4697844",
    "recommendation_reason": "Hometown (Eufaula, AL) and position match; Mississippi State 2021-22, Georgia 2023-24, Troy 2025. CFBD's recruit-id link had pointed at Zavion Thomas.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "named-mayfield",
@@ -105,8 +105,8 @@
    "decision": "link",
    "athlete_id": "550373",
    "recommendation_reason": "Walk-on recruiting record (no school). Hometown (Austin, TX) and position match; this id was drafted 2018 #1 from Oklahoma.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-159709",
@@ -186,8 +186,8 @@
    "decision": "link",
    "athlete_id": "-1030535",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-159929",
@@ -213,8 +213,8 @@
    "decision": "link",
    "athlete_id": "377717",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-161302",
@@ -267,8 +267,8 @@
    "decision": "link",
    "athlete_id": "534284",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-159390",
@@ -348,8 +348,8 @@
    "decision": "link",
    "athlete_id": "-1024531",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-188082",
@@ -429,8 +429,8 @@
    "decision": "link",
    "athlete_id": "-1035511",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-151083",
@@ -456,8 +456,8 @@
    "decision": "link",
    "athlete_id": "-1024418",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-187411",
@@ -537,8 +537,8 @@
    "decision": "link",
    "athlete_id": "3140660",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-142932",
@@ -564,8 +564,8 @@
    "decision": "link",
    "athlete_id": "3120078",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-143150",
@@ -672,8 +672,8 @@
    "decision": "link",
    "athlete_id": "4035593",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-140680",
@@ -780,8 +780,8 @@
    "decision": "link",
    "athlete_id": "4036026",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-134880",
@@ -807,8 +807,8 @@
    "decision": "link",
    "athlete_id": "4035198",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-135068",
@@ -1104,8 +1104,8 @@
    "decision": "link",
    "athlete_id": "4240780",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-185084",
@@ -1212,8 +1212,8 @@
    "decision": "link",
    "athlete_id": "4362887",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-250164",
@@ -1401,8 +1401,8 @@
    "decision": "link",
    "athlete_id": "4683236",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-254957",
@@ -1482,8 +1482,8 @@
    "decision": "link",
    "athlete_id": "5230176",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-103851",
@@ -1509,8 +1509,8 @@
    "decision": "link",
    "athlete_id": "5158983",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-104265",
@@ -1590,8 +1590,8 @@
    "decision": "link",
    "athlete_id": "5438530",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-224488",
@@ -1617,8 +1617,8 @@
    "decision": "link",
    "athlete_id": "5438533",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-105371",
@@ -1671,8 +1671,8 @@
    "decision": "link",
    "athlete_id": "5438535",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-106001",
@@ -1698,8 +1698,8 @@
    "decision": "link",
    "athlete_id": "5448251",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-258736",
@@ -1725,8 +1725,8 @@
    "decision": "link",
    "athlete_id": "5438486",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "ambig-165616",
@@ -1752,8 +1752,8 @@
    "decision": "link",
    "athlete_id": "193105",
    "recommendation_reason": "One candidate matches on hometown and/or a draft record with this id.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-166005",
@@ -1772,8 +1772,8 @@
    "decision": "link",
    "athlete_id": "175660",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-164671",
@@ -1792,8 +1792,8 @@
    "decision": "link",
    "athlete_id": "192058",
    "recommendation_reason": "Different first name (Cory) but the same hometown (Morgantown, WV): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-162754",
@@ -1812,8 +1812,8 @@
    "decision": "link",
    "athlete_id": "189002",
    "recommendation_reason": "Different first name (Zac) but the same hometown (West Des Moines, IA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-162590",
@@ -1832,8 +1832,8 @@
    "decision": "link",
    "athlete_id": "236061",
    "recommendation_reason": "Different first name (JoJo) but the same hometown (Homestead, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-161015",
@@ -1852,8 +1852,8 @@
    "decision": "link",
    "athlete_id": "384855",
    "recommendation_reason": "Different first name (Jonathan) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159295",
@@ -1872,8 +1872,8 @@
    "decision": "link",
    "athlete_id": "-1043537",
    "recommendation_reason": "Different first name (Cory) but the same hometown (Grand Rapids, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159333",
@@ -1892,8 +1892,8 @@
    "decision": "link",
    "athlete_id": "-1040558",
    "recommendation_reason": "Different first name (Mika) but the same hometown (Kamuela, HI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158577",
@@ -1912,8 +1912,8 @@
    "decision": "link",
    "athlete_id": "-1037990",
    "recommendation_reason": "Different first name (Rey) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158078",
@@ -1932,8 +1932,8 @@
    "decision": "link",
    "athlete_id": "-1036010",
    "recommendation_reason": "Different first name (Yashua) but the same hometown (Denton, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158234",
@@ -1952,8 +1952,8 @@
    "decision": "link",
    "athlete_id": "-1028897",
    "recommendation_reason": "Different first name (Grant) but the same hometown (Seattle, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158213",
@@ -1972,8 +1972,8 @@
    "decision": "link",
    "athlete_id": "-1021878",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159324",
@@ -1992,8 +1992,8 @@
    "decision": "link",
    "athlete_id": "-1017789",
    "recommendation_reason": "Different first name (Emanuel) but the same hometown (Jackson, MS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159234",
@@ -2012,8 +2012,8 @@
    "decision": "link",
    "athlete_id": "-1010669",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-157570",
@@ -2032,8 +2032,8 @@
    "decision": "link",
    "athlete_id": "-1009854",
    "recommendation_reason": "Different first name (Jonotthan) but the same hometown (Groveland, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158910",
@@ -2052,8 +2052,8 @@
    "decision": "link",
    "athlete_id": "-1007960",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-157632",
@@ -2072,8 +2072,8 @@
    "decision": "link",
    "athlete_id": "-1004180",
    "recommendation_reason": "Different first name (Nick) but the same hometown (Parker, CO): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159011",
@@ -2092,8 +2092,8 @@
    "decision": "link",
    "athlete_id": "480551",
    "recommendation_reason": "Different first name (L.J.) but the same hometown (Stockton, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159223",
@@ -2112,8 +2112,8 @@
    "decision": "link",
    "athlete_id": "480552",
    "recommendation_reason": "Different first name (Stefphon) but the same hometown (Visalia, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158563",
@@ -2132,8 +2132,8 @@
    "decision": "link",
    "athlete_id": "480727",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159208",
@@ -2152,8 +2152,8 @@
    "decision": "link",
    "athlete_id": "480970",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-159176",
@@ -2172,8 +2172,8 @@
    "decision": "link",
    "athlete_id": "481255",
    "recommendation_reason": "Different first name (Monterrell) but the same hometown (Bryan, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-157627",
@@ -2192,8 +2192,8 @@
    "decision": "link",
    "athlete_id": "481674",
    "recommendation_reason": "Different first name (J.R.) but the same hometown (Stafford, VA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-157929",
@@ -2212,8 +2212,8 @@
    "decision": "link",
    "athlete_id": "482883",
    "recommendation_reason": "Different first name (JaQuez) but the same hometown (St. Petersburg, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158477",
@@ -2232,8 +2232,8 @@
    "decision": "link",
    "athlete_id": "483249",
    "recommendation_reason": "Different first name (Jay) but the same hometown (Houston, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-158451",
@@ -2252,8 +2252,8 @@
    "decision": "link",
    "athlete_id": "488082",
    "recommendation_reason": "Different first name (Dontravius) but the same hometown (Homestead, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-157221",
@@ -2272,8 +2272,8 @@
    "decision": "link",
    "athlete_id": "-1025649",
    "recommendation_reason": "Different first name (Derek) but the same hometown (Odessa, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156931",
@@ -2292,8 +2292,8 @@
    "decision": "link",
    "athlete_id": "-1018458",
    "recommendation_reason": "Different first name (Gator) but the same hometown (Gainesville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156862",
@@ -2312,8 +2312,8 @@
    "decision": "link",
    "athlete_id": "-1015825",
    "recommendation_reason": "Different first name (Malcom) but the same hometown (Pickerington, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156146",
@@ -2332,8 +2332,8 @@
    "decision": "link",
    "athlete_id": "-1009560",
    "recommendation_reason": "Different first name (Darius) but the same hometown (Chicago, IL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-155124",
@@ -2352,8 +2352,8 @@
    "decision": "link",
    "athlete_id": "-1007410",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156097",
@@ -2372,8 +2372,8 @@
    "decision": "link",
    "athlete_id": "500516",
    "recommendation_reason": "Different first name (Marco) but the same hometown (Glenpool, OK): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-155502",
@@ -2392,8 +2392,8 @@
    "decision": "link",
    "athlete_id": "502985",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156227",
@@ -2412,8 +2412,8 @@
    "decision": "link",
    "athlete_id": "503269",
    "recommendation_reason": "Different first name (Jazz) but the same hometown (Duncan, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156060",
@@ -2432,8 +2432,8 @@
    "decision": "link",
    "athlete_id": "503799",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154814",
@@ -2452,8 +2452,8 @@
    "decision": "link",
    "athlete_id": "504047",
    "recommendation_reason": "Different first name (DeMarcus) but the same hometown (Millbrook, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-156858",
@@ -2472,8 +2472,8 @@
    "decision": "link",
    "athlete_id": "505188",
    "recommendation_reason": "Different first name (Darryl) but the same hometown (Alexandria, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153786",
@@ -2492,8 +2492,8 @@
    "decision": "link",
    "athlete_id": "-1037687",
    "recommendation_reason": "Different first name (Mickey) but the same hometown (Piedmont, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-152504",
@@ -2512,8 +2512,8 @@
    "decision": "link",
    "athlete_id": "-1035904",
    "recommendation_reason": "Different first name (Derek) but the same hometown (Brenham, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154455",
@@ -2532,8 +2532,8 @@
    "decision": "link",
    "athlete_id": "-1030121",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154644",
@@ -2552,8 +2552,8 @@
    "decision": "link",
    "athlete_id": "-1025227",
    "recommendation_reason": "Different first name (Tyrell) but the same hometown (Daytona Beach, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153875",
@@ -2572,8 +2572,8 @@
    "decision": "link",
    "athlete_id": "-1023007",
    "recommendation_reason": "Different first name (Michael Allen) but the same hometown (Crestview, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154544",
@@ -2592,8 +2592,8 @@
    "decision": "link",
    "athlete_id": "-1022974",
    "recommendation_reason": "Different first name (Ike) but the same hometown (Milton, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154155",
@@ -2612,8 +2612,8 @@
    "decision": "link",
    "athlete_id": "-1022475",
    "recommendation_reason": "Different first name (Ernest) but the same hometown (College Station, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153318",
@@ -2632,8 +2632,8 @@
    "decision": "link",
    "athlete_id": "-1021431",
    "recommendation_reason": "Different first name (Jephte) but the same hometown (Delray Beach, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153123",
@@ -2652,8 +2652,8 @@
    "decision": "link",
    "athlete_id": "-1020498",
    "recommendation_reason": "Different first name (Gregg) but the same hometown (Fremont, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154159",
@@ -2672,8 +2672,8 @@
    "decision": "link",
    "athlete_id": "-1017506",
    "recommendation_reason": "Different first name (Brandon) but the same hometown (Mendenhall, MS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154475",
@@ -2692,8 +2692,8 @@
    "decision": "link",
    "athlete_id": "-1017065",
    "recommendation_reason": "Different first name (Zeke) but the same hometown (Baton Rouge, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153350",
@@ -2712,8 +2712,8 @@
    "decision": "link",
    "athlete_id": "-1013688",
    "recommendation_reason": "Different first name (Jeremy) but the same hometown (Cleveland, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154444",
@@ -2732,8 +2732,8 @@
    "decision": "link",
    "athlete_id": "-1010206",
    "recommendation_reason": "Different first name (Vinny) but the same hometown (Sarasota, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154285",
@@ -2752,8 +2752,8 @@
    "decision": "link",
    "athlete_id": "-1009141",
    "recommendation_reason": "Different first name (Isaac) but the same hometown (Irmo, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153492",
@@ -2772,8 +2772,8 @@
    "decision": "link",
    "athlete_id": "-1005387",
    "recommendation_reason": "Different first name (Manny) but the same hometown (Everett, MA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153966",
@@ -2792,8 +2792,8 @@
    "decision": "link",
    "athlete_id": "-1003325",
    "recommendation_reason": "Different first name (Billy) but the same hometown (Garden City, NY): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153716",
@@ -2812,8 +2812,8 @@
    "decision": "link",
    "athlete_id": "512505",
    "recommendation_reason": "Different first name (Reggis) but the same hometown (Stone Mountain, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154776",
@@ -2832,8 +2832,8 @@
    "decision": "link",
    "athlete_id": "512787",
    "recommendation_reason": "Different first name (Travaughn) but the same hometown (Manvel, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-154153",
@@ -2852,8 +2852,8 @@
    "decision": "link",
    "athlete_id": "514115",
    "recommendation_reason": "Different first name (Jaime) but the same hometown (Garland, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-153241",
@@ -2872,8 +2872,8 @@
    "decision": "link",
    "athlete_id": "517036",
    "recommendation_reason": "Different first name (Demond) but the same hometown (Monroe, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150827",
@@ -2892,8 +2892,8 @@
    "decision": "link",
    "athlete_id": "-1043202",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150947",
@@ -2912,8 +2912,8 @@
    "decision": "link",
    "athlete_id": "-1039978",
    "recommendation_reason": "Different first name (Reginald) but the same hometown (Amite, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151969",
@@ -2932,8 +2932,8 @@
    "decision": "link",
    "athlete_id": "-1039379",
    "recommendation_reason": "Different first name (Corey) but the same hometown (Dallas, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-149555",
@@ -2952,8 +2952,8 @@
    "decision": "link",
    "athlete_id": "-1038312",
    "recommendation_reason": "Different first name (Kenny) but the same hometown (Marietta, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151121",
@@ -2972,8 +2972,8 @@
    "decision": "link",
    "athlete_id": "-1036920",
    "recommendation_reason": "Different first name (Bob) but the same hometown (Medford, NJ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-149345",
@@ -2992,8 +2992,8 @@
    "decision": "link",
    "athlete_id": "-1035801",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150830",
@@ -3012,8 +3012,8 @@
    "decision": "link",
    "athlete_id": "-1025816",
    "recommendation_reason": "Different first name (Ron) but the same hometown (Detroit, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-152063",
@@ -3032,8 +3032,8 @@
    "decision": "link",
    "athlete_id": "-1017411",
    "recommendation_reason": "Different first name (Chris) but the same hometown (Homestead, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-152061",
@@ -3052,8 +3052,8 @@
    "decision": "link",
    "athlete_id": "-1017406",
    "recommendation_reason": "Different first name (Darrien) but the same hometown (Geismar, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-152057",
@@ -3072,8 +3072,8 @@
    "decision": "link",
    "athlete_id": "-1015513",
    "recommendation_reason": "Different first name (Donny) but the same hometown (Crosby, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150155",
@@ -3092,8 +3092,8 @@
    "decision": "link",
    "athlete_id": "-1010635",
    "recommendation_reason": "Different first name (Darian) but the same hometown (New Orleans, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150871",
@@ -3112,8 +3112,8 @@
    "decision": "link",
    "athlete_id": "-1008489",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151046",
@@ -3132,8 +3132,8 @@
    "decision": "link",
    "athlete_id": "-1006594",
    "recommendation_reason": "Different first name (Colin) but the same hometown (Oxford, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-149960",
@@ -3152,8 +3152,8 @@
    "decision": "link",
    "athlete_id": "-1004793",
    "recommendation_reason": "Different first name (Rashodrick) but the same hometown (Linden, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150590",
@@ -3172,8 +3172,8 @@
    "decision": "link",
    "athlete_id": "530348",
    "recommendation_reason": "Different first name (Shelldon) but the same hometown (Seffner, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151021",
@@ -3192,8 +3192,8 @@
    "decision": "link",
    "athlete_id": "531268",
    "recommendation_reason": "Different first name (Bruce) but the same hometown (Fort Lauderdale, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-150176",
@@ -3212,8 +3212,8 @@
    "decision": "link",
    "athlete_id": "531309",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-149299",
@@ -3232,8 +3232,8 @@
    "decision": "link",
    "athlete_id": "532059",
    "recommendation_reason": "Different first name (Alton) but the same hometown (Orlando, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151833",
@@ -3252,8 +3252,8 @@
    "decision": "link",
    "athlete_id": "536124",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151682",
@@ -3272,8 +3272,8 @@
    "decision": "link",
    "athlete_id": "536210",
    "recommendation_reason": "Different first name (Salesa) but the same hometown (Sacramento, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-151443",
@@ -3292,8 +3292,8 @@
    "decision": "link",
    "athlete_id": "536242",
    "recommendation_reason": "Different first name (Benetton) but the same hometown (Kahuku, HI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-152062",
@@ -3312,8 +3312,8 @@
    "decision": "link",
    "athlete_id": "537834",
    "recommendation_reason": "Different first name (Darrius) but the same hometown (Marion, AR): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147153",
@@ -3332,8 +3332,8 @@
    "decision": "link",
    "athlete_id": "-1042838",
    "recommendation_reason": "Different first name (Ellijah) but the same hometown (Huntington, WV): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-148626",
@@ -3352,8 +3352,8 @@
    "decision": "link",
    "athlete_id": "-1037583",
    "recommendation_reason": "Different first name (Nick) but the same hometown (Birmingham, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-187044",
@@ -3372,8 +3372,8 @@
    "decision": "link",
    "athlete_id": "-1036244",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147613",
@@ -3392,8 +3392,8 @@
    "decision": "link",
    "athlete_id": "-1023748",
    "recommendation_reason": "Different first name (D'Andre) but the same hometown (Arlington, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147382",
@@ -3412,8 +3412,8 @@
    "decision": "link",
    "athlete_id": "-1021413",
    "recommendation_reason": "Different first name (Daletavious) but the same hometown (Decatur, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-148779",
@@ -3432,8 +3432,8 @@
    "decision": "link",
    "athlete_id": "-1017462",
    "recommendation_reason": "Different first name (Tracey) but the same hometown (Brunswick, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-148536",
@@ -3452,8 +3452,8 @@
    "decision": "link",
    "athlete_id": "-1009484",
    "recommendation_reason": "Different first name (Quan) but the same hometown (Detroit, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147154",
@@ -3472,8 +3472,8 @@
    "decision": "link",
    "athlete_id": "-1000570",
    "recommendation_reason": "Different first name (Tommy) but the same hometown (Monroeville, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147609",
@@ -3492,8 +3492,8 @@
    "decision": "link",
    "athlete_id": "545408",
    "recommendation_reason": "Different first name (Robby) but the same hometown (Tampa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-147984",
@@ -3512,8 +3512,8 @@
    "decision": "link",
    "athlete_id": "545816",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-146599",
@@ -3532,8 +3532,8 @@
    "decision": "link",
    "athlete_id": "549901",
    "recommendation_reason": "Different first name (Joey) but the same hometown (Jefferson City, MO): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142061",
@@ -3552,8 +3552,8 @@
    "decision": "link",
    "athlete_id": "-1042809",
    "recommendation_reason": "Different first name (Dontae) but the same hometown (Durham, NC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-143487",
@@ -3572,8 +3572,8 @@
    "decision": "link",
    "athlete_id": "-1040727",
    "recommendation_reason": "Different first name (Tre) but the same hometown (Pittsburgh, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-186677",
@@ -3592,8 +3592,8 @@
    "decision": "link",
    "athlete_id": "-1037580",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-143124",
@@ -3612,8 +3612,8 @@
    "decision": "link",
    "athlete_id": "-1036887",
    "recommendation_reason": "Different first name (Junior) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-144418",
@@ -3632,8 +3632,8 @@
    "decision": "link",
    "athlete_id": "-1036217",
    "recommendation_reason": "Different first name (Jamaal) but the same hometown (Lanham, MD): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142036",
@@ -3652,8 +3652,8 @@
    "decision": "link",
    "athlete_id": "-1034783",
    "recommendation_reason": "Different first name (Donald) but the same hometown (Houston, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142767",
@@ -3672,8 +3672,8 @@
    "decision": "link",
    "athlete_id": "-1031133",
    "recommendation_reason": "Different first name (William) but the same hometown (Perris, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142736",
@@ -3692,8 +3692,8 @@
    "decision": "link",
    "athlete_id": "-1029438",
    "recommendation_reason": "Different first name (Jaquaun) but the same hometown (Elizabeth, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142163",
@@ -3712,8 +3712,8 @@
    "decision": "link",
    "athlete_id": "-1021706",
    "recommendation_reason": "Different first name (Kendarius) but the same hometown (Stockbridge, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-143784",
@@ -3732,8 +3732,8 @@
    "decision": "link",
    "athlete_id": "-1015078",
    "recommendation_reason": "Different first name (Junior) but the same hometown (Grandview, MO): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142419",
@@ -3752,8 +3752,8 @@
    "decision": "link",
    "athlete_id": "-1007354",
    "recommendation_reason": "Different first name (Jefferie) but the same hometown (Hope Mills, NC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-145118",
@@ -3772,8 +3772,8 @@
    "decision": "link",
    "athlete_id": "-1005921",
    "recommendation_reason": "Different first name (Gusty) but the same hometown (Hilton, NY): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-143530",
@@ -3792,8 +3792,8 @@
    "decision": "link",
    "athlete_id": "-1002649",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-141880",
@@ -3812,8 +3812,8 @@
    "decision": "link",
    "athlete_id": "-1000909",
    "recommendation_reason": "Different first name (Laurence) but the same hometown (Monroe, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-136582",
@@ -3832,8 +3832,8 @@
    "decision": "link",
    "athlete_id": "3116177",
    "recommendation_reason": "Different first name (Troy) but the same hometown (Wilmington, DE): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-144003",
@@ -3852,8 +3852,8 @@
    "decision": "link",
    "athlete_id": "3122727",
    "recommendation_reason": "Different first name (Reggie) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-142923",
@@ -3872,8 +3872,8 @@
    "decision": "link",
    "athlete_id": "3123857",
    "recommendation_reason": "Different first name (Austin) but the same hometown (Crosby, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-145178",
@@ -3892,8 +3892,8 @@
    "decision": "link",
    "athlete_id": "3125932",
    "recommendation_reason": "Different first name (Zeke) but the same hometown (West Palm Beach, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-143297",
@@ -3912,8 +3912,8 @@
    "decision": "link",
    "athlete_id": "3127281",
    "recommendation_reason": "Different first name (Ngalu) but the same hometown (Sacramento, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-144975",
@@ -3932,8 +3932,8 @@
    "decision": "link",
    "athlete_id": "3128847",
    "recommendation_reason": "Different first name (Shermarke) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-140030",
@@ -3952,8 +3952,8 @@
    "decision": "link",
    "athlete_id": "-1023732",
    "recommendation_reason": "Different first name (Gabe) but the same hometown (St. George, UT): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-140207",
@@ -3972,8 +3972,8 @@
    "decision": "link",
    "athlete_id": "-1017031",
    "recommendation_reason": "Different first name (Jarrell) but the same hometown (Haynesville, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-138700",
@@ -3992,8 +3992,8 @@
    "decision": "link",
    "athlete_id": "-1010930",
    "recommendation_reason": "Different first name (Emmanuel) but the same hometown (Jacksonville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-140114",
@@ -4012,8 +4012,8 @@
    "decision": "link",
    "athlete_id": "-1000860",
    "recommendation_reason": "Different first name (Torin) but the same hometown (Rosenberg, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-138382",
@@ -4032,8 +4032,8 @@
    "decision": "link",
    "athlete_id": "3915403",
    "recommendation_reason": "Different first name (Tim) but the same hometown (Santa Clarita, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-141665",
@@ -4052,8 +4052,8 @@
    "decision": "link",
    "athlete_id": "3916590",
    "recommendation_reason": "Different first name (Chuck) but the same hometown (Southfield, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-141393",
@@ -4072,8 +4072,8 @@
    "decision": "link",
    "athlete_id": "3917199",
    "recommendation_reason": "Different first name (Quan) but the same hometown (Gainesville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-141098",
@@ -4092,8 +4092,8 @@
    "decision": "link",
    "athlete_id": "3918643",
    "recommendation_reason": "Different first name (Sean) but the same hometown (Green Cove Springs, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-139825",
@@ -4112,8 +4112,8 @@
    "decision": "link",
    "athlete_id": "3919106",
    "recommendation_reason": "Different first name (Ralph) but the same hometown (Starkville, MS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-139784",
@@ -4132,8 +4132,8 @@
    "decision": "link",
    "athlete_id": "3919559",
    "recommendation_reason": "Different first name (Chuck) but the same hometown (Jacksonville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-139975",
@@ -4152,8 +4152,8 @@
    "decision": "link",
    "athlete_id": "3929913",
    "recommendation_reason": "Different first name (Izzy) but the same hometown (Redding, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-260097",
@@ -4172,8 +4172,8 @@
    "decision": "link",
    "athlete_id": "4035396",
    "recommendation_reason": "Different first name (Micheal) but the same hometown (Missouri City, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135275",
@@ -4192,8 +4192,8 @@
    "decision": "link",
    "athlete_id": "-1041335",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-137127",
@@ -4212,8 +4212,8 @@
    "decision": "link",
    "athlete_id": "-1039295",
    "recommendation_reason": "Different first name (Jorge) but the same hometown (El Paso, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135024",
@@ -4232,8 +4232,8 @@
    "decision": "link",
    "athlete_id": "-1038238",
    "recommendation_reason": "Different first name (Paco) but the same hometown (Baldwin Park, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135804",
@@ -4252,8 +4252,8 @@
    "decision": "link",
    "athlete_id": "-1029071",
    "recommendation_reason": "Different first name (T.J.) but the same hometown (Cleveland, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-134738",
@@ -4272,8 +4272,8 @@
    "decision": "link",
    "athlete_id": "-1025098",
    "recommendation_reason": "Different first name (Ben Shug) but the same hometown (Buford, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-137896",
@@ -4292,8 +4292,8 @@
    "decision": "link",
    "athlete_id": "-1003089",
    "recommendation_reason": "Different first name (Antonino) but the same hometown (Gibsonia, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-137149",
@@ -4312,8 +4312,8 @@
    "decision": "link",
    "athlete_id": "-1002600",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-213340",
@@ -4332,8 +4332,8 @@
    "decision": "link",
    "athlete_id": "3925350",
    "recommendation_reason": "Different first name (Anfernee) but the same hometown (Dadeville, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135815",
@@ -4352,8 +4352,8 @@
    "decision": "link",
    "athlete_id": "3926336",
    "recommendation_reason": "Different first name (Joey) but the same hometown (Hilton Head Island, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135138",
@@ -4372,8 +4372,8 @@
    "decision": "link",
    "athlete_id": "4035656",
    "recommendation_reason": "Different first name (Bennett) but the same hometown (Fort Wayne, IN): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-136333",
@@ -4392,8 +4392,8 @@
    "decision": "link",
    "athlete_id": "4036370",
    "recommendation_reason": "Different first name (Trey) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-135455",
@@ -4412,8 +4412,8 @@
    "decision": "link",
    "athlete_id": "4037590",
    "recommendation_reason": "Different first name (Juwan) but the same hometown (Lilburn, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-136877",
@@ -4432,8 +4432,8 @@
    "decision": "link",
    "athlete_id": "4039663",
    "recommendation_reason": "Different first name (Manny) but the same hometown (Roland, OK): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-134098",
@@ -4452,8 +4452,8 @@
    "decision": "link",
    "athlete_id": "-1043338",
    "recommendation_reason": "Different first name (Mohamed) but the same hometown (Menasha, WI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-133858",
@@ -4472,8 +4472,8 @@
    "decision": "link",
    "athlete_id": "-1039278",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-132456",
@@ -4492,8 +4492,8 @@
    "decision": "link",
    "athlete_id": "-1032646",
    "recommendation_reason": "Different first name (Antawyn) but the same hometown (Okeechobee, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130902",
@@ -4512,8 +4512,8 @@
    "decision": "link",
    "athlete_id": "4035678",
    "recommendation_reason": "Different first name (Hauati) but the same hometown (Salt Lake City, UT): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130207",
@@ -4532,8 +4532,8 @@
    "decision": "link",
    "athlete_id": "4036057",
    "recommendation_reason": "Different first name (Brandon) but the same hometown (Pittsburgh, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-131948",
@@ -4552,8 +4552,8 @@
    "decision": "link",
    "athlete_id": "4240828",
    "recommendation_reason": "Different first name (Riah) but the same hometown (New Castle, DE): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130886",
@@ -4572,8 +4572,8 @@
    "decision": "link",
    "athlete_id": "4240862",
    "recommendation_reason": "Different first name (Rico) but the same hometown (Jacksonville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-132914",
@@ -4592,8 +4592,8 @@
    "decision": "link",
    "athlete_id": "4241136",
    "recommendation_reason": "Different first name (Benz) but the same hometown (Lawrenceville, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-132159",
@@ -4612,8 +4612,8 @@
    "decision": "link",
    "athlete_id": "4241138",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-133511",
@@ -4632,8 +4632,8 @@
    "decision": "link",
    "athlete_id": "4243743",
    "recommendation_reason": "Different first name (Chris) but the same hometown (Teaneck, NJ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130326",
@@ -4652,8 +4652,8 @@
    "decision": "link",
    "athlete_id": "4247576",
    "recommendation_reason": "Different first name (Hunter) but the same hometown (Aledo, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-250049",
@@ -4672,8 +4672,8 @@
    "decision": "link",
    "athlete_id": "4253103",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130948",
@@ -4692,8 +4692,8 @@
    "decision": "link",
    "athlete_id": "4255982",
    "recommendation_reason": "Different first name (Tino) but the same hometown (Belle Glade, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-130551",
@@ -4712,8 +4712,8 @@
    "decision": "link",
    "athlete_id": "4259915",
    "recommendation_reason": "Different first name (Momo) but the same hometown (Plano, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118145",
@@ -4732,8 +4732,8 @@
    "decision": "link",
    "athlete_id": "4261090",
    "recommendation_reason": "Different first name (Jordan) but the same hometown (Jacksonville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-131391",
@@ -4752,8 +4752,8 @@
    "decision": "link",
    "athlete_id": "4360719",
    "recommendation_reason": "Different first name (Kadin) but the same hometown (Newton, KS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-128896",
@@ -4772,8 +4772,8 @@
    "decision": "link",
    "athlete_id": "-1028692",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-129185",
@@ -4792,8 +4792,8 @@
    "decision": "link",
    "athlete_id": "-1013182",
    "recommendation_reason": "Different first name (Torrey) but the same hometown (Tomball, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127676",
@@ -4812,8 +4812,8 @@
    "decision": "link",
    "athlete_id": "-1011998",
    "recommendation_reason": "Different first name (Scoobie) but the same hometown (Atlanta, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127516",
@@ -4832,8 +4832,8 @@
    "decision": "link",
    "athlete_id": "-1007757",
    "recommendation_reason": "Different first name (Melekiola) but the same hometown (Sacramento, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127764",
@@ -4852,8 +4852,8 @@
    "decision": "link",
    "athlete_id": "4360378",
    "recommendation_reason": "Different first name (Jartavius) but the same hometown (Lehigh Acres, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127459",
@@ -4872,8 +4872,8 @@
    "decision": "link",
    "athlete_id": "4360571",
    "recommendation_reason": "Different first name (Quez) but the same hometown (Fort Valley, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-126666",
@@ -4892,8 +4892,8 @@
    "decision": "link",
    "athlete_id": "4361023",
    "recommendation_reason": "Different first name (Fua) but the same hometown (Salt Lake City, UT): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-129342",
@@ -4912,8 +4912,8 @@
    "decision": "link",
    "athlete_id": "4361047",
    "recommendation_reason": "Different first name (Eriziah) but the same hometown (Springfield, MA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-128470",
@@ -4932,8 +4932,8 @@
    "decision": "link",
    "athlete_id": "4361384",
    "recommendation_reason": "Different first name (Jon) but the same hometown (Manchester, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-129547",
@@ -4952,8 +4952,8 @@
    "decision": "link",
    "athlete_id": "4361439",
    "recommendation_reason": "Different first name (JoJo) but the same hometown (Las Vegas, NV): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127979",
@@ -4972,8 +4972,8 @@
    "decision": "link",
    "athlete_id": "4362020",
    "recommendation_reason": "Different first name (Nick) but the same hometown (Clover, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-128092",
@@ -4992,8 +4992,8 @@
    "decision": "link",
    "athlete_id": "4362351",
    "recommendation_reason": "Different first name (Keke) but the same hometown (Pahokee, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-129408",
@@ -5012,8 +5012,8 @@
    "decision": "link",
    "athlete_id": "4363437",
    "recommendation_reason": "Different first name (Fish) but the same hometown (Pensacola, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-128215",
@@ -5032,8 +5032,8 @@
    "decision": "link",
    "athlete_id": "4363530",
    "recommendation_reason": "Different first name (T-Mac) but the same hometown (Tampa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-129882",
@@ -5052,8 +5052,8 @@
    "decision": "link",
    "athlete_id": "4366860",
    "recommendation_reason": "Different first name (Mari) but the same hometown (Charlotte, NC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127873",
@@ -5072,8 +5072,8 @@
    "decision": "link",
    "athlete_id": "4373267",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-125364",
@@ -5092,8 +5092,8 @@
    "decision": "link",
    "athlete_id": "4247207",
    "recommendation_reason": "Different first name (Dylan) but the same hometown (Camas, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-127467",
@@ -5112,8 +5112,8 @@
    "decision": "link",
    "athlete_id": "4362476",
    "recommendation_reason": "Different first name (C.J.) but the same hometown (Monroe, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-122563",
@@ -5132,8 +5132,8 @@
    "decision": "link",
    "athlete_id": "4426505",
    "recommendation_reason": "Different first name (LaVonta) but the same hometown (Birmingham, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-123674",
@@ -5152,8 +5152,8 @@
    "decision": "link",
    "athlete_id": "4426825",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-123812",
@@ -5172,8 +5172,8 @@
    "decision": "link",
    "athlete_id": "4427405",
    "recommendation_reason": "Different first name (Raquon) but the same hometown (Saluda, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-123379",
@@ -5192,8 +5192,8 @@
    "decision": "link",
    "athlete_id": "4428276",
    "recommendation_reason": "Different first name (Joey) but the same hometown (Algonquin, IL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-123735",
@@ -5212,8 +5212,8 @@
    "decision": "link",
    "athlete_id": "4428857",
    "recommendation_reason": "Different first name (Caqavouis) but the same hometown (Kingsland, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-122959",
@@ -5232,8 +5232,8 @@
    "decision": "link",
    "athlete_id": "4429483",
    "recommendation_reason": "Different first name (Tae Tae) but the same hometown (Louisville, KY): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-122764",
@@ -5252,8 +5252,8 @@
    "decision": "link",
    "athlete_id": "4429599",
    "recommendation_reason": "Different first name (Hot Rod) but the same hometown (Atlanta, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-123210",
@@ -5272,8 +5272,8 @@
    "decision": "link",
    "athlete_id": "4430098",
    "recommendation_reason": "Different first name (Tae) but the same hometown (Leesburg, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-214294",
@@ -5292,8 +5292,8 @@
    "decision": "link",
    "athlete_id": "4430543",
    "recommendation_reason": "Different first name (K'Andre) but the same hometown (Tyler, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-124046",
@@ -5312,8 +5312,8 @@
    "decision": "link",
    "athlete_id": "4567050",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-125384",
@@ -5332,8 +5332,8 @@
    "decision": "link",
    "athlete_id": "4569236",
    "recommendation_reason": "Different first name (Buddha) but the same hometown (Tallahassee, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-125976",
@@ -5352,8 +5352,8 @@
    "decision": "link",
    "athlete_id": "4570102",
    "recommendation_reason": "Different first name (Harshan) but the same hometown (Bakersfield, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-126254",
@@ -5372,8 +5372,8 @@
    "decision": "link",
    "athlete_id": "4578357",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-126252",
@@ -5392,8 +5392,8 @@
    "decision": "link",
    "athlete_id": "4578359",
    "recommendation_reason": "Different first name (Tre) but the same hometown (Houston, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-119187",
@@ -5412,8 +5412,8 @@
    "decision": "link",
    "athlete_id": "4429579",
    "recommendation_reason": "Different first name (Flip) but the same hometown (Statesboro, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118776",
@@ -5432,8 +5432,8 @@
    "decision": "link",
    "athlete_id": "4431068",
    "recommendation_reason": "Different first name (Moochie) but the same hometown (Carthage, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-214932",
@@ -5452,8 +5452,8 @@
    "decision": "link",
    "athlete_id": "4431425",
    "recommendation_reason": "Different first name (Von) but the same hometown (Stafford, VA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120741",
@@ -5472,8 +5472,8 @@
    "decision": "link",
    "athlete_id": "4565763",
    "recommendation_reason": "Different first name (Dre) but the same hometown (London, ON): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120796",
@@ -5492,8 +5492,8 @@
    "decision": "link",
    "athlete_id": "4576292",
    "recommendation_reason": "Different first name (Raishein) but the same hometown (Racine, WI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-119092",
@@ -5512,8 +5512,8 @@
    "decision": "link",
    "athlete_id": "4612935",
    "recommendation_reason": "Different first name (Gabriel) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120262",
@@ -5532,8 +5532,8 @@
    "decision": "link",
    "athlete_id": "4685060",
    "recommendation_reason": "Different first name (MarQuayveon) but the same hometown (Chester, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-113654",
@@ -5552,8 +5552,8 @@
    "decision": "link",
    "athlete_id": "4685950",
    "recommendation_reason": "Different first name (Austin) but the same hometown (Myrtle Beach, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120105",
@@ -5572,8 +5572,8 @@
    "decision": "link",
    "athlete_id": "4686556",
    "recommendation_reason": "Different first name (Amorie) but the same hometown (Virginia Beach, VA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120732",
@@ -5592,8 +5592,8 @@
    "decision": "link",
    "athlete_id": "4686614",
    "recommendation_reason": "Different first name (Taz) but the same hometown (Pearland, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114170",
@@ -5612,8 +5612,8 @@
    "decision": "link",
    "athlete_id": "4686851",
    "recommendation_reason": "Different first name (Charles) but the same hometown (Hillsborough, NJ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120353",
@@ -5632,8 +5632,8 @@
    "decision": "link",
    "athlete_id": "4686940",
    "recommendation_reason": "Different first name (Donny) but the same hometown (Brownsburg, IN): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-119673",
@@ -5652,8 +5652,8 @@
    "decision": "link",
    "athlete_id": "4690985",
    "recommendation_reason": "Different first name (Jon-Jon) but the same hometown (Dallas, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-124406",
@@ -5672,8 +5672,8 @@
    "decision": "link",
    "athlete_id": "4695244",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120790",
@@ -5692,8 +5692,8 @@
    "decision": "link",
    "athlete_id": "4695687",
    "recommendation_reason": "Different first name (Gabriel) but the same hometown (Grand Rapids, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-121317",
@@ -5712,8 +5712,8 @@
    "decision": "link",
    "athlete_id": "4699794",
    "recommendation_reason": "Different first name (Jonathan) but the same hometown (Carlsbad, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120918",
@@ -5732,8 +5732,8 @@
    "decision": "link",
    "athlete_id": "4699795",
    "recommendation_reason": "Different first name (Thomas) but the same hometown (Mission Viejo, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-255086",
@@ -5752,8 +5752,8 @@
    "decision": "link",
    "athlete_id": "4427748",
    "recommendation_reason": "Different first name (Eloi) but the same hometown (Phoenix, AZ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-116376",
@@ -5772,8 +5772,8 @@
    "decision": "link",
    "athlete_id": "4431633",
    "recommendation_reason": "Different first name (Goose) but the same hometown (Gardendale, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-255558",
@@ -5792,8 +5792,8 @@
    "decision": "link",
    "athlete_id": "4570917",
    "recommendation_reason": "Different first name (Jacob) but the same hometown (Cheney, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118085",
@@ -5812,8 +5812,8 @@
    "decision": "link",
    "athlete_id": "4682523",
    "recommendation_reason": "Different first name (Dee) but the same hometown (Chicago, IL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117553",
@@ -5832,8 +5832,8 @@
    "decision": "link",
    "athlete_id": "4683449",
    "recommendation_reason": "Different first name (Ah'Mahri) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-116587",
@@ -5852,8 +5852,8 @@
    "decision": "link",
    "athlete_id": "4684528",
    "recommendation_reason": "Different first name (Cedd) but the same hometown (Swainsboro, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-121839",
@@ -5872,8 +5872,8 @@
    "decision": "link",
    "athlete_id": "4698696",
    "recommendation_reason": "Different first name (Tyreese) but the same hometown (Murrieta, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117261",
@@ -5892,8 +5892,8 @@
    "decision": "link",
    "athlete_id": "4701270",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117748",
@@ -5912,8 +5912,8 @@
    "decision": "link",
    "athlete_id": "4708164",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118152",
@@ -5932,8 +5932,8 @@
    "decision": "link",
    "athlete_id": "4709663",
    "recommendation_reason": "Different first name (D'Mor) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-121422",
@@ -5952,8 +5952,8 @@
    "decision": "link",
    "athlete_id": "4749256",
    "recommendation_reason": "Different first name (Jamre) but the same hometown (Spartanburg, SC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117278",
@@ -5972,8 +5972,8 @@
    "decision": "link",
    "athlete_id": "4872999",
    "recommendation_reason": "Different first name (Cam) but the same hometown (LAKELAND, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-116881",
@@ -5992,8 +5992,8 @@
    "decision": "link",
    "athlete_id": "4875632",
    "recommendation_reason": "Different first name (Sammy) but the same hometown (Huntington Beach, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117297",
@@ -6012,8 +6012,8 @@
    "decision": "link",
    "athlete_id": "4875782",
    "recommendation_reason": "Different first name (CJ) but the same hometown (Freeport, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-119795",
@@ -6032,8 +6032,8 @@
    "decision": "link",
    "athlete_id": "4875827",
    "recommendation_reason": "Different first name (Rudy) but the same hometown (Kentwood, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-121125",
@@ -6052,8 +6052,8 @@
    "decision": "link",
    "athlete_id": "4875870",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-116541",
@@ -6072,8 +6072,8 @@
    "decision": "link",
    "athlete_id": "4876057",
    "recommendation_reason": "Different first name (Femi) but the same hometown (Elk Grove, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-120480",
@@ -6092,8 +6092,8 @@
    "decision": "link",
    "athlete_id": "4879953",
    "recommendation_reason": "Different first name (Dre) but the same hometown (Savannah, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-257539",
@@ -6112,8 +6112,8 @@
    "decision": "link",
    "athlete_id": "4583952",
    "recommendation_reason": "Different first name (D.J.) but the same hometown (Houston, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117195",
@@ -6132,8 +6132,8 @@
    "decision": "link",
    "athlete_id": "4684178",
    "recommendation_reason": "Different first name (Mojo) but the same hometown (Batavia, IL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114876",
@@ -6152,8 +6152,8 @@
    "decision": "link",
    "athlete_id": "4685462",
    "recommendation_reason": "Different first name (Swipe) but the same hometown (Cocoa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115377",
@@ -6172,8 +6172,8 @@
    "decision": "link",
    "athlete_id": "4689118",
    "recommendation_reason": "Different first name (Jyziah) but the same hometown (Gilmer, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115943",
@@ -6192,8 +6192,8 @@
    "decision": "link",
    "athlete_id": "4703064",
    "recommendation_reason": "Different first name (Isaiah) but the same hometown (Kernersville, NC): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115461",
@@ -6212,8 +6212,8 @@
    "decision": "link",
    "athlete_id": "4717723",
    "recommendation_reason": "Different first name (Maurice) but the same hometown (Philadelphia, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114097",
@@ -6232,8 +6232,8 @@
    "decision": "link",
    "athlete_id": "4773919",
    "recommendation_reason": "Different first name (Thomas) but the same hometown (Waycross, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114550",
@@ -6252,8 +6252,8 @@
    "decision": "link",
    "athlete_id": "4819225",
    "recommendation_reason": "Different first name (Duke) but the same hometown (Springfield, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114114",
@@ -6272,8 +6272,8 @@
    "decision": "link",
    "athlete_id": "4832793",
    "recommendation_reason": "Different first name (Olaivavega) but the same hometown (Graham, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-114676",
@@ -6292,8 +6292,8 @@
    "decision": "link",
    "athlete_id": "4837267",
    "recommendation_reason": "Different first name (Bam) but the same hometown (Tampa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-255994",
@@ -6312,8 +6312,8 @@
    "decision": "link",
    "athlete_id": "4838673",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-238453",
@@ -6332,8 +6332,8 @@
    "decision": "link",
    "athlete_id": "4876319",
    "recommendation_reason": "Different first name (Jackson) but the same hometown (Bellevue, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117646",
@@ -6352,8 +6352,8 @@
    "decision": "link",
    "athlete_id": "4879547",
    "recommendation_reason": "Different first name (Pa'a) but the same hometown (Seattle, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118043",
@@ -6372,8 +6372,8 @@
    "decision": "link",
    "athlete_id": "4896147",
    "recommendation_reason": "Different first name (Cadillac) but the same hometown (Many, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-118012",
@@ -6392,8 +6392,8 @@
    "decision": "link",
    "athlete_id": "4917395",
    "recommendation_reason": "Different first name (Phyllip) but the same hometown (Hammond, IN): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-255906",
@@ -6412,8 +6412,8 @@
    "decision": "link",
    "athlete_id": "5081532",
    "recommendation_reason": "Different first name (David) but the same hometown (Venice, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-117245",
@@ -6432,8 +6432,8 @@
    "decision": "link",
    "athlete_id": "5081537",
    "recommendation_reason": "Different first name (Broden) but the same hometown (Rancho Santa Margarita, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115311",
@@ -6452,8 +6452,8 @@
    "decision": "link",
    "athlete_id": "5082618",
    "recommendation_reason": "Different first name (Lofa) but the same hometown (Layton, UT): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-234875",
@@ -6472,8 +6472,8 @@
    "decision": "link",
    "athlete_id": "5083157",
    "recommendation_reason": "Different first name (Nilasoni) but the same hometown (Elk Grove, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-110081",
@@ -6492,8 +6492,8 @@
    "decision": "link",
    "athlete_id": "5083192",
    "recommendation_reason": "Different first name (Ayden) but the same hometown (Kennewick, WA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-256283",
@@ -6512,8 +6512,8 @@
    "decision": "link",
    "athlete_id": "5083415",
    "recommendation_reason": "Different first name (Xae) but the same hometown (SAN ANTONIO, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-111524",
@@ -6532,8 +6532,8 @@
    "decision": "link",
    "athlete_id": "5084052",
    "recommendation_reason": "Different first name (Gerald) but the same hometown (Eatonton, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-234705",
@@ -6552,8 +6552,8 @@
    "decision": "link",
    "athlete_id": "5084731",
    "recommendation_reason": "Different first name (Koda) but the same hometown (Carrollton, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-255773",
@@ -6572,8 +6572,8 @@
    "decision": "link",
    "athlete_id": "5085433",
    "recommendation_reason": "Different first name (Trey) but the same hometown (Tucson, AZ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-256000",
@@ -6592,8 +6592,8 @@
    "decision": "link",
    "athlete_id": "5085612",
    "recommendation_reason": "Different first name (Tre) but the same hometown (Fort Worth, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-235625",
@@ -6612,8 +6612,8 @@
    "decision": "link",
    "athlete_id": "5085780",
    "recommendation_reason": "Different first name (Justin) but the same hometown (New Lenox, IL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115386",
@@ -6632,8 +6632,8 @@
    "decision": "link",
    "athlete_id": "5086155",
    "recommendation_reason": "Different first name (Frankie) but the same hometown (Gettysburg, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-217422",
@@ -6652,8 +6652,8 @@
    "decision": "link",
    "athlete_id": "5086232",
    "recommendation_reason": "Different first name (Kyle) but the same hometown (Grand Rapids, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-115211",
@@ -6672,8 +6672,8 @@
    "decision": "link",
    "athlete_id": "5089179",
    "recommendation_reason": "Different first name (Itty) but the same hometown (Belton, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112475",
@@ -6692,8 +6692,8 @@
    "decision": "link",
    "athlete_id": "4921423",
    "recommendation_reason": "Different first name (Gabriel) but the same hometown (Harrisburg, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112711",
@@ -6712,8 +6712,8 @@
    "decision": "link",
    "athlete_id": "4923274",
    "recommendation_reason": "Different first name (Willtrell) but the same hometown (Massillon, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-113417",
@@ -6732,8 +6732,8 @@
    "decision": "link",
    "athlete_id": "5077899",
    "recommendation_reason": "Different first name (Etueni) but the same hometown (Harker Heights, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-111893",
@@ -6752,8 +6752,8 @@
    "decision": "link",
    "athlete_id": "5078109",
    "recommendation_reason": "Different first name (Macho) but the same hometown (Shreveport, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112033",
@@ -6772,8 +6772,8 @@
    "decision": "link",
    "athlete_id": "5091840",
    "recommendation_reason": "Different first name (DaMari) but the same hometown (Fort Smith, AR): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112555",
@@ -6792,8 +6792,8 @@
    "decision": "link",
    "athlete_id": "5121466",
    "recommendation_reason": "Different first name (Nacari) but the same hometown (Marietta, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112397",
@@ -6812,8 +6812,8 @@
    "decision": "link",
    "athlete_id": "5121992",
    "recommendation_reason": "Different first name (Joker) but the same hometown (Hammond, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112375",
@@ -6832,8 +6832,8 @@
    "decision": "link",
    "athlete_id": "5150663",
    "recommendation_reason": "Different first name (Champ) but the same hometown (Jersey City, NJ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-113001",
@@ -6852,8 +6852,8 @@
    "decision": "link",
    "athlete_id": "5151001",
    "recommendation_reason": "Different first name (David) but the same hometown (New Orleans, LA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-256589",
@@ -6872,8 +6872,8 @@
    "decision": "link",
    "athlete_id": "5153652",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-256804",
@@ -6892,8 +6892,8 @@
    "decision": "link",
    "athlete_id": "5158134",
    "recommendation_reason": "Different first name (Tez) but the same hometown (Texarkana, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-256508",
@@ -6912,8 +6912,8 @@
    "decision": "link",
    "athlete_id": "5159830",
    "recommendation_reason": "Different first name (Jamal) but the same hometown (Tempe, AZ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-113103",
@@ -6932,8 +6932,8 @@
    "decision": "link",
    "athlete_id": "5160209",
    "recommendation_reason": "Different first name (Landan) but the same hometown (Denton, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-109616",
@@ -6952,8 +6952,8 @@
    "decision": "link",
    "athlete_id": "3923371",
    "recommendation_reason": "Different first name (Cameron) but the same hometown (Tampa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-108843",
@@ -6972,8 +6972,8 @@
    "decision": "link",
    "athlete_id": "5079558",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-109283",
@@ -6992,8 +6992,8 @@
    "decision": "link",
    "athlete_id": "5126513",
    "recommendation_reason": "Different first name (Jayden) but the same hometown (Stockbridge, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-109729",
@@ -7012,8 +7012,8 @@
    "decision": "link",
    "athlete_id": "5146600",
    "recommendation_reason": "Different first name (Timmy) but the same hometown (Fort Myers, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-110615",
@@ -7032,8 +7032,8 @@
    "decision": "link",
    "athlete_id": "5146977",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-110547",
@@ -7052,8 +7052,8 @@
    "decision": "link",
    "athlete_id": "5147512",
    "recommendation_reason": "Different first name (Tayo) but the same hometown (Queen Creek, AZ): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-111136",
@@ -7072,8 +7072,8 @@
    "decision": "link",
    "athlete_id": "5155724",
    "recommendation_reason": "Different first name (Joey) but the same hometown (Stuart, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-111232",
@@ -7092,8 +7092,8 @@
    "decision": "link",
    "athlete_id": "5194672",
    "recommendation_reason": "Different first name (Will) but the same hometown (Springboro, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-108896",
@@ -7112,8 +7112,8 @@
    "decision": "link",
    "athlete_id": "5218506",
    "recommendation_reason": "Different first name (Brauntae) but the same hometown (Fort Wayne, IN): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-110204",
@@ -7132,8 +7132,8 @@
    "decision": "link",
    "athlete_id": "5218789",
    "recommendation_reason": "Different first name (Da'Vontae) but the same hometown (Norfolk, VA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-109554",
@@ -7152,8 +7152,8 @@
    "decision": "link",
    "athlete_id": "5218946",
    "recommendation_reason": "Different first name (Trey) but the same hometown (Hampton, VA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-238226",
@@ -7172,8 +7172,8 @@
    "decision": "link",
    "athlete_id": "5219111",
    "recommendation_reason": "Different first name (Timothy) but the same hometown (Portland, OR): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-112853",
@@ -7192,8 +7192,8 @@
    "decision": "link",
    "athlete_id": "5219131",
    "recommendation_reason": "Different first name (Armon) but the same hometown (San Antonio, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-257348",
@@ -7212,8 +7212,8 @@
    "decision": "link",
    "athlete_id": "5219144",
    "recommendation_reason": "Different first name (Taniela) but the same hometown (Honolulu, HI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-110235",
@@ -7232,8 +7232,8 @@
    "decision": "link",
    "athlete_id": "5220002",
    "recommendation_reason": "Different first name (Money) but the same hometown (Mount Pleasant, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-113510",
@@ -7252,8 +7252,8 @@
    "decision": "link",
    "athlete_id": "5220052",
    "recommendation_reason": "Different first name (Jayvin) but the same hometown (Springfield, OH): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-257392",
@@ -7272,8 +7272,8 @@
    "decision": "link",
    "athlete_id": "5220265",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-220672",
@@ -7292,8 +7292,8 @@
    "decision": "link",
    "athlete_id": "5220656",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-109486",
@@ -7312,8 +7312,8 @@
    "decision": "link",
    "athlete_id": "5226976",
    "recommendation_reason": "Different first name (Romanas) but the same hometown (Fort Lauderdale, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-238079",
@@ -7332,8 +7332,8 @@
    "decision": "link",
    "athlete_id": "5227911",
    "recommendation_reason": "Different first name (DeJay) but the same hometown (Macon, MS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-238809",
@@ -7352,8 +7352,8 @@
    "decision": "link",
    "athlete_id": "5232447",
    "recommendation_reason": "Different first name (Guse) but the same hometown (Littleton, CO): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-106649",
@@ -7372,8 +7372,8 @@
    "decision": "link",
    "athlete_id": "5141577",
    "recommendation_reason": "Different first name (Julian) but the same hometown (Olathe, KS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-107185",
@@ -7392,8 +7392,8 @@
    "decision": "link",
    "athlete_id": "5141691",
    "recommendation_reason": "Different first name (Jewelous) but the same hometown (Pittsburg, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-107989",
@@ -7412,8 +7412,8 @@
    "decision": "link",
    "athlete_id": "5248177",
    "recommendation_reason": "Different first name (Jashawn) but the same hometown (Fort Wayne, IN): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-258137",
@@ -7432,8 +7432,8 @@
    "decision": "link",
    "athlete_id": "5294317",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-107117",
@@ -7452,8 +7452,8 @@
    "decision": "link",
    "athlete_id": "5295531",
    "recommendation_reason": "Different first name (Kozy) but the same hometown (Tampa, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-106719",
@@ -7472,8 +7472,8 @@
    "decision": "link",
    "athlete_id": "5295613",
    "recommendation_reason": "Different first name (Antonio) but the same hometown (Miami, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-221950",
@@ -7492,8 +7492,8 @@
    "decision": "link",
    "athlete_id": "5299719",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-107865",
@@ -7512,8 +7512,8 @@
    "decision": "link",
    "athlete_id": "5300936",
    "recommendation_reason": "Different first name (CJ) but the same hometown (Manchester, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-108561",
@@ -7532,8 +7532,8 @@
    "decision": "link",
    "athlete_id": "5301358",
    "recommendation_reason": "Different first name (Gabe) but the same hometown (Carrollton, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-221319",
@@ -7552,8 +7552,8 @@
    "decision": "link",
    "athlete_id": "5303190",
    "recommendation_reason": "Different first name (Cam) but the same hometown (Austin, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-108666",
@@ -7572,8 +7572,8 @@
    "decision": "link",
    "athlete_id": "5304145",
    "recommendation_reason": "Different first name (Tay) but the same hometown (Erie, PA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-108293",
@@ -7592,8 +7592,8 @@
    "decision": "link",
    "athlete_id": "5308213",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104232",
@@ -7612,8 +7612,8 @@
    "decision": "link",
    "athlete_id": "5158977",
    "recommendation_reason": "Different first name (Cam) but the same hometown (Littleton, CO): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104639",
@@ -7632,8 +7632,8 @@
    "decision": "link",
    "athlete_id": "5209316",
    "recommendation_reason": "Different first name (Amante) but the same hometown (Port Arthur, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104381",
@@ -7652,8 +7652,8 @@
    "decision": "link",
    "athlete_id": "5217191",
    "recommendation_reason": "Different first name (Cortavius) but the same hometown (Dallas, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104463",
@@ -7672,8 +7672,8 @@
    "decision": "link",
    "athlete_id": "5258491",
    "recommendation_reason": "Different first name (Jayytee) but the same hometown (Macon, MS): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104410",
@@ -7692,8 +7692,8 @@
    "decision": "link",
    "athlete_id": "5279673",
    "recommendation_reason": "Different first name (Junior) but the same hometown (Carthage, TX): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-104985",
@@ -7712,8 +7712,8 @@
    "decision": "link",
    "athlete_id": "5289538",
    "recommendation_reason": "Different first name (Antavious) but the same hometown (Columbus, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-105130",
@@ -7732,8 +7732,8 @@
    "decision": "link",
    "athlete_id": "5296963",
    "recommendation_reason": "Different first name (Jet) but the same hometown (Hoover, AL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-212799",
@@ -7752,8 +7752,8 @@
    "decision": "link",
    "athlete_id": "5302801",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-212779",
@@ -7772,8 +7772,8 @@
    "decision": "link",
    "athlete_id": "5303239",
    "recommendation_reason": "Different first name (Zay) but the same hometown (Jacksonville, FL): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-224517",
@@ -7792,8 +7792,8 @@
    "decision": "link",
    "athlete_id": "5327560",
    "recommendation_reason": "Same first name; last name spelled differently or suffix written differently.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-105798",
@@ -7812,8 +7812,8 @@
    "decision": "link",
    "athlete_id": "5382287",
    "recommendation_reason": "Different first name (Sua) but the same hometown (Spring Valley, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-224632",
@@ -7832,8 +7832,8 @@
    "decision": "link",
    "athlete_id": "5384799",
    "recommendation_reason": "Different first name (MJ) but the same hometown (Winder, GA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-105828",
@@ -7852,8 +7852,8 @@
    "decision": "link",
    "athlete_id": "5388437",
    "recommendation_reason": "Different first name (Ike) but the same hometown (Muskegon, MI): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   },
   {
    "case_id": "fname-105813",
@@ -7872,8 +7872,8 @@
    "decision": "link",
    "athlete_id": "5388850",
    "recommendation_reason": "Different first name (Trey) but the same hometown (Ventura, CA): likely a nickname or alias.",
-   "status": "pending",
-   "reviewer_note": ""
+   "status": "approved",
+   "reviewer_note": "Approved by JC Nov. 20, 2026 (decision 2: accept recommended identity links)."
   }
  ]
 }
