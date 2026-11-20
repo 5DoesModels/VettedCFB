@@ -286,3 +286,103 @@ lbY=dict(p=sorted(PN,key=PN.get),rows=[[PN[k[0]],G.index(k[1]) if k[1] in G else
 open(O+'lb.json','w').write(json.dumps(lbY,separators=(',',':')))
 open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS),separators=(',',':')))
 import os; print('lb.json',os.path.getsize(O+'lb.json')//1024,'KB data.json',os.path.getsize(O+'data.json')//1024,'KB')
+# ================= v7: distance, letter grades, class grades =================
+from schoolstate import LL
+import math as _m
+RAW=json.load(open(E+'/data/recruits.json'))
+HT={}
+for x in RAW:
+    h=x.get('hometownInfo') or {}
+    if h.get('latitude') is not None: HT[(x['name'],x['year'],x.get('committedTo'))]=(h['latitude'],h['longitude'])
+def miles(a,b):
+    la1,lo1,la2,lo2=map(_m.radians,(a[0],a[1],b[0],b[1]));d=_m.sin((la2-la1)/2)**2+_m.cos(la1)*_m.cos(la2)*_m.sin((lo2-lo1)/2)**2
+    return 3958.8*2*_m.asin(_m.sqrt(d))
+for r in P:
+    h=HT.get((r['name'],r['year'],r['committedTo'])); s=LL.get(r['committedTo'])
+    r['mi']=round(miles(h,s)) if h and s and r['recruitType']=='HighSchool' else None
+BANDS=[(0,100,'Under 100 miles'),(100,250,'100–250 miles'),(250,500,'250–500 miles'),(500,1000,'500–1,000 miles'),(1000,99999,'1,000+ miles')]
+def band(m): return next(i for i,b in enumerate(BANDS) if b[0]<=m<b[1])
+gd=[r for r in SC if r.get('mi') is not None and r['year']<=2020]
+bandDraft=[[b[2],len(v),sum(1 for r in v if r['draftYear']),round(sum(r['pts'] for r in v)/max(.1,sum(r['exp'] for r in v)),2)] for i,b in enumerate(BANDS) for v in [[r for r in gd if band(r['mi'])==i]]]
+td=[r for r in P if r.get('mi') is not None and 2020<=r['year']<=2023]
+mvd_=lambda r:any(m[1] and m[1]!=r['committedTo'] for m in r['mv'])
+bandMove=[[b[2],len(v),round(100*sum(1 for r in v if mvd_(r))/max(1,len(v)),1)] for i,b in enumerate(BANDS) for v in [[r for r in td if band(r['mi'])==i]]]
+# per program radius (high school signees, all years)
+rad={}
+for p in progs:
+    v=sorted(r['mi'] for r in P if r['committedTo']==p['name'] and r.get('mi') is not None)
+    if len(v)<50: continue
+    med=v[len(v)//2]; rad[p['name']]=[len(v),med,round(sum(v)/len(v)),round(100*sum(1 for x in v if x<200)/len(v)),round(100*sum(1 for x in v if x>=500)/len(v))]
+    p['rad']=rad[p['name']]
+dist=dict(bandDraft=bandDraft,bandMove=bandMove,n=len(gd),med=sorted(r['mi'] for r in P if r.get('mi') is not None)[len([r for r in P if r.get('mi') is not None])//2])
+# ---- letter grades ----
+def pctile(vals,v,hi=True):
+    if v is None or not vals: return None
+    below=sum(1 for x in vals if (x<v if hi else x>v)); eq=sum(1 for x in vals if x==v)
+    return 100*(below+0.5*eq)/len(vals)
+CUT=[(97,'A+'),(90,'A'),(85,'A-'),(77,'B+'),(67,'B'),(60,'B-'),(50,'C+'),(40,'C'),(33,'C-'),(25,'D+'),(15,'D'),(8,'D-'),(0,'F')]
+def letter(p): return None if p is None else next(l for c,l in CUT if p>=c)
+# class talent: sum of full expected points of each school's signing class, ranked nationally per year
+ct=collections.defaultdict(float); cn=collections.defaultdict(int)
+for r in P:
+    if r['committedTo'] in FBS: ct[(r['committedTo'],r['year'])]+=r['full']; cn[(r['committedTo'],r['year'])]+=1
+byyear=collections.defaultdict(list)
+for (s_,y),v in ct.items(): byyear[y].append(v)
+def tpct(s_,y): return pctile(byyear[y],ct.get((s_,y),0))
+# class development (signees anywhere, graded years)
+cd=collections.defaultdict(lambda:[0,0,0,0,0])
+for r in P:
+    if r['committedTo'] in FBS:
+        x=cd[(r['committedTo'],r['year'])]; x[0]+=1; x[1]+=bool(r['draftYear']); x[2]+=mvd_(r)
+        if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])): x[3]+=r['pts']; x[4]+=r['exp']
+devy=collections.defaultdict(list)
+for (s_,y),x in cd.items():
+    if y<=2023 and x[4]>0: devy[y].append(x[3]-x[4])
+# school talent norm for "vs school norm"
+schoolT=collections.defaultdict(list)
+for (s_,y),v in ct.items(): schoolT[s_].append(tpct(s_,y))
+for c in coaches:
+    car=CAREER.get(c['name'],[]); cls=[]
+    for s_ in car:
+        y=s_['year']+1   # class signed during this season
+        if (s_['school'],y) in ct and HC.get((s_['school'],s_['year']))==c['name'] and 2008<=y<=2026:
+            x=cd[(s_['school'],y)]; tp=tpct(s_['school'],y)
+            dv=(x[3]-x[4]) if (y<=2023 and x[4]>0) else None
+            cls.append([y,s_['school'],x[0],round(tp),x[1],x[2],None if dv is None else round(dv,1),letter(tp),None if dv is None else letter(pctile(devy[y],dv))])
+    c['cls']=sorted({(k[0],k[1]):k for k in cls}.values())
+POOL=lambda f:[f(c) for c in coaches if f(c) is not None]
+def devv(c): return c['ps'] if c['ns']>=4 else None
+def recv(c): return sum(k[3] for k in c['cls'])/len(c['cls']) if len(c['cls'])>=2 else None
+def liftv(c):
+    if len(c['cls'])<2: return None
+    d=[]
+    for k in c['cls']:
+        others=[tpct(k[1],y) for (s_,y) in ct if s_==k[1] and not any(kk[0]==y and kk[1]==k[1] for kk in c['cls'])]
+        if len(others)>=3: d.append(k[3]-sum(others)/len(others))
+    return sum(d)/len(d) if d else None
+def winv(c): return c['w']/(c['w']+c['l']) if c['w']+c['l']>=24 else None
+def retv(c):
+    sg=[r for r in P if 2020<=r['year']<=2024 and any(k[0]==r['year'] and k[1]==r['committedTo'] for k in c['cls'])]
+    return 100-100*sum(1 for r in sg if mvd_(r))/len(sg) if len(sg)>=20 else None
+def portv(c): return c['pl'][3]/c['pl'][4] if c.get('pl') and c['pl'][2]>=10 and c['pl'][4]>=8 else None
+CATS=[('dev','Development',devv,.35),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Keeping players',retv,.075),('port','Developing transfers',portv,.075)]
+vals={k:POOL(f) for k,_,f,_ in CATS}
+for c in coaches:
+    g={};ps=[];ws=0
+    for k,lab,f,w in CATS:
+        v=f(c); p=pctile(vals[k],v)
+        g[k]=None if p is None else [letter(p),round(p),round(v,3) if isinstance(v,float) else v]
+        if p is not None: ps.append(p*w); ws+=w
+    g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
+    c['g']=g
+# programs: development grade from per-year score
+pv=[(p['a'][3]-p['a'][4])/NCL for p in progs]
+for p in progs:
+    v=(p['a'][3]-p['a'][4])/NCL; p['g']=letter(pctile(pv,v)); p['g5']=letter(pctile([q['r5'] for q in progs],p['r5']))
+open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS,dist=dist,catn=[[k,l] for k,l,_,_ in CATS]),separators=(',',':')))
+print('DIST',dist['bandDraft'],dist['bandMove'],dist['med'])
+print('RAD',sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:x[1])[:4],sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:-x[1])[:4])
+cc=[c for c in coaches if c['g'].get('all')]
+print('GRADES',[(c['name'],c['g']['all'][0],{k:(v[0] if v else None) for k,v in c['g'].items() if k!='all'}) for c in sorted(cc,key=lambda c:-c['g']['all'][1])[:5]])
+print('KIRBY',[c['g'] for c in coaches if c['name']=='Kirby Smart'][0],[c['cls'][:3] for c in coaches if c['name']=='Kirby Smart'][0])
+print('PROG',[(p['name'],p['g'],p['g5']) for p in progs[:5]])

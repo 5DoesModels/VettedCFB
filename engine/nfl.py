@@ -37,8 +37,8 @@ for k,v in S.items():
       ov=round(sum(x['ov'] for x in vv)/len(vv),1) if vv else 0,nv=len(vv),pb=sum(x['pb'] for x in v),ap=sum(x['ap'] for x in v),act=sum(1 for x in v if x['act']),
       st=round(sum(x['st'] for x in vv)/len(vv),1) if vv else 0,
       top=[[x['n'],x['y'],x['o'],x['pos'],x['sea'],x['g'],x['pb'],round(x['ov'],1),x['ap'],x['np']] for x in sorted(v,key=lambda x:-x['np'])[:5]],
-      steal=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1)] for x in sorted(vv,key=lambda x:-x['ov'])[:3]],
-      bust=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1)] for x in sorted(vv,key=lambda x:x['ov'])[:3]]))
+      steal=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1),x['np'],round(x['ex'],1)] for x in sorted(vv,key=lambda x:-x['ov'])[:3]],
+      bust=[[x['n'],x['y'],x['o'],x['pos'],round(x['ov'],1),x['np'],round(x['ex'],1)] for x in sorted(vv,key=lambda x:x['ov'])[:3]]))
 sch.sort(key=lambda s:-s['ov'])
 lng=sorted([x for x in rows],key=lambda x:(-x['sea'],-x['g']))[:12]
 best=sorted(rows,key=lambda x:-x['np'])[:12]
@@ -52,7 +52,7 @@ pairs=[(dev[s['k']],s['ov']) for s in sch if s['k'] in dev and s['nv']>=20]
 def corr(a,b):
     n=len(a);ma=sum(a)/n;mb=sum(b)/n;return sum((x-ma)*(y-mb) for x,y in zip(a,b))/math.sqrt(sum((x-ma)**2 for x in a)*sum((y-mb)**2 for y in b))
 r=corr([p[0] for p in pairs],[p[1] for p in pairs])
-out=dict(best=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['st'],x['pb'],x['ap'],x['np']] for x in best],schools=sorted(SI,key=SI.get),picks=picks,rnd=rnd,sch=sch,lng=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['g'],x['pb']] for x in lng],steals=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],round(x['ov'],1),x['pb'],x['ap']] for x in steals],
+out=dict(best=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['st'],x['pb'],x['ap'],x['np']] for x in best],schools=sorted(SI,key=SI.get),picks=picks,rnd=rnd,sch=sch,lng=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],x['sea'],x['g'],x['pb']] for x in lng],steals=[[x['n'],x['y'],x['o'],x['sch'],x['pos'],round(x['ov'],1),x['pb'],x['ap'],x['np'],round(x['ex'],1)] for x in steals],
   r=round(r,2),n=len(rows),avgsea=round(sum(x['sea'] for x in old)/len(old),1),pb=round(100*sum(1 for x in old if x['pb'])/len(old),1))
 open('/home/claude/concept/nfl.json','w').write(json.dumps(out,separators=(',',':')))
 print('rounds',rnd);print('r dev vs nfl value',out['r'],len(pairs));print('top',[(s['k'],s['ov'],s['sea'],s['nv']) for s in sch[:6]]);print('bottom',[(s['k'],s['ov'],s['sea'],s['nv']) for s in sch[-6:]])
