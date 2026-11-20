@@ -204,6 +204,8 @@ tr.tgood td:first-child{box-shadow:inset 5px 0 #1F6B45}tr.tbad td:first-child{bo
 .lk{background:none;border:0;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:32px}
 .meter{display:grid;gap:10px;align-items:center;font-size:16px;margin:8px 0}.meter i{display:block;background:var(--ink)}.meter>span:last-child{font-family:Oswald;text-align:right}
 .yrfold{margin:10px 0 4px}.yrfold>summary{cursor:pointer;list-style:none;font-size:16px;padding:8px 0;color:var(--ink)}.yrfold>summary::-webkit-details-marker{display:none}.yrfold .yrng{margin-top:6px}.four .c ol{margin:6px 0 0}.four .c h3{font-size:20px}
+.arch{margin:4px 0 14px;padding:16px 18px;border-radius:10px;background:var(--ink);color:var(--bg)}.arch .small{color:inherit;opacity:.75;letter-spacing:.12em}.arch .an{font-family:Oswald;font-size:30px;line-height:1.1;margin-top:2px}.arch p{margin:6px 0 0}.arch .atags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.arch .pill.mid{background:transparent;border-color:rgba(246,243,236,.5);color:inherit;font-size:14px}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}.acts .btn{flex:1 1 240px;justify-content:center}
 .avgline{background:var(--cell);border-left:5px solid var(--ink);padding:12px 14px;margin:18px 0 6px;font-size:16px}
 .four{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .two .c{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--ink);padding:12px 14px}.two .c.bad{border-top-color:var(--red)}
@@ -498,9 +500,9 @@ function locate(c,quiet){const K=coachRanks(),o=document.getElementById('clo');i
   const row=(k,label,val)=>{const [m,n]=K[k];const r=m.get(c.name);return `<div class="lr"><span class="lrk">${r?'#'+r:'—'}</span><span><b>${label}</b><small>${r?`of ${n} · ${val}`:'not enough data for this list'}</small></span></div>`};
   const sh=c.pl?sharez(c):0;
   o.innerHTML=`<div class="loccard"><div class="lh"><div><div class="small">COACH LOOKUP</div><div class="ln">${esc(c.name)}</div><div class="small">${c.now?'2026: head coach at <b>'+esc(c.now)+'</b> · ':''}${c.st.map(x=>esc(x[0])).join(' · ')} · ${c.w}–${c.l}</div></div><button class="morebtn" id="clx">Close</button></div>
-  ${coachCard(c)}${c.cls&&c.cls.length?more(`${esc(c.name)}: class by class`,classTable(c),'every signing class, its grades and its players'):''}<div class="lgrid">${row('ps','Per season (fairest)',f0(c.ps))}${row('r5','Last 5 years',f0((c.r5[3]-c.r5[4])/5))}${row('tot','Career total',f0(c.a[3]-c.a[4]))}${row('adj',"Vs his school's norm",f0(c.adjps))}${row('ratio','Actual ÷ expected',rat(c.a[3],c.a[4]))}
+  ${archHTML(c)}${coachActs(c)}${coachCard(c)}${bestWorst(c)}${c.cls&&c.cls.length?`<details class="more" id="cbc-${slug(c.name)}"><summary><span>${esc(c.name)}: class by class<small>every signing class, its grades and its players</small></span></summary>${classTable(c)}</details>`:''}<div class="lgrid">${row('ps','Per season (fairest)',f0(c.ps))}${row('r5','Last 5 years',f0((c.r5[3]-c.r5[4])/5))}${row('tot','Career total',f0(c.a[3]-c.a[4]))}${row('adj',"Vs his school's norm",f0(c.adjps))}${row('ratio','Actual ÷ expected',rat(c.a[3],c.a[4]))}
   ${leanOK(c)?row('share','Most portal-heavy',Math.round(100*sh)+'% from the portal')+row('hs','Best with high school signees',rat(c.pl[6],c.pl[7]))+row('tr','Best with transfers',rat(c.pl[3],c.pl[4])):''}</div>
-  <div class="btns" style="margin-top:12px">${leanOK(c)?`<button class="btn solid" id="clq">Show him on the portal chart</button>`:''}<button class="btn" id="clr">Open his report card</button><a class="btn" href="#recmap" data-hmap="coach|${esc(c.name)}">His recruiting map</a></div></div>`;
+  <div class="btns" style="margin-top:12px">${leanOK(c)?`<button class="btn solid" id="clq">Show him on the portal chart</button>`:''}<button class="btn" id="clr">Open his report card</button></div></div>`;
   document.getElementById('clx').onclick=()=>{o.innerHTML='';document.getElementById('cl').value=''};
   const q=document.getElementById('clq');if(q)q.onclick=()=>{rkMode='coaches';coView='lean';window._hl=c.name;window._loc=c.name;rankings();setTimeout(()=>document.getElementById('qfig')?.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'}),80)};
   document.getElementById('clr').onclick=()=>{rkMode='coaches';coView='dev';coQ='';coAct=false;coSort='tot';window._loc=c.name;rankings();openRow(c.name)};
@@ -575,18 +577,43 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-cls]');if(
   loadIdx().then(X=>{const si=X.s.indexOf(sch);const L=X.p.filter(p=>p[1]===+y&&p[3]===si).sort((a,b)=>(a[9]||99)-(b[9]||99)||b[6]-a[6]);
     row.innerHTML=`<td colspan="7" style="text-align:left;background:var(--cell)"><b>${esc(sch)} ${y} class: ${L.length} signees</b>, drafted players first<div class="scroll" style="margin-top:8px"><table><tr><th class="l">Player</th><th>Pos</th><th>Stars</th><th class="l">Finished at</th><th>Draft</th></tr>${L.map(p=>`<tr><td class="l"><b>${esc(p[0])}</b>${p[8]?' <span class="pill r">transferred</span>':''}</td><td>${X.g[p[2]]||''}</td><td>${p[6]?'★'.repeat(p[6]):'—'}</td><td class="l">${p[4]!==p[3]?esc(X.s[p[4]]):'<span class="small">same school</span>'}</td><td>${p[9]?`<b>Round ${p[9]}</b> <span class="small">#${p[5]}</span>`:(+y>=2023?'<span class="small">not yet</span>':'<span class="small">undrafted</span>')}</td></tr>`).join('')}</table></div></td>`})});
 document.addEventListener('click',e=>{const a=e.target.closest('[data-hmap]');if(!a)return;const [m,n]=a.dataset.hmap.split('|');hmMode=m;if(m==='prog')hmP=n;else hmC=n});
+function archetype(c){const g=c.g||{},p=k=>g[k]?g[k][1]:null,dev=p('dev'),rec=p('rec'),lift=p('lift'),win=p('win'),ret=p('ret'),port=p('port');
+  const sh=c.pl&&c.pl[8]>=2?c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]):null;const has=(x,v)=>x!=null&&x>=v,low=(x,v)=>x!=null&&x<v;let a;
+  if(has(dev,90)&&has(rec,90)&&has(win,90))a=['The Complete Package','Lands elite talent, develops it beyond its rankings and wins. The rarest profile on the site.'];
+  else if(has(lift,85)&&low(rec,60))a=['The Diamond Finder','Signs lower-rated players than his school usually gets and turns them into draft picks. A scouting eye.'];
+  else if(has(dev,85))a=['The Developer','His players beat their recruiting rankings in the NFL draft far more often than most.'];
+  else if(has(rec,80)&&low(dev,65))a=['The Recruiter','Lands top talent, but his players haven\'t beaten their rankings as often as that talent suggests.'];
+  else if(has(win,80)&&low(rec,60))a=['The Program Builder','Wins more than his recruiting rankings say he should.'];
+  else if(has(port,85)||(sh!=null&&sh>=.55&&has(port,60)))a=['The Portal Architect','Leans on the transfer portal, and his transfers outplay their rankings.'];
+  else if(has(win,80))a=['The Winner','Wins at a high rate; player development is closer to average.'];
+  else if(has(lift,70)&&has(dev,55))a=['The Overachiever','Recruits above his school\'s usual level and gets a little more out of them than expected.'];
+  else if(low(dev,25)&&low(win,40))a=['Still Searching','So far, neither his players\' development nor his record has hit the mark.'];
+  else if(low(dev,30))a=['The Underachiever','His players have fallen short of their recruiting rankings more often than most.'];
+  else if(low(win,30))a=['The Uphill Climb','Development is around average, but the wins haven\'t followed.'];
+  else a=['The Steady Hand','Solid across the board, without one standout trait.'];
+  const t=[];if(has(rec,90))t.push('Elite recruiter');if(has(win,90))t.push('Winner');if(has(lift,85))t.push('Finds diamonds');if(has(port,85))t.push('Develops transfers');if(has(ret,85))t.push('Rarely loses talent');
+  if(sh!=null)t.push(sh>=.6?'Portal builder':sh<=.35?'High school builder':'Balanced roster builder');
+  const bp=Object.entries(c.pos||{}).filter(([,x])=>x[0]>=15&&x[3]>x[4]).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));if(bp.length)t.push('Best with '+PLUR[bp[0][0]]);
+  return {name:a[0],why:a[1],tags:t.filter(x=>x)}}
+function archHTML(c){if(!c.g)return '';const A=archetype(c);return `<div class="arch"><div class="small">ARCHETYPE</div><div class="an">${A.name}</div><p>${A.why}</p>${A.tags.length?`<div class="atags">${A.tags.map(x=>`<span class="pill mid">${esc(x)}</span>`).join('')}</div>`:''}</div>`}
+const slug=n=>n.toLowerCase().replace(/[^a-z]+/g,'-');
+function coachActs(c){return `<div class="acts"><a class="btn solid" href="#recmap" data-hmap="coach|${esc(c.name)}">See where he recruits →</a>${c.cls&&c.cls.length?`<button class="btn" type="button" data-cbc="${slug(c.name)}">${esc(c.name)}: class by class ▾</button>`:''}</div>`}
+function bestWorst(c){const b=(c.best||[]).slice(0,3),w=(c.miss||[]).slice(0,3);if(!b.length&&!w.length)return '';
+  return `<div class="two" style="margin-top:14px"><div class="c"><h3>Best developments</h3><p class="small">Beat their recruiting ranking by the most</p><div class="tags2 mini">${b.map(i=>tag(T(i))).join('')}</div></div>
+  <div class="c bad"><h3>Biggest misses</h3><p class="small">Highly rated, finished college undrafted (classes through 2018)</p><div class="tags2 mini">${w.length?w.map(i=>tag(T(i))).join(''):'<p class="small">None in complete classes.</p>'}</div></div></div>`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-cbc]');if(!b)return;const d=document.getElementById('cbc-'+b.dataset.cbc);if(d){d.open=true;d.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}});
 function coachSheet(c){
-  const [n,d,r1,pts,exp]=c.a;const bp=Object.entries(c.pos).filter(([g,a])=>a[0]>=15).sort((a,b)=>(b[1][3]-b[1][4])-(a[1][3]-a[1][4]));
-  return `<div class="sheet"><p class="take">${c.now?`<span class="small">2026: head coach at <b>${esc(c.now)}</b></span><br>`:''}<b>${esc(c.name)}</b>: ${n} graded players, ${d} drafted, ${r1} in the first round, ${rat(pts,exp)} expected draft value.${bp.length?` Best position group: ${POS[bp[0][0]].toLowerCase()}.`:''}</p>
-  ${coachCard(c)}<p style="margin:10px 0 0"><a href="#recmap" data-hmap="coach|${esc(c.name)}">See where ${esc(c.name)} recruits →</a></p>
+  const [n,d,r1,pts,exp]=c.a;
+  return `<div class="sheet"><p class="take">${c.now?`<span class="small">2026: head coach at <b>${esc(c.now)}</b></span><br>`:''}<b>${esc(c.name)}</b>: ${n} graded players, ${d} drafted, ${r1} in the first round, ${rat(pts,exp)} expected draft value.</p>
+  ${archHTML(c)}${coachActs(c)}
+  ${coachCard(c)}
+  ${bestWorst(c)}
   ${cellsHTML([['Record',`${c.w}–${c.l}`],['Players',n],['Drafted',d],['First round',r1],['Actual ÷ exp.',rat(pts,exp)]])}
-  ${c.cls&&c.cls.length?more(`${esc(c.name)}: class by class`,classTable(c),'recruiting and development grades for each signing class'):''}
-  <div class="tags2 mini">${c.best.slice(0,1).map(i=>tag(T(i))).join('')}</div>
+  ${c.cls&&c.cls.length?`<details class="more" id="cbc-${slug(c.name)}"><summary><span>${esc(c.name)}: class by class<small>every signing class, its grades and its players</small></span></summary>${classTable(c)}</details>`:''}
   ${more('Career',`<div class="scroll"><table><tr><th>School</th><th>Seasons</th><th>Record</th></tr>${c.st.map(s=>`<tr><td>${esc(s[0])}</td><td>${s[1]}–${s[2]}</td><td>${s[3]}–${s[4]}</td></tr>`).join('')}</table></div>`)}
   ${more('By school',`<div class="scroll"><table><tr><th>School</th><th>Players</th><th>Drafted</th><th>1st rd</th><th>Pts vs exp.</th><th>Ratio</th></tr>${c.sch.map(a=>`<tr><td>${esc(a[0])}</td><td>${a[1]}</td><td>${a[2]}</td><td>${a[3]}</td><td class="${a[4]>=a[5]?'pos':'neg'}">${f0(a[4]-a[5])}</td><td>${rat(a[4],a[5])}</td></tr>`).join('')}</table></div>`)}
   ${more('By position',posTable(c.pos))}
-  ${c.pl&&c.pl[8]?more('Portal or recruiting?',`${cellsHTML([['Transfers in',c.pl[0]],['HS signees',c.pl[1]],['Portal share',(100*c.pl[0]/Math.max(1,c.pl[0]+c.pl[1])).toFixed(0)+'%']])}<p style="margin-top:10px">${leanLab(c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]))} Develops signees: ${goodBad(c.pl[5],c.pl[6],c.pl[7])} · Develops transfers: ${goodBad(c.pl[2],c.pl[3],c.pl[4])}</p>`,'since 2021'):''}
-  ${more('More best developments',`<div class="tags2 mini">${c.best.slice(1).map(i=>tag(T(i))).join('')}</div>`)}</div>`}
+  ${c.pl&&c.pl[8]?more('Portal or recruiting?',`${cellsHTML([['Transfers in',c.pl[0]],['HS signees',c.pl[1]],['Portal share',(100*c.pl[0]/Math.max(1,c.pl[0]+c.pl[1])).toFixed(0)+'%']])}<p style="margin-top:10px">${leanLab(c.pl[0]/Math.max(1,c.pl[0]+c.pl[1]))} Develops signees: ${goodBad(c.pl[5],c.pl[6],c.pl[7])} · Develops transfers: ${goodBad(c.pl[2],c.pl[3],c.pl[4])}</p>`,'since 2021'):''}</div>`}
 
 function rkConf(){
   document.getElementById('rz').innerHTML=`<p class="lede" style="margin-top:16px">Which conferences get the most out of their players? Average per program, per year, by 2026 membership. Tap a conference to see its programs.</p>${yrHTML('fy2',2002,2023,lY,[[2002,2023,'All years'],[2019,2023,'Last 5 years'],[2002,2018,'2002–2018']],'Players who signed in')}<div class="list" id="list" style="margin-top:12px"></div>`;

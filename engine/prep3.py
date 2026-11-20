@@ -74,7 +74,7 @@ for c,rs in byc.items():
     for r in rs: sch[cred(r)].append(r)
     dr=[r for r in rs if r['draftYear']]
     coaches.append(dict(name=c,a=agg(rs),st=[[k]+v for k,v in stints.items()],sch=sorted([[k]+agg(v) for k,v in sch.items()],key=lambda x:-x[1]),
-      pos={g:agg([r for r in rs if r['pg']==g]) for g in G},best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:4]],
+      pos={g:agg([r for r in rs if r['pg']==g]) for g in G},best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:6]],miss=[addtag(r) for r in sorted([r for r in rs if r['k']==8 and not r['draftYear']],key=lambda r:r['pae'])[:4]],
       w=sum(v[2] for v in stints.values()),l=sum(v[3] for v in stints.values()),cur=car[-1]['school'] if car else '',active=any(s['year']==2026 for s in car)))
 coaches.sort(key=lambda c:-(c['a'][3]-c['a'][4]))
 for c in coaches: c['now']=next((s['school'] for s in CAREER.get(c['name'],[]) if s['year']==2026),None)
