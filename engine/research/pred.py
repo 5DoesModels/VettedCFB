@@ -152,9 +152,25 @@ def badges(x):
     return b
 for x in rows: x.append(badges(x))
 BC=collections.Counter(b for x in rows for b in x[22]); print('BADGES',dict(BC),len(F4))
-out=dict(done=len(cur0)-len(cur),rows=rows,g=GL,calc=calc,fac=fac,bt=BT,M=M,te=TE,tproof=TPROOF,ttop=round(TTOP,3))
+# ---- v1.29: individual draft and transfer probabilities are NOT published (failed validation, JC decision D1).
+# The public file carries player facts plus raw historical cohort counts only. Full model rows kept for research, off-site.
+json.dump(dict(rows=rows,calc=calc,fac=fac,te=TE,tproof=TPROOF),open('/home/claude/foundation/pred_internal_v128.json','w'))
+RT=lambda r:'H' if r['recruitType']=='HighSchool' else ('J' if r['recruitType']=='JUCO' else None)
+dco=collections.defaultdict(lambda:[0,0])            # drafted / total, classes 2002-2018 (all 8 draft years observed)
+for r in mat:
+    t=RT(r)
+    if t: x=dco[f"{t}{r['stars'] or 0}{r['pg']}"]; x[0]+=isd(r); x[1]+=1
+tco=collections.defaultdict(lambda:[0,0])            # portal record with a new school / total, classes 2020-2022
+for r in T:
+    t=RT(r)
+    if t: x=tco[f"{t}{r['stars'] or 0}{r['pg']}"]; x[0]+=moved(r); x[1]+=1
+spn=collections.Counter((r['committedTo'],r['pg']) for r in mat)
+sp={k:{g:[spn[(k,g)],sfp[(k,g)][0],round(sfp[(k,g)][1],1)] for g in GP if spn[(k,g)]} for k in FBS if k in sf and sf[k][1]>=3}
+DY=[min(r['year'] for r in mat),max(r['year'] for r in mat)]; TY=[min(r['year'] for r in T),max(r['year'] for r in T)]
+pub=[[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[12],x[13],x[18],x[21],[b for b in x[22] if b in ('moved','juco')]] for x in rows]
+out=dict(v=2,done=len(cur0)-len(cur),rows=pub,g=GL,dco=dco,tco=tco,sp=sp,dy=DY,ty=TY)
 s=json.dumps(out,separators=(',',':')); open(O+'pred.json','w').write(s)
-print(len(rows),len(s)//1024,'KB'); print('LSU',fac.get('LSU'),'Alabama',fac.get('Alabama'),'Texas',fac.get('Texas'),'Iowa',fac.get('Iowa'))
+print(len(rows),len(s)//1024,'KB','dy',DY,'ty',TY,'H4WR',dco.get('H4WR'),tco.get('H4WR'),'LSU DB',sp.get('LSU',{}).get('DB'))
 print('4WR',calc.get('4WR'),'3WR',calc.get('3WR'),'5QB',calc.get('5QB'))
 for g,st in (('WR',4),('OL',3),('QB',4)):
     t='hi' if st>=4 else 'lo'
