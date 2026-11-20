@@ -277,3 +277,12 @@ for p in dm:
 U81.sort(key=lambda x:(x[6],x[8]))
 json.dump(U81, open(O+'uncertain81.json','w'), indent=1)
 print('UNCERTAIN', len(U81))
+
+# ---- shares used across the site (participation blend, UG). Only players whose credit is actually split.
+SH = {}
+for p in players:
+    w = weights(p, 'UG'); c = cred(p['r'])
+    if set(w) == {c}: continue
+    SH['|'.join([p['r']['name'], str(p['r']['year']), p['r']['committedTo']])] = {k: round(v, 4) for k, v in w.items() if v > 0}
+json.dump(SH, open(O + 'tshare.json', 'w'), separators=(',', ':'))
+print('SHARES', len(SH))
