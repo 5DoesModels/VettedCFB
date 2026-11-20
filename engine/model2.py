@@ -15,7 +15,7 @@ def tier(d):
     if d['round']<=5: return 'Rounds 4-5',10
     return 'Rounds 6-7',5
 drafted={v:D[k] for k,v in L.items()}
-pool=[r for r in R if 2008<=r['year']<=LAST and r['committedTo'] and r['recruitType'] in ('HighSchool','JUCO','PrepSchool')]
+pool=[r for r in R if 2002<=r['year']<=LAST and r['committedTo'] and r['recruitType'] in ('HighSchool','JUCO','PrepSchool')]
 for r in pool:
     r['pg']=POS.get(r['position'],'ATH'); d=drafted.get(r['i'])
     if d and not (r['year']+1<=d['year']<=r['year']+8): d=None
@@ -60,10 +60,10 @@ print('portal links',hit)
 for r in pool: r['mv']=[[m[0],m[1]] for m in moves.get(r['i'],[])]
 json.dump(dict(M=M,last=LAST,players=[{k:r[k] for k in ('i','name','year','recruitType','stars','rating','position','pg','committedTo','stateProvince','city','tier','pts','exp','full','pae','k','mv','athleteId')}|{'draftTeam':r['d']['collegeTeam'] if r['d'] else None,'draftYear':r['d']['year'] if r['d'] else None,'overall':r['d']['overall'] if r['d'] else None,'round':r['d']['round'] if r['d'] else None} for r in pool]),open('data/pool2.json','w'))
 print('pool',len(pool),'by class',sorted(collections.Counter(r['year'] for r in pool).items())[:3],'...')
-for y in (2008,2018,2020,2021,2022,2023,2024,2025,2026):
+for y in (2002,2005,2008,2018,2020,2021,2022,2023,2024,2025,2026):
     g=[r for r in pool if r['year']==y]; print(y,len(g),'drafted',sum(1 for r in g if r['d']),'pts',sum(r['pts'] for r in g),'exp-to-date',round(sum(r['exp'] for r in g)))
 # --- v2.1: compare each class to its own peers (handles COVID-era draft timing); 2024+ too early to score
-X=json.load(open('data/pool2.json')); SC=range(2008,2024)
+X=json.load(open('data/pool2.json')); SC=range(2002,2024)
 cls=collections.defaultdict(lambda:[0,0])
 for p in X['players']:
     if p['year'] in SC: cls[p['year']][0]+=p['pts']; cls[p['year']][1]+=p['exp']

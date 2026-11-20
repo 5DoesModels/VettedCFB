@@ -57,7 +57,7 @@ for k,rs in byp.items():
     progs.append(dict(name=k,cur=CUR.get(k),a=agg(rs),full=agg(full),ip=agg(ip),stars={s:agg([r for r in rs if (r['stars'] or 0)==s]) for s in (0,2,3,4,5)},
       pos={g:agg([r for r in rs if r['pg']==g]) for g in G},coaches=cos,best=best,miss=miss,pin=pstats(pin[k]),pout=pstats(pout[k]),pdr=portalDrafted,
       pdrn=sum(1 for r in dr if r['mv'] and r['mv'][-1][1]==k)))
-NCL=len(range(2008,2024))
+NCL=len(range(2002,2024))
 progs.sort(key=lambda p:-(p['a'][3]-p['a'][4]))
 # coaches
 byc=collections.defaultdict(list)
@@ -121,7 +121,7 @@ for r in P:
 for g,rows in fin.items():
     if g in G: open(O+f'f/{g}.json','w').write(json.dumps(rows,separators=(',',':')))
 yrs=sorted({p['year'] for p in P})
-meta=dict(classes=[yrs[0],yrs[-1]],scored=[2008,2023],complete=[2008,2020],draft=[2010,X['last']],portal=[2021,2026],n=len(P),nsc=len(SC),dr=sum(1 for r in SC if r['draftYear']),ncl=NCL,
+meta=dict(classes=[yrs[0],yrs[-1]],scored=[2002,2023],complete=[2002,2020],draft=[2003,X['last']],portal=[2021,2026],n=len(P),nsc=len(SC),dr=sum(1 for r in SC if r['draftYear']),ncl=NCL,
    pl=sum(1 for r in P if r['mv']),pn=len(PO))
 HSF=[r for r in SC if r['recruitType']=='HighSchool' and r['year']<=2020]
 meta['sr']={st:[len(v),round(100*sum(1 for r in v if r['draftYear'])/len(v),1),round(100*sum(1 for r in v if r['tier'] in('First round','Top 10 pick'))/len(v),2),round(sum(r['pts'] for r in v)/len(v),2)] for st in (2,3,4,5) for v in [[r for r in HSF if r['stars']==st]]}
@@ -149,7 +149,7 @@ print([(p['name'],round((p['a'][3]-p['a'][4])/NCL)) for p in progs[:6]],[(p['nam
 print([(c['name'],c['a'][0],round(c['a'][3]/c['a'][4],2)) for c in coaches[:8]])
 # ================= v4 additions =================
 import math
-EARLY=range(2008,2016); RECENT=range(2016,2024)
+EARLY=range(2002,2016); RECENT=range(2016,2024)
 tr={}
 for p in progs:
     rs=byp[p['name']]
@@ -218,17 +218,17 @@ print('LEAN',[(c['name'],c['pl'][0],c['pl'][1],round(c['pl'][0]/max(1,c['pl'][0]
 # ================= v5 additions =================
 import sys as _s; _s.path.insert(0,'/home/claude/concept'); from schoolstate import SS
 # last five graded classes
-R5=range(2019,2024); PRIOR=range(2008,2019)
+R5=range(2019,2024); PRIOR=range(2002,2019)
 for p in progs:
     rs=byp[p['name']]; a=[r for r in rs if r['year'] in R5]; b=[r for r in rs if r['year'] in PRIOR]
-    p['r5']=round((sum(r['pts'] for r in a)-sum(r['exp'] for r in a))/5,1); p['p11']=round((sum(r['pts'] for r in b)-sum(r['exp'] for r in b))/11,1); p['r5a']=agg(a)
+    p['r5']=round((sum(r['pts'] for r in a)-sum(r['exp'] for r in a))/5,1); p['p11']=round((sum(r['pts'] for r in b)-sum(r['exp'] for r in b))/len(PRIOR),1); p['r5a']=agg(a)
 # coaches: last five, per season, school-adjusted
 schoolC=collections.defaultdict(lambda:collections.defaultdict(lambda:[0,0]))
 for c_,rs in byc.items():
     for r in rs: x=schoolC[cred(r)][c_]; x[0]+=r['pts']; x[1]+=r['exp']
 for c in coaches:
     rs=byc[c['name']]; a=[r for r in rs if r['year'] in R5]; c['r5']=agg(a)
-    seas=[s_ for s_ in CAREER.get(c['name'],[]) if 2010<=s_['year']<=2025 and (s_['games'] or 0)>0]; c['ns']=len(seas)
+    seas=[s_ for s_ in CAREER.get(c['name'],[]) if 2004<=s_['year']<=2025 and (s_['games'] or 0)>0]; c['ns']=len(seas)
     adj=0
     for sname,v in collections.Counter(cred(r) for r in rs).items():
         op=sum(x[0] for cc,x in schoolC[sname].items() if cc!=c['name']); oe=sum(x[1] for cc,x in schoolC[sname].items() if cc!=c['name'])
@@ -268,7 +268,7 @@ print('HOT5',[(p['name'],p['r5']) for p in sorted(progs,key=lambda p:-p['r5'])[:
 print('ADJ',[(c['name'],c['adjps'],c['ns']) for c in sorted(coaches,key=lambda c:-c['adjps'])[:8]])
 print('PS',[(c['name'],c['ps']) for c in sorted(coaches,key=lambda c:-c['ps'])[:6]])
 # ================= v6: per-year aggregates for custom year ranges =================
-YRS=list(range(2008,2024))
+YRS=list(range(2002,2024))
 def peryear(rs):
     d=collections.defaultdict(list)
     for r in rs: d[r['year']].append(r)
@@ -282,7 +282,7 @@ for r in SC:
         x=lby[(k,r['pg'],r['stars'] or 0,r['year'])]; a=agg([r])
         for i in range(5): x[i]+=a[i]
 PN={p:i for i,p in enumerate(sorted({k[0] for k in lby}))}
-lbY=dict(p=sorted(PN,key=PN.get),rows=[[PN[k[0]],G.index(k[1]) if k[1] in G else -1,k[2],k[3]-2008]+[round(v,1) if isinstance(v,float) else v for v in a] for k,a in lby.items() if k[1] in G])
+lbY=dict(p=sorted(PN,key=PN.get),rows=[[PN[k[0]],G.index(k[1]) if k[1] in G else -1,k[2],k[3]-2002]+[round(v,1) if isinstance(v,float) else v for v in a] for k,a in lby.items() if k[1] in G])
 open(O+'lb.json','w').write(json.dumps(lbY,separators=(',',':')))
 open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS),separators=(',',':')))
 import os; print('lb.json',os.path.getsize(O+'lb.json')//1024,'KB data.json',os.path.getsize(O+'data.json')//1024,'KB')
@@ -345,7 +345,7 @@ for c in coaches:
     car=CAREER.get(c['name'],[]); cls=[]
     for s_ in car:
         y=s_['year']+1   # class signed during this season
-        if (s_['school'],y) in ct and HC.get((s_['school'],s_['year']))==c['name'] and 2008<=y<=2026:
+        if (s_['school'],y) in ct and HC.get((s_['school'],s_['year']))==c['name'] and 2002<=y<=2026:
             x=cd[(s_['school'],y)]; tp=tpct(s_['school'],y)
             dv=(x[3]-x[4]) if (y<=2023 and x[4]>0) else None
             cls.append([y,s_['school'],x[0],round(tp),x[1],x[2],None if dv is None else round(dv,1),letter(tp),None if dv is None else letter(pctile(devy[y],dv))])

@@ -8,7 +8,7 @@ f=lambda x:float(x) if x not in ('',None) else 0.0
 rows=[]
 for r in R:
     y=int(r['season'])
-    if y<2010: continue
+    if y<2003: continue
     d=idx.get((y,int(r['pick'])))
     if not d: continue
     to=int(r['to']) if r['to'] else None
