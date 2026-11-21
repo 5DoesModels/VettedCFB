@@ -164,11 +164,26 @@ tco=collections.defaultdict(lambda:[0,0])            # portal record with a new 
 for r in T:
     t=RT(r)
     if t: x=tco[f"{t}{r['stars'] or 0}{r['pg']}"]; x[0]+=moved(r); x[1]+=1
+# v1.34 (JC, Nov. 21): school groups for every current player: signees of his signing school with his route, stars and position.
+# Draft: classes in mat (all draft years observed). Transfers: classes in T. Shown at 5+ players; under 20 labeled a small group.
+_need={f"{x[7]}|{'H' if x[21]=='HighSchool' else 'J'}{x[3] or 0}{x[2] if isinstance(x[2],str) else GL[x[2]]}" for x in rows if x[21] in ('HighSchool','JUCO')}
+sco=collections.defaultdict(lambda:[0,0,0,0])
+for r in mat:
+    t=RT(r)
+    if t:
+        k=f"{r['committedTo']}|{t}{r['stars'] or 0}{r['pg']}"
+        if k in _need: x=sco[k]; x[0]+=isd(r); x[1]+=1
+for r in T:
+    t=RT(r)
+    if t:
+        k=f"{r['committedTo']}|{t}{r['stars'] or 0}{r['pg']}"
+        if k in _need: x=sco[k]; x[2]+=moved(r); x[3]+=1
+sco={k:v for k,v in sco.items() if v[1]>=5 or v[3]>=5}
 spn=collections.Counter((r['committedTo'],r['pg']) for r in mat)
 sp={k:{g:[spn[(k,g)],sfp[(k,g)][0],round(sfp[(k,g)][1],1)] for g in GP if spn[(k,g)]} for k in FBS if k in sf and sf[k][1]>=3}
 DY=[min(r['year'] for r in mat),max(r['year'] for r in mat)]; TY=[min(r['year'] for r in T),max(r['year'] for r in T)]
 pub=[[x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[12],x[13],x[18],x[21],[b for b in x[22] if b in ('moved','juco')]] for x in rows]
-out=dict(v=2,done=len(cur0)-len(cur),rows=pub,g=GL,dco=dco,tco=tco,sp=sp,dy=DY,ty=TY)
+out=dict(v=2,done=len(cur0)-len(cur),rows=pub,g=GL,dco=dco,tco=tco,sco=sco,sp=sp,dy=DY,ty=TY)
 s=json.dumps(out,separators=(',',':')); open(O+'pred.json','w').write(s)
 print(len(rows),len(s)//1024,'KB','dy',DY,'ty',TY,'H4WR',dco.get('H4WR'),tco.get('H4WR'),'LSU DB',sp.get('LSU',{}).get('DB'))
 print('4WR',calc.get('4WR'),'3WR',calc.get('3WR'),'5QB',calc.get('5QB'))

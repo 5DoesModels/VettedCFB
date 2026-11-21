@@ -71,7 +71,7 @@ DEFS = {
  'tr': ['Transferred', 'Has a transfer portal entry listing a school other than the one he signed with (2021 on).'],
  'juco': ['JUCO Route', 'Signed with his college out of junior college.'],
  'hd': ['History: Draft Pipeline', f'Signees at his position and recruiting tier (4-5 star or 2-3 star) at the school he plays for now ({DY[0]}–{DY[1]} classes, 20+ players) were drafted at a rate in the top 10% of all such school groups ({round(100*cutd)}% or higher). It reflects his school as much as his rating. It describes past players, not a prediction for him.'],
- 'gem': ['Hidden Gem', f'A 2- or 3-star freshman who signed with a school whose 2- and 3-star signees at his position were drafted at a top-10% rate among all schools ({round(100*cutg)}% or higher; {DY[0]}–{DY[1]} classes, 20+ players). It describes the school\'s history, not a prediction for him.'],
+ 'gem': ['Hidden Gem', f'A 2- or 3-star freshman (or 2027 commit, not signed yet) at a school whose 2- and 3-star signees at his position were drafted at a top-10% rate among all schools ({round(100*cutg)}% or higher; {DY[0]}–{DY[1]} classes, 20+ players). It describes the school\'s history, not a prediction for him.'],
  'ht': ['History: Portal Movers', f'His comparable group (signing route, star rating and position; 20+ players, {TY[0]}–{TY[1]} classes) is in the top 10% of all groups for share that later transferred ({round(100*cutt)}% or higher). This describes past players like him, not a prediction for him.'],
 }
 OUT = {}
@@ -115,17 +115,19 @@ for r in PRED['rows']:
         sk = f"{sch}|{pg}|{tier}"
         if sk in TOPD: add(key, 'hd', gk); SGK.setdefault(key, {})['hd'] = sk
         gk3 = f"{r[7]}|{pg}|23"
-        if r[1] == 2026 and tier == '23' and gk3 in TOPG: add(key, 'gem', gk); SGK.setdefault(key, {})['gem'] = gk3
+        if r[1] in (2026, 2027) and tier == '23' and gk3 in TOPG: add(key, 'gem', gk); SGK.setdefault(key, {})['gem'] = gk3
     if gk in TOPT and not r[9]: add(key, 'ht', gk)
     for b in r[13] or []:
         add(key, {'moved': 'tr', 'juco': 'juco'}[b], gk)
     if key in OUT and not OUT[key][1]: OUT[key][1] = gk
+    if key in OUT and gk and f"{r[7]}|{gk}" in PRED.get('sco', {}): SGK.setdefault(key, {})['sc'] = f"{r[7]}|{gk}"
 grp = {}
 for e in OUT.values():
     k = e[1]
     if k and k not in grp: grp[k] = (dco.get(k) or [0, 0]) + (tco.get(k) or [0, 0])
-sgrp = {v: sg[v] for d in SGK.values() for v in d.values()}
-out = dict(v=2, defs=DEFS, dy=DY, ty=TY, grp=grp, sgrp=sgrp, p={k: ([v[0], v[1], SGK[k]] if k in SGK else [v[0], v[1]]) for k, v in OUT.items()})
+sgrp = {v: sg[v] for d in SGK.values() for c, v in d.items() if c != 'sc'}
+scg = {d['sc']: PRED['sco'][d['sc']] for d in SGK.values() if 'sc' in d}
+out = dict(v=2, defs=DEFS, dy=DY, ty=TY, grp=grp, sgrp=sgrp, scg=scg, p={k: ([v[0], v[1], SGK[k]] if k in SGK else [v[0], v[1]]) for k, v in OUT.items()})
 s = json.dumps(out, separators=(',', ':')); open(O + 'tags.json', 'w').write(s)
 cnt = collections.Counter(c for v in OUT.values() for c in v[0])
 print('tags.json', len(s) // 1024, 'KB', len(OUT), 'players', dict(cnt), 'cuts draft/gem/transfer', round(cutd, 3), round(cutg, 3), round(cutt, 3), 'groups', len(TOPD), nD, len(TOPG), nG)
