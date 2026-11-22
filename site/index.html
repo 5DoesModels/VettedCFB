@@ -342,13 +342,10 @@ nav a .vt{display:inline}
 .tline{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.tl{display:flex;gap:10px;align-items:center}.tl small{display:block;color:var(--mut,#5B6170)}
 .prev .gp,.pgc.prev .gp{opacity:.5;box-shadow:0 0 0 2px var(--ink) inset;outline:2px dashed var(--mut,#7D828E);outline-offset:1px}.vchip{display:inline-flex;align-items:center;justify-content:center;min-width:3.2em;height:2.2em;padding:0 6px;border-radius:7px;border:2px solid var(--line,#C9CCD3);font-weight:800;font-size:14px;background:var(--card)}.vchip.up{border-color:#1F6B4E;color:#1F6B4E}.vchip.dn{border-color:#B5602A;color:#B5602A}
 .pill.cool{background:#F6E3D6;color:#8A4317;border-color:#B5602A}.pill.heat{background:#DCEFE6;color:#165239;border-color:#1F6B4E}
-.vw{display:inline-flex;align-items:baseline;white-space:nowrap;color:inherit}.vck,.brand svg.vck{height:.8em;width:.64em;overflow:visible;margin-right:.03em;flex:none}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <clipPath id="cL"><rect x="0" y="0" width="19" height="52"/></clipPath><clipPath id="cR"><rect x="19" y="0" width="33" height="52"/></clipPath>
 <symbol id="mark" viewBox="0 0 52 52"><g fill="none" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M5 27 L19 42 L47 9" stroke="var(--ink)" clip-path="url(#cL)"/><path d="M5 27 L19 42 L47 9" stroke="var(--red)" clip-path="url(#cR)"/></g></symbol>
-<clipPath id="vL"><rect x="-10" y="-10" width="25" height="70"/></clipPath><clipPath id="vR"><rect x="15" y="-10" width="40" height="70"/></clipPath>
-<symbol id="vck" viewBox="0 0 40 50" overflow="visible"><g fill="none" stroke-width="8.5" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M2.5 24 L15 45 L38 3" stroke="currentColor" clip-path="url(#vL)"/><path d="M2.5 24 L15 45 L38 3" stroke="var(--red)" clip-path="url(#vR)"/></g></symbol>
 </defs></svg>
 <header><div class="wrap">
 <div class="top"><a class="brand" href="#home" aria-label="Vetted CFB home"><svg width="54" height="54" aria-hidden="true"><use href="#mark"/></svg><span><b>VETTED</b><small>CFB</small></span></a>
@@ -1514,8 +1511,6 @@ function drawNL(){
 // is only ever stated once. Status keys: avail, dev, soon, research, maint ("Under maintenance" = a released feature
 // that is temporarily off; nothing uses it today).
 const BRAND='Vetted';
-const VW=`<span class="vw" role="img" aria-label="Vetted"><svg class="vck" viewBox="0 0 40 50" aria-hidden="true"><use href="#vck"/></svg><span aria-hidden="true">ETTED</span></span>`;
-const vwK=t=>t.startsWith('VETTED')?VW+esc(t.slice(6)):esc(t);
 const STS={avail:'Available now',dev:'In development',soon:'Coming soon',research:'Research phase',maint:'Under maintenance'};
 const STX={avail:'Open it and use it today.',dev:'Actively being built.',soon:'Planned; not ready yet.',research:'Still being evaluated or validated before anything is built.',maint:'A released feature that is temporarily unavailable.'};
 const DEST={data:{n:'Vetted Data',k:'VETTED DATA',t:'Explore the data',c:'d',
