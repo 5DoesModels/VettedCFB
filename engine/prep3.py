@@ -413,7 +413,8 @@ def retv(c):
     gone=[r for r in mysg(c) if mvd_(r) and r['exp'] is not None and r['year']<=2023 and not any(m[1] in mine for m in r['mv'] if m[1]!=r['committedTo'])]
     return (sum(r['pts'] for r in gone)+5)/(sum(r['exp'] for r in gone)+5) if len(gone)>=8 else None
 def portv(c): return c['pl'][3]/c['pl'][4] if c.get('pl') and c['pl'][2]>=10 and c['pl'][4]>=8 else None
-CATS=[('dev','Development',devv,.35),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Players who left',retv,.075),('port','Developing transfers',portv,.075)]
+# v1.35 (JC, Nov. 22): 'Players who left' no longer counts toward the overall grade (shown as information only); its weight goes to Development and Developing transfers.
+CATS=[('dev','Development',devv,.40),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Players who left',retv,0),('port','Developing transfers',portv,.10)]
 LOWBETTER={'ret'}
 vals={k:POOL(f) for k,_,f,_ in CATS}
 for c in coaches:
@@ -421,7 +422,7 @@ for c in coaches:
     for k,lab,f,w in CATS:
         v=f(c); p=pctile(vals[k],v,hi=k not in LOWBETTER)
         g[k]=None if p is None else [letter(p),round(p),round(v,3) if isinstance(v,float) else v]
-        if p is not None: ps.append(p*w); ws+=w
+        if p is not None and w>0: ps.append(p*w); ws+=w
     g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
     c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
 # programs: development grade from per-year score
