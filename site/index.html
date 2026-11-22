@@ -351,7 +351,7 @@ nav a .vt{display:inline}
 <symbol id="vck" viewBox="0 0 40 50" overflow="visible"><g fill="none" stroke-width="8.5" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M2.5 24 L15 45 L38 3" stroke="currentColor" clip-path="url(#vL)"/><path d="M2.5 24 L15 45 L38 3" stroke="var(--red)" clip-path="url(#vR)"/></g></symbol>
 </defs></svg>
 <header><div class="wrap">
-<div class="top"><a class="brand" href="#home" aria-label="Vetted CFB home"><span><b><span class="vw" role="img" aria-label="Vetted"><svg class="vck" viewBox="0 0 40 50" aria-hidden="true"><use href="#vck"/></svg><span aria-hidden="true">ETTED</span></span></b><small>CFB</small></span></a>
+<div class="top"><a class="brand" href="#home" aria-label="Vetted CFB home"><svg width="54" height="54" aria-hidden="true"><use href="#mark"/></svg><span><b>VETTED</b><small>CFB</small></span></a>
 <span class="concept">Preview</span>
 <button class="thm" id="thm" type="button" aria-label="Switch light or dark mode"><span id="thmi">☾</span> <span id="thml">Dark</span></button><div class="search" role="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
 <input type="search" id="sq" placeholder="Search any player, school or coach" aria-label="Search any player, school or coach" autocomplete="off"><div class="res" id="sr" role="listbox"></div></div></div>
@@ -1107,11 +1107,8 @@ function rrect(x,X,Y,W,H,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+W,Y,X+W,Y+H,
 function badge(x,l,X,Y,S){const c=l?SHCOL[l[0]]:['#C9CCD3','#5B6170'];rrect(x,X,Y,S,S,S*.18);x.fillStyle=c[0];x.fill();if(l&&l[0]==='S'){x.lineWidth=S*.05;x.strokeStyle='#14213D';x.stroke()}
   x.fillStyle=c[1];x.textAlign='center';x.textBaseline='middle';const t=l?l.replace('-','−'):'–';x.font=FNT(800,S*(t.length>1?.5:.6));x.fillText(t,X+S/2,Y+S/2+S*.03);x.textAlign='left';x.textBaseline='alphabetic'}
 function fitText(x,t,w,max,wt){let p=max;x.font=FNT(wt,p);while(x.measureText(t).width>w&&p>18){p-=2;x.font=FNT(wt,p)}return p}
-function brandBar(x,W,label){x.fillStyle='#14213D';x.fillRect(0,0,W,140);x.fillStyle='#fff';x.font=FNT(900,64);
-  const cap=x.measureText('E').actualBoundingBoxAscent||46,k=cap/42,X0=56,base=94,P=(a,b)=>[X0+a*k,base-45*k+b*k];
-  x.lineWidth=8.5*k;x.lineCap='butt';x.lineJoin='miter';x.miterLimit=10;
-  [[-10,15,'#FFFFFF'],[15,60,'#E0574A']].forEach(([a,b,col])=>{x.save();x.beginPath();x.rect(X0+a*k,0,(b-a)*k,140);x.clip();x.strokeStyle=col;x.beginPath();x.moveTo(...P(2.5,24));x.lineTo(...P(15,45));x.lineTo(...P(38,3));x.stroke();x.restore()});
-  x.fillStyle='#fff';x.fillText('ETTED',X0+40*k,base);
+function brandBar(x,W,label){x.fillStyle='#14213D';x.fillRect(0,0,W,140);x.fillStyle='#fff';x.font=FNT(900,64);x.fillText('VETTED',56,94);const w=x.measureText('VETTED').width;
+  const mx=56+w+16,my=26,k=1.5,P=(a,b)=>[mx+a*k,my+b*k];x.lineWidth=9*k;x.lineCap='butt';x.lineJoin='miter';x.miterLimit=10;[[0,19,'#FFFFFF'],[19,52,'#E0574A']].forEach(([a,b,col])=>{x.save();x.beginPath();x.rect(mx+a*k,0,(b-a)*k,140);x.clip();x.strokeStyle=col;x.beginPath();x.moveTo(...P(5,27));x.lineTo(...P(19,42));x.lineTo(...P(47,9));x.stroke();x.restore()});
   x.fillStyle='#C9CCD3';x.font=FNT(700,28);x.textAlign='right';x.fillText(label,W-56,90);x.textAlign='left'}
 function footer(x,W,H,t){x.fillStyle='#14213D';x.fillRect(0,H-96,W,96);x.fillStyle='#fff';x.font=FNT(700,28);x.fillText('vettedcfb.5models.workers.dev',56,H-40);x.fillStyle='#C9CCD3';x.font=FNT(500,22);x.textAlign='right';x.fillText(t,W-56,H-40);x.textAlign='left'}
 const rankIn=(k,c)=>{const pool=D.coaches.filter(o=>o.g&&o.g[k]);return c.g&&c.g[k]?[1+pool.filter(o=>o.g[k][1]>c.g[k][1]).length,pool.length]:null};
@@ -1644,7 +1641,7 @@ function openPreview(id){
   if(dlg.showModal){dlg.showModal()}else dlg.setAttribute('open','')}
 function destCard(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.also||[]).includes(k));
   const show=[...items.filter(p=>p.s==='avail').slice(0,3),...items.filter(p=>p.s!=='avail').slice(0,2)];
-  return `<div class="dcard dc-${d.c}"><a class="dtop" href="#${k}"><span class="dk">${vwK(d.k)}</span><span class="dt">${d.t}</span><span class="dd">${d.d}</span></a>
+  return `<div class="dcard dc-${d.c}"><a class="dtop" href="#${k}"><span class="dk">${d.k}</span><span class="dt">${d.t}</span><span class="dd">${d.d}</span></a>
   <ul class="dl">${show.map(p=>`<li>${p.s==='avail'?rLink(p.r,esc(p.n)):`<button type="button" data-pv="${p.id}">${esc(p.n)}</button>`}${stChip(p.s)}</li>`).join('')}</ul>
   <a class="dgo" href="#${k}">${d.go} →</a></div>`}
 function roadmapHTML(){return `<div class="road">${ROADMAP.map(([t,sub,list],i)=>`<div class="stage"><div class="sh"><span class="sn">${i+1}</span><div><b>${t}</b><small>${sub}</small></div></div><ul>${list.map(([id,n,tx])=>{const p=id.startsWith('p:')?PBY[id.slice(2)]:null;
@@ -1655,7 +1652,7 @@ function destPage(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.
   const more={data:[['recmap:over','Where overachievers come from'],['analytics','Does development win?'],['rankings:position','Who develops each position'],['rankings:conf','Conferences'],['recmap','Recruiting maps'],['stayhome','Distance and home'],['moveup','Coaches moving up']],
     recruiting:[['recmap','Recruiting maps'],['stayhome','Distance and home'],['players','Look up any player'],['rankings:programs','Program report cards']],
     plus:[['rankings:coaches','Coach report cards'],['rankings:programs','Program rankings'],['nfl','NFL careers'],['players','Look up any player']]}[k];
-  app.innerHTML=`<div class="page vision"><section class="dhero dh-${d.c}"><p class="eyebrow">${vwK(d.k)}</p><h1>${d.t}</h1><p class="lede">${d.lede}</p><p class="openl">Free and open to everyone. No sign-up, nothing locked.</p></section>
+  app.innerHTML=`<div class="page vision"><section class="dhero dh-${d.c}"><p class="eyebrow">${d.k}</p><h1>${d.t}</h1><p class="lede">${d.lede}</p><p class="openl">Free and open to everyone. No sign-up, nothing locked.</p></section>
   <section><h2>Available now</h2><div class="pcs">${av.map(prodCard).join('')}</div>
   <div class="morechips"><span>More you can open today:</span>${more.map(([r,l])=>rLink(r,esc(l),'chip')).join('')}</div></section>
   <section><h2>In development and coming</h2><p class="lede">What we're building here. Tap any of them to see what it will do and where it stands; none of these are usable yet.</p><div class="pcs">${up.map(prodCard).join('')}</div>${stKey(items)}</section>
@@ -1668,7 +1665,7 @@ function home(){
   const m=D.meta,sr=m.sr;const ex3=sr[3][3],ex5=sr[5][3];
   const wallNames=['Khalil Mack','Kyle Pitts','DeVonta Smith','Justin Jefferson','Brock Purdy','Aaron Donald','Malik Nabers',"Ja'Marr Chase",'Joe Burrow','Travis Hunter'];
   const wt=wallNames.map(findTag).filter(Boolean).map(tag).join('');
-  app.innerHTML=`<div class="page home"><section class="hero"><div><div class="hbrand"><div><span class="hbw">${VW}</span><span class="hbt">The college football development research platform</span></div></div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
+  app.innerHTML=`<div class="page home"><section class="hero"><div><div class="hbrand"><svg class="hbm" viewBox="0 0 54 54" aria-hidden="true"><use href="#mark"/></svg><div><span class="hbw">${BRAND}</span><span class="hbt">The college football development research platform</span></div></div><p class="eyebrow">Welcome to ${BRAND}</p><h1>Explore college football through a different lens.</h1>
   <p class="lede">Recruiting rankings tell you who a program signs. We follow every FBS signee since 2002 to see what happened next, and who really developed him.</p>
   <p class="dline">One open platform, three destinations: <a href="#data">${BRAND} Data</a> · <a href="#recruiting">${BRAND} Recruiting</a> · <a href="#plus">${BRAND} Staff</a></p>
   <div class="btns"><a class="btn solid" href="#everything">Explore everything</a><button type="button" class="btn" id="tostart">Help me pick a starting point ↓</button><a class="btn" href="#methods">How it works</a></div>
