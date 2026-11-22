@@ -1,0 +1,11 @@
+{"asof": "2026-11-22",
+ "note": "FBS head coaching changes during the 2026 season. Sources: blog.rallyfuel.com/college-football-coaching-carousel-2026 (Nov. 2), espn.com 2026 coaching carousel (Nov. 17), gunslingerbuzz.com FBS carousel tracker (Nov. 20), noticiasbo.com 2026 carousel (Nov. 21). Interim left null when no source names one.",
+ "changes": [
+  {"school": "Maryland", "out": "Mike Locksley", "date": "2026-10-21", "interim": "Aazaar Abdul-Rahim", "reported_exit_record": "2-5"},
+  {"school": "NC State", "out": "Dave Doeren", "date": "2026-10-24", "interim": "Todd Goebbel", "reported_exit_record": "3-4", "next": "Philip Rivers (hired Nov. 13, starts 2027)"},
+  {"school": "Baylor", "out": "Dave Aranda", "date": "2026-10-25", "interim": "Joe Klanderman", "reported_exit_record": "4-3"},
+  {"school": "Sam Houston", "out": "Phil Longo", "date": "2026-10-28", "interim": "Eric Raisbeck and Freddie Aughtry-Lindsay", "reported_exit_record": "1-7"},
+  {"school": "Florida State", "out": "Mike Norvell", "date": "2026-11-01", "interim": "Rick Stockstill", "reported_exit_record": "3-5"},
+  {"school": "UTEP", "out": "Scotty Walden", "date": "2026-11-16", "interim": "Kyle Beyer", "reported_exit_record": "1-9"},
+  {"school": "Arkansas State", "out": "Butch Jones", "date": "2026-11-17", "interim": null, "reported_exit_record": null}
+ ]}
