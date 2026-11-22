@@ -11,6 +11,22 @@ for c in C:
             ss.append(s)
         if s['year'] in (2025,2026): FBS.add(s['school'])
     if ss: CAREER[nm]=ss
+# v1.37 (JC, Nov. 22): interim head coaches. In a season with a mid-season change, a coach who took over and did not stay
+# (no season at that school the year before or the year after) gets no credit; the head coach who started that season does.
+_byk=collections.defaultdict(list); _cy=collections.defaultdict(set)
+for c in C:
+    nm=f"{c['firstName']} {c['lastName']}"
+    for s in c['seasons']:
+        g=s['games'] or 0
+        if g>=1 or s['year']==2026: _cy[(nm,s['school'])].add(s['year'])
+        if g>=1: _byk[(s['school'],s['year'])].append(nm)
+INTERIM={}
+for k,v in _byk.items():
+    top=HC.get(k); sch,y=k
+    if len(v)<2 or not top or y-1 in _cy[(top,sch)] or y+1 in _cy[(top,sch)]: continue
+    st=[n for n in v if n!=top and y-1 in _cy[(n,sch)]]
+    if st: INTERIM[k]=[top,st[0]]; HC[k]=st[0]
+print('INTERIM seasons reassigned',len(INTERIM))
 CUR={sch:HC[(sch,2026)] for (sch,y) in HC if y==2026}
 def last(r):
     d=[m[1] for m in r['mv'] if m[1]]
@@ -431,6 +447,26 @@ for c in coaches:
         if p is not None and w>0: ps.append(p*w); ws+=w
     g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
     c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
+# v1.37 (JC, Nov. 22): grade at each school (program cards). Same blend as the overall grade (development 40, winning 25,
+# recruiting 15, recruits above the school's norm 10; developing transfers isn't split by school), using only his seasons
+# at that school, compared with every head coach stint since 2002. His career grade is unchanged.
+STW={'dev':.40,'win':.25,'rec':.15,'lift':.10}; STINT=[]
+for c in coaches:
+    for s_ in c['st']:
+        sch=s_[0]; a=next((x for x in c['sch'] if x[0]==sch),None)
+        ns=max(0,min(s_[2],2025)-max(s_[1],2004)+1); cl=[k for k in c['cls'] if k[1]==sch]
+        STINT.append(dict(c=c,sch=sch,dev=(a[4]-a[5])/ns if a and ns>=3 and a[1]>=10 else None,
+            win=s_[3]/(s_[3]+s_[4]) if s_[3]+s_[4]>=24 else None,
+            rec=sum(k[3] for k in cl)/len(cl) if len(cl)>=2 else None,
+            lift=liftv(dict(cls=cl)) if len(cl)>=2 else None))
+_sv={k:[x[k] for x in STINT if x[k] is not None] for k in STW}
+for x in STINT:
+    parts={};ps=0;ws=0
+    for k,w in STW.items():
+        p=pctile(_sv[k],x[k])
+        if p is not None: parts[k]=[letter(p),round(p),round(x[k],3)]; ps+=p*w; ws+=w
+    x['c'].setdefault('stg',{})[x['sch']]=[letter(ps/ws),round(ps/ws),parts] if ws>=.5 else [None,None,parts]
+print('STINT grades',len(STINT),sum(1 for x in STINT if x['c']['stg'][x['sch']][0]))
 # programs: development grade from per-year score
 for p in progs: p['dpe']=round(dpe(p['name'],byp[p['name']]),2); p['fy']=sorted(FY.get(p['name'],()))
 pv=[p['dpe'] for p in progs]

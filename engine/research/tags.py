@@ -120,13 +120,19 @@ for r in PRED['rows']:
     for b in r[13] or []:
         add(key, {'moved': 'tr', 'juco': 'juco'}[b], gk)
     if key in OUT and not OUT[key][1]: OUT[key][1] = gk
-    if key in OUT and gk and f"{r[7]}|{gk}" in PRED.get('sco', {}): SGK.setdefault(key, {})['sc'] = f"{r[7]}|{gk}"
+    _tk = gk and gk[1] in '2345' and f"{r[7]}|{gk[0]}{'45' if gk[1] in '45' else '23'}{gk[2:]}"
+    if key in OUT and gk and (f"{r[7]}|{gk}" in PRED.get('sco', {}) or (_tk and _tk in PRED.get('sco', {}))): SGK.setdefault(key, {})['sc'] = f"{r[7]}|{gk}"
 grp = {}
 for e in OUT.values():
     k = e[1]
     if k and k not in grp: grp[k] = (dco.get(k) or [0, 0]) + (tco.get(k) or [0, 0])
 sgrp = {v: sg[v] for d in SGK.values() for c, v in d.items() if c != 'sc'}
-scg = {d['sc']: PRED['sco'][d['sc']] for d in SGK.values() if 'sc' in d}
+scg = {}
+for d in SGK.values():
+    if 'sc' in d:
+        sch, g_ = d['sc'].split('|')
+        for k_ in (d['sc'], f"{sch}|{g_[0]}{'45' if g_[1] in '45' else '23'}{g_[2:]}" if g_[1] in '2345' else None):
+            if k_ and k_ in PRED['sco']: scg[k_] = PRED['sco'][k_]
 out = dict(v=2, defs=DEFS, dy=DY, ty=TY, grp=grp, sgrp=sgrp, scg=scg, p={k: ([v[0], v[1], SGK[k]] if k in SGK else [v[0], v[1]]) for k, v in OUT.items()})
 s = json.dumps(out, separators=(',', ':')); open(O + 'tags.json', 'w').write(s)
 cnt = collections.Counter(c for v in OUT.values() for c in v[0])
