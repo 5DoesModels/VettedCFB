@@ -108,6 +108,12 @@ for p in progs:
 for p in progs:
     _r=byp[p['name']]; p['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
 for c in coaches: c['now']=next((s['school'] for s in CAREER.get(c['name'],[]) if s['year']==2026),None)
+# v1.36 (JC, Nov. 22): context only, not graded. Last season coached (games played) and recent form (last 3 finished seasons, 2023-2025).
+for c in coaches:
+    car=sorted([s for s in CAREER.get(c['name'],[]) if (s['games'] or 0)>=1],key=lambda s:s['year'])
+    c['last']=[car[-1]['school'],car[-1]['year']] if car else None
+    r=[s for s in car if 2023<=s['year']<=2025]
+    c['rf']=[sum(s['wins'] for s in r),sum(s['losses'] for s in r),[[s['year'],s['wins'],s['losses'],s['school']] for s in r]] if r else None
 # leaderboards: program x position x stars (graded classes)
 LB=collections.defaultdict(lambda:collections.defaultdict(list))
 for r in SC:
