@@ -1,0 +1,2049 @@
+{
+ "v": 1,
+ "note": "Coach, team and player honors 2002-2025 for the Vetted coach bonus (v1.39, pending JC approval). Coach of the year and player awards: Wikipedia award pages and Sports Reference award pages (fetched Nov. 22, 2026). Conference titles: championship-game winner, or tied for best conference record in years without a title game, from CFBD game data; vacated titles removed (USC 2004-05 Pac-10, Ohio State 2010 Big Ten, Georgia Tech 2009 ACC). National title games: CFBD postseason data; 2002-2005 and 2007 from Wikipedia season pages; USC 2004 vacated. CFP field: CFBD playoff games 2014-2025.",
+ "coy": {
+  "AP": {
+   "2002": "Kirk Ferentz|Iowa",
+   "2003": "Nick Saban|LSU",
+   "2004": "Tommy Tuberville|Auburn",
+   "2005": "Joe Paterno|Penn State",
+   "2006": "Jim Grobe|Wake Forest",
+   "2007": "Mark Mangino|Kansas",
+   "2008": "Nick Saban|Alabama",
+   "2009": "Gary Patterson|TCU",
+   "2010": "Chip Kelly|Oregon",
+   "2011": "Les Miles|LSU",
+   "2012": "Brian Kelly|Notre Dame",
+   "2013": "Gus Malzahn|Auburn",
+   "2014": "Gary Patterson|TCU",
+   "2015": "Dabo Swinney|Clemson",
+   "2016": "Mike MacIntyre|Colorado",
+   "2017": "Scott Frost|UCF",
+   "2018": "Brian Kelly|Notre Dame",
+   "2019": "Ed Orgeron|LSU",
+   "2020": "Jamey Chadwell|Coastal Carolina",
+   "2021": "Jim Harbaugh|Michigan",
+   "2022": "Sonny Dykes|TCU",
+   "2023": "Kalen DeBoer|Washington",
+   "2024": "Curt Cignetti|Indiana",
+   "2025": "Curt Cignetti|Indiana"
+  },
+  "Walter Camp": {
+   "2002": "Kirk Ferentz|Iowa",
+   "2003": "Bob Stoops|Oklahoma",
+   "2004": "Tommy Tuberville|Auburn",
+   "2005": "Joe Paterno|Penn State",
+   "2006": "Greg Schiano|Rutgers",
+   "2007": "Mark Mangino|Kansas",
+   "2008": "Nick Saban|Alabama",
+   "2009": "Gary Patterson|TCU",
+   "2010": "Chip Kelly|Oregon",
+   "2011": "Les Miles|LSU",
+   "2012": "Brian Kelly|Notre Dame",
+   "2013": "David Cutcliffe|Duke",
+   "2014": "Gary Patterson|TCU",
+   "2015": "Dabo Swinney|Clemson",
+   "2016": "Mike MacIntyre|Colorado",
+   "2017": "Mark Richt|Miami",
+   "2018": "Nick Saban|Alabama",
+   "2019": "Ed Orgeron|LSU",
+   "2020": "Jamey Chadwell|Coastal Carolina",
+   "2021": "Luke Fickell|Cincinnati",
+   "2022": "Sonny Dykes|TCU",
+   "2023": "Kalen DeBoer|Washington",
+   "2024": "Curt Cignetti|Indiana",
+   "2025": "Curt Cignetti|Indiana"
+  },
+  "Bear Bryant": {
+   "2002": "Jim Tressel|Ohio State",
+   "2003": "Nick Saban|LSU",
+   "2004": "Tommy Tuberville|Auburn",
+   "2005": "Mack Brown|Texas",
+   "2006": "Chris Petersen|Boise State",
+   "2007": "Mark Mangino|Kansas",
+   "2008": "Kyle Whittingham|Utah",
+   "2009": "Chris Petersen|Boise State",
+   "2010": "Gene Chizik|Auburn",
+   "2011": "Mike Gundy|Oklahoma State",
+   "2012": "Bill O'Brien|Penn State",
+   "2013": "Gus Malzahn|Auburn",
+   "2014": "Gary Patterson|TCU",
+   "2015": "Dabo Swinney|Clemson",
+   "2016": "Dabo Swinney|Clemson",
+   "2017": "Scott Frost|UCF",
+   "2018": "Dabo Swinney|Clemson",
+   "2019": "Ed Orgeron|LSU",
+   "2020": "Nick Saban|Alabama",
+   "2021": "Luke Fickell|Cincinnati",
+   "2022": "Sonny Dykes|TCU",
+   "2023": "Mike Norvell|Florida State",
+   "2024": "Marcus Freeman|Notre Dame",
+   "2025": "Curt Cignetti|Indiana"
+  },
+  "Eddie Robinson (FWAA)": {
+   "2002": "Jim Tressel|Ohio State",
+   "2003": "Nick Saban|LSU",
+   "2004": "Urban Meyer|Utah",
+   "2005": "Charlie Weis|Notre Dame",
+   "2006": "Greg Schiano|Rutgers",
+   "2007": "Mark Mangino|Kansas",
+   "2008": "Nick Saban|Alabama",
+   "2009": "Gary Patterson|TCU",
+   "2010": "Chip Kelly|Oregon",
+   "2011": "Mike Gundy|Oklahoma State",
+   "2012": "Brian Kelly|Notre Dame",
+   "2013": "Gus Malzahn|Auburn",
+   "2014": "Gary Patterson|TCU",
+   "2015": "Kirk Ferentz|Iowa",
+   "2016": "Mike MacIntyre|Colorado",
+   "2017": "Scott Frost|UCF",
+   "2018": "Bill Clark|UAB",
+   "2019": "Ed Orgeron|LSU",
+   "2020": "Jamey Chadwell|Coastal Carolina",
+   "2021": "Luke Fickell|Cincinnati",
+   "2022": "Sonny Dykes|TCU",
+   "2023": "Kalen DeBoer|Washington",
+   "2024": "Curt Cignetti|Indiana",
+   "2025": "Clark Lea|Vanderbilt"
+  },
+  "Bobby Dodd": {
+   "2002": "Jim Tressel|Ohio State",
+   "2003": "Bob Stoops|Oklahoma",
+   "2004": "Paul Johnson|Navy",
+   "2005": "Joe Paterno|Penn State",
+   "2006": "Jim Grobe|Wake Forest",
+   "2007": "Lloyd Carr|Michigan",
+   "2008": "Mack Brown|Texas",
+   "2009": "Gary Patterson|TCU",
+   "2010": "Chris Petersen|Boise State",
+   "2011": "Dabo Swinney|Clemson",
+   "2012": "Bill Snyder|Kansas State",
+   "2013": "David Cutcliffe|Duke",
+   "2014": "Nick Saban|Alabama",
+   "2015": "Kirk Ferentz|Iowa",
+   "2016": "Mike MacIntyre|Colorado",
+   "2017": "David Shaw|Stanford",
+   "2018": "Brian Kelly|Notre Dame",
+   "2019": "Kyle Whittingham|Utah",
+   "2020": "Pat Fitzgerald|Northwestern",
+   "2021": "Luke Fickell|Cincinnati",
+   "2022": "Willie Fritz|Tulane",
+   "2023": "Mike Norvell|Florida State",
+   "2024": "Marcus Freeman|Notre Dame",
+   "2025": "Curt Cignetti|Indiana"
+  },
+  "AFCA": {
+   "2002": "Jim Tressel|Ohio State",
+   "2003": "Pete Carroll|USC",
+   "2004": "Tommy Tuberville|Auburn",
+   "2005": "Joe Paterno|Penn State",
+   "2006": "Jim Grobe|Wake Forest",
+   "2007": "Mark Mangino|Kansas",
+   "2008": "Kyle Whittingham|Utah",
+   "2009": "Gary Patterson|TCU",
+   "2010": "Chip Kelly|Oregon",
+   "2011": "Les Miles|LSU",
+   "2012": "Brian Kelly|Notre Dame",
+   "2013": "David Cutcliffe|Duke",
+   "2014": "Gary Patterson|TCU",
+   "2015": "Dabo Swinney|Clemson",
+   "2016": "Mike MacIntyre|Colorado",
+   "2017": "Scott Frost|UCF",
+   "2018": "Mike Leach|Washington State",
+   "2019": "Ed Orgeron|LSU",
+   "2020": "Tom Allen|Indiana",
+   "2021": "Luke Fickell|Cincinnati",
+   "2022": "Sonny Dykes|TCU",
+   "2023": "Kalen DeBoer|Washington",
+   "2024": "Curt Cignetti|Indiana",
+   "2025": "Curt Cignetti|Indiana"
+  }
+ },
+ "players": {
+  "Heisman": {
+   "2002": "Carson Palmer|USC",
+   "2003": "Jason White|Oklahoma",
+   "2004": "Matt Leinart|USC",
+   "2005": "Reggie Bush|USC",
+   "2006": "Troy Smith|Ohio State",
+   "2007": "Tim Tebow|Florida",
+   "2008": "Sam Bradford|Oklahoma",
+   "2009": "Mark Ingram|Alabama",
+   "2010": "Cam Newton|Auburn",
+   "2011": "Robert Griffin III|Baylor",
+   "2012": "Johnny Manziel|Texas A&M",
+   "2013": "Jameis Winston|Florida State",
+   "2014": "Marcus Mariota|Oregon",
+   "2015": "Derrick Henry|Alabama",
+   "2016": "Lamar Jackson|Louisville",
+   "2017": "Baker Mayfield|Oklahoma",
+   "2018": "Kyler Murray|Oklahoma",
+   "2019": "Joe Burrow|LSU",
+   "2020": "DeVonta Smith|Alabama",
+   "2021": "Bryce Young|Alabama",
+   "2022": "Caleb Williams|USC",
+   "2023": "Jayden Daniels|LSU",
+   "2024": "Travis Hunter|Colorado",
+   "2025": "Fernando Mendoza|Indiana"
+  },
+  "Maxwell": {
+   "2002": "Larry Johnson|Penn State",
+   "2003": "Eli Manning|Ole Miss",
+   "2004": "Jason White|Oklahoma",
+   "2005": "Vince Young|Texas",
+   "2006": "Brady Quinn|Notre Dame",
+   "2007": "Tim Tebow|Florida",
+   "2008": "Tim Tebow|Florida",
+   "2009": "Colt McCoy|Texas",
+   "2010": "Cam Newton|Auburn",
+   "2011": "Andrew Luck|Stanford",
+   "2012": "Manti Te'o|Notre Dame",
+   "2013": "A. J. McCarron|Alabama",
+   "2014": "Marcus Mariota|Oregon",
+   "2015": "Derrick Henry|Alabama",
+   "2016": "Lamar Jackson|Louisville",
+   "2017": "Baker Mayfield|Oklahoma",
+   "2018": "Tua Tagovailoa|Alabama",
+   "2019": "Joe Burrow|LSU",
+   "2020": "DeVonta Smith|Alabama",
+   "2021": "Bryce Young|Alabama",
+   "2022": "Caleb Williams|USC",
+   "2023": "Michael Penix Jr.|Washington",
+   "2024": "Ashton Jeanty|Boise State",
+   "2025": "Fernando Mendoza|Indiana"
+  },
+  "Walter Camp Player": {
+   "2002": "Larry Johnson|Penn State",
+   "2003": "Larry Fitzgerald|Pittsburgh",
+   "2004": "Matt Leinart|USC",
+   "2005": "Reggie Bush|USC",
+   "2006": "Troy Smith|Ohio State",
+   "2007": "Darren McFadden|Arkansas",
+   "2008": "Colt McCoy|Texas",
+   "2009": "Colt McCoy|Texas",
+   "2010": "Cam Newton|Auburn",
+   "2011": "Andrew Luck|Stanford",
+   "2012": "Manti Te'o|Notre Dame",
+   "2013": "Jameis Winston|Florida State",
+   "2014": "Marcus Mariota|Oregon",
+   "2015": "Derrick Henry|Alabama",
+   "2016": "Lamar Jackson|Louisville",
+   "2017": "Baker Mayfield|Oklahoma",
+   "2018": "Tua Tagovailoa|Alabama",
+   "2019": "Joe Burrow|LSU",
+   "2020": "DeVonta Smith|Alabama",
+   "2021": "Kenneth Walker III|Michigan State",
+   "2022": "Caleb Williams|USC",
+   "2023": "Jayden Daniels|LSU",
+   "2024": "Travis Hunter|Colorado",
+   "2025": "Fernando Mendoza|Indiana"
+  },
+  "Bednarik": {
+   "2002": "E.J. Henderson|Maryland",
+   "2003": "Teddy Lehman|Oklahoma",
+   "2004": "David Pollack|Georgia",
+   "2005": "Paul Posluszny|Penn State",
+   "2006": "Paul Posluszny|Penn State",
+   "2007": "Dan Connor|Penn State",
+   "2008": "Rey Maualuga|USC",
+   "2009": "Ndamukong Suh|Nebraska",
+   "2010": "Patrick Peterson|LSU",
+   "2011": "Tyrann Mathieu|LSU",
+   "2012": "Manti Te'o|Notre Dame",
+   "2013": "Aaron Donald|Pittsburgh",
+   "2014": "Scooby Wright|Arizona",
+   "2015": "Tyler Matakevich|Temple",
+   "2016": "Jonathan Allen|Alabama",
+   "2017": "Minkah Fitzpatrick|Alabama",
+   "2018": "Josh Allen|Kentucky",
+   "2019": "Chase Young|Ohio State",
+   "2020": "Zaven Collins|Tulsa",
+   "2021": "Jordan Davis|Georgia",
+   "2022": "Will Anderson Jr.|Alabama",
+   "2023": "Payton Wilson|NC State",
+   "2024": "Travis Hunter|Colorado",
+   "2025": "Jacob Rodriguez|Texas Tech"
+  },
+  "Nagurski": {
+   "2002": "Terrell Suggs|Arizona State",
+   "2003": "Derrick Strait|Oklahoma",
+   "2004": "Derrick Johnson|Texas",
+   "2005": "Elvis Dumervil|Louisville",
+   "2006": "James Laurinaitis|Ohio State",
+   "2007": "Glenn Dorsey|LSU",
+   "2008": "Brian Orakpo|Texas",
+   "2009": "Ndamukong Suh|Nebraska",
+   "2010": "Da'Quan Bowers|Clemson",
+   "2011": "Luke Kuechly|Boston College",
+   "2012": "Manti Te'o|Notre Dame",
+   "2013": "Aaron Donald|Pittsburgh",
+   "2014": "Scooby Wright|Arizona",
+   "2015": "Tyler Matakevich|Temple",
+   "2016": "Jonathan Allen|Alabama",
+   "2017": "Bradley Chubb|NC State",
+   "2018": "Josh Allen|Kentucky",
+   "2019": "Chase Young|Ohio State",
+   "2020": "Zaven Collins|Tulsa",
+   "2021": "Will Anderson Jr.|Alabama",
+   "2022": "Will Anderson Jr.|Alabama",
+   "2023": "Xavier Watts|Notre Dame",
+   "2024": "Kyle Kennard|South Carolina",
+   "2025": "Jacob Rodriguez|Texas Tech"
+  },
+  "Outland": {
+   "2002": "Rien Long|Washington State",
+   "2003": "Robert Gallery|Iowa",
+   "2004": "Jammal Brown|Oklahoma",
+   "2005": "Greg Eslinger|Minnesota",
+   "2006": "Joe Thomas|Wisconsin",
+   "2007": "Glenn Dorsey|LSU",
+   "2008": "Andre Smith|Alabama",
+   "2009": "Ndamukong Suh|Nebraska",
+   "2010": "Gabe Carimi|Wisconsin",
+   "2011": "Barrett Jones|Alabama",
+   "2012": "Luke Joeckel|Texas A&M",
+   "2013": "Aaron Donald|Pittsburgh",
+   "2014": "Brandon Scherff|Iowa",
+   "2015": "Joshua Garnett|Stanford",
+   "2016": "Cam Robinson|Alabama",
+   "2017": "Ed Oliver|Houston",
+   "2018": "Quinnen Williams|Alabama",
+   "2019": "Penei Sewell|Oregon",
+   "2020": "Alex Leatherwood|Alabama",
+   "2021": "Jordan Davis|Georgia",
+   "2022": "Olu Oluwatimi|Michigan",
+   "2023": "T'Vondre Sweat|Texas",
+   "2024": "Kelvin Banks Jr.|Texas",
+   "2025": "Spencer Fano|Utah"
+  }
+ },
+ "title": {
+  "2002": [
+   "Ohio State",
+   "Miami"
+  ],
+  "2003": [
+   "LSU",
+   "Oklahoma"
+  ],
+  "2004": [
+   null,
+   "Oklahoma"
+  ],
+  "2005": [
+   "Texas",
+   "USC"
+  ],
+  "2007": [
+   "LSU",
+   "Ohio State"
+  ],
+  "2006": [
+   "Florida",
+   "Ohio State"
+  ],
+  "2008": [
+   "Florida",
+   "Oklahoma"
+  ],
+  "2009": [
+   "Alabama",
+   "Texas"
+  ],
+  "2010": [
+   "Auburn",
+   "Oregon"
+  ],
+  "2011": [
+   "Alabama",
+   "LSU"
+  ],
+  "2012": [
+   "Alabama",
+   "Notre Dame"
+  ],
+  "2013": [
+   "Florida State",
+   "Auburn"
+  ],
+  "2014": [
+   "Ohio State",
+   "Oregon"
+  ],
+  "2015": [
+   "Alabama",
+   "Clemson"
+  ],
+  "2016": [
+   "Clemson",
+   "Alabama"
+  ],
+  "2017": [
+   "Alabama",
+   "Georgia"
+  ],
+  "2018": [
+   "Clemson",
+   "Alabama"
+  ],
+  "2019": [
+   "LSU",
+   "Clemson"
+  ],
+  "2020": [
+   "Alabama",
+   "Ohio State"
+  ],
+  "2021": [
+   "Georgia",
+   "Alabama"
+  ],
+  "2022": [
+   "Georgia",
+   "TCU"
+  ],
+  "2023": [
+   "Michigan",
+   "Washington"
+  ],
+  "2024": [
+   "Ohio State",
+   "Notre Dame"
+  ],
+  "2025": [
+   "Indiana",
+   "Miami"
+  ]
+ },
+ "cfp": {
+  "2014": [
+   "Alabama",
+   "Florida State",
+   "Ohio State",
+   "Oregon"
+  ],
+  "2015": [
+   "Alabama",
+   "Clemson",
+   "Michigan State",
+   "Oklahoma"
+  ],
+  "2016": [
+   "Alabama",
+   "Clemson",
+   "Ohio State",
+   "Washington"
+  ],
+  "2017": [
+   "Alabama",
+   "Clemson",
+   "Georgia",
+   "Oklahoma"
+  ],
+  "2018": [
+   "Alabama",
+   "Clemson",
+   "Notre Dame",
+   "Oklahoma"
+  ],
+  "2019": [
+   "Clemson",
+   "LSU",
+   "Ohio State",
+   "Oklahoma"
+  ],
+  "2020": [
+   "Alabama",
+   "Clemson",
+   "Notre Dame",
+   "Ohio State"
+  ],
+  "2021": [
+   "Alabama",
+   "Cincinnati",
+   "Georgia",
+   "Michigan"
+  ],
+  "2022": [
+   "Georgia",
+   "Michigan",
+   "Ohio State",
+   "TCU"
+  ],
+  "2023": [
+   "Alabama",
+   "Michigan",
+   "Texas",
+   "Washington"
+  ],
+  "2024": [
+   "Arizona State",
+   "Boise State",
+   "Clemson",
+   "Georgia",
+   "Indiana",
+   "Notre Dame",
+   "Ohio State",
+   "Oregon",
+   "Penn State",
+   "SMU",
+   "Tennessee",
+   "Texas"
+  ],
+  "2025": [
+   "Alabama",
+   "Georgia",
+   "Indiana",
+   "James Madison",
+   "Miami",
+   "Ohio State",
+   "Oklahoma",
+   "Ole Miss",
+   "Oregon",
+   "Texas A&M",
+   "Texas Tech",
+   "Tulane"
+  ]
+ },
+ "conf": {
+  "2002|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2002|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "standings"
+  },
+  "2002|Conference USA": {
+   "ch": [
+    "Cincinnati",
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2002|Mountain West": {
+   "ch": [
+    "Colorado State"
+   ],
+   "how": "standings"
+  },
+  "2002|Mid-American": {
+   "ch": [
+    "Marshall"
+   ],
+   "how": "title game"
+  },
+  "2002|Big East": {
+   "ch": [
+    "Miami"
+   ],
+   "how": "standings"
+  },
+  "2002|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2002|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2002|Sun Belt": {
+   "ch": [
+    "North Texas"
+   ],
+   "how": "standings"
+  },
+  "2002|Big Ten": {
+   "ch": [
+    "Iowa",
+    "Ohio State"
+   ],
+   "how": "standings"
+  },
+  "2002|Pac-10": {
+   "ch": [
+    "USC",
+    "Washington State"
+   ],
+   "how": "standings"
+  },
+  "2003|Mid-American": {
+   "ch": [
+    "Miami (OH)"
+   ],
+   "how": "title game"
+  },
+  "2003|SEC": {
+   "ch": [
+    "LSU"
+   ],
+   "how": "title game"
+  },
+  "2003|Big 12": {
+   "ch": [
+    "Kansas State"
+   ],
+   "how": "title game"
+  },
+  "2003|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "standings"
+  },
+  "2003|Conference USA": {
+   "ch": [
+    "Southern Miss"
+   ],
+   "how": "standings"
+  },
+  "2003|Mountain West": {
+   "ch": [
+    "Utah"
+   ],
+   "how": "standings"
+  },
+  "2003|Pac-10": {
+   "ch": [
+    "USC"
+   ],
+   "how": "standings"
+  },
+  "2003|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2003|Big East": {
+   "ch": [
+    "Miami",
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2003|Big Ten": {
+   "ch": [
+    "Michigan"
+   ],
+   "how": "standings"
+  },
+  "2003|Sun Belt": {
+   "ch": [
+    "North Texas"
+   ],
+   "how": "standings"
+  },
+  "2004|Mid-American": {
+   "ch": [
+    "Toledo"
+   ],
+   "how": "title game"
+  },
+  "2004|SEC": {
+   "ch": [
+    "Auburn"
+   ],
+   "how": "title game"
+  },
+  "2004|ACC": {
+   "ch": [
+    "Virginia Tech"
+   ],
+   "how": "standings"
+  },
+  "2004|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2004|Conference USA": {
+   "ch": [
+    "Louisville"
+   ],
+   "how": "standings"
+  },
+  "2004|Sun Belt": {
+   "ch": [
+    "North Texas"
+   ],
+   "how": "standings"
+  },
+  "2004|Big East": {
+   "ch": [
+    "Boston College",
+    "Pittsburgh",
+    "Syracuse",
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2004|Pac-10": {
+   "ch": [],
+   "how": "standings"
+  },
+  "2004|Mountain West": {
+   "ch": [
+    "Utah"
+   ],
+   "how": "standings"
+  },
+  "2004|Big Ten": {
+   "ch": [
+    "Iowa",
+    "Michigan"
+   ],
+   "how": "standings"
+  },
+  "2004|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2005|Big East": {
+   "ch": [
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2005|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "title game"
+  },
+  "2005|Mountain West": {
+   "ch": [
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2005|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2005|Mid-American": {
+   "ch": [
+    "Akron"
+   ],
+   "how": "title game"
+  },
+  "2005|Pac-10": {
+   "ch": [],
+   "how": "standings"
+  },
+  "2005|Sun Belt": {
+   "ch": [
+    "Arkansas State",
+    "Louisiana",
+    "UL Monroe"
+   ],
+   "how": "standings"
+  },
+  "2005|Conference USA": {
+   "ch": [
+    "Tulsa"
+   ],
+   "how": "title game"
+  },
+  "2005|Big Ten": {
+   "ch": [
+    "Ohio State",
+    "Penn State"
+   ],
+   "how": "standings"
+  },
+  "2005|Western Athletic": {
+   "ch": [
+    "Boise State",
+    "Nevada"
+   ],
+   "how": "standings"
+  },
+  "2005|Big 12": {
+   "ch": [
+    "Texas"
+   ],
+   "how": "title game"
+  },
+  "2006|Sun Belt": {
+   "ch": [
+    "Middle Tennessee",
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2006|Mid-American": {
+   "ch": [
+    "Central Michigan"
+   ],
+   "how": "title game"
+  },
+  "2006|SEC": {
+   "ch": [
+    "Florida"
+   ],
+   "how": "title game"
+  },
+  "2006|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2006|Pac-10": {
+   "ch": [
+    "California",
+    "USC"
+   ],
+   "how": "standings"
+  },
+  "2006|Conference USA": {
+   "ch": [
+    "Houston"
+   ],
+   "how": "title game"
+  },
+  "2006|ACC": {
+   "ch": [
+    "Wake Forest"
+   ],
+   "how": "title game"
+  },
+  "2006|Big East": {
+   "ch": [
+    "Louisville"
+   ],
+   "how": "standings"
+  },
+  "2006|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "standings"
+  },
+  "2006|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2006|Mountain West": {
+   "ch": [
+    "BYU"
+   ],
+   "how": "standings"
+  },
+  "2007|Mid-American": {
+   "ch": [
+    "Central Michigan"
+   ],
+   "how": "title game"
+  },
+  "2007|SEC": {
+   "ch": [
+    "LSU"
+   ],
+   "how": "title game"
+  },
+  "2007|ACC": {
+   "ch": [
+    "Virginia Tech"
+   ],
+   "how": "title game"
+  },
+  "2007|Pac-10": {
+   "ch": [
+    "Arizona State",
+    "USC"
+   ],
+   "how": "standings"
+  },
+  "2007|Sun Belt": {
+   "ch": [
+    "Florida Atlantic",
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2007|Mountain West": {
+   "ch": [
+    "BYU"
+   ],
+   "how": "standings"
+  },
+  "2007|Western Athletic": {
+   "ch": [
+    "Hawai'i"
+   ],
+   "how": "standings"
+  },
+  "2007|Conference USA": {
+   "ch": [
+    "UCF"
+   ],
+   "how": "title game"
+  },
+  "2007|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "standings"
+  },
+  "2007|Big East": {
+   "ch": [
+    "UConn",
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2007|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2008|Sun Belt": {
+   "ch": [
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2008|Pac-10": {
+   "ch": [
+    "USC"
+   ],
+   "how": "standings"
+  },
+  "2008|Conference USA": {
+   "ch": [
+    "East Carolina"
+   ],
+   "how": "title game"
+  },
+  "2008|Mountain West": {
+   "ch": [
+    "Utah"
+   ],
+   "how": "standings"
+  },
+  "2008|SEC": {
+   "ch": [
+    "Florida"
+   ],
+   "how": "title game"
+  },
+  "2008|ACC": {
+   "ch": [
+    "Virginia Tech"
+   ],
+   "how": "title game"
+  },
+  "2008|Mid-American": {
+   "ch": [
+    "Buffalo"
+   ],
+   "how": "title game"
+  },
+  "2008|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2008|Big East": {
+   "ch": [
+    "Cincinnati"
+   ],
+   "how": "standings"
+  },
+  "2008|Big Ten": {
+   "ch": [
+    "Ohio State",
+    "Penn State"
+   ],
+   "how": "standings"
+  },
+  "2008|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2009|Conference USA": {
+   "ch": [
+    "East Carolina"
+   ],
+   "how": "title game"
+  },
+  "2009|Pac-10": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "standings"
+  },
+  "2009|Western Athletic": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "standings"
+  },
+  "2009|Big East": {
+   "ch": [
+    "Cincinnati"
+   ],
+   "how": "standings"
+  },
+  "2009|ACC": {
+   "ch": [],
+   "how": "title game"
+  },
+  "2009|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2009|Mid-American": {
+   "ch": [
+    "Central Michigan"
+   ],
+   "how": "title game"
+  },
+  "2009|Mountain West": {
+   "ch": [
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2009|Big 12": {
+   "ch": [
+    "Texas"
+   ],
+   "how": "title game"
+  },
+  "2009|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "standings"
+  },
+  "2009|Sun Belt": {
+   "ch": [
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2010|Conference USA": {
+   "ch": [
+    "UCF"
+   ],
+   "how": "title game"
+  },
+  "2010|Mid-American": {
+   "ch": [
+    "Miami (OH)"
+   ],
+   "how": "title game"
+  },
+  "2010|SEC": {
+   "ch": [
+    "Auburn"
+   ],
+   "how": "title game"
+  },
+  "2010|ACC": {
+   "ch": [
+    "Virginia Tech"
+   ],
+   "how": "title game"
+  },
+  "2010|Sun Belt": {
+   "ch": [
+    "Florida International",
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2010|Mountain West": {
+   "ch": [
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2010|Pac-10": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "standings"
+  },
+  "2010|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2010|Western Athletic": {
+   "ch": [
+    "Boise State",
+    "Hawai'i",
+    "Nevada"
+   ],
+   "how": "standings"
+  },
+  "2010|Big Ten": {
+   "ch": [
+    "Michigan State",
+    "Wisconsin"
+   ],
+   "how": "standings"
+  },
+  "2010|Big East": {
+   "ch": [
+    "Pittsburgh",
+    "UConn",
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2011|Sun Belt": {
+   "ch": [
+    "Arkansas State"
+   ],
+   "how": "standings"
+  },
+  "2011|Mountain West": {
+   "ch": [
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2011|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2011|SEC": {
+   "ch": [
+    "LSU"
+   ],
+   "how": "title game"
+  },
+  "2011|Conference USA": {
+   "ch": [
+    "Southern Miss"
+   ],
+   "how": "title game"
+  },
+  "2011|Pac-12": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "title game"
+  },
+  "2011|Mid-American": {
+   "ch": [
+    "Northern Illinois"
+   ],
+   "how": "title game"
+  },
+  "2011|Western Athletic": {
+   "ch": [
+    "Louisiana Tech"
+   ],
+   "how": "standings"
+  },
+  "2011|Big 12": {
+   "ch": [
+    "Oklahoma State"
+   ],
+   "how": "standings"
+  },
+  "2011|Big East": {
+   "ch": [
+    "Cincinnati",
+    "Louisville",
+    "West Virginia"
+   ],
+   "how": "standings"
+  },
+  "2011|Big Ten": {
+   "ch": [
+    "Wisconsin"
+   ],
+   "how": "title game"
+  },
+  "2012|Mid-American": {
+   "ch": [
+    "Northern Illinois"
+   ],
+   "how": "title game"
+  },
+  "2012|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2012|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "title game"
+  },
+  "2012|Big East": {
+   "ch": [
+    "Cincinnati",
+    "Louisville",
+    "Rutgers",
+    "Syracuse"
+   ],
+   "how": "standings"
+  },
+  "2012|Conference USA": {
+   "ch": [
+    "Tulsa"
+   ],
+   "how": "title game"
+  },
+  "2012|Sun Belt": {
+   "ch": [
+    "Arkansas State"
+   ],
+   "how": "standings"
+  },
+  "2012|Big 12": {
+   "ch": [
+    "Kansas State",
+    "Oklahoma"
+   ],
+   "how": "standings"
+  },
+  "2012|Pac-12": {
+   "ch": [
+    "Stanford"
+   ],
+   "how": "title game"
+  },
+  "2012|Mountain West": {
+   "ch": [
+    "Boise State",
+    "Fresno State",
+    "San Diego State"
+   ],
+   "how": "standings"
+  },
+  "2012|Big Ten": {
+   "ch": [
+    "Wisconsin"
+   ],
+   "how": "title game"
+  },
+  "2012|Western Athletic": {
+   "ch": [
+    "Utah State"
+   ],
+   "how": "standings"
+  },
+  "2013|SEC": {
+   "ch": [
+    "Auburn"
+   ],
+   "how": "title game"
+  },
+  "2013|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "title game"
+  },
+  "2013|Conference USA": {
+   "ch": [
+    "Rice"
+   ],
+   "how": "title game"
+  },
+  "2013|American Athletic": {
+   "ch": [
+    "UCF"
+   ],
+   "how": "standings"
+  },
+  "2013|Mid-American": {
+   "ch": [
+    "Bowling Green"
+   ],
+   "how": "title game"
+  },
+  "2013|Mountain West": {
+   "ch": [
+    "Fresno State"
+   ],
+   "how": "title game"
+  },
+  "2013|Big 12": {
+   "ch": [
+    "Baylor"
+   ],
+   "how": "standings"
+  },
+  "2013|Pac-12": {
+   "ch": [
+    "Stanford"
+   ],
+   "how": "title game"
+  },
+  "2013|Sun Belt": {
+   "ch": [
+    "Arkansas State",
+    "Louisiana"
+   ],
+   "how": "standings"
+  },
+  "2013|Big Ten": {
+   "ch": [
+    "Michigan State"
+   ],
+   "how": "title game"
+  },
+  "2014|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2014|American Athletic": {
+   "ch": [
+    "Cincinnati",
+    "Memphis",
+    "UCF"
+   ],
+   "how": "standings"
+  },
+  "2014|Mid-American": {
+   "ch": [
+    "Northern Illinois"
+   ],
+   "how": "title game"
+  },
+  "2014|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "title game"
+  },
+  "2014|Big 12": {
+   "ch": [
+    "Baylor",
+    "TCU"
+   ],
+   "how": "standings"
+  },
+  "2014|Sun Belt": {
+   "ch": [
+    "Georgia Southern"
+   ],
+   "how": "standings"
+  },
+  "2014|Pac-12": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "title game"
+  },
+  "2014|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2014|Conference USA": {
+   "ch": [
+    "Marshall"
+   ],
+   "how": "title game"
+  },
+  "2014|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "title game"
+  },
+  "2015|Conference USA": {
+   "ch": [
+    "Western Kentucky"
+   ],
+   "how": "title game"
+  },
+  "2015|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2015|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2015|Sun Belt": {
+   "ch": [
+    "Arkansas State"
+   ],
+   "how": "standings"
+  },
+  "2015|American Athletic": {
+   "ch": [
+    "Houston"
+   ],
+   "how": "title game"
+  },
+  "2015|Mountain West": {
+   "ch": [
+    "San Diego State"
+   ],
+   "how": "title game"
+  },
+  "2015|Mid-American": {
+   "ch": [
+    "Bowling Green"
+   ],
+   "how": "title game"
+  },
+  "2015|Big Ten": {
+   "ch": [
+    "Michigan State"
+   ],
+   "how": "title game"
+  },
+  "2015|Pac-12": {
+   "ch": [
+    "Stanford"
+   ],
+   "how": "title game"
+  },
+  "2015|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "standings"
+  },
+  "2016|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2016|Conference USA": {
+   "ch": [
+    "Western Kentucky"
+   ],
+   "how": "title game"
+  },
+  "2016|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2016|American Athletic": {
+   "ch": [
+    "Temple"
+   ],
+   "how": "title game"
+  },
+  "2016|Sun Belt": {
+   "ch": [
+    "App State",
+    "Arkansas State"
+   ],
+   "how": "standings"
+  },
+  "2016|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "standings"
+  },
+  "2016|Pac-12": {
+   "ch": [
+    "Washington"
+   ],
+   "how": "title game"
+  },
+  "2016|Big Ten": {
+   "ch": [
+    "Penn State"
+   ],
+   "how": "title game"
+  },
+  "2016|Mountain West": {
+   "ch": [
+    "San Diego State"
+   ],
+   "how": "title game"
+  },
+  "2016|Mid-American": {
+   "ch": [
+    "Western Michigan"
+   ],
+   "how": "title game"
+  },
+  "2017|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "title game"
+  },
+  "2017|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2017|American Athletic": {
+   "ch": [
+    "UCF"
+   ],
+   "how": "title game"
+  },
+  "2017|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2017|Conference USA": {
+   "ch": [
+    "Florida Atlantic"
+   ],
+   "how": "title game"
+  },
+  "2017|Pac-12": {
+   "ch": [
+    "USC"
+   ],
+   "how": "title game"
+  },
+  "2017|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2017|Sun Belt": {
+   "ch": [
+    "App State",
+    "Troy"
+   ],
+   "how": "standings"
+  },
+  "2017|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2017|Mid-American": {
+   "ch": [
+    "Toledo"
+   ],
+   "how": "title game"
+  },
+  "2018|Mountain West": {
+   "ch": [
+    "Fresno State"
+   ],
+   "how": "title game"
+  },
+  "2018|American Athletic": {
+   "ch": [
+    "UCF"
+   ],
+   "how": "title game"
+  },
+  "2018|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "title game"
+  },
+  "2018|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2018|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2018|Conference USA": {
+   "ch": [
+    "UAB"
+   ],
+   "how": "title game"
+  },
+  "2018|Pac-12": {
+   "ch": [
+    "Washington"
+   ],
+   "how": "standings"
+  },
+  "2018|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2018|Mid-American": {
+   "ch": [
+    "Northern Illinois"
+   ],
+   "how": "title game"
+  },
+  "2018|Sun Belt": {
+   "ch": [
+    "App State"
+   ],
+   "how": "title game"
+  },
+  "2019|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2019|SEC": {
+   "ch": [
+    "LSU"
+   ],
+   "how": "title game"
+  },
+  "2019|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "title game"
+  },
+  "2019|Conference USA": {
+   "ch": [
+    "Florida Atlantic"
+   ],
+   "how": "title game"
+  },
+  "2019|Pac-12": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "title game"
+  },
+  "2019|Mid-American": {
+   "ch": [
+    "Miami (OH)"
+   ],
+   "how": "title game"
+  },
+  "2019|American Athletic": {
+   "ch": [
+    "Memphis"
+   ],
+   "how": "title game"
+  },
+  "2019|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2019|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2019|Sun Belt": {
+   "ch": [
+    "App State"
+   ],
+   "how": "title game"
+  },
+  "2020|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2020|American Athletic": {
+   "ch": [
+    "Cincinnati"
+   ],
+   "how": "title game"
+  },
+  "2020|Sun Belt": {
+   "ch": [
+    "Coastal Carolina"
+   ],
+   "how": "standings"
+  },
+  "2020|Conference USA": {
+   "ch": [
+    "UAB"
+   ],
+   "how": "title game"
+  },
+  "2020|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "standings"
+  },
+  "2020|Big 12": {
+   "ch": [
+    "Oklahoma"
+   ],
+   "how": "title game"
+  },
+  "2020|Big Ten": {
+   "ch": [
+    "Ohio State"
+   ],
+   "how": "standings"
+  },
+  "2020|Mountain West": {
+   "ch": [
+    "San Jos\u00e9 State"
+   ],
+   "how": "title game"
+  },
+  "2020|Mid-American": {
+   "ch": [
+    "Ball State"
+   ],
+   "how": "title game"
+  },
+  "2020|Pac-12": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "title game"
+  },
+  "2021|Big Ten": {
+   "ch": [
+    "Michigan"
+   ],
+   "how": "title game"
+  },
+  "2021|ACC": {
+   "ch": [
+    "Pittsburgh"
+   ],
+   "how": "title game"
+  },
+  "2021|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2021|Pac-12": {
+   "ch": [
+    "Utah"
+   ],
+   "how": "standings"
+  },
+  "2021|Big 12": {
+   "ch": [
+    "Baylor"
+   ],
+   "how": "title game"
+  },
+  "2021|Conference USA": {
+   "ch": [
+    "UTSA"
+   ],
+   "how": "title game"
+  },
+  "2021|Mountain West": {
+   "ch": [
+    "Utah State"
+   ],
+   "how": "title game"
+  },
+  "2021|Mid-American": {
+   "ch": [
+    "Northern Illinois"
+   ],
+   "how": "title game"
+  },
+  "2021|Sun Belt": {
+   "ch": [
+    "Louisiana"
+   ],
+   "how": "title game"
+  },
+  "2021|American Athletic": {
+   "ch": [
+    "Cincinnati"
+   ],
+   "how": "title game"
+  },
+  "2022|Big Ten": {
+   "ch": [
+    "Michigan"
+   ],
+   "how": "title game"
+  },
+  "2022|Conference USA": {
+   "ch": [
+    "UTSA"
+   ],
+   "how": "title game"
+  },
+  "2022|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2022|Mountain West": {
+   "ch": [
+    "Fresno State"
+   ],
+   "how": "title game"
+  },
+  "2022|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2022|Mid-American": {
+   "ch": [
+    "Ohio"
+   ],
+   "how": "standings"
+  },
+  "2022|American Athletic": {
+   "ch": [
+    "Tulane"
+   ],
+   "how": "title game"
+  },
+  "2022|Big 12": {
+   "ch": [
+    "Kansas State"
+   ],
+   "how": "title game"
+  },
+  "2022|Pac-12": {
+   "ch": [
+    "Utah"
+   ],
+   "how": "title game"
+  },
+  "2022|Sun Belt": {
+   "ch": [
+    "Troy"
+   ],
+   "how": "title game"
+  },
+  "2023|Conference USA": {
+   "ch": [
+    "Liberty"
+   ],
+   "how": "title game"
+  },
+  "2023|Big Ten": {
+   "ch": [
+    "Michigan"
+   ],
+   "how": "title game"
+  },
+  "2023|ACC": {
+   "ch": [
+    "Florida State"
+   ],
+   "how": "title game"
+  },
+  "2023|Sun Belt": {
+   "ch": [
+    "Troy"
+   ],
+   "how": "title game"
+  },
+  "2023|Pac-12": {
+   "ch": [
+    "Washington"
+   ],
+   "how": "title game"
+  },
+  "2023|American Athletic": {
+   "ch": [
+    "SMU"
+   ],
+   "how": "title game"
+  },
+  "2023|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2023|SEC": {
+   "ch": [
+    "Alabama"
+   ],
+   "how": "title game"
+  },
+  "2023|Big 12": {
+   "ch": [
+    "Texas"
+   ],
+   "how": "title game"
+  },
+  "2023|Mid-American": {
+   "ch": [
+    "Miami (OH)"
+   ],
+   "how": "title game"
+  },
+  "2024|ACC": {
+   "ch": [
+    "Clemson"
+   ],
+   "how": "title game"
+  },
+  "2024|American Athletic": {
+   "ch": [
+    "Navy"
+   ],
+   "how": "title game"
+  },
+  "2024|Big Ten": {
+   "ch": [
+    "Oregon"
+   ],
+   "how": "title game"
+  },
+  "2024|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2024|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2024|Conference USA": {
+   "ch": [
+    "Jacksonville State"
+   ],
+   "how": "title game"
+  },
+  "2024|Big 12": {
+   "ch": [
+    "Arizona State"
+   ],
+   "how": "title game"
+  },
+  "2024|Sun Belt": {
+   "ch": [
+    "Marshall"
+   ],
+   "how": "title game"
+  },
+  "2024|Mid-American": {
+   "ch": [
+    "Ohio"
+   ],
+   "how": "title game"
+  },
+  "2024|Pac-12": {
+   "ch": [
+    "Oregon State"
+   ],
+   "how": "standings"
+  },
+  "2025|Big 12": {
+   "ch": [
+    "Texas Tech"
+   ],
+   "how": "title game"
+  },
+  "2025|Conference USA": {
+   "ch": [
+    "Kennesaw State"
+   ],
+   "how": "title game"
+  },
+  "2025|SEC": {
+   "ch": [
+    "Georgia"
+   ],
+   "how": "title game"
+  },
+  "2025|American Athletic": {
+   "ch": [
+    "Navy"
+   ],
+   "how": "title game"
+  },
+  "2025|ACC": {
+   "ch": [
+    "Duke"
+   ],
+   "how": "title game"
+  },
+  "2025|Mid-American": {
+   "ch": [
+    "Western Michigan"
+   ],
+   "how": "title game"
+  },
+  "2025|Big Ten": {
+   "ch": [
+    "Indiana"
+   ],
+   "how": "title game"
+  },
+  "2025|Sun Belt": {
+   "ch": [
+    "James Madison"
+   ],
+   "how": "title game"
+  },
+  "2025|Mountain West": {
+   "ch": [
+    "Boise State"
+   ],
+   "how": "title game"
+  },
+  "2025|Pac-12": {
+   "ch": [
+    "Oregon State",
+    "Washington State"
+   ],
+   "how": "standings"
+  }
+ }
+}

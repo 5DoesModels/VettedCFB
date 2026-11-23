@@ -427,7 +427,13 @@ def liftv(c):
         others=[tpct(k[1],y) for (s_,y) in ct if s_==k[1] and not any(kk[0]==y and kk[1]==k[1] for kk in c['cls'])]
         if len(others)>=3: d.append(k[3]-sum(others)/len(others))
     return sum(d)/len(d) if d else None
-def winv(c): return c['w']/(c['w']+c['l']) if c['w']+c['l']>=24 else None
+# v1.39 (JC, Nov. 23): winning is graded on schedule-adjusted strength (CFBD SRS, games-weighted over his 2002-2025 seasons),
+# so winning big in a weaker conference counts less than winning big in a strong one. His win-loss record is still shown.
+def winv(c):
+    g=s_=0
+    for x in CAREER.get(c['name'],[]):
+        if 2002<=x['year']<=2025 and x['games'] and x.get('srs') is not None: g+=x['games']; s_+=x['srs']*x['games']
+    return s_/g if g>=24 else None
 def mysg(c): return [r for r in P if 2020<=r['year']<=2024 and any(k[0]==r['year'] and k[1]==r['committedTo'] for k in c['cls'])]
 def retv(c):
     # players who left: did they beat expectations elsewhere? (lower = his calls look right)
@@ -435,6 +441,14 @@ def retv(c):
     gone=[r for r in mysg(c) if mvd_(r) and r['exp'] is not None and r['year']<=2023 and not any(m[1] in mine for m in r['mv'] if m[1]!=r['committedTo'])]
     return (sum(r['pts'] for r in gone)+5)/(sum(r['exp'] for r in gone)+5) if len(gone)>=8 else None
 def portv(c): return c['pl'][3]/c['pl'][4] if c.get('pl') and c['pl'][2]>=10 and c['pl'][4]>=8 else None
+# v1.39 (JC, Nov. 22-23): honors and penalties (engine/awards/build_coach_honors.py -> data/coach_honors.json).
+# Team results count most, player awards a little; penalties for being replaced mid-season, a job ending after a losing season,
+# starting 10+ points below the program's previous 3 seasons, and losing seasons from his third year at a school.
+# Net points P become a bonus of +/-6 at most: 6*(1-exp(-P/10)) (or the mirror for negative P), added to the overall score.
+import math as _m
+HON=json.load(open(E+'/data/coach_honors.json'))['coaches']
+def honb(nm):
+    p=sum(x[4] for x in HON.get(nm,[])); return (6*(1-_m.exp(-p/10)) if p>=0 else -6*(1-_m.exp(p/10))),p
 # v1.35 (JC, Nov. 22): 'Players who left' no longer counts toward the overall grade (shown as information only); its weight goes to Development and Developing transfers.
 CATS=[('dev','Development',devv,.40),('rec','Recruiting',recv,.15),('lift','Recruits above his school\'s norm',liftv,.1),('win','Winning',winv,.25),('ret','Players who left',retv,0),('port','Developing transfers',portv,.10)]
 LOWBETTER={'ret'}
@@ -445,7 +459,9 @@ for c in coaches:
         v=f(c); p=pctile(vals[k],v,hi=k not in LOWBETTER)
         g[k]=None if p is None else [letter(p),round(p),round(v,3) if isinstance(v,float) else v]
         if p is not None and w>0: ps.append(p*w); ws+=w
-    g['all']=[letter(sum(ps)/ws),round(sum(ps)/ws)] if ws>=.5 else None
+    _hb,_hp=honb(c['name'])
+    g['all']=[letter(max(0,min(100,sum(ps)/ws+_hb))),round(max(0,min(100,sum(ps)/ws+_hb)))] if ws>=.5 else None
+    c['hon']=[round(_hb,2),round(_hp,2),HON.get(c['name'],[])]; c['base']=round(sum(ps)/ws,1) if ws>=.5 else None
     c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
 # v1.37 (JC, Nov. 22): grade at each school (program cards). Same blend as the overall grade (development 40, winning 25,
 # recruiting 15, recruits above the school's norm 10; developing transfers isn't split by school), using only his seasons
