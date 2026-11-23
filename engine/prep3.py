@@ -460,9 +460,16 @@ for c in coaches:
         g[k]=None if p is None else [letter(p),round(p),round(v,3) if isinstance(v,float) else v]
         if p is not None and w>0: ps.append(p*w); ws+=w
     _hb,_hp=honb(c['name'])
-    g['all']=[letter(max(0,min(100,sum(ps)/ws+_hb))),round(max(0,min(100,sum(ps)/ws+_hb)))] if ws>=.5 else None
+    g['all']=[letter(max(0,min(100,sum(ps)/ws+_hb))),None] if ws>=.5 else None
+    c['raw']=round(max(0,sum(ps)/ws+_hb),2) if ws>=.5 else None
     c['hon']=[round(_hb,2),round(_hp,2),HON.get(c['name'],[])]; c['base']=round(sum(ps)/ws,1) if ws>=.5 else None
     c['g']=g; sg_=mysg(c); c['turn']=[sum(1 for r in sg_ if mvd_(r)),len(sg_)]
+# v1.40 (JC, Nov. 22): the Saban scale. The overall score is shown as a share of Nick Saban's (base + honors), so Saban = 100
+# and no one else reaches it (the 0-100 cap had tied four coaches at 100). Letters are unchanged: they still come from the
+# capped score (S top 1%, etc.); only the number changed.
+SABAN=next(c['raw'] for c in coaches if c['name']=='Nick Saban')
+for c in coaches:
+    if c['g'].get('all'): c['g']['all'][1]=round(100*c['raw']/SABAN,1)
 # v1.37 (JC, Nov. 22): grade at each school (program cards). Same blend as the overall grade (development 40, winning 25,
 # recruiting 15, recruits above the school's norm 10; developing transfers isn't split by school), using only his seasons
 # at that school, compared with every head coach stint since 2002. His career grade is unchanged.
