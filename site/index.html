@@ -1600,23 +1600,23 @@ const PRODUCTS=[
  {id:'pathway',d:'recruiting',s:'dev',n:'Player Pathway',t:'Every school, season, transfer and draft outcome for one player, on one page.',
   what:'One page per player that follows his whole career: where he signed, each season he was on a roster, every transfer, the games where he recorded a statistic at his position, and his draft outcome.',
   why:'See the real path behind a career instead of just signing day and draft day.',
-  now:'The shared player database it depends on is built and in review. Pathway will only show records that meet our evidence standards: uncertain identities and transfers will be labeled, never guessed.',
+  now:'Up next: #6 on our list. The shared player database it depends on is built and in review. Pathway will only show records that meet our evidence standards: uncertain identities and transfers will be labeled, never guessed.',
   try:[['players','Look up any player today']]},
  {id:'tags',d:'data',s:'avail',n:'Player Tags',r:'players',links:[['players','Look up any player'],['predictions:list','Tags on current players']],t:'Factual labels on player records, from Diamond in the Rough and Mr. Irrelevant to Pro Bowler and Portal Payoff. Tap any tag for its rule and what history shows for players like him.'},
  {id:'time',d:'data',s:'soon',n:'Recruiting Class Time Machine',t:'Pick a signing class and see how every signee turned out against his ranking.',
   what:'Choose any signing class and see how every signee turned out: who was drafted, who transferred, and who outperformed or fell short of his recruiting ranking.',
   why:'Revisit a class with the benefit of hindsight, for any program or the whole country.',
-  now:'Planned for after Player Pathway. Classes from 2019 on are still being drafted, so their results will be marked as in progress.',
+  now:'Up next: #2 on our list. Classes from 2019 on are still being drafted, so their results will be marked as in progress.',
   try:[['rankings:coaches','Class-by-class tables on coach report cards']]},
  {id:'dna',d:'data',s:'soon',n:'Program DNA',t:'How each program builds and develops its roster, in one profile.',
   what:'A one-page profile of how a program builds and develops its roster: where it recruits, which positions it develops best, how it mixes high school, junior college and transfer players, and how that has changed from one coaching staff to the next.',
   why:'Understand a program\'s identity, not just its ranking.',
-  now:'Planned. Many of the pieces already exist in the rankings, report cards and recruiting maps; the combined profile has not been built yet.',
+  now:'Up next: #8 on our list. Many of the pieces already exist in the rankings, report cards and recruiting maps; the combined profile has not been built yet.',
   try:[['rankings:programs','Program report cards'],['recmap','Recruiting maps']]},
  {id:'portal2',d:'data',s:'soon',n:'Transfer Portal Report: next version',t:'A fuller portal report built on reconciled transfer records.',
   what:'A rebuilt portal report where confirmed, reported and inferred moves are kept separate, and every count says whether it means unique players, portal entries or transfer events.',
   why:'Clearer, more trustworthy portal numbers.',
-  now:'Coming soon. The transfer records behind it have been reconciled and are in review. The current Transfer Portal Report stays available in the meantime.',
+  now:'Up next: #7 on our list, aimed at the January portal window. The transfer records behind it have been reconciled and are in review. The current Transfer Portal Report stays available in the meantime.',
   try:[['transfers','Current Transfer Portal Report']]},
  {id:'ledger',d:'data',s:'research',n:'The Transfer Ledger',t:'A transfer-by-transfer record of who gained and lost talent, and how development credit is shared.',
   what:'A transfer-by-transfer ledger: who gained and who lost talent in the portal, and how development credit is shared when a player spends time at more than one school.',
@@ -1636,13 +1636,33 @@ const PRODUCTS=[
  {id:'compare',d:'recruiting',s:'soon',n:'Program Comparisons',t:'A fuller side-by-side of programs for a recruit\'s position.',
   what:'A side-by-side comparison of programs for a recruit\'s position: development record, draft outcomes, transfer patterns and coaching stability.',
   why:'Compare offers on the things that shape a career.',
-  now:'Coming soon. You can already compare up to four schools\' draft history at a position.',
+  now:'Up next: #3 on our list, aimed at the December signing period. You can already compare up to four schools\' draft history at a position.',
   try:[['predictions:calc','Compare schools at your position']]},
  {id:'classres',d:'recruiting',s:'soon',n:'Recruiting Class Research',t:'How signing classes are built, where they come from and how they turn out.',
   what:'Research on signing classes: how they are built, where the players come from and how they turn out, including the Recruiting Class Time Machine.',
   why:'See how your class and position group compare with the classes before it.',
   now:'Coming soon. Recruiting maps and the distance research are available today.',
   try:[['recmap','Recruiting maps'],['stayhome','Distance and home']]},
+ {id:'heisman',d:'data',s:'soon',n:'Heisman Tracker',t:'A weekly leaderboard of Heisman contenders, their production against their schedules, next to every winner since 2002.',
+  what:'Every week, the top quarterbacks, running backs, receivers and defenders by production (yards, touchdowns, EPA per play) adjusted for the defenses they faced, side by side with what every Heisman winner and finalist since 2002 did at the same point in his season.',
+  why:'See whose season actually looks like a Heisman season, not just who has the most highlights.',
+  now:'Up next: #1 on our list, aimed at this year\'s ceremony in December. It starts as a leaderboard and a comparison with past winners; any forecast of the vote would only come after it has been tested against past seasons.',
+  try:[['players','Look up any player']]},
+ {id:'hire',d:'plus',also:['data'],s:'soon',n:'Coach Hiring Study',t:'What kind of hire works best: a Group of Five head coach moving up, a lateral move, a coach back after a firing, or a first-time head coach.',
+  what:'Every FBS head coaching hire since 2003, grouped by background, and what changed after he arrived: winning (adjusted for schedule), recruiting, player development and whether he lasted four years. Each hire is compared with how much a program in the same spot usually improves.',
+  why:'Programs spend millions on the decision. See what history says about each type of hire.',
+  now:'Up next: #5 on our list. The first version covers hire types already in our data; splitting first-time head coaches into coordinators, FCS head coaches and NFL assistants needs a hand-built background file and comes second.',
+  try:[['moveup','Coaches moving up'],['rankings:coaches','Coach report cards']]},
+ {id:'r2d',d:'recruiting',also:['data'],s:'soon',n:'From Rankings to the Draft',t:'How high school recruiting rankings and transfer portal rankings translate into NFL draft picks.',
+  what:'For every star level and ranking range, high school and transfer portal, how many players were drafted and where, by position, and how that has changed in the portal era.',
+  why:'Know what a ranking has actually meant, whether you are a recruit, a transfer or a fan reading a signing class.',
+  now:'Up next: #4 on our list. Built from the recruiting, portal and draft records already in our data.',
+  try:[['analytics','Draft rates, at a glance'],['hsp','Historical School & Position Outcomes']]},
+ {id:'hometown',d:'recruiting',s:'research',n:'Hometowns',t:'Which cities and towns produce the most drafted players, and the most for their size.',
+  what:'Players grouped by the hometown on their recruiting record, with drafted players, overachievers and players per resident for each city and town.',
+  why:'Find the places that keep producing players, including the small towns that punch above their weight.',
+  now:'Up next: #9 on our list, in research. Our records list the town where a player went to high school, not where he was born. Population figures need a free public source (the U.S. Census) before per-resident numbers can be shown.',
+  try:[['recmap:over','Where overachievers come from (by state)']]},
  {id:'hsvt',d:'recruiting',s:'research',n:'High-School vs. Transfer Research',t:'How players who arrive from high school, junior college and the portal compare.',
   what:'How players who arrive from high school, junior college and the transfer portal compare in playing time and draft outcomes, by position and program.',
   why:'Understand what each route has historically meant for players like you.',
@@ -1655,7 +1675,7 @@ const PRODUCTS=[
  {id:'advtr',d:'plus',s:'soon',n:'Advanced Transfer Research',t:'Transfer research built on reconciled, evidence-graded transfer records.',
   what:'Deeper transfer research for staffs: which kinds of transfers have worked at which programs and positions, using only transfers whose identity and movement are established, with confirmed, reported and inferred moves always kept apart.',
   why:'Evaluate transfer acquisition on records you can trust.',
-  now:'Coming soon. The reconciled transfer records it needs are being finalized in our shared player database. Today\'s transfer pages stay available in the meantime.',
+  now:'Up next: #10 on our list, after the next Transfer Portal Report. The reconciled transfer records it needs are being finalized in our shared player database.',
   try:[['rankings:lean','Portal or high school?'],['transfers:traffic','Portal traffic']]},
  {id:'acq',d:'plus',s:'research',n:'High-School vs. Transfer Acquisition Intelligence',t:'For staffs weighing a high school signee against a transfer at a position.',
   what:'Research for staffs weighing a high school signee against a transfer at a position: what history shows about each route\'s outcomes at programs like theirs.',
@@ -1678,10 +1698,9 @@ const PRODUCTS=[
   now:'Research phase, and last on the roadmap. No reliable public data on player compensation exists, so any version would use clearly labeled hypothetical inputs. We will not invent figures.',
   try:[]}];
 const PBY={};PRODUCTS.forEach(p=>PBY[p.id]=p);
-const ROADMAP=[['Just finished','Live or in review',[['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.'],['p:cur','Predictions cleanup','Individual odds removed; historical group facts instead.'],['p:tags']]],
- ['Next','Being built',[['p:pathway']]],
- ['Then','Planned',[['p:time'],['p:dna'],['p:portal2'],['p:advtr'],['p:profiles'],['p:compare']]],
- ['Later','Research and validation come first',[['p:ledger'],['p:hsvt'],['p:acq'],['p:poi'],['p:sim'],['p:cost']]]];
+const ROADMAP=[['Just finished','Live now',[['r:portal','Portal vs winning','Does loading up in the portal win? Every FBS team since 2021, and the 30+ transfer club.'],['r:rankings:coaches','Coach report cards, upgraded','Saban scale, Trophy case, best right now, power vs Group of Five, every current head coach.'],['foundation','Shared player database','A cleaner, fully sourced record of every player, school stint and transfer.']]],
+ ['Up next','In this order',[['p:heisman'],['p:time'],['p:compare'],['p:r2d'],['p:hire'],['p:pathway'],['p:portal2'],['p:dna'],['p:hometown'],['p:advtr']]],
+ ['Later','Research and validation come first',[['p:classres'],['p:profiles'],['p:ledger'],['p:hsvt'],['p:acq'],['p:poi'],['p:sim'],['p:cost']]]];
 const stChip=s=>`<span class="st st-${s}"><i aria-hidden="true"></i>${STS[s]}</span>`;
 const rLink=(r,label,cls)=>{const [route,sub]=r.split(':');return `<a href="#${route}" data-sub="${sub||''}"${cls?` class="${cls}"`:''}>${label}</a>`};
 function prodCard(p){
@@ -1707,7 +1726,8 @@ function destCard(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.
   <ul class="dl">${show.map(p=>`<li>${p.s==='avail'?rLink(p.r,esc(p.n)):`<button type="button" data-pv="${p.id}">${esc(p.n)}</button>`}${stChip(p.s)}</li>`).join('')}</ul>
   <a class="dgo" href="#${k}">${d.go} →</a></div>`}
 function roadmapHTML(){return `<div class="road">${ROADMAP.map(([t,sub,list],i)=>`<div class="stage"><div class="sh"><span class="sn">${i+1}</span><div><b>${t}</b><small>${sub}</small></div></div><ul>${list.map(([id,n,tx])=>{const p=id.startsWith('p:')?PBY[id.slice(2)]:null;
-  const inner=`${stChip(p?p.s:'dev')}<b>${esc(p?p.n:n)}</b><span>${esc(p?p.t:tx)}</span>`;
+  const inner=`${stChip(p?p.s:'dev')}<b>${i===1?`<span class="small">#${list.findIndex(x=>x[0]===id)+1}</span> `:''}${esc(p?p.n:n)}</b><span>${esc(p?p.t:tx)}</span>`;
+  if(id.startsWith('r:')){const [rt,sb]=id.slice(2).split(':');return `<li><a href="#${rt}" data-sub="${sb||''}">${stChip('avail')}<b>${esc(n)}</b><span>${esc(tx)}</span></a></li>`}
   return `<li>${p&&p.s==='avail'?(()=>{const [rt,sb]=p.r.split(':');return `<a href="#${rt}" data-sub="${sb||''}">${inner}</a>`})():`<button type="button" data-pv="${p?p.id:id}">${inner}</button>`}</li>`}).join('')}</ul></div>`).join('')}</div>`}
 function destPage(k){const d=DEST[k];const items=PRODUCTS.filter(p=>p.d===k||(p.also||[]).includes(k));const av=items.filter(p=>p.s==='avail'),up=items.filter(p=>p.s!=='avail');
   const others=Object.keys(DEST).filter(x=>x!==k);
