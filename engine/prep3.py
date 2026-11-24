@@ -31,7 +31,9 @@ CUR={sch:HC[(sch,2026)] for (sch,y) in HC if y==2026}
 def last(r):
     d=[m[1] for m in r['mv'] if m[1]]
     return d[-1] if d else r['committedTo']
-def cred(r): return r['draftTeam'] if r['draftYear'] else last(r)
+def cred(r):
+    if '_cs' in r: return r['_cs']
+    return r['draftTeam'] if r['draftYear'] else last(r)
 def coach(r):
     s=cred(r); y=r['year']+2
     arr=[m[0] for m in r['mv'] if m[1]==s]
@@ -40,14 +42,37 @@ def coach(r):
     return HC.get((s,y)) or HC.get((s,y-1))
 SA_SCH={'Army','Navy','Air Force'}   # service academies: military commitment, so draft results don't measure development
 SC=[r for r in P if r['exp'] is not None and not (not r['draftYear'] and any(m[1] and m[0]>=2025 for m in r['mv'])) and cred(r) not in SA_SCH]
+# Transfer credit (approved by JC, Nov 2026): a transfer's development is shared across the schools he played for,
+# by participation (season workload + games with a recorded stat; tshare.json from tpp.py). Uncertain paths keep last-school credit.
+# OFFICIAL methodology v1 = last-school credit. The playing-time split is EXPERIMENTAL (Transfer Ledger research):
+# it runs only with EXPERIMENTAL=1 and must never feed the public site's grades or rankings (JC, Nov 20 2026).
+import os as _os
+EXPERIMENTAL=_os.environ.get('EXPERIMENTAL')=='1'
+SH=json.load(open(O+'tshare.json')) if EXPERIMENTAL and _os.path.exists(O+'tshare.json') else {}
+if EXPERIMENTAL: print('*** EXPERIMENTAL transfer split ON: research output only, never publish ***')
+def shares(r): return SH.get(f"{r['name']}|{r['year']}|{r['committedTo']}")
+def split(rs):
+    out=[]
+    for r in rs:
+        sh=shares(r)
+        if not sh: out.append(r); continue
+        for k,w in sh.items():
+            c=dict(r); c['_cs']=k; c['_w']=w; c['_o']=r
+            for f in ('pts','exp','pae'):
+                if c[f] is not None: c[f]=r[f]*w
+            out.append(c)
+    return out
+SCX=split(SC)
 _cnt=collections.Counter(r['year'] for r in P if r['recruitType'] in ('HighSchool','JUCO','PrepSchool') and r['committedTo'] in FBS)
 COV={y:min(1.0,round(_cnt[y]/len(FBS)/24,2)) for y in _cnt}   # share of a typical class our data source lists
+def wn(rs,f=lambda r:True): return round(sum(r.get('_w',1) for r in rs if f(r)),1)
 def agg(rs):
-    return [len(rs),sum(1 for r in rs if r['draftYear']),sum(1 for r in rs if r['tier'] in('First round','Top 10 pick')),round(sum(r['pts'] for r in rs),1),round(sum(r['exp'] for r in rs),1)]
+    return [round(wn(rs)),round(wn(rs,lambda r:r['draftYear'])),round(wn(rs,lambda r:r['tier'] in('First round','Top 10 pick'))),round(sum(r['pts'] for r in rs),1),round(sum(r['exp'] for r in rs),1)]
 def path(r):
     return [[m[0],m[1]] for m in r['mv']]
 def tag(r):
-    return dict(n=r['name'],y=r['year'],s=r['stars'] or 0,rt=round(r['rating'] or 0,4),g=r['pg'],h=(r['city'] or '')+(', ' if r['city'] else '')+(r['stateProvince'] or ''),
+    r=r.get('_o',r); sh=shares(r)
+    return dict(sh=[[k,round(100*w)] for k,w in sh.items()] if sh else None,n=r['name'],y=r['year'],s=r['stars'] or 0,rt=round(r['rating'] or 0,4),g=r['pg'],h=(r['city'] or '')+(', ' if r['city'] else '')+(r['stateProvince'] or ''),
       sg=r['committedTo'],dt=r['draftTeam'],dy=r['draftYear'],o=r['overall'],t=r['tier'],pts=r['pts'],e=None if r['exp'] is None else round(r['exp'],1),pae=None if r['pae'] is None else round(r['pae'],1),jc=r['recruitType']!='HighSchool',mv=path(r))
 tags={}
 def addtag(r): tags[r['i']]=tag(r); return r['i']
@@ -61,14 +86,14 @@ def pstats(lst):
     by=collections.Counter(p['season'] for p in lst); st=[p['stars'] for p in lst if p['stars']]
     return dict(n=len(lst),by=[by.get(y,0) for y in range(2021,2027)],st=round(sum(st)/len(st),2) if st else None,s4=sum(1 for x in st if x>=4))
 byp=collections.defaultdict(list)
-for r in SC: byp[cred(r)].append(r)
+for r in SCX: byp[cred(r)].append(r)
 progs=[]
 for k,rs in byp.items():
-    if k not in FBS or len(rs)<150: continue
+    if k not in FBS or wn(rs)<150: continue
     full=[r for r in rs if r['year']<=2020]; ip=[r for r in rs if r['year']>2020]
     co=collections.defaultdict(list)
     for r in rs: co[coach(r) or 'Unknown'].append(r)
-    cos=sorted([[c]+agg(v)+[min(r['year'] for r in v)+2,min(2026,max(r['year'] for r in v)+2)] for c,v in co.items() if len(v)>=20],key=lambda x:x[-2])
+    cos=sorted([[c]+agg(v)+[min(r['year'] for r in v)+2,min(2026,max(r['year'] for r in v)+2)] for c,v in co.items() if wn(v)>=20],key=lambda x:x[-2])
     dr=[r for r in rs if r['draftYear']]
     best=[addtag(r) for r in sorted(dr,key=lambda r:-r['pae'])[:8]]
     miss=[addtag(r) for r in sorted([r for r in full if not r['draftYear']],key=lambda r:r['pae'])[:4]]
@@ -89,12 +114,12 @@ def dpe(name,rs,yrs=None):
 progs.sort(key=lambda p:-(p['a'][3]-p['a'][4]))
 # coaches
 byc=collections.defaultdict(list)
-for r in SC:
+for r in SCX:
     c=coach(r)
     if c: byc[c].append(r)
 coaches=[]
 for c,rs in byc.items():
-    if len(rs)<40: continue
+    if wn(rs)<40: continue
     car=CAREER.get(c,[]); stints=collections.OrderedDict()
     for s in sorted(car,key=lambda s:s['year']):
         x=stints.setdefault(s['school'],[s['year'],s['year'],0,0]); x[1]=s['year']; x[2]+=s['wins'] or 0; x[3]+=s['losses'] or 0
@@ -114,25 +139,26 @@ _link=collections.Counter(r['draftTeam'] for r in P if r['draftYear'])
 for c in coaches:
     _r=byc[c['name']]; first={}
     for x in c['st']: first.setdefault(x[0],x[1])
-    inh=sum(1 for r in _r if r['year']<first.get(cred(r),r['year']) and cred(r)==r['committedTo'])
-    tin=sum(1 for r in _r if cred(r)!=r['committedTo'])
+    inh=round(wn(_r,lambda r:r['year']<first.get(cred(r),r['year']) and cred(r)==r['committedTo']))
+    tin=round(wn(_r,lambda r:cred(r)!=r['committedTo']))
     ys=sorted({r['year'] for r in _r})
-    c['attr']=[len(_r),inh,tin,ys[0] if ys else None,ys[-1] if ys else None,len(ys)]
+    c['attr']=[round(wn(_r)),inh,tin,ys[0] if ys else None,ys[-1] if ys else None,len(ys)]
 for p in progs:
     _r=byp[p['name']]; ys=sorted({r['year'] for r in _r})
-    p['attr']=[len(_r),ys[0] if ys else None,ys[-1] if ys else None,_picks.get(p['name'],0),_link.get(p['name'],0)]
+    p['attr']=[round(wn(_r)),ys[0] if ys else None,ys[-1] if ys else None,_picks.get(p['name'],0),_link.get(p['name'],0)]
 for p in progs:
     _r=byp[p['name']]; p['cov']=round(sum(COV.get(r['year'],1) for r in _r)/max(1,len(_r)),2)
 for c in coaches: c['now']=next((s['school'] for s in CAREER.get(c['name'],[]) if s['year']==2026),None)
 # v1.36 (JC, Nov. 22): context only, not graded. Last season coached (games played) and recent form (last 3 finished seasons, 2023-2025).
 for c in coaches:
     car=sorted([s for s in CAREER.get(c['name'],[]) if (s['games'] or 0)>=1],key=lambda s:s['year'])
-    c['last']=[car[-1]['school'],car[-1]['year']] if car else None
+    _cr=[s for s in car if HC.get((s['school'],s['year']))==c['name']] or car   # v1.47 B5: skip interim-only seasons (Bob Stoops, 2021 bowl)
+    c['last']=[_cr[-1]['school'],_cr[-1]['year']] if _cr else None
     r=[s for s in car if 2023<=s['year']<=2025]
     c['rf']=[sum(s['wins'] for s in r),sum(s['losses'] for s in r),[[s['year'],s['wins'],s['losses'],s['school']] for s in r]] if r else None
 # leaderboards: program x position x stars (graded classes)
 LB=collections.defaultdict(lambda:collections.defaultdict(list))
-for r in SC:
+for r in SCX:
     k=cred(r)
     if k in FBS: LB[k][(r['pg'],r['stars'] or 0)].append(r)
 lb=[[k,g,st]+agg(v) for k,d in LB.items() for (g,st),v in d.items()]
@@ -149,12 +175,22 @@ for r in TS:
 stayd=[[a,b]+v for (a,b),v in stay.items() if a in FBS or a in ('ALL','P4')]
 # who develops transfers best: players who finished at a school they transferred into
 tx=collections.defaultdict(list)
-for r in SC:
-    if r['mv'] and cred(r)==last(r) and cred(r)!=r['committedTo']: tx[cred(r)].append(r)
+# v1.47 B8: transfers still in college (on a 2026 roster, not drafted) are "in progress" and left out of transfer outcomes
+import re as _re
+_ros=json.load(open('/root/cfbd_pull/ros_2026.json'))
+_nm=lambda s:_re.sub(r'[^a-z]','',_re.sub(r'\b(jr|sr|ii|iii|iv|v)\b','',(s or '').lower()))
+_ONID={str(x['id']) for x in _ros}; _ONNM={_nm((x.get('firstName') or '')+' '+(x.get('lastName') or '')) for x in _ros}
+def inprog(r): return not r['draftYear'] and r['year']>=2019 and (str(r.get('athleteId')) in _ONID or _nm(r['name']) in _ONNM)
+def into(r):
+    if EXPERIMENTAL: return r['mv'] and cred(r)!=r['committedTo'] and any(m[1]==cred(r) for m in r['mv'])
+    return r['mv'] and cred(r)==last(r) and cred(r)!=r['committedTo']   # official: finished at a school he transferred into
+for r in SCX:
+    if into(r): tx[cred(r)].append(r)
 txd=[]
 for k,v in tx.items():
-    if k not in FBS or len(v)<10: continue
-    txd.append([k]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]]])
+    ip_=[r for r in v if inprog(r)]; v=[r for r in v if not inprog(r)]   # v1.47 B7/B8: 2+ finished transfers, in-progress players counted separately
+    if k not in FBS or len(v)<2: continue
+    txd.append([k,len(v),sum(1 for r in v if r['draftYear']),sum(1 for r in v if r['tier'] in('First round','Top 10 pick')),round(sum(r['pts'] for r in v),1),round(sum(r['exp'] for r in v),1)]+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]],len(ip_)])
 txd.sort(key=lambda x:-(x[4]-x[5]))
 # ---- transfer finder rows (tr.json): players who transferred in and finished at that school
 def lvl(sch,y):
@@ -162,13 +198,13 @@ def lvl(sch,y):
     if sch not in FBS and not cf: return 2
     if sch=='Notre Dame' or cf in ('SEC','Big Ten','Big 12','ACC') or (cf=='Pac-12' and y<=2023): return 0
     return 1 if (sch in FBS or cf) else 2
-TRS=[r for r in SC if r['mv'] and cred(r)==last(r) and cred(r)!=r['committedTo']]
+TRS=[r for r in SCX if into(r)]
 TS=sorted({cred(r) for r in TRS}|{r['committedTo'] for r in TRS}); TCn=sorted({(HC.get((cred(r),[m for m in r['mv'] if m[1]==cred(r)][-1][0])) or '') for r in TRS})
 trows=[]
 for r in TRS:
     arr=[m for m in r['mv'] if m[1]==cred(r)][-1][0]; prev=[m[1] for m in r['mv'] if m[1] and m[0]<arr]; frm=prev[-1] if prev else r['committedTo']
     c_=HC.get((cred(r),arr)) or ''
-    trows.append([arr,TS.index(cred(r)),TCn.index(c_),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,lvl(frm,arr-1),r['stars'] or 0,TS.index(frm) if frm in TS else -1,1 if cred(r) in FBS else 0,lvl(cred(r),arr)])
+    trows.append([arr,TS.index(cred(r)),TCn.index(c_),r['pg'],round(r['pts'],2),round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,lvl(frm,arr-1),r['stars'] or 0,TS.index(frm) if frm in TS else -1,1 if cred(r) in FBS else 0,lvl(cred(r),arr),1 if inprog(r) else 0])
 open(O+'tr.json','w').write(json.dumps(dict(S=TS,C=TCn,rows=trows),separators=(',',':')))
 print('TR rows',len(trows),'drafted',sum(t[6] for t in trows),'by arrival',sorted(collections.Counter(t[0] for t in trows).items()))
 for r in sorted([r for r in SC if r['draftYear']],key=lambda r:-r['pae'])[:60]: addtag(r)
@@ -186,12 +222,25 @@ for r in P:
     fin[r['pg']].append([r['name'],r['year'],r['stars'] or 0,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],cred(r) if r['exp'] is not None else r['committedTo'],r['pts'],None if r['exp'] is None else round(r['exp'],2),r['overall'],r['draftYear'],r['round'],path(r)])
     states[r['stateProvince']]+=1
 for g,rows in fin.items():
-    if g in G: open(O+f'f/{g}.json','w').write(json.dumps(rows,separators=(',',':')))
+    if g in G or g=='ATH': open(O+f'f/{g}.json','w').write(json.dumps(rows,separators=(',',':')))   # v1.47 B6: athletes get cards too
 yrs=sorted({p['year'] for p in P})
 meta=dict(classes=[yrs[0],yrs[-1]],scored=[2002,2023],complete=[2002,2020],draft=[2003,X['last']],portal=[2021,2026],n=len(P),nsc=len(SC),dr=sum(1 for r in SC if r['draftYear']),ncl=NCL,
    pl=sum(1 for r in P if r['mv']),pn=len(PO))
 HSF=[r for r in SC if r['recruitType']=='HighSchool' and r['year']<=2020]
 meta['sr']={st:[len(v),round(100*sum(1 for r in v if r['draftYear'])/len(v),1),round(100*sum(1 for r in v if r['tier'] in('First round','Top 10 pick'))/len(v),2),round(sum(r['pts'] for r in v)/len(v),2)] for st in (2,3,4,5) for v in [[r for r in HSF if r['stars']==st]]}
+# who reaches FBS: our signees per class (2022-2026) vs national pools
+_FY=collections.defaultdict(set)
+for _c in C:
+    for _s in _c['seasons']:
+        if (_s['games'] or 0)>0: _FY[_s['year']].add(_s['school'])
+_inf=lambda r:r['committedTo'] in (_FY.get(r['year'],set())|_FY.get(r['year']-1,set()))
+_hs=sum(1 for r in P if 2022<=r['year']<=2026 and r['recruitType'] in('HighSchool','PrepSchool') and _inf(r))/5
+_ju=sum(1 for r in P if 2022<=r['year']<=2026 and r['recruitType']=='JUCO' and _inf(r))/5
+_g=lambda t:[r for r in P if r['recruitType']==t and 2010<=r['year']<=2020 and r['exp'] is not None]
+_pe=[p for p in PO]; _pf=sum(1 for p in _pe if p['destination'] in (_FY.get(p['season'],set())|_FY.get(p['season']-1,set())))
+meta['path']=dict(hs=round(_hs),ju=round(_ju),hsdr=round(100*sum(1 for r in _g('HighSchool') if r['draftYear'])/len(_g('HighSchool')),1),
+   judr=round(100*sum(1 for r in _g('JUCO') if r['draftYear'])/len(_g('JUCO')),1),pe=len(_pe),pf=_pf,pl=sum(1 for p in _pe if p['destination']))
+print('PATH',meta['path'])
 yc=[r for r in P if 2021<=r['year']<=2023]; meta['psh']=round(100*sum(1 for r in yc if r['mv'])/len(yc),1); meta['pmv']=round(100*sum(1 for r in yc if any(m[1] and m[1]!=r['committedTo'] for m in r['mv']))/len(yc),1)
 # states: HS signees, graded classes
 stx=collections.defaultdict(list)
@@ -204,9 +253,14 @@ for k,v in stx.items():
     top=sorted([[pk]+agg(pv) for pk,pv in pr.items() if len(pv)>=5],key=lambda x:-(x[4]-x[5]))[:3]
     states[k]=agg(v)+[top]
 # search index: every signee
+import re as _re
+_ros=json.load(open('/root/cfbd_pull/ros_2026.json'))
+_nm=lambda s:_re.sub(r'[^a-z]','',_re.sub(r'\b(jr|sr|ii|iii|iv|v)\b','',(s or '').lower()))
+ONID={str(x['id']) for x in _ros}; ONNM={_nm((x.get('firstName') or '')+' '+(x.get('lastName') or '')) for x in _ros}
+def incol(r): return 0 if r['draftYear'] else int(r['year']>=2026 or (r['year']>=2020 and (str(r.get('athleteId')) in ONID or _nm(r['name']) in ONNM)))
 SCH=sorted({r['committedTo'] for r in P}|{cred(r) for r in P if r['exp'] is not None}|{last(r) for r in P}); SI={k:i for i,k in enumerate(SCH)}
 GL=G+['ATH','ST']
-idx=[[r['name'],r['year'],GL.index(r['pg']) if r['pg'] in GL else 9,SI[r['committedTo']],SI[cred(r) if r['exp'] is not None else last(r)],r['overall'] or 0,r['stars'] or 0,r['stateProvince'] or '',1 if any(m[1] and m[1]!=r['committedTo'] for m in r['mv']) else 0,r['round'] or 0,round(r['pae'],1) if r['exp'] is not None and r['k']>=3 else None] for r in P]
+idx=[[r['name'],r['year'],GL.index(r['pg']) if r['pg'] in GL else 9,SI[r['committedTo']],SI[cred(r) if r['exp'] is not None else last(r)],r['overall'] or 0,r['stars'] or 0,r['stateProvince'] or '',1 if any(m[1] and m[1]!=r['committedTo'] for m in r['mv']) else 0,r['round'] or 0,round(r['pae'],1) if r['exp'] is not None and r['k']>=3 else None,incol(r)] for r in P]
 open(O+'search.json','w').write(json.dumps(dict(s=SCH,g=GL,p=idx),separators=(',',':')))
 s=json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=lb,stay=stayd,tx=txd),separators=(',',':'))
 open(O+'data.json','w').write(s)
@@ -273,7 +327,7 @@ for c in coaches:
     tin=sum(1 for p_ in PO if p_['destination'] and (p_['destination'],p_['season']) in set(ten))
     sg=sum(1 for r in P if (r['committedTo'],r['year']-1) in set(ten) and r['recruitType']=='HighSchool')
     mine=[r for r in byc.get(c['name'],[])]
-    vp=[r for r in mine if r['mv'] and cred(r)!=r['committedTo']]; vs=[r for r in mine if not (r['mv'] and cred(r)!=r['committedTo'])]
+    vp=[r for r in mine if (into(r) if EXPERIMENTAL else (r['mv'] and cred(r)!=r['committedTo']))]; vs=[r for r in mine if r not in vp]
     c['pl']=[tin,sg,len(vp),round(sum(r['pts'] for r in vp),1),round(sum(r['exp'] for r in vp),1),len(vs),round(sum(r['pts'] for r in vs),1),round(sum(r['exp'] for r in vs),1),len(set(ten))]
 open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=lb,stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs),separators=(',',':')))
 print('STATS',stats)
@@ -325,9 +379,9 @@ fin2=collections.defaultdict(list)
 for r in P:
     if r['recruitType']!='HighSchool': continue
     c_=coach(r) if r['exp'] is not None else None
-    fin2[r['pg']].append([r['name'],r['year'],r['stars'] or 0,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],cred(r) if r['exp'] is not None else last(r),r['pts'],None if r['exp'] is None else round(r['exp'],2),r['overall'],r['draftYear'],r['round'],path(r),CI.get(c_,-1)])
+    fin2[r['pg']].append([r['name'],r['year'],r['stars'] or 0,round(r['rating'] or 0,4),r['stateProvince'] or '',r['city'] or '',r['committedTo'],cred(r) if r['exp'] is not None else last(r),r['pts'],None if r['exp'] is None else round(r['exp'],2),r['overall'],r['draftYear'],r['round'],path(r),CI.get(c_,-1),incol(r),[[k,round(100*w)] for k,w in shares(r).items()] if shares(r) else None])
 for g,rows in fin2.items():
-    if g in G: open(O+f'f/{g}.json','w').write(json.dumps(rows,separators=(',',':')))
+    if g in G or g=='ATH': open(O+f'f/{g}.json','w').write(json.dumps(rows,separators=(',',':')))   # v1.47 B6: athletes get cards too
 open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=lb,stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN),separators=(',',':')))
 print('INSTATE',{k:v for k,v in instate.items() if k!='home'})
 print('top home',sorted([(k,round(v[0]/v[1],2),v[1]) for k,v in instate['home'].items() if v[1]>=300],key=lambda x:-x[1])[:6])
@@ -343,7 +397,7 @@ def peryear(rs):
 for p in progs: p['py']=peryear(byp[p['name']])
 for c in coaches: c['py']=peryear(byc[c['name']])
 lby=collections.defaultdict(lambda:[0,0,0,0,0])
-for r in SC:
+for r in SCX:
     k=cred(r)
     if k in FBS:
         x=lby[(k,r['pg'],r['stars'] or 0,r['year'])]; a=agg([r])
@@ -500,7 +554,7 @@ pv_=sorted(r['pae'] for r in SC)
 meta['pcut']=[[c_,round(pv_[min(len(pv_)-1,int(len(pv_)*c_/100))],2)] for c_,_ in CUT if c_>0]
 meta['cov']=COV
 # ---- JUCO development
-JU=[r for r in SC if r['recruitType']=='JUCO']
+JU=[r for r in SCX if r['recruitType']=='JUCO']
 jp=collections.defaultdict(list); jc=collections.defaultdict(list); jpg=collections.defaultdict(list)
 for r in JU:
     k=cred(r)
@@ -509,20 +563,20 @@ for r in JU:
     if c_: jc[c_].append(r)
 cnow={c['name']:c['now'] for c in coaches}
 JS=sorted({cred(r) for r in JU}); JCn=sorted({coach(r) or '' for r in JU})
-jrows=[[r['year'],JS.index(cred(r)),JCn.index(coach(r) or ''),r['pg'],r['pts'],round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,1 if cred(r) in FBS else 0,1 if cred(r)==r['committedTo'] else 0] for r in JU]
+jrows=[[r['year'],JS.index(cred(r)),JCn.index(coach(r) or ''),r['pg'],round(r['pts'],2),round(r['exp'],2),1 if r['draftYear'] else 0,1 if r['tier'] in ('First round','Top 10 pick') else 0,addtag(r) if r['draftYear'] else -1,1 if cred(r) in FBS else 0,1 if cred(r)==r['committedTo'] else 0] for r in JU]
 jcs={}  # schools each coach led (FBS seasons)
 for c in coaches: jcs[c['name']]=[[x[0],x[1],x[2]] for x in c['st']]
 open(O+'juco.json','w').write(json.dumps(dict(S=JS,C=JCn,rows=jrows,cnow={k:cnow.get(k) for k in JCn if cnow.get(k)},cst={k:jcs.get(k,[]) for k in JCn},fbs=sorted(FBS)),separators=(',',':')))
-juco=dict(n=len(JU),dr=sum(1 for r in JU if r['draftYear']),
+juco=dict(n=round(wn(JU)),dr=round(wn(JU,lambda r:r['draftYear'])),
   progs=[[k]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:3]]] for k,v in jp.items() if len(v)>=8],
   pos=[[k[0],k[1]]+agg(v) for k,v in jpg.items() if len(v)>=3],
   coaches=[[c_,cnow.get(c_)]+agg(v)+[[addtag(r) for r in sorted([r for r in v if r['draftYear']],key=lambda r:-r['pae'])[:2]]] for c_,v in jc.items() if len(v)>=6],
-  best=[addtag(r) for r in sorted([r for r in JU if r['draftYear']],key=lambda r:-r['pae'])[:8]])
+  best=[addtag(r) for r in sorted([r for r in SC if r['recruitType']=='JUCO' and r['draftYear']],key=lambda r:-r['pae'])[:8]])
 print('JUCO',juco['n'],'signees',juco['dr'],'drafted',len(juco['progs']),'programs',len(juco['coaches']),'coaches')
 print('JUCO top progs',[(p[0],p[1],p[2],round(p[4]-p[5])) for p in sorted(juco['progs'],key=lambda p:-(p[4]-p[5]))[:6]])
 print('JUCO top coaches',[(c[0],c[2],c[3],round(c[5]-c[6])) for c in sorted(juco['coaches'],key=lambda c:-(c[5]-c[6]))[:6]])
 print('pcut',meta['pcut'])
-open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS,dist=dist,catn=[[k,l] for k,l,_,_ in CATS],juco=juco),separators=(',',':')))
+open(O+'data.json','w').write(json.dumps(dict(states=states,meta=meta,progs=progs,coaches=coaches,tags=tags,lb=[],stay=stayd,tx=txd,ana=ana,stats=stats,confs=confs,instate=instate,cn=CN,yrs=YRS,dist=dist,catn=[[k,l] for k,l,_,_ in CATS],juco=juco,fbs=sorted({_s['school'] for _c in C for _s in _c['seasons'] if _s['year']>=2002 and ((_s['games'] or 0)>0 or _s['year']==2026)})),separators=(',',':')))
 print('DIST',dist['bandDraft'],dist['bandMove'],dist['med'])
 print('RAD',sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:x[1])[:4],sorted([(k,v[1]) for k,v in rad.items()],key=lambda x:-x[1])[:4])
 cc=[c for c in coaches if c['g'].get('all')]
